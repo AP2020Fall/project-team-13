@@ -15,13 +15,50 @@ public class Player extends User{
     private ArrayList<String> requests = new ArrayList<String>();
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();
 
-    private Game playGame(int gameID){
+    public Game playGame(int gameID){
         return null;
 
     }
-    private void addFriend(int playerID){
+    public void addFriend(int playerID){
 
     }
+    public static void registerModel(){
 
+    }
+    public Log getLog(int gameId){
 
+        return null;
+    }
+
+    public static ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public ArrayList<Log> getGamesLog() {
+        return gamesLog;
+    }
+
+    public int getDaysPassedRegister() {
+        return daysPassedRegister;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public ArrayList<Player> getFriends() {
+        return friends;
+    }
+
+    public ArrayList<String> getRequests() {
+        return requests;
+    }
+
+    public ArrayList<Game> getSuggestedGames() {
+        return suggestedGames;
+    }
 }
