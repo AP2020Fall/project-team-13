@@ -1,8 +1,9 @@
 package Reversi;
 
+import Plato.Model.Game;
 import Plato.Model.Player;
 
-public class ReversiController {
+public class ReversiController extends Game {
     public Reversi model;
     public ReversiView view;
     public ReversiController(Reversi model, Reversi view){}
