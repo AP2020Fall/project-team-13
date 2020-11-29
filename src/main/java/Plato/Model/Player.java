@@ -30,5 +30,35 @@ public class Player extends User{
         return null;
     }
 
+    public static ArrayList<Player> getPlayers() {
+        return players;
+    }
 
+    public ArrayList<Log> getGamesLog() {
+        return gamesLog;
+    }
+
+    public int getDaysPassedRegister() {
+        return daysPassedRegister;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public ArrayList<Player> getFriends() {
+        return friends;
+    }
+
+    public ArrayList<String> getRequests() {
+        return requests;
+    }
+
+    public ArrayList<Game> getSuggestedGames() {
+        return suggestedGames;
+    }
 }
