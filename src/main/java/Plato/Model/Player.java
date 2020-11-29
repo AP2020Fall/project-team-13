@@ -15,12 +15,19 @@ public class Player extends User{
     private ArrayList<String> requests = new ArrayList<String>();
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();
 
-    private Game playGame(int gameID){
+    public Game playGame(int gameID){
         return null;
 
     }
-    private void addFriend(int playerID){
+    public void addFriend(int playerID){
 
+    }
+    public static void registerModel(){
+
+    }
+    public Log getLog(int gameId){
+
+        return null;
     }
 
 
