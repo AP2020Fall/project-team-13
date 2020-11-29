@@ -8,7 +8,8 @@ public class GameMenuController {
     public void setGameName(int gameID1){
         this.gameID=gameID1;
     }
-    public String showScoreBoard(Player player){
+    public String showScoreBoard(){
+        Player player = (Player) LoginPageController.user;
         Log log = player.getLog(gameID);
         return null;
     }

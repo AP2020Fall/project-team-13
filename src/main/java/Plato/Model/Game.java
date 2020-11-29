@@ -5,15 +5,25 @@ import java.util.ArrayList;
 public class Game {
     private static ArrayList<Game> games = new ArrayList<Game>();
     private String name;
-    int gameID;
+    private int gameID;
 
     private void play(){
 
     }
 
-    private void giveScore(int playerID){
+    public void giveScore(int playerID){
 
     }
 
+    public static ArrayList<Game> getGames() {
+        return games;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getGameID() {
+        return gameID;
+    }
 }
