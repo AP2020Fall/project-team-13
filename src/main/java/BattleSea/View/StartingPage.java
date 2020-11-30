@@ -1,4 +1,9 @@
 package BattleSea.View;
 
-public class StartingPage {
+import Plato.View.Page;
+
+public class StartingPage extends Page {
+    protected Page run() {
+        return null;
+    }
 }

@@ -4,7 +4,7 @@ import Plato.Controller.MainPagePlayerController;
 
 public class MainPagePlayer extends Page{
     MainPagePlayerController mainPagePlayerController;
-    Page run() {
+    protected Page run() {
         mainPagePlayerController.showPointController();
         return null;
     }

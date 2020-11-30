@@ -19,4 +19,8 @@ public class ShipManager {
     public boolean changeLocation(int shipCode,int xDestination,int yDestination){
         return true;
     }
+
+    public ArrayList<Ship> getAllShips() {
+        return allShips;
+    }
 }

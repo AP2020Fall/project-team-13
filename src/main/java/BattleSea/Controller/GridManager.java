@@ -4,7 +4,7 @@ import BattleSea.Model.Grid;
 import Plato.Model.Player;
 
 public class GridManager {
-    private Player owner;
+    private final Player owner;
     private Grid playerGrid;
     private Grid opponentGrid;
 

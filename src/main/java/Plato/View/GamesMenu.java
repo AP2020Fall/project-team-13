@@ -4,7 +4,7 @@ import Plato.Controller.GamesMenuController;
 
 public class GamesMenu extends Page{
     GamesMenuController gamesMenuController;
-    Page run() {
+    protected Page run() {
         gamesMenuController.getGamesController();
         return null;
     }

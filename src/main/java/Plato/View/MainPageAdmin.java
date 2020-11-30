@@ -4,7 +4,7 @@ import Plato.Controller.MainPageAdminController;
 
 public class MainPageAdmin extends Page {
     MainPageAdminController mainPageAdminController;
-    Page run() {
+    protected Page run() {
         mainPageAdminController.addNewAdminController();
         return null;
     }
