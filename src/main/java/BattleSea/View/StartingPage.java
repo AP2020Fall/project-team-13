@@ -3,7 +3,7 @@ package BattleSea.View;
 import Plato.View.Page;
 
 public class StartingPage extends Page {
-    protected Page run() {
+    public Page run() {
         return null;
     }
 }

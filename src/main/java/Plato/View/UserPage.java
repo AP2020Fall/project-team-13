@@ -3,8 +3,12 @@ package Plato.View;
 import Plato.Controller.UserPageController;
 
 public class UserPage extends Page{
-    UserPageController userPageController;
-    protected Page run() {
+    private static UserPage userPage = new UserPage();
+    private UserPageController userPageController = UserPageController.getInstance();
+    public static UserPage getInstance(){
+        return userPage;
+    }
+    public Page run() {
         userPageController.changePasswordController(null,null);
         return null;
     }
