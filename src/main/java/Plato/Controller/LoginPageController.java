@@ -5,9 +5,15 @@ import Plato.Model.Player;
 import Plato.Model.User;
 
 public class LoginPageController {
+    private static LoginPageController loginPageController = new LoginPageController();
     public static User user;
     static boolean isMainAdminRegistered;
-     private void registerController(){
+
+    public static LoginPageController getInstance() {
+        return loginPageController;
+    }
+
+    private void registerController(){
          Player.registerModel();
      }
      public static User login(){

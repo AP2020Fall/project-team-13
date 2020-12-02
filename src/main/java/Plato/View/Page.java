@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 public abstract class Page {
     private static ArrayList<Page> seenPages ;
-    protected abstract Page run();
+    public abstract Page run();
 
 }
