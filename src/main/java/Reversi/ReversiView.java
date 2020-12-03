@@ -3,7 +3,7 @@ package Reversi;
 import Plato.Model.Player;
 
 public class ReversiView {
-    public static void showWhereToPut(Table table){}
+    public void showWhereToPut(Table table){}//////
     public void showWhoseTurnIsIt(Table table){
         System.out.println("It is " + table.getWhoseTurn() + "'s turn.");
     }
@@ -16,7 +16,7 @@ public class ReversiView {
         System.out.println("Player white named " + white.getFirstname() + " " + white.getLastname() + " has "
                 + white.getScore() + "score(s).");
     }
-    public static void showGrid(){}
+    public void showGrid(){}////////
     public void showDisks(Table table){
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -25,5 +25,4 @@ public class ReversiView {
             System.out.println();
         }
     }
-    public static void changeTurn(String whoseTurn){}
 }

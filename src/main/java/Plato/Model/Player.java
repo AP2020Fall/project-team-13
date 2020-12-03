@@ -1,9 +1,6 @@
 package Plato.Model;
 
-import Plato.View.Page;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Player extends User{
     private static ArrayList<Player> players = new ArrayList<Player>();
@@ -61,4 +58,15 @@ public class Player extends User{
     public ArrayList<Game> getSuggestedGames() {
         return suggestedGames;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Player player = (Player) o;
+        return this.getUsername().equals(player.getUsername());
+    }
+
 }

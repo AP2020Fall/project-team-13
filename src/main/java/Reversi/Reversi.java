@@ -27,7 +27,16 @@ public class Reversi {
             return true;
         return false;
     }
-    public boolean canHePlaceDisk(Player player){return true;}///////////
+    public boolean canHePlaceDisk(Player player){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(this.getTable().getTable()[i][j].equals("E")){
+
+                }
+            }
+        }
+        return true;
+    }//////
     public boolean canTheyPlaceDisk(){
         return (canHePlaceDisk(black) && canHePlaceDisk(white));
     }
@@ -44,8 +53,7 @@ public class Reversi {
         else if(!canHePlaceDisk(getPlayerByWhoseTurn()))
             System.out.println("You cannot place the disk on this Coordinates");
         else{
-            //...
-            changeTurn();
+
         }
     }///////
     public void changeTheDisksColor(int x, int y, int X, int Y){
@@ -78,7 +86,7 @@ public class Reversi {
                 Y = tmp;
             }
             for (int i = x; i <= X ; i++)
-                this.table.setColor(x, x - sub);
+                this.table.setColor(i, i - sub);
         }
         else if((x + y) == (X + Y)){
             int sum = x + y;
@@ -91,14 +99,28 @@ public class Reversi {
                 Y = tmp;
             }
             for (int i = x; i <= X; i++)
-                this.table.setColor(x, sum - x);
+                this.table.setColor(i, sum - i);
         }
     }
     public void changeTurn(){
-        if(this.table.getWhoseTurn().equals("W"))
-            this.table.setWhoseTurn("B");
-        else
-            this.table.setWhoseTurn("W");
+        if(this.table.getWhoseTurn().equals("W") && canHePlaceDisk(this.getBlack())) {
+            if(this.getTable().getHasHePlayed()) {
+                this.table.setWhoseTurn("B");
+                this.getTable().setHasHePlayed(false);
+            }
+            else{
+                System.out.println("in your turn you should place the disk");
+            }
+        }
+        else if(this.table.getWhoseTurn().equals("B") && canHePlaceDisk(this.getWhite())){
+            if(this.getTable().getHasHePlayed()) {
+                this.table.setWhoseTurn("W");
+                this.getTable().setHasHePlayed(false);
+            }
+            else{
+                System.out.println("in your turn you should place the disk");
+            }
+        }
     }
     public int getNumberOfInputColorDisks(String color){
         int number = 0;
@@ -121,6 +143,7 @@ class Table{
     private String[][] table = new String[8][8];
     private String result;
     private String whoseTurn;
+    private boolean hasHePlayed;
     public Table(){
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
@@ -136,6 +159,7 @@ class Table{
             whoseTurn = "black";
         else
             whoseTurn = "white";
+        hasHePlayed = false;
     }
     public Table(Table table){
         for (int i = 0; i < 8; i++)
@@ -143,6 +167,7 @@ class Table{
                 this.table[i][j] = table.getTable()[i][j];
         this.whoseTurn = table.getWhoseTurn();
         this.result = table.getResult();
+        this.hasHePlayed = table.getHasHePlayed();
     }
     public String getResult() {
         return result;
@@ -153,10 +178,16 @@ class Table{
     public String[][] getTable() {
         return table;
     }
+    public boolean getHasHePlayed(){
+        return hasHePlayed;
+    }
     public void setWhoseTurn(String whoseTurn) {
         this.whoseTurn = whoseTurn;
     }
     public void setColor(int x, int y){
         table[x - 1][y - 1] = getWhoseTurn();
+    }
+    public void setHasHePlayed(boolean hasHePlayed) {
+        this.hasHePlayed = hasHePlayed;
     }
 }
