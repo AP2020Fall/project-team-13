@@ -9,4 +9,15 @@ public class MainPageAdmin extends Page {
         mainPageAdminController.addNewAdminController();
         return null;
     }
+
+    private void viewUsers(){
+        String users ;
+        users=mainPageAdminController.viewUsers();
+        System.out.println(users);
+    }
+    private void viewuser(int id){
+        String userInfo ;
+        userInfo = mainPageAdminController.getUser(id);
+        System.out.println(userInfo);
+    }
 }

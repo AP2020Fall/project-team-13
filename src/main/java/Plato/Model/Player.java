@@ -61,4 +61,14 @@ public class Player extends User{
     public ArrayList<Game> getSuggestedGames() {
         return suggestedGames;
     }
+
+    public static Player getPlayerByID(int id){
+        for (Player player : players) {
+            if (player.getUserID()==id){
+                return player;
+            }
+
+        }
+        return null;
+    }
 }
