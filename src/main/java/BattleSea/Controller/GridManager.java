@@ -8,10 +8,10 @@ public class GridManager {
     private Grid playerGrid;
     private Grid opponentGrid;
 
-    public GridManager(Player owner, int gridXDimension, int gridYDimension) {
+    public GridManager(Player owner, int gridDimension) {
         this.owner = owner;
-        playerGrid = new Grid(gridXDimension, gridYDimension, owner);
-        opponentGrid = new Grid(gridXDimension, gridYDimension, owner);
+        playerGrid = new Grid(gridDimension, owner);
+        opponentGrid = new Grid(gridDimension, owner);
     }
 
     public boolean bombLocation(int xAxis, int yAxis) {
@@ -23,10 +23,14 @@ public class GridManager {
     }
 
     public Grid getPlayerGrid() {
-        return playerGrid;
+        return playerGrid.getClone();
     }
 
     public Grid getOpponentGrid() {
-        return opponentGrid;
+        return opponentGrid.getClone();
+    }
+
+    public Player getOwner() {
+        return owner;
     }
 }

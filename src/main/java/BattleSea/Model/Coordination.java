@@ -58,4 +58,8 @@ public class Coordination implements Comparable<Coordination> {
     public int compareTo(Coordination o) {
         return (this.xAxis - o.getXAxis()) + (this.yAxis - o.getYAxis());
     }
+
+    public Coordination getClone(){
+        return new Coordination(this.getXAxis(),this.getYAxis());
+    }
 }
