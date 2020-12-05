@@ -87,4 +87,14 @@ public abstract class User {
     public static ArrayList<User> getAllUsers() {
         return allUsers;
     }
+
+    public static void deleteUserAccount(int ID){
+        for (User user : allUsers) {
+            if (user.getUserID()==ID)
+            {
+                allUsers.remove(user);
+                break;
+            }
+        }
+    }
 }

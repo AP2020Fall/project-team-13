@@ -12,4 +12,8 @@ public class UserPage extends Page{
         userPageController.changePasswordController(null,null);
         return null;
     }
+
+    private void deleteAccount(){
+        userPageController.deleteAccount();
+    }
 }

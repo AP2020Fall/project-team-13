@@ -71,4 +71,20 @@ public class Player extends User{
         }
         return null;
     }
+
+    public static void deletePlayerAccount(int ID){
+        for (Player player : players) {
+            if (player.getUserID()==ID)
+            {
+                players.remove(player);
+                for (Log log : Log.getLogs()) {
+                    if (log.getPlayer().equals(player))
+                    {
+                        Log.getLogs().remove(log);
+                    }
+                }
+                break;
+            }
+        }
+    }
 }

@@ -10,5 +10,11 @@ public class FriendsMenu extends Page{
         return null;
     }
 
+    private void showPerson(String name){
+        String person;
+        person = friendsMenuController.getPersonByName(name);
+        System.out.println(person);
+    }
+
 
 }

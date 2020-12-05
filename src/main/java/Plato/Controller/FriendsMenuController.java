@@ -18,4 +18,17 @@ public class FriendsMenuController {
     }
 
 
+    public String getPersonByName(String name) {
+        ArrayList<Player> persons = Player.getPlayers();
+        for (Player person : persons) {
+            if (person.getUsername().equals(name))
+            {
+                String personInfo;
+                personInfo=person.getFirstname()+" "+person.getLastname()+" "+person.getUserID()+" "+person.getUsername()+" "+" "+person.getEmail()+" "+"\n";
+                personInfo=personInfo+person.getDaysPassedRegister()+" "+person.getScore()+" "+person.getMoney()+"\n";
+                return personInfo;
+            }
+        }
+        return "player not found";
+    }
 }
