@@ -5,29 +5,33 @@ import Plato.Model.Player;
 import java.util.ArrayList;
 
 public class GameManager {
-    private Player firstPlayer;
-    private Player secondPlayer;
+    private final Player firstPlayer;
+    private final Player secondPlayer;
     private Player turn;
     private int firstPlayerScore;
     private int secondPlayerScore;
     private ArrayList<String> gameLogs;
 
-    public GameManager(Player firstPlayer, Player secondPlayer,int boardXDimension,int boardYDimension,int numberOfShips) {
+    public GameManager(Player firstPlayer, Player secondPlayer,int boardDimension,int numberOfShips) {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
-        createBoard(boardXDimension,boardYDimension);
-        createShips(boardXDimension,boardYDimension,numberOfShips);
+        createBoard(boardDimension);
+        createShips(boardDimension,numberOfShips);
     }
 
     public void setScore(int score,Player player){
 
     }
 
-    private void createBoard(int boardXDimension,int boardYDimension){
+    private void createBoard(int boardDimension){
+        GridManager firstPlayerGridManager=new GridManager(firstPlayer,boardDimension);
+        GridManager secondPlayerGridManager=new GridManager(secondPlayer,boardDimension);
 
     }
 
-    private void createShips(int boardXDimension,int boardYDimension,int numberOfShips){
+    private void createShips(int boardDimension,int numberOfShips){
+        ShipManager firstPlayerShipManager=new ShipManager(firstPlayer,boardDimension,numberOfShips);
+        ShipManager secondPlayerShipManager=new ShipManager(secondPlayer,boardDimension,numberOfShips);
 
     }
 }
