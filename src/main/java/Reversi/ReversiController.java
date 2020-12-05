@@ -5,6 +5,7 @@ import Plato.Model.Player;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 //controller
 public class ReversiController extends Game {
@@ -14,9 +15,9 @@ public class ReversiController extends Game {
     private ReversiView view;
 
     //constructor
-    public ReversiController(Reversi model, ReversiView view){
-        this.model = model;
-        this.view = view;
+    public ReversiController(Player black, Player white){
+        this.model = new Reversi(black, white);
+        this.view = new ReversiView();
     }
 
     //getter methods
@@ -68,10 +69,44 @@ public class ReversiController extends Game {
 
     //runs the game
     public static void run(Player black, Player white){
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        while((input = scanner.nextLine()).equals("end of my turn")){
 
+        //building a new game
+        ReversiController game = new ReversiController(black, white);
+
+        //getting input
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+
+
+        while(true){
+            if(input.trim().equals("end of my turn")){
+                game.changeTurn();
+            }
+            else if(Pattern.matches("Place disk on (//d+,//d+)", input.trim())){
+                input = (input.split(" ")[3]);
+                input = input.substring(1, input.length() - 1);
+                int x = Integer.parseInt(input.split(",")[0]);
+                int y = Integer.parseInt(input.split(",")[1]);
+                game.placeDisk(x, y);
+            }
+            else if(input.trim().equals("show available coordinates")){
+                game.showWhereToPut();
+            }
+            else if(input.trim().equals("show grid")){
+                game.showGrid();
+            }
+            else if(input.trim().equals("show disks")){
+                game.showDisks();
+            }
+            else if(input.trim().equals("Who is next?")){
+                game.showWhoseTurnIsIt();
+            }
+            else if(input.trim().equals("show result")){
+                game.showResult();
+            }
+            else if(input.trim().equals("show score")){
+                game.showScore();
+            }
         }
     }
 }

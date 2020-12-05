@@ -239,10 +239,13 @@ public class Reversi {
     }
 }
 class Table{
+    //fields
     private String[][] table = new String[8][8];
     private String result;
     private String whoseTurn;
     private boolean hasHePlayed;
+
+    //constructor
     public Table(){
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
@@ -260,6 +263,8 @@ class Table{
             whoseTurn = "white";
         hasHePlayed = false;
     }
+
+    //copy constructor
     public Table(Table table){
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
@@ -268,6 +273,8 @@ class Table{
         this.result = table.getResult();
         this.hasHePlayed = table.getHasHePlayed();
     }
+
+    //getter methods
     public String getResult() {
         return result;
     }
@@ -280,6 +287,8 @@ class Table{
     public boolean getHasHePlayed(){
         return hasHePlayed;
     }
+
+    //setter methods
     public void setWhoseTurn(String whoseTurn) {
         this.whoseTurn = whoseTurn;
     }
