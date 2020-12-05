@@ -31,10 +31,7 @@ public class ReversiController extends Game {
         return matches;
     }
 
-    //the methods that relates to view
-    public void showWhereToPut(){
-        view.showWhereToPut(this);
-    }
+    //relating to view
     public void showWhoseTurnIsIt(){
         view.showWhoseTurnIsIt(this);
     }
@@ -51,12 +48,15 @@ public class ReversiController extends Game {
         view.showDisks(this);
     }
 
-    //the methods that relates to model
+    //relating to model
     public void placeDisk(int x, int y){
         model.placeDisk(x, y);
     }
     public void changeTurn(){
         model.changeTurn();
+    }
+    public void showAvailableCoordinates(){
+        model.printAvailableCoordinates();
     }
     /*public static ReversiController getMatchByPlayer(Player player){
         int n = matches.size();
@@ -70,7 +70,7 @@ public class ReversiController extends Game {
     //runs the game
     public static void run(Player black, Player white){
 
-        //building a new game
+        //build a new game
         ReversiController game = new ReversiController(black, white);
 
         //getting input
@@ -90,7 +90,7 @@ public class ReversiController extends Game {
                 game.placeDisk(x, y);
             }
             else if(input.trim().equals("show available coordinates")){
-                game.showWhereToPut();
+                game.showAvailableCoordinates();
             }
             else if(input.trim().equals("show grid")){
                 game.showGrid();

@@ -4,7 +4,6 @@ import Plato.Model.Player;
 
 //view
 public class ReversiView {
-    public void showWhereToPut(ReversiController controller){}//////
     public void showWhoseTurnIsIt(ReversiController controller){
         System.out.println("It is " + controller.getModel().getTable().getWhoseTurn() + "'s turn.");
     }

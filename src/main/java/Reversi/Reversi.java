@@ -29,7 +29,7 @@ public class Reversi {
         return table;
     }
 
-    //these four methods are for checking some of the needed conditions and changing the color of disks in order to place a disk correctly
+    //check some of the needed conditions and changing the color of disks in order to place a disk correctly
     public static boolean doesItObserveTheTableLimit(int x, int y){
         if(x <= 8 && x >= 1 && y <= 8 && y >= 1)
             return true;
@@ -146,7 +146,7 @@ public class Reversi {
                 Y = tmp;
             }
             for (int i = y; i <= Y; i++)
-                this.table.setColor(x, i);
+                this.table.setColor(x, i, this.getTable().getWhoseTurn());
         }
         else if(y == Y){
             if(x > X){
@@ -155,7 +155,7 @@ public class Reversi {
                 X = tmp;
             }
             for (int i = x; i <= X; i++)
-                this.table.setColor(i, y);
+                this.table.setColor(i, y, this.getTable().getWhoseTurn());
         }
         else if ((x - y) == (X - Y)){
             int sub = x - y;
@@ -168,7 +168,7 @@ public class Reversi {
                 Y = tmp;
             }
             for (int i = x; i <= X ; i++)
-                this.table.setColor(i, i - sub);
+                this.table.setColor(i, i - sub, this.getTable().getWhoseTurn());
         }
         else if((x + y) == (X + Y)){
             int sum = x + y;
@@ -181,18 +181,28 @@ public class Reversi {
                 Y = tmp;
             }
             for (int i = x; i <= X; i++)
-                this.table.setColor(i, sum - i);
+                this.table.setColor(i, sum - i, this.getTable().getWhoseTurn());
         }
     }
 
-
-    public boolean isTableFull(){
-        for (int i = 0; i < 8; i++)
-            for (int j = 0; j < 8; j++)
-                if(this.table.getTable()[i][j].equals("E"))
-                    return false;
-        return true;
+    //print the places that the players can place disk
+    public void printAvailableCoordinates(){
+        Table table = new Table(this.getTable());
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(canHePlaceDisk(i, j))
+                    table.setColor(i, j, "A");
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.print(table.getTable()[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
+
+    //change the turn
     public void changeTurn(){
         if(this.table.getWhoseTurn().equals("W")) {
             if(this.getTable().getHasHePlayed()) {
@@ -213,6 +223,23 @@ public class Reversi {
             }
         }
     }
+
+    //white if W and black if B
+    public Player getPlayerByWhoseTurn(){
+        if(this.table.getWhoseTurn().equals("W"))
+            return white;
+        else
+            return black;
+    }
+
+
+    public boolean isTableFull(){
+        for (int i = 0; i < 8; i++)
+            for (int j = 0; j < 8; j++)
+                if(this.table.getTable()[i][j].equals("E"))
+                    return false;
+        return true;
+    }
     public int getNumberOfInputColorDisks(String color){
         int number = 0;
         for (int i = 0; i < 8; i++) {
@@ -222,12 +249,6 @@ public class Reversi {
             }
         }
         return number;
-    }
-    public Player getPlayerByWhoseTurn(){
-        if(this.table.getWhoseTurn().equals("W"))
-            return white;
-        else
-            return black;
     }
     public boolean isItHisTurn(Player player){
         if(player.equals(getPlayerByWhoseTurn()))
@@ -292,8 +313,8 @@ class Table{
     public void setWhoseTurn(String whoseTurn) {
         this.whoseTurn = whoseTurn;
     }
-    public void setColor(int x, int y){
-        table[x - 1][y - 1] = getWhoseTurn();
+    public void setColor(int x, int y, String arg){
+        table[x - 1][y - 1] = arg;
     }
     public void setHasHePlayed(boolean hasHePlayed) {
         this.hasHePlayed = hasHePlayed;
