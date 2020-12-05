@@ -1,6 +1,9 @@
 package Plato.Model;
 
+import Plato.View.Page;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Player extends User{
     private static ArrayList<Player> players = new ArrayList<Player>();
@@ -57,6 +60,32 @@ public class Player extends User{
 
     public ArrayList<Game> getSuggestedGames() {
         return suggestedGames;
+    }
+
+    public static Player getPlayerByID(int id){
+        for (Player player : players) {
+            if (player.getUserID()==id){
+                return player;
+            }
+
+        }
+        return null;
+    }
+
+    public static void deletePlayerAccount(int ID){
+        for (Player player : players) {
+            if (player.getUserID()==ID)
+            {
+                players.remove(player);
+                for (Log log : Log.getLogs()) {
+                    if (log.getPlayer().equals(player))
+                    {
+                        Log.getLogs().remove(log);
+                    }
+                }
+                break;
+            }
+        }
     }
 
     @Override

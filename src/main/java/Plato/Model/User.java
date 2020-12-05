@@ -1,6 +1,9 @@
 package Plato.Model;
 
+import java.util.ArrayList;
+
 public abstract class User {
+    private static ArrayList<User> allUsers = new ArrayList<User>();
     private String firstname;
     private String lastname;
     private String username;
@@ -79,5 +82,19 @@ public abstract class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public static ArrayList<User> getAllUsers() {
+        return allUsers;
+    }
+
+    public static void deleteUserAccount(int ID){
+        for (User user : allUsers) {
+            if (user.getUserID()==ID)
+            {
+                allUsers.remove(user);
+                break;
+            }
+        }
     }
 }
