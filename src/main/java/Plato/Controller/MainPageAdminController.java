@@ -59,4 +59,66 @@ public class MainPageAdminController {
         }
         return String.valueOf(userInfo);
     }
+
+    public String viewSuggestion(int id) {
+        Player player = Player.getPlayerByID(id);
+        StringBuilder games = new StringBuilder();
+        try {
+            for (Game suggestedGame : player.getSuggestedGames()) {
+                games.append(suggestedGame.getName()+"\n");
+            }
+        } catch (Exception e) {
+            games.append("nothing found");
+        }
+
+
+        return String.valueOf(games);
+    }
+
+    public void addSuggestion(int pid, int gid) {
+        for (Player player : Player.getPlayers()) {
+            if (player.getUserID()==pid){
+                for (int i=0;i<player.getSuggestedGames().size();i++) {
+                    if (player.getSuggestedGames().get(i).getGameID()==gid){
+                        break;
+                    }
+                    else if (i==player.getSuggestedGames().size()-1){
+                        for (Game game : Game.getGames()) {
+                            if (game.getGameID()==gid) {
+                                player.getSuggestedGames().add(game);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void removeSeggestion(int pid, int gid) {
+        for (Player player : Player.getPlayers()) {
+            if (player.getUserID()==pid){
+                for (Game suggestedGame : player.getSuggestedGames()) {
+                    if (suggestedGame.getGameID()==gid){
+                        player.getSuggestedGames().remove(suggestedGame);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    public String viewEvents() {
+        StringBuilder events = new StringBuilder();
+        for (Event event : Event.getEvents()) {
+            if (event.isHasEnded()) {
+                events.append(event.getGameName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
+            }
+        }
+        for (Event event : Event.getEvents()) {
+            if (!event.isHasEnded()) {
+                events.append(event.getGameName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
+            }
+        }
+        return String.valueOf(events);
+    }
 }

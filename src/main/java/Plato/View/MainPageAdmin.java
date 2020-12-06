@@ -20,4 +20,18 @@ public class MainPageAdmin extends Page {
         userInfo = mainPageAdminController.getUser(id);
         System.out.println(userInfo);
     }
+    private void viewSuugestios(int id){
+        String suggestion = mainPageAdminController.viewSuggestion(id);
+        System.out.println(suggestion);
+    }
+    private void addSuggestion(int pid,int gid){
+        mainPageAdminController.addSuggestion(pid,gid);
+    }
+    private void removeSeggestion(int pid,int gid){
+        mainPageAdminController.removeSeggestion(pid,gid);
+    }
+    private void viewEvents(){
+        String evets = mainPageAdminController.viewEvents();
+        System.out.println(evets);
+    }
 }
