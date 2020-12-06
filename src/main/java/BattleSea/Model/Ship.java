@@ -8,7 +8,8 @@ public class Ship {
     private final int length;
     private final int width;
     private Coordination startPoint;
-    private String direction;
+    private char direction;
+    private boolean isDestroyed;
 
     public Ship(int code, int length, int width, Player owner) {
         this.code = code;
@@ -21,7 +22,7 @@ public class Ship {
         this.startPoint = startPoint;
     }
 
-    public void setDirection(String direction) {
+    public void setDirection(char direction) {
         this.direction = direction;
     }
 
@@ -41,11 +42,19 @@ public class Ship {
         return startPoint;
     }
 
-    public String getDirection() {
+    public char getDirection() {
         return direction;
     }
 
     public Player getOwner() {
         return owner;
+    }
+
+    public boolean isDestroyed() {
+        return isDestroyed;
+    }
+
+    public void destroy() {
+        isDestroyed = true;
     }
 }

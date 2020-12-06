@@ -11,27 +11,65 @@ public class GameManager {
     private int firstPlayerScore;
     private int secondPlayerScore;
     private ArrayList<String> gameLogs;
+    GridManager firstPlayerGridManager;
+    GridManager secondPlayerGridManager;
+    ShipManager firstPlayerShipManager;
+    ShipManager secondPlayerShipManager;
 
-    public GameManager(Player firstPlayer, Player secondPlayer,int boardDimension,int numberOfShips) {
+    public GameManager(Player firstPlayer, Player secondPlayer, int boardDimension, int numberOfShips) {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
         createBoard(boardDimension);
-        createShips(boardDimension,numberOfShips);
+        createShips(boardDimension, numberOfShips);
+        turn = firstPlayer;
+        firstPlayerScore = 0;
+        secondPlayerScore = 0;
     }
 
-    public void setScore(int score,Player player){
-
+    public void addScore(int score, Player player) {
+        if (player.equals(firstPlayer)) firstPlayerScore += score;
+        else if (player.equals(secondPlayer)) secondPlayerScore += score;
     }
 
-    private void createBoard(int boardDimension){
-        GridManager firstPlayerGridManager=new GridManager(firstPlayer,boardDimension);
-        GridManager secondPlayerGridManager=new GridManager(secondPlayer,boardDimension);
-
+    private void createBoard(int boardDimension) {
+        firstPlayerGridManager = new GridManager(firstPlayer, boardDimension);
+        secondPlayerGridManager = new GridManager(secondPlayer, boardDimension);
     }
 
-    private void createShips(int boardDimension,int numberOfShips){
-        ShipManager firstPlayerShipManager=new ShipManager(firstPlayer,boardDimension,numberOfShips);
-        ShipManager secondPlayerShipManager=new ShipManager(secondPlayer,boardDimension,numberOfShips);
+    private void createShips(int boardDimension, int numberOfShips) {
+        firstPlayerShipManager = new ShipManager(firstPlayer, boardDimension, numberOfShips);
+        secondPlayerShipManager = new ShipManager(secondPlayer, boardDimension, numberOfShips);
+    }
 
+    public String bombLocationByPlayer(int xAxis, int yAxis) {
+        if (firstPlayerGridManager.getPlayerGrid().getDimension() < xAxis || firstPlayerGridManager.getPlayerGrid().getDimension() < yAxis)
+            return "Please Choose a Location Inside The Game Board";
+        if (turn.equals(firstPlayer)) {
+            if (firstPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
+                if (secondPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
+                    addScore(1,turn);
+                    return "Your Bomb Hit The Opponent's Ship";
+                }
+                else {
+                    turn = secondPlayer;
+                    return "You Missed Your Shot";
+                }
+            } else return "You Have Already Bombed This Location! Choose Another Location";
+        } else {
+            if (secondPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
+                if (firstPlayerGridManager.bombLocation(xAxis, yAxis, turn)){
+                    addScore(1,turn);
+                    return "Your Bomb Hit The Opponent's Ship";
+                }
+                else {
+                    turn = firstPlayer;
+                    return "You Missed Your Shot";
+                }
+            } else return "You Have Already Bombed This Location! Choose Another Location";
+        }
+    }
+
+    public String changeDirectionOfShip(int shipCode,String Direction){
+        return  "";
     }
 }

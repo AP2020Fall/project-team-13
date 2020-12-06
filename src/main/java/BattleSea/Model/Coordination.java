@@ -30,7 +30,7 @@ public class Coordination implements Comparable<Coordination> {
         if (this.isOccupied) return false;
         else {
             this.isOccupied = true;
-            setContent("#");
+            setContent("ship "+shipCode);
             return true;
         }
     }

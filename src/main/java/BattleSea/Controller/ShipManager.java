@@ -1,5 +1,6 @@
 package BattleSea.Controller;
 
+import BattleSea.Model.Grid;
 import BattleSea.Model.Ship;
 import Plato.Model.Player;
 
@@ -12,19 +13,30 @@ public class ShipManager {
     public ShipManager(Player owner, int gridDimension, int numberOfShips) {
         this.owner = owner;
         createShips(gridDimension, numberOfShips);
-
+        putTheShipsOnBoardRandomly();
     }
 
-    public boolean changeDirection(int shipCode) {
+    public boolean changeDirection(int shipCode, char direction, GridManager playerGridManager) {
         return true;
     }
 
-    public boolean changeLocation(int shipCode, int xDestination, int yDestination) {
+    public boolean changeLocation(int shipCode, int xDestination, int yDestination, GridManager playerGridManager) {
         return true;
     }
 
     public ArrayList<Ship> getAllShips() {
         return allShips;
+    }
+
+    public Ship getShipByShipCode(int shipCode) {
+        return allShips.get(shipCode - 1);
+    }
+
+    public boolean isAnyShipDestroyed() {
+        /*for (Ship ship : allShips) {
+            if (!ship.isDestroyed())
+        }*/
+        return true;
     }
 
     private void createShips(int gridDimension, int numberOfShips) {
@@ -38,10 +50,9 @@ public class ShipManager {
             allShips.add(new Ship(i + 1, length, width, owner));
             length--;
         }
-        putTheShipsOnBoard();
     }
 
-    private void putTheShipsOnBoard(){
-        
+    public void putTheShipsOnBoardRandomly() {
+
     }
 }

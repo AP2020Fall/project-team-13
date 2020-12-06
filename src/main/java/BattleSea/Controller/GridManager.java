@@ -14,12 +14,18 @@ public class GridManager {
         opponentGrid = new Grid(gridDimension, owner);
     }
 
-    public boolean bombLocation(int xAxis, int yAxis) {
-        return true;
+    public boolean bombLocation(int xAxis, int yAxis, Player bomber) {
+        if (bomber.equals(owner)) {
+            return opponentGrid.getLocation(xAxis, yAxis).Bomb();
+        }
+        else {
+            playerGrid.getLocation(xAxis,yAxis).Bomb();
+            return playerGrid.getLocation(xAxis, yAxis).isOccupied();
+        }
     }
 
     public boolean occupyLocationByShip(int shipCode, int xAxis, int yAxis) {
-        return true;
+        return playerGrid.getLocation(xAxis,yAxis).Occupy(shipCode);
     }
 
     public Grid getPlayerGrid() {
