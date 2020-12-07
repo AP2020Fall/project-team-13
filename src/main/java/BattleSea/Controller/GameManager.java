@@ -47,21 +47,23 @@ public class GameManager {
         if (turn.equals(firstPlayer)) {
             if (firstPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
                 if (secondPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
-                    addScore(1,turn);
+                    addScore(1, turn);
+                    if (secondPlayerShipManager.isAnyShipDestroyed(secondPlayerGridManager)) {
+                        addScore(5, turn);
+                        return "You Destroyed Your Opponent's Ship";
+                    }
                     return "Your Bomb Hit The Opponent's Ship";
-                }
-                else {
+                } else {
                     turn = secondPlayer;
                     return "You Missed Your Shot";
                 }
             } else return "You Have Already Bombed This Location! Choose Another Location";
         } else {
             if (secondPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
-                if (firstPlayerGridManager.bombLocation(xAxis, yAxis, turn)){
-                    addScore(1,turn);
+                if (firstPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
+                    addScore(1, turn);
                     return "Your Bomb Hit The Opponent's Ship";
-                }
-                else {
+                } else {
                     turn = firstPlayer;
                     return "You Missed Your Shot";
                 }
@@ -69,7 +71,7 @@ public class GameManager {
         }
     }
 
-    public String changeDirectionOfShip(int shipCode,String Direction){
-        return  "";
+    public String changeDirectionOfShip(int shipCode, String Direction) {
+        return "";
     }
 }
