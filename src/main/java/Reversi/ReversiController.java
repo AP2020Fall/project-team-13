@@ -65,7 +65,7 @@ public class ReversiController extends Game {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-
+        //the menu while playing
         while(game.getModel().isTableFull() || game.getModel().canAnyoneMove() || game.getModel().doAllOfTheDisksHaveSameColor()){
             if(input.trim().equals("end of my turn")){
                 game.changeTurn();
@@ -106,8 +106,14 @@ public class ReversiController extends Game {
             else if(input.trim().equals("exit")){
                 return;
             }
+            else{
+                System.out.println("invalid command!");
+            }
         }
 
+        game.getModel().getWinner().addScore();
+
+        //the menu after playing
         while(true){
             if(input.trim().equals("show result")){
                 game.showResult();
@@ -119,6 +125,9 @@ public class ReversiController extends Game {
             }
             else if(input.trim().equals("exit")){
                 return;
+            }
+            else{
+                System.out.println("invalid command!");
             }
         }
 

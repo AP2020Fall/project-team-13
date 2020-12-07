@@ -106,4 +106,9 @@ public class Player extends User{
     public ArrayList<Game> getFavorites() {
         return favorites;
     }
+
+    public void addScore(){
+        this.score += 1;
+    }
+
 }
