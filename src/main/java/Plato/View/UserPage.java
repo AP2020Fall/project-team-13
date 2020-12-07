@@ -4,7 +4,7 @@ import Plato.Controller.UserPageController;
 import Plato.Model.User;
 
 public class UserPage extends Page{
-    private static UserPage userPage = new UserPage();
+    public static UserPage userPage = new UserPage();
     private UserPageController userPageController = UserPageController.getInstance();
     public static User user ;
     public static UserPage getInstance(){

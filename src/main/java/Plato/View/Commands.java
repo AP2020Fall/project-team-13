@@ -11,10 +11,11 @@ public enum Commands {
     ADD_EVENT("(?!)add\\s+event\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\d+)"),
     EDIT_EVENT("(?!)edit\\s+event\\s+(\\d+)\\s+(\\S+)\\s+(\\S+)"),
     ADD_SUGGESTION("(?!)add\\s+suggestion\\s+(\\S+)\\s+(\\S+)"),
-    VIEW_SUGGESTION("(?i)view\\s+suggestions"),
+    VIEW_SUGGESTIONS("(?i)view\\s+suggestions"),
     REMOVE_SUGGESTION("(?!)remove\\s+suggestion\\s+(\\d+)"),
     VIEW_USERS("(?i)view\\s+users"),
-    VIEW_USER_PROFILE("(?i)view\\s+user\\s+profile\\s+(\\S+)");
+    VIEW_USER_PROFILE("(?i)view\\s+user\\s+profile\\s+(\\S+)"),
+    VIEW_ACCOUNT_MENU("(?i)view\\s+account\\s+menu");
 
     private Pattern pattern;
 
