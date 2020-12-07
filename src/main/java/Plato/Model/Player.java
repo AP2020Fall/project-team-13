@@ -14,7 +14,7 @@ public class Player extends User{
     private ArrayList<Player> friends = new ArrayList<Player>();
     private ArrayList<String> requests = new ArrayList<String>();
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();
-
+    private ArrayList<Integer> suggestionID = new ArrayList<Integer>();
     public Game playGame(int gameID){
         return null;
 
@@ -98,4 +98,7 @@ public class Player extends User{
         return this.getUsername().equals(player.getUsername());
     }
 
+    public ArrayList<Integer> getSuggestionID() {
+        return suggestionID;
+    }
 }
