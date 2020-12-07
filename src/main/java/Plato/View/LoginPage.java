@@ -3,7 +3,7 @@ package Plato.View;
 import Plato.Controller.LoginPageController;
 
 public class LoginPage extends Page{
-    private static LoginPage loginPage = new LoginPage();
+    public static LoginPage loginPage = new LoginPage();
     private LoginPageController loginPageController = LoginPageController.getInstance();
     private boolean isMainAdminRegistered;
     public static Page getInstance() {

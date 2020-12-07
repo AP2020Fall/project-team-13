@@ -5,7 +5,7 @@ import Plato.Model.Player;
 
 public class GamesMenu extends Page{
     private Player player;
-    private static GamesMenu gamesMenu = new GamesMenu();
+    public static GamesMenu gamesMenu = new GamesMenu();
     private GamesMenuController gamesMenuController = GamesMenuController.getInstance();
     public Page run() {
         gamesMenuController.getGamesController();

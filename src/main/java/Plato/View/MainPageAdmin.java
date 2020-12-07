@@ -2,12 +2,62 @@ package Plato.View;
 
 import Plato.Controller.MainPageAdminController;
 
+import java.util.regex.Matcher;
+
 public class MainPageAdmin extends Page {
-    private static MainPageAdmin mainPageAdmin = new MainPageAdmin();
+    public static MainPageAdmin mainPageAdmin = new MainPageAdmin();
     private MainPageAdminController mainPageAdminController = MainPageAdminController.getInstance();
     public Page run() {
-        mainPageAdminController.addNewAdminController();
-        return null;
+        seenPages.add(mainPageAdmin);
+        String input;
+        Matcher matcher;
+while(true){
+    input=scanner.nextLine();
+    if ((matcher = Commands.ADD_EVENT.getMatcher(input)).matches())
+    {
+        mainPageAdmin.addEvent(matcher.group(1),matcher.group(2),matcher.group(3), Integer.parseInt(matcher.group(4)));
+    }
+    else if ((matcher = Commands.VIEW_EVENTS.getMatcher(input)).matches())
+    {
+        mainPageAdmin.viewEvents();
+    }
+    else if ((matcher = Commands.EDIT_EVENT.getMatcher(input)).matches())
+    {
+        mainPageAdmin.editEvent(Integer.parseInt(matcher.group(1)),matcher.group(2),matcher.group(3));
+    }
+    else if ((matcher = Commands.REMOVE_EVENT.getMatcher(input)).matches())
+    {
+        mainPageAdmin.removeEvent(Integer.parseInt(matcher.group(1)));
+    }
+    else if ((matcher = Commands.ADD_SUGGESTION.getMatcher(input)).matches())
+    {
+        mainPageAdmin.addSuggestion(matcher.group(1),matcher.group(2));
+    }
+    else if ((matcher = Commands.VIEW_SUGGESTIONS.getMatcher(input)).matches())
+    {
+        mainPageAdmin.viewSuugestions();
+    }
+    else if ((matcher = Commands.REMOVE_SUGGESTION.getMatcher(input)).matches())
+    {
+        mainPageAdmin.removeSeggestion(Integer.parseInt(matcher.group(1)));
+    }
+    else if ((matcher = Commands.VIEW_USERS.getMatcher(input)).matches())
+    {
+        mainPageAdmin.viewUsers();
+    }
+    else if ((matcher = Commands.VIEW_USER_PROFILE.getMatcher(input)).matches())
+    {
+        mainPageAdmin.viewuser(Integer.parseInt(matcher.group(1)));
+    }
+    else if ((matcher = Commands.BACK.getMatcher(input)).matches())
+    {
+        return seenPages.get(seenPages.size()-2);
+    }
+    else if ((matcher = Commands.VIEW_ACCOUNT_MENU.getMatcher(input)).matches())
+    {
+        return UserPage.userPage;
+    }
+}
     }
 
     private void viewUsers(){
@@ -42,7 +92,7 @@ public class MainPageAdmin extends Page {
         event=mainPageAdminController.viewEvent(id);
         System.out.println(event);
     }
-    public void editEvent(String field,String newValue,int id){
+    public void editEvent(int id,String field,String newValue){
         mainPageAdminController.editEvent(field,newValue,id);
     }
     private void removeEvent(int id){
