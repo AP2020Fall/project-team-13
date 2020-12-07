@@ -2,7 +2,8 @@ package Reversi;
 
 import Plato.Model.Game;
 import Plato.Model.Player;
-
+import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -63,14 +64,15 @@ public class ReversiController extends Game {
 
         //getting input
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+        String input;
 
         //the menu while playing
-        while(game.getModel().isTableFull() || game.getModel().canAnyoneMove() || game.getModel().doAllOfTheDisksHaveSameColor()){
+        while(!game.getModel().isTableFull() && game.getModel().canAnyoneMove() || !game.getModel().doAllOfTheDisksHaveSameColor()){
+            input = scanner.nextLine();
             if(input.trim().equals("end of my turn")){
                 game.changeTurn();
             }
-            else if(Pattern.matches("Place disk on (//d+,//d+)", input.trim())){
+            else if(Pattern.matches("Place disk on .\\d+,\\d+.", input.trim())){
                 input = (input.split(" ")[3]);
                 input = input.substring(1, input.length() - 1);
                 int x = Integer.parseInt(input.split(",")[0]);
@@ -115,6 +117,7 @@ public class ReversiController extends Game {
 
         //the menu after playing
         while(true){
+            input = scanner.nextLine();
             if(input.trim().equals("show result")){
                 game.showResult();
             }
@@ -132,4 +135,11 @@ public class ReversiController extends Game {
         }
 
     }
+
+    /*public static void main(String[] args) {
+        Player p1 = new Player();
+        Player p2 = new Player();
+        ReversiController.run(p1, p2);
+    }*/
+
 }

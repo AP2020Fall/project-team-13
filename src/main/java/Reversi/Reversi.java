@@ -45,50 +45,55 @@ public class Reversi {
     }
     public boolean canHePlaceDisk(int x, int y){
         String theOtherPlayer;
-        if(this.getTable().getWhoseTurn().equals("W"))
+        String thisPlayer;
+        if(this.getTable().getWhoseTurn().equals("white")){
             theOtherPlayer = "B";
-        else
+            thisPlayer = "W";
+        }
+        else{
             theOtherPlayer = "W";
-        if(this.getTable().getTable()[x][y].equals("E")) {
+            thisPlayer = "B";
+        }
+        if(this.getTable().getTable()[x - 1][y - 1].equals("E")) {
             //checking right
             int i = 1;
             for ( ; doesItObserveTheTableLimit(x, y + i) && this.getTable().getTable()[x - 1][y + i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x, y + i) && this.getTable().getTable()[x - 1][y + i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x, y + i) && this.getTable().getTable()[x - 1][y + i - 1].equals(thisPlayer) && i != 1)
                 return true;
             //checking left
             i = 1;
             for ( ; doesItObserveTheTableLimit(x, y - i) && this.getTable().getTable()[x - 1][y - i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x, y - i) && this.getTable().getTable()[x - 1][y - i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x, y - i) && this.getTable().getTable()[x - 1][y - i - 1].equals(thisPlayer) && i != 1)
                 return true;
             //checking upside
             i = 1;
             for ( ; doesItObserveTheTableLimit(x + i, y) && this.getTable().getTable()[x + i - 1][y - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x + i, y) && this.getTable().getTable()[x + i - 1][y - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x + i, y) && this.getTable().getTable()[x + i - 1][y - 1].equals(thisPlayer) && i != 1)
                 return true;
             //checking downside
             i = 1;
             for ( ; doesItObserveTheTableLimit(x - i, y) && this.getTable().getTable()[x - i - 1][y - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x - i, y) && this.getTable().getTable()[x - i - 1][y - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x - i, y) && this.getTable().getTable()[x - i - 1][y - 1].equals(thisPlayer) && i != 1)
                 return true;
             //checking up right
             i = 1;
             for ( ; doesItObserveTheTableLimit(x + i, y + i) && this.getTable().getTable()[x + i - 1][y + i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x + i, y + i) && this.getTable().getTable()[x + i - 1][y + i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x + i, y + i) && this.getTable().getTable()[x + i - 1][y + i - 1].equals(thisPlayer) && i != 1)
                 return true;
             //checking down left
             i = 1;
             for ( ; doesItObserveTheTableLimit(x - i, y - i) && this.getTable().getTable()[x - i - 1][y - i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x - i, y - i) && this.getTable().getTable()[x - i - 1][y - i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x - i, y - i) && this.getTable().getTable()[x - i - 1][y - i - 1].equals(thisPlayer) && i != 1)
                 return true;
             //checking up left
             i = 1;
             for ( ; doesItObserveTheTableLimit(x + i, y - i) && this.getTable().getTable()[x + i - 1][y - i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x + i, y - i) && this.getTable().getTable()[x + i - 1][y - i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x + i, y - i) && this.getTable().getTable()[x + i - 1][y - i - 1].equals(thisPlayer) && i != 1)
                 return true;
             //checking down right
             i = 1;
             for ( ; doesItObserveTheTableLimit(x - i, y + i) && this.getTable().getTable()[x - i - 1][y + i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x - i, y + i) && this.getTable().getTable()[x - i - 1][y + i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x - i, y + i) && this.getTable().getTable()[x - i - 1][y + i - 1].equals(thisPlayer) && i != 1)
                 return true;
         }
         return false;
@@ -102,53 +107,69 @@ public class Reversi {
             System.out.println("You have placed disk before. You should change the turn.");
         else{
             String theOtherPlayer;
-            if(this.getTable().getWhoseTurn().equals("W"))
+            String thisPlayer;
+            if(this.getTable().getWhoseTurn().equals("white")){
                 theOtherPlayer = "B";
-            else
+                thisPlayer = "W";
+            }
+            else{
                 theOtherPlayer = "W";
+                thisPlayer = "B";
+            }
             //checking right
             int i = 1;
             for ( ; doesItObserveTheTableLimit(x, y + i) && this.getTable().getTable()[x - 1][y + i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x, y + i) && this.getTable().getTable()[x - 1][y + i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x, y + i) && this.getTable().getTable()[x - 1][y + i - 1].equals(thisPlayer) && i != 1)
                 changeTheDisksColor(x, y, x, y + i);
             //checking left
             i = 1;
             for ( ; doesItObserveTheTableLimit(x, y - i) && this.getTable().getTable()[x - 1][y - i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x, y - i) && this.getTable().getTable()[x - 1][y - i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x, y - i) && this.getTable().getTable()[x - 1][y - i - 1].equals(thisPlayer) && i != 1)
                 changeTheDisksColor(x, y, x, y - i);
             //checking upside
             i = 1;
             for ( ; doesItObserveTheTableLimit(x + i, y) && this.getTable().getTable()[x + i - 1][y - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x + i, y) && this.getTable().getTable()[x + i - 1][y - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x + i, y) && this.getTable().getTable()[x + i - 1][y - 1].equals(thisPlayer) && i != 1)
                 changeTheDisksColor(x, y, x + i, y);
             //checking downside
             i = 1;
             for ( ; doesItObserveTheTableLimit(x - i, y) && this.getTable().getTable()[x - i - 1][y - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x - i, y) && this.getTable().getTable()[x - i - 1][y - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x - i, y) && this.getTable().getTable()[x - i - 1][y - 1].equals(thisPlayer) && i != 1)
                 changeTheDisksColor(x, y, x - i, y);
             //checking up right
             i = 1;
             for ( ; doesItObserveTheTableLimit(x + i, y + i) && this.getTable().getTable()[x + i - 1][y + i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x + i, y + i) && this.getTable().getTable()[x + i - 1][y + i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x + i, y + i) && this.getTable().getTable()[x + i - 1][y + i - 1].equals(thisPlayer) && i != 1)
                 changeTheDisksColor(x, y, x + i, y + i);
             //checking down left
             i = 1;
             for ( ; doesItObserveTheTableLimit(x - i, y - i) && this.getTable().getTable()[x - i - 1][y - i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x - i, y - i) && this.getTable().getTable()[x - i - 1][y - i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x - i, y - i) && this.getTable().getTable()[x - i - 1][y - i - 1].equals(thisPlayer) && i != 1)
                 changeTheDisksColor(x, y, x - i, y - i);
             //checking up left
             i = 1;
             for ( ; doesItObserveTheTableLimit(x + i, y - i) && this.getTable().getTable()[x + i - 1][y - i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x + i, y - i) && this.getTable().getTable()[x + i - 1][y - i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x + i, y - i) && this.getTable().getTable()[x + i - 1][y - i - 1].equals(thisPlayer) && i != 1)
                 changeTheDisksColor(x, y, x + i, y - i);
             //checking down right
             i = 1;
             for ( ; doesItObserveTheTableLimit(x - i, y + i) && this.getTable().getTable()[x - i - 1][y + i - 1].equals(theOtherPlayer); i++);
-            if(doesItObserveTheTableLimit(x - i, y + i) && this.getTable().getTable()[x - i - 1][y + i - 1].equals(this.getTable().getWhoseTurn()) && i != 1)
+            if(doesItObserveTheTableLimit(x - i, y + i) && this.getTable().getTable()[x - i - 1][y + i - 1].equals(thisPlayer) && i != 1)
                 changeTheDisksColor(x, y, x - i, y + i);
+
+            this.getTable().setHasHePlayed(true);
         }
-        }
+    }
     public void changeTheDisksColor(int x, int y, int X, int Y){
+
+
+        String thisPlayer;
+        if(this.getTable().getWhoseTurn().equals("white"))
+            thisPlayer = "W";
+        else
+            thisPlayer = "B";
+
+
         if(x == X){
             if(y > Y){
                 int tmp = y;
@@ -156,7 +177,7 @@ public class Reversi {
                 Y = tmp;
             }
             for (int i = y; i <= Y; i++)
-                this.table.setColor(x, i, this.getTable().getWhoseTurn());
+                this.table.setColor(x, i, thisPlayer);
         }
         else if(y == Y){
             if(x > X){
@@ -165,7 +186,7 @@ public class Reversi {
                 X = tmp;
             }
             for (int i = x; i <= X; i++)
-                this.table.setColor(i, y, this.getTable().getWhoseTurn());
+                this.table.setColor(i, y, thisPlayer);
         }
         else if ((x - y) == (X - Y)){
             int sub = x - y;
@@ -178,7 +199,7 @@ public class Reversi {
                 Y = tmp;
             }
             for (int i = x; i <= X ; i++)
-                this.table.setColor(i, i - sub, this.getTable().getWhoseTurn());
+                this.table.setColor(i, i - sub, thisPlayer);
         }
         else if((x + y) == (X + Y)){
             int sum = x + y;
@@ -191,15 +212,15 @@ public class Reversi {
                 Y = tmp;
             }
             for (int i = x; i <= X; i++)
-                this.table.setColor(i, sum - i, this.getTable().getWhoseTurn());
+                this.table.setColor(i, sum - i, thisPlayer);
         }
     }
 
     //print the places that the players can place disk
     public void printAvailableCoordinates(){
         Table table = new Table(this.getTable());
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 1; i <= 8; i++) {
+            for (int j = 1; j <= 8; j++) {
                 if(canHePlaceDisk(i, j))
                     table.setColor(i, j, "A");
             }
@@ -214,9 +235,9 @@ public class Reversi {
 
     //change the turn
     public void changeTurn(){
-        if(this.table.getWhoseTurn().equals("W")) {
+        if(this.table.getWhoseTurn().equals("white")) {
             if(this.getTable().getHasHePlayed() && canHePlaceDisk(black)) {
-                this.table.setWhoseTurn("B");
+                this.table.setWhoseTurn("black");
                 this.getTable().setHasHePlayed(false);
             }
             else if(this.getTable().getHasHePlayed() && !canHePlaceDisk(black)){
@@ -226,9 +247,9 @@ public class Reversi {
                 System.out.println("in your turn you should place the disk");
             }
         }
-        else if(this.table.getWhoseTurn().equals("B")){
+        else if(this.table.getWhoseTurn().equals("black")){
             if(this.getTable().getHasHePlayed()) {
-                this.table.setWhoseTurn("W");
+                this.table.setWhoseTurn("white");
                 this.getTable().setHasHePlayed(false);
             }
             else if(this.getTable().getHasHePlayed() && !canHePlaceDisk(white)){
@@ -242,8 +263,8 @@ public class Reversi {
 
     //checks if a player can place disk at all.
     public boolean canHePlaceDisk(Player player){
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 1; i <= 8; i++) {
+            for (int j = 1; j <= 8; j++) {
                 if(this.canHePlaceDisk(i, j))
                     return true;
             }
@@ -300,6 +321,7 @@ public class Reversi {
     }
 
 }
+
 class Table{
     //fields
     private String[][] table = new String[8][8];
