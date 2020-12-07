@@ -5,10 +5,12 @@ import Plato.Model.Player;
 //view
 public class ReversiView {
     public void showWhoseTurnIsIt(ReversiController controller){
-        System.out.println("It is " + controller.getModel().getTable().getWhoseTurn() + "'s turn.");
+        System.out.println("It is " + controller.getModel().getTable().getWhoseTurn() + "'s turn with username " +
+                controller.getModel().getPlayerByWhoseTurn().getUsername());
     }
     public void showResult(ReversiController controller){
-        System.out.println(controller.getModel().getTable().getResult());
+        if(controller.getModel().getWinner() != null)
+            System.out.println(controller.getModel().getWinner().getUsername() + "has won this match.");
     }
     public void showScore(ReversiController controller){
         System.out.println("Player black named " + controller.getModel().getBlack().getFirstname() + " " + controller.getModel().getBlack().getLastname() + " has "

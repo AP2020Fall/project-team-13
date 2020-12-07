@@ -12,10 +12,18 @@ public class Reversi {
     private Table table;
 
     //constructor
-    public Reversi(Player black, Player white){
+    public Reversi(Player player1, Player player2){
         this.table = new Table();
-        this.black = black;
-        this.white = white;
+        Random random = new Random();
+        int rand = random.nextInt(2);
+        if(rand == 0) {
+            this.black = player1;
+            this.white = player2;
+        }
+        else {
+            this.black = player2;
+            this.white = player1;
+        }
     }
 
     //getter methods
@@ -90,6 +98,8 @@ public class Reversi {
             System.out.println("Coordinates must be inside the table");
         else if(!canHePlaceDisk(x, y))
             System.out.println("You cannot place the disk on this Coordinates");
+        else if(this.getTable().getHasHePlayed())
+            System.out.println("You have placed disk before. You should change the turn.");
         else{
             String theOtherPlayer;
             if(this.getTable().getWhoseTurn().equals("W"))
@@ -205,11 +215,14 @@ public class Reversi {
     //change the turn
     public void changeTurn(){
         if(this.table.getWhoseTurn().equals("W")) {
-            if(this.getTable().getHasHePlayed()) {
+            if(this.getTable().getHasHePlayed() && canHePlaceDisk(black)) {
                 this.table.setWhoseTurn("B");
                 this.getTable().setHasHePlayed(false);
             }
-            else{
+            else if(this.getTable().getHasHePlayed() && !canHePlaceDisk(black)){
+                this.getTable().setHasHePlayed(false);
+            }
+            else if(!this.getTable().getHasHePlayed()){
                 System.out.println("in your turn you should place the disk");
             }
         }
@@ -218,21 +231,27 @@ public class Reversi {
                 this.table.setWhoseTurn("W");
                 this.getTable().setHasHePlayed(false);
             }
-            else{
+            else if(this.getTable().getHasHePlayed() && !canHePlaceDisk(white)){
+                this.getTable().setHasHePlayed(false);
+            }
+            else if(!this.getTable().getHasHePlayed()){
                 System.out.println("in your turn you should place the disk");
             }
         }
     }
 
-    //white if W and black if B
-    public Player getPlayerByWhoseTurn(){
-        if(this.table.getWhoseTurn().equals("W"))
-            return white;
-        else
-            return black;
+    //checks if a player can place disk at all.
+    public boolean canHePlaceDisk(Player player){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(this.canHePlaceDisk(i, j))
+                    return true;
+            }
+        }
+        return false;
     }
 
-
+    //checks if the table is full.
     public boolean isTableFull(){
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
@@ -240,6 +259,8 @@ public class Reversi {
                     return false;
         return true;
     }
+
+    //returns the entity of input color in the table
     public int getNumberOfInputColorDisks(String color){
         int number = 0;
         for (int i = 0; i < 8; i++) {
@@ -250,19 +271,38 @@ public class Reversi {
         }
         return number;
     }
-    public boolean isItHisTurn(Player player){
-        if(player.equals(getPlayerByWhoseTurn()))
-            return true;
-        return false;
+
+    //checks if all of the disks have a same color
+    public boolean doAllOfTheDisksHaveSameColor(){
+        return (getNumberOfInputColorDisks("W") == 0 || getNumberOfInputColorDisks("B") == 0);
     }
-    public boolean isEmpty(int x, int y){
-        return this.getTable().getTable()[x - 1][y - 1].equals("E");
+
+    //checks if anyone can move at all.
+    public boolean canAnyoneMove(){
+        return (canHePlaceDisk(black) || canHePlaceDisk(white));
     }
+
+    //returns the winner
+    public Player getWinner(){
+        if(getNumberOfInputColorDisks("W") > getNumberOfInputColorDisks("B"))
+            return white;
+        else if(getNumberOfInputColorDisks("W") < getNumberOfInputColorDisks("B"))
+            return black;
+        return null;
+    }
+
+    //white if W and black if B
+    public Player getPlayerByWhoseTurn(){
+        if(this.table.getWhoseTurn().equals("white"))
+            return white;
+        else
+            return black;
+    }
+
 }
 class Table{
     //fields
     private String[][] table = new String[8][8];
-    private String result;
     private String whoseTurn;
     private boolean hasHePlayed;
 
@@ -275,13 +315,7 @@ class Table{
         table[4][4] = "W";
         table[3][4] = "B";
         table[4][3] = "B";
-        result = "playing";
-        Random random = new Random();
-        int rand = random.nextInt(2);
-        if(rand == 0)
-            whoseTurn = "black";
-        else
-            whoseTurn = "white";
+        whoseTurn = "black";
         hasHePlayed = false;
     }
 
@@ -291,14 +325,10 @@ class Table{
             for (int j = 0; j < 8; j++)
                 this.table[i][j] = table.getTable()[i][j];
         this.whoseTurn = table.getWhoseTurn();
-        this.result = table.getResult();
         this.hasHePlayed = table.getHasHePlayed();
     }
 
     //getter methods
-    public String getResult() {
-        return result;
-    }
     public String getWhoseTurn() {
         return whoseTurn;
     }

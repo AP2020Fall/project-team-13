@@ -10,13 +10,12 @@ import java.util.regex.Pattern;
 //controller
 public class ReversiController extends Game {
     //fields
-    private static ArrayList<ReversiController> matches = new ArrayList<ReversiController>();
     private Reversi model;
     private ReversiView view;
 
     //constructor
-    public ReversiController(Player black, Player white){
-        this.model = new Reversi(black, white);
+    public ReversiController(Player player1, Player player2){
+        this.model = new Reversi(player1, player2);
         this.view = new ReversiView();
     }
 
@@ -26,9 +25,6 @@ public class ReversiController extends Game {
     }
     public Reversi getModel() {
         return model;
-    }
-    public static ArrayList<ReversiController> getMatches() {
-        return matches;
     }
 
     //relating to view
@@ -58,14 +54,6 @@ public class ReversiController extends Game {
     public void showAvailableCoordinates(){
         model.printAvailableCoordinates();
     }
-    /*public static ReversiController getMatchByPlayer(Player player){
-        int n = matches.size();
-        for (int i = 0; i < n; i++) {
-            if (matches.get(i).getModel().getBlack().equals(player) || matches.get(i).getModel().getWhite().equals(player))
-                return matches.get(i);
-        }
-        return null;
-    }*/
 
     //runs the game
     public static void run(Player black, Player white){
@@ -78,7 +66,7 @@ public class ReversiController extends Game {
         String input = scanner.nextLine();
 
 
-        while(true){
+        while(game.getModel().isTableFull() || game.getModel().canAnyoneMove() || game.getModel().doAllOfTheDisksHaveSameColor()){
             if(input.trim().equals("end of my turn")){
                 game.changeTurn();
             }
@@ -101,12 +89,38 @@ public class ReversiController extends Game {
             else if(input.trim().equals("Who is next?")){
                 game.showWhoseTurnIsIt();
             }
-            else if(input.trim().equals("show result")){
-                game.showResult();
-            }
             else if(input.trim().equals("show score")){
                 game.showScore();
             }
+            else if(input.trim().equals("help")){
+                System.out.println("1. end of my turn\n" +
+                        "2. Place disk on (x,y)\n" +
+                        "3. show available coordinates\n" +
+                        "4. show grid\n" +
+                        "5. show disks\n" +
+                        "6. Who is next?\n" +
+                        "7. show score\n" +
+                        "8. help\n" +
+                        "9. exit");
+            }
+            else if(input.trim().equals("exit")){
+                return;
+            }
         }
+
+        while(true){
+            if(input.trim().equals("show result")){
+                game.showResult();
+            }
+            else if(input.trim().equals("help")){
+                System.out.println("1. show result\n" +
+                        "2. help\n" +
+                        "3. exit");
+            }
+            else if(input.trim().equals("exit")){
+                return;
+            }
+        }
+
     }
 }
