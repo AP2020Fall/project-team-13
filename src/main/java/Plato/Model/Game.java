@@ -1,6 +1,7 @@
 package Plato.Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
     private static ArrayList<Game> games = new ArrayList<Game>();
