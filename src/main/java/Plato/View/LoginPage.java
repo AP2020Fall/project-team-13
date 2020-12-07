@@ -5,7 +5,7 @@ import Plato.Controller.LoginPageController;
 public class LoginPage extends Page{
     private static LoginPage loginPage = new LoginPage();
     private LoginPageController loginPageController = LoginPageController.getInstance();
-
+    private boolean isMainAdminRegistered;
     public static Page getInstance() {
         return loginPage;
     }
@@ -14,4 +14,11 @@ public class LoginPage extends Page{
         LoginPageController.login();
         return null;
     }
+    private void register(String username , String password){
+
+    }
+    private Page login(String username){
+        return null;
+    }
+
 }

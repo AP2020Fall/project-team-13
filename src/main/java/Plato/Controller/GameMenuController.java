@@ -1,9 +1,12 @@
 package Plato.Controller;
 
+import Plato.Model.Game;
 import Plato.Model.Log;
 import Plato.Model.Player;
 
 public class GameMenuController {
+    public Player player;
+    public String game;
     private static GameMenuController gameMenuController = new GameMenuController();
     private int gameID;
 
@@ -19,4 +22,34 @@ public class GameMenuController {
         Log log = player.getLog(gameID);
         return null;
     }
+    public void setPlayeController(Player player){
+
+    }
+    private String showScoreboardController(){
+    return null;
+    }
+    private String detailsController(){
+    return null;
+    }
+    private String showLogCountroller(){
+        return null;
+    }
+    private String showWinsController(){
+        return null;
+    }
+    private String showPlayedCountroller(){
+        return null;
+    }
+    private void addToFavoritesController(){
+
+    }
+    private String showPointsController(){
+        return null;
+    }
+    private Game runGameController(){
+        return null;
+    }
+
+
+
 }

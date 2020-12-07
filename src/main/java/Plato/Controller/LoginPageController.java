@@ -20,4 +20,8 @@ public class LoginPageController {
         user = User.login(null,null);
          return null;
      }
+     private boolean loginController(String username,String password){
+        return true;
+     }
+     
 }
