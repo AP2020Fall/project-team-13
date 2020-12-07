@@ -15,6 +15,7 @@ public class Player extends User{
     private ArrayList<String> requests = new ArrayList<String>();
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();
     private ArrayList<Integer> suggestionID = new ArrayList<Integer>();
+    private ArrayList<Game> favorites = new ArrayList<Game>();
     public Game playGame(int gameID){
         return null;
 
@@ -100,5 +101,9 @@ public class Player extends User{
 
     public ArrayList<Integer> getSuggestionID() {
         return suggestionID;
+    }
+
+    public ArrayList<Game> getFavorites() {
+        return favorites;
     }
 }

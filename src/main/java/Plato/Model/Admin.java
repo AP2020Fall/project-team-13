@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Admin extends User{
     private static ArrayList<Admin> admins =new ArrayList<Admin>();
-
+    private static ArrayList<String> messages = new ArrayList<String>();
     public static ArrayList<Admin> getAdmins() {
         return admins;
     }
@@ -21,5 +21,9 @@ public class Admin extends User{
                 break;
             }
         }
+    }
+
+    public static ArrayList<String> getMessages() {
+        return messages;
     }
 }
