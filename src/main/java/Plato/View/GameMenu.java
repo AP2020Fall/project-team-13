@@ -5,8 +5,8 @@ import Plato.Controller.GamesMenuController;
 import Plato.Model.Player;
 
 public class GameMenu extends Page{
-    public Player player;
-    public String game;
+    public static Player player;
+    public static int gameID;
     public static GameMenu gameMenu = new GameMenu();
     private GameMenuController gameMenuController = GameMenuController.getInstance();
     public Page run() {
@@ -39,4 +39,12 @@ public class GameMenu extends Page{
   private void runGame(){
 
   }
+
+    public static int getGameID() {
+        return gameID;
+    }
+
+    public static void setGameID(int gameID) {
+        GameMenu.gameID = gameID;
+    }
 }

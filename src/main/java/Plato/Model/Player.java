@@ -12,10 +12,11 @@ public class Player extends User{
     private int money;
     private int score;
     private ArrayList<Player> friends = new ArrayList<Player>();
-    private ArrayList<String> requests = new ArrayList<String>();
+    private ArrayList<Player> friendRequests = new ArrayList<Player>();
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();
     private ArrayList<Integer> suggestionID = new ArrayList<Integer>();
     private ArrayList<Game> favorites = new ArrayList<Game>();
+    private ArrayList<String> gameHistory = new ArrayList<String>();
     public Game playGame(int gameID){
         return null;
 
@@ -55,8 +56,8 @@ public class Player extends User{
         return friends;
     }
 
-    public ArrayList<String> getRequests() {
-        return requests;
+    public ArrayList<Player> getFriendRequests() {
+        return friendRequests;
     }
 
     public ArrayList<Game> getSuggestedGames() {
@@ -111,4 +112,7 @@ public class Player extends User{
         this.score += 1;
     }
 
+    public ArrayList<String> getGameHistory() {
+        return gameHistory;
+    }
 }
