@@ -2,9 +2,6 @@ package Reversi;
 
 import Plato.Model.Game;
 import Plato.Model.Player;
-import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -136,10 +133,12 @@ public class ReversiController extends Game {
 
     }
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         Player p1 = new Player();
+        p1.setUsername("mehdi");
         Player p2 = new Player();
+        p2.setUsername("ali");
         ReversiController.run(p1, p2);
-    }*/
+    }
 
 }

@@ -227,7 +227,14 @@ public class Reversi {
         }
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                System.out.print(table.getTable()[i][j] + " ");
+                if(table.getTable()[i][j].equals("E"))
+                    System.out.print("\u001B[36m" + "E" + "\u001B[0m" +  " ");
+                else if(table.getTable()[i][j].equals("W"))
+                    System.out.print("\u001B[30m" + "W" + "\u001B[0m" +  " ");
+                else if(table.getTable()[i][j].equals("B"))
+                    System.out.print("\u001B[37m" + "B" + "\u001B[0m" +  " ");
+                else if(table.getTable()[i][j].equals("A"))
+                    System.out.print("\u001B[32m" + "A" + "\u001B[0m" +  " ");
             }
             System.out.println();
         }

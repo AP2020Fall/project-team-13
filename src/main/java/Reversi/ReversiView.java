@@ -1,7 +1,5 @@
 package Reversi;
 
-import Plato.Model.Player;
-
 //view
 public class ReversiView {
     public void showWhoseTurnIsIt(ReversiController controller){
@@ -22,9 +20,15 @@ public class ReversiView {
     public void showDisks(ReversiController controller){
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                System.out.print(controller.getModel().getTable().getTable()[i][j] + " ");
+                if(controller.getModel().getTable().getTable()[i][j].equals("E"))
+                    System.out.print("\u001B[36m" + "E" + "\u001B[0m" +  " ");
+                else if(controller.getModel().getTable().getTable()[i][j].equals("W"))
+                    System.out.print("\u001B[30m" + "W" + "\u001B[0m" +  " ");
+                else if(controller.getModel().getTable().getTable()[i][j].equals("B"))
+                    System.out.print("\u001B[37m" + "B" + "\u001B[0m" +  " ");
             }
             System.out.println();
+
         }
     }
 }
