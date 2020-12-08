@@ -20,17 +20,14 @@ public class Coordination implements Comparable<Coordination> {
         if (this.isBombed) return false;
         else {
             this.isBombed = true;
-            if (this.isOccupied) setContent("+");
-            else setContent("-");
             return true;
         }
     }
 
-    public boolean Occupy(int shipCode) {
+    public boolean Occupy() {
         if (this.isOccupied) return false;
         else {
             this.isOccupied = true;
-            setContent("ship "+shipCode);
             return true;
         }
     }

@@ -26,7 +26,7 @@ public class Grid {
         return owner;
     }
 
-    private Coordination[][] getTheGrid() {
+    public Coordination[][] getTheGrid() {
         return theGrid;
     }
 

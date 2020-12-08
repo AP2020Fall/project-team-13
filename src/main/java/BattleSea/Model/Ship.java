@@ -10,12 +10,15 @@ public class Ship {
     private Coordination startPoint;
     private char direction;
     private boolean isDestroyed;
+    private boolean isMovable;
 
     public Ship(int code, int length, int width, Player owner) {
         this.code = code;
         this.length = length;
         this.width = width;
         this.owner = owner;
+        isDestroyed=false;
+        isMovable=true;
     }
 
     public void setStartPoint(Coordination startPoint) {
@@ -56,5 +59,13 @@ public class Ship {
 
     public void destroy() {
         isDestroyed = true;
+    }
+
+    public boolean isMovable() {
+        return isMovable;
+    }
+
+    public void isHit(){
+        isMovable=false;
     }
 }

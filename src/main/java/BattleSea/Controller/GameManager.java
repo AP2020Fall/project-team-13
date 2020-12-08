@@ -10,7 +10,7 @@ public class GameManager {
     private Player turn;
     private int firstPlayerScore;
     private int secondPlayerScore;
-    private ArrayList<String> gameLogs;
+    //private ArrayList<String> gameLogs;
     GridManager firstPlayerGridManager;
     GridManager secondPlayerGridManager;
     ShipManager firstPlayerShipManager;
@@ -45,8 +45,8 @@ public class GameManager {
         if (firstPlayerGridManager.getPlayerGrid().getDimension() < xAxis || firstPlayerGridManager.getPlayerGrid().getDimension() < yAxis)
             return "Please Choose a Location Inside The Game Board";
         if (turn.equals(firstPlayer)) {
-            if (firstPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
-                if (secondPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
+            if (firstPlayerGridManager.bombLocation(xAxis, yAxis, turn, firstPlayerShipManager)) {
+                if (secondPlayerGridManager.bombLocation(xAxis, yAxis, turn, secondPlayerShipManager)) {
                     addScore(1, turn);
                     if (secondPlayerShipManager.isAnyShipDestroyed(secondPlayerGridManager)) {
                         addScore(5, turn);
@@ -59,8 +59,8 @@ public class GameManager {
                 }
             } else return "You Have Already Bombed This Location! Choose Another Location";
         } else {
-            if (secondPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
-                if (firstPlayerGridManager.bombLocation(xAxis, yAxis, turn)) {
+            if (secondPlayerGridManager.bombLocation(xAxis, yAxis, turn, secondPlayerShipManager)) {
+                if (firstPlayerGridManager.bombLocation(xAxis, yAxis, turn, firstPlayerShipManager)) {
                     addScore(1, turn);
                     return "Your Bomb Hit The Opponent's Ship";
                 } else {
@@ -71,7 +71,19 @@ public class GameManager {
         }
     }
 
-    public String changeDirectionOfShip(int shipCode, String Direction) {
-        return "";
+    public String changeLocationOfShip(int shipCode, int xAxis, int yAxis) {
+        try {
+            if (turn.equals(firstPlayer)) {
+                if (firstPlayerGridManager.changeLocationOfShip(firstPlayerShipManager.getShipByShipCode(shipCode), xAxis, yAxis)) {
+                    return "The Ship " + shipCode + " Has Been Moved To The New Location Successfully";
+                } else return "Cannot Move The Ship To The Requested Location! Try A New Location";
+            } else {
+                if (secondPlayerGridManager.changeLocationOfShip(secondPlayerShipManager.getShipByShipCode(shipCode), xAxis, yAxis)) {
+                    return "The Ship " + shipCode + " Has Been Moved To The New Location Successfully";
+                } else return "Cannot Move The Ship To The Requested Location! Try A New Location";
+            }
+        } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+            return "You Cannot Move The Ship To This Location! Because Part Of Ship Will Be Out Of The Board. Try A New Location Or Rotate The Ship First";
+        }
     }
 }

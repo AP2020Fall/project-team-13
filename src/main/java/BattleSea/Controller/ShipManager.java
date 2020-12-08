@@ -13,15 +13,12 @@ public class ShipManager {
 
     public ShipManager(Player owner, int gridDimension, int numberOfShips) {
         this.owner = owner;
+        allShips=new ArrayList<Ship>();
         createShips(gridDimension, numberOfShips);
         putTheShipsOnBoardRandomly();
     }
 
     public boolean changeDirection(int shipCode, char direction, GridManager playerGridManager) {
-        return true;
-    }
-
-    public boolean changeLocation(int shipCode, int xDestination, int yDestination, GridManager playerGridManager) {
         return true;
     }
 
@@ -72,7 +69,7 @@ public class ShipManager {
 
     }
 
-    private Coordination[][] getShipOnGrid(Ship ship, GridManager gridManager) {
+    public Coordination[][] getShipOnGrid(Ship ship, GridManager gridManager) {
         Coordination[][] theShip;
         if (ship.getDirection() == 'n' || ship.getDirection() == 's') {
             theShip = new Coordination[ship.getLength()][ship.getWidth()];
