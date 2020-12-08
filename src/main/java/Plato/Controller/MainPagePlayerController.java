@@ -22,7 +22,8 @@ public class MainPagePlayerController {
         String favorites = null;
         try {
             for (Game favorite : player.getFavorites()) {
-                favorites=favorites+favorite.getName()+"\n";
+                favorites=favorites+favorite.getName();
+                favorites=favorites+"\n";
             }
             if (favorites.equals(null))
             {
@@ -39,7 +40,8 @@ public class MainPagePlayerController {
         String messages = null;
         try {
             for (int i=0;i<Admin.getMessages().size();i++) {
-                messages=messages+Admin.getMessages().get(i)+"\n";
+                messages=messages+Admin.getMessages().get(i);
+                messages=messages+"\n";
             }
             if (messages.equals(null))
             {
@@ -51,4 +53,60 @@ public class MainPagePlayerController {
         }
 
     }
+
+    public String viewSuggestions() {
+        Player player = (Player) LoginPageController.user;
+        String suggests = null;
+        try {
+            for (Game suggestedGame : player.getSuggestedGames()) {
+                suggests=suggests+suggestedGame.getName();
+                suggests=suggests+" ";
+                suggests=suggests+suggestedGame.getGameID();
+                suggests=suggests+"\n";
+            }
+            if (!suggests.equals(null)){
+                return suggests;
+            }
+        } catch (Exception e) {
+            return "nothing found";
+        }
+        return "nothing found";
+
+    }
+
+    public String viewLastPlayed() {
+        Player player = (Player) LoginPageController.user;
+        if (player.getGameHistory().size()>0)
+        {
+            return player.getGameHistory().get(player.getGameHistory().size()-1);
+        }
+        else {
+            return "nothing found";
+        }
+    }
+
+    public boolean issuggestedGameVAlid(int id) {
+        Player player = (Player) LoginPageController.user;
+        try {
+            for (Game suggestedGame : player.getSuggestedGames()) {
+                if (suggestedGame.getGameID()==id){
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+        return false;
+    }
+
+    public void addFriend(String username) {
+        Player player1 = (Player) LoginPageController.user;
+        for (Player player : Player.getPlayers()) {
+            if (player.getUsername().equals(username)){
+                player.getFriendRequests().add(player1);
+            }
+        }
+    }
+
 }

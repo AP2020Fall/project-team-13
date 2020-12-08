@@ -2,12 +2,67 @@ package Plato.View;
 
 import Plato.Controller.MainPagePlayerController;
 
+import java.util.regex.Matcher;
+
 public class MainPagePlayer extends Page{
     public static MainPagePlayer mainPagePlayer = new MainPagePlayer();
     private MainPagePlayerController mainPagePlayerController = MainPagePlayerController.getInstance();
     public Page run() {
-        mainPagePlayerController.showPointController();
-        return null;
+        Matcher matcher;
+        String input;
+        while (true)
+        {
+            input=scanner.nextLine();
+            if ((matcher = Commands.HELP.getMatcher(input)).matches())
+            {
+
+            }
+            else if  ((matcher = Commands.SHOW_POINT.getMatcher(input)).matches())
+            {
+                mainPagePlayer.showPoints();
+            }
+            else if ((matcher = Commands.VIEW_FAVORITE_GAMES.getMatcher(input)).matches())
+            {
+                mainPagePlayer.viewFavoriteGames();
+            }
+            else if ((matcher = Commands.VIEW_PLATOBOT_MESSAGES.getMatcher(input)).matches())
+            {
+                mainPagePlayer.platobotMessages();
+            }
+            else if ((matcher = Commands.VIEW_LAST_PLAYED.getMatcher(input)).matches())
+            {
+                mainPagePlayer.viewLastPlayed();
+            }
+            else if ((matcher = Commands.VIEW_ADMINS_SUGGESTIONS.getMatcher(input)).matches())
+            {
+                mainPagePlayer.adminSuggestions();
+            }
+            else if ((matcher = Commands.ADD_FRIEND.getMatcher(input)).matches())
+            {
+                mainPagePlayer.addFriend(matcher.group(1));
+            }
+            else if ((matcher = Commands.CHOOSE_SUGGESTED_GAME.getMatcher(input)).matches())
+            {
+
+                if (Integer.parseInt(matcher.group(1))==1)
+                {
+                    GameMenu.gameID=1;
+                    return GameMenu.gameMenu;
+                }
+                else if (Integer.parseInt(matcher.group(1))==2)
+                {
+                    GameMenu.gameID=2;
+                    return GameMenu.gameMenu;
+                }
+                else {
+                    System.out.println("invalid gameID");
+                }
+            }
+            else {
+                System.out.println("invalid command");
+            }
+        }
+
     }
     private void showPoints(){
         String point;
@@ -25,5 +80,20 @@ public class MainPagePlayer extends Page{
         messages=mainPagePlayerController.platobotMessages();
         System.out.println(messages);
     }
-
+    private void adminSuggestions(){
+        String suggests=mainPagePlayerController.viewSuggestions();
+        System.out.println(suggests);
+    }
+    private void viewLastPlayed(){
+        String lastPlayed;
+        lastPlayed=mainPagePlayerController.viewLastPlayed();
+        System.out.println(lastPlayed);
+    }
+    private boolean isGAmeVAlid(int id){
+        boolean valid = mainPagePlayerController.issuggestedGameVAlid(id);
+        return valid;
+    }
+    private void addFriend(String username){
+        mainPagePlayerController.addFriend(username);
+    }
 }

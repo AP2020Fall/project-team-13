@@ -15,7 +15,16 @@ public enum Commands {
     REMOVE_SUGGESTION("(?!)remove\\s+suggestion\\s+(\\d+)"),
     VIEW_USERS("(?i)view\\s+users"),
     VIEW_USER_PROFILE("(?i)view\\s+user\\s+profile\\s+(\\S+)"),
-    VIEW_ACCOUNT_MENU("(?i)view\\s+account\\s+menu");
+    VIEW_ACCOUNT_MENU("(?i)view\\s+account\\s+menu"),
+    ADD_BOT_MESSAGE("(?i)add\\s+message\\s+(\\S+)"),
+    HELP("(?i)help"),
+    SHOW_POINT("(?i)show\\s+points"),
+    VIEW_FAVORITE_GAMES("(?i)view\\s+favorite\\s+games"),
+    VIEW_PLATOBOT_MESSAGES("(?i)view\\s+platobot\\s+messages"),
+    VIEW_LAST_PLAYED("(?i)view\\s+last\\s+played"),
+    VIEW_ADMINS_SUGGESTIONS("(?i)view\\s+admins\\s+suggestions"),
+    CHOOSE_SUGGESTED_GAME("(?ichoose\\s+suggested\\s+game\\s+(\\d+)"),
+    ADD_FRIEND("(?i)add\\sfriend\\s+(\\S+)");
 
     private Pattern pattern;
 
