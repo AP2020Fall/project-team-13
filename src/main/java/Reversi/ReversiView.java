@@ -14,9 +14,9 @@ public class ReversiView {
     }
     public void showScore(ReversiController controller){
         System.out.println("Player black named " + controller.getModel().getBlack().getFirstname() + " " + controller.getModel().getBlack().getLastname() + " has "
-                + controller.getModel().getBlack().getScore() + "score(s).");
+                + controller.getModel().getBlack().getScore() + " score(s).");
         System.out.println("Player white named " + controller.getModel().getWhite().getFirstname() + " " + controller.getModel().getWhite().getLastname() + " has "
-                + controller.getModel().getWhite().getScore() + "score(s).");
+                + controller.getModel().getWhite().getScore() + " score(s).");
     }
     public void showGrid(){}////////
     public void showDisks(ReversiController controller){
