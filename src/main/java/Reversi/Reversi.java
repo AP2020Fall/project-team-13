@@ -1,6 +1,7 @@
 package Reversi;
 
 import Plato.Model.Player;
+import javafx.util.Pair;
 
 import java.util.Random;
 
@@ -157,6 +158,7 @@ public class Reversi {
             if(doesItObserveTheTableLimit(x - i, y + i) && this.getTable().getTable()[x - i - 1][y + i - 1].equals(thisPlayer) && i != 1)
                 changeTheDisksColor(x, y, x - i, y + i);
 
+            this.getTable().setLastMove(x - 1, y - 1);
             this.getTable().setHasHePlayed(true);
         }
     }
@@ -229,10 +231,18 @@ public class Reversi {
             for (int j = 0; j < 8; j++) {
                 if(table.getTable()[i][j].equals("E"))
                     System.out.print("\u001B[36m" + "E" + "\u001B[0m" +  " ");
-                else if(table.getTable()[i][j].equals("W"))
-                    System.out.print("\u001B[30m" + "W" + "\u001B[0m" +  " ");
-                else if(table.getTable()[i][j].equals("B"))
-                    System.out.print("\u001B[37m" + "B" + "\u001B[0m" +  " ");
+                else if(table.getTable()[i][j].equals("W")) {
+                    if(!isLastMove(i, j))
+                        System.out.print("\u001B[30m" + "W" + "\u001B[0m" + " ");
+                    else
+                        System.out.print("\u001B[31m" + "W" + "\u001B[0m" + " ");
+                }
+                else if(table.getTable()[i][j].equals("B")) {
+                    if(!isLastMove(i, j))
+                        System.out.print("\u001B[37m" + "B" + "\u001B[0m" + " ");
+                    else
+                        System.out.print("\u001B[31m" + "B" + "\u001B[0m" + " ");
+                }
                 else if(table.getTable()[i][j].equals("A"))
                     System.out.print("\u001B[32m" + "A" + "\u001B[0m" +  " ");
             }
@@ -327,16 +337,23 @@ public class Reversi {
             return black;
     }
 
+    //checks if the input coordinate is the last move of the match
+    public boolean isLastMove(int x, int y){
+        return (x == this.getTable().getLastMove()[0] && y == this.getTable().getLastMove()[1]);
+    }
+
 }
 
 class Table{
     //fields
-    private String[][] table = new String[8][8];
+    private String[][] table;
     private String whoseTurn;
     private boolean hasHePlayed;
+    private int[] lastMove;
 
     //constructor
     public Table(){
+        table = new String[8][8];
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
                 table[i][j] = "E";
@@ -346,10 +363,14 @@ class Table{
         table[4][3] = "B";
         whoseTurn = "black";
         hasHePlayed = false;
+        lastMove = new int[2];
+        lastMove[0] = 0;
+        lastMove[1] = 0;
     }
 
     //copy constructor
     public Table(Table table){
+        this.table = new String[8][8];
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
                 this.table[i][j] = table.getTable()[i][j];
@@ -367,6 +388,9 @@ class Table{
     public boolean getHasHePlayed(){
         return hasHePlayed;
     }
+    public int[] getLastMove() {
+        return lastMove;
+    }
 
     //setter methods
     public void setWhoseTurn(String whoseTurn) {
@@ -377,5 +401,9 @@ class Table{
     }
     public void setHasHePlayed(boolean hasHePlayed) {
         this.hasHePlayed = hasHePlayed;
+    }
+    public void setLastMove(int x, int y) {
+        this.lastMove[0] = x;
+        this.lastMove[1] = y;
     }
 }
