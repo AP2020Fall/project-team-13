@@ -177,4 +177,8 @@ public class MainPageAdminController {
             }
         }
     }
+
+    public void addbotMessage(String message) {
+        Admin.getMessages().add(message);
+    }
 }

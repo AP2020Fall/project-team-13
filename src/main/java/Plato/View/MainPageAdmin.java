@@ -57,6 +57,18 @@ while(true){
     {
         return UserPage.userPage;
     }
+    else if ((matcher = Commands.ADD_BOT_MESSAGE.getMatcher(input)).matches())
+    {
+        mainPageAdmin.addplatobotMessage(matcher.group(1));
+    }
+    else if ((matcher = Commands.HELP.getMatcher(input)).matches())
+    {
+        System.out.println("Add event"+"\n"+"View events\n"+"Edit event\n"+"Remove event\n"+"Add suggestion\n"+"View suggestions\n"
+        +"Remove suggestion\n"+"View users\n"+"View user profile\n");
+    }
+    else {
+        System.out.println("invalid command");
+    }
 }
     }
 
@@ -97,5 +109,8 @@ while(true){
     }
     private void removeEvent(int id){
         mainPageAdminController.removeEvent(id);
+    }
+    private void addplatobotMessage(String message){
+        mainPageAdminController.addbotMessage(message);
     }
 }
