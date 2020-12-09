@@ -3,12 +3,14 @@ package Plato.Model;
 import Plato.View.Page;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Player extends User{
     private static ArrayList<Player> players = new ArrayList<Player>();
     private ArrayList<Log> gamesLog = new ArrayList<Log>();
     private int daysPassedRegister;
+    private Date register = new Date();
     private int money;
     private int score;
     private ArrayList<Player> friends = new ArrayList<Player>();
@@ -114,5 +116,9 @@ public class Player extends User{
 
     public ArrayList<String> getGameHistory() {
         return gameHistory;
+    }
+
+    public Date getRegister() {
+        return register;
     }
 }

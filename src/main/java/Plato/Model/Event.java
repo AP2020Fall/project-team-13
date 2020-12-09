@@ -1,31 +1,32 @@
 package Plato.Model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Event {
     private static ArrayList<Event> events = new ArrayList<Event>();
     private ArrayList<Player> playersOfThisEvent = new ArrayList<Player>();
-    private String gameName;
-    private String startDate;
-    private String endDate;
+    private Game game = new Game();
+    private Date startDate = new Date();
+    private Date endDate = new Date();
     private int eventScore;
     private int eventId;
     private boolean hasStarted;
     private boolean hasEnded;
 
-    public Event(String gameName, String startDate, String endDate, int eventScore, int eventId) {
-        this.gameName = gameName;
+    public Event( Game game, Date startDate, Date endDate, int eventScore) {
+        this.playersOfThisEvent = new ArrayList<Player>();
+        this.game = game;
         this.startDate = startDate;
         this.endDate = endDate;
         this.eventScore = eventScore;
-        this.eventId = eventId;
+        this.eventId = events.size()+1;
         this.hasStarted = false;
         this.hasEnded = false;
-
     }
 
-    public static void createEvent(String gameName, String startDate, String endDate, int eventScore, int eventId){
-        Event event = new Event(gameName, startDate, endDate, eventScore, eventId);
+    public static void createEvent(Game game, Date startDate, Date endDate, int eventScore, int eventId){
+        Event event = new Event(game, startDate, endDate, eventScore);
         events.add(event);
 
     }
@@ -46,28 +47,16 @@ public class Event {
         this.playersOfThisEvent = playersOfThisEvent;
     }
 
-    public String getGameName() {
-        return gameName;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameName(String gameName) {
-        this.gameName = gameName;
-    }
-
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
     }
 
     public int getEventScore() {
@@ -122,4 +111,15 @@ public class Event {
 
     }
 
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 }

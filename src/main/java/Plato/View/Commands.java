@@ -24,7 +24,8 @@ public enum Commands {
     VIEW_LAST_PLAYED("(?i)view\\s+last\\s+played"),
     VIEW_ADMINS_SUGGESTIONS("(?i)view\\s+admins\\s+suggestions"),
     CHOOSE_SUGGESTED_GAME("(?ichoose\\s+suggested\\s+game\\s+(\\d+)"),
-    ADD_FRIEND("(?i)add\\sfriend\\s+(\\S+)");
+    ADD_FRIEND("(?i)add\\sfriend\\s+(\\S+)"),
+    DATER("(?i)(\\d+)\\/\\s+(\\d+)\\s+/\\s+(\\d+)\\s+/\\s+(\\d+)\\s+(\\d+)");
 
     private Pattern pattern;
 

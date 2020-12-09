@@ -1,8 +1,11 @@
 package Plato.Controller;
 
 import Plato.Model.*;
+import Plato.View.Commands;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.regex.Matcher;
 
 public class MainPageAdminController {
     private static MainPageAdminController mainPageAdminController = new MainPageAdminController();
@@ -123,19 +126,48 @@ public class MainPageAdminController {
         StringBuilder events = new StringBuilder();
         for (Event event : Event.getEvents()) {
             if (event.isHasEnded()) {
-                events.append(event.getGameName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
+                events.append(event.getGame().getName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
             }
         }
         for (Event event : Event.getEvents()) {
             if (!event.isHasEnded()) {
-                events.append(event.getGameName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
+                events.append(event.getGame().getName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
             }
         }
         return String.valueOf(events);
     }
 
     public void addEvent(String name,String sdate,String edate,int score){
-        Event event = new Event(name,sdate,edate,score,Event.getEvents().size());
+        Game game1 = null;
+        for (Game game : Game.getGames()) {
+            if (game.getName().equals(name))
+            {
+                game1=game;
+                break;
+            }
+        }
+        Matcher matcher;
+        Date ssdate=new Date();
+        Date eedate = new Date();
+        if ((matcher = Commands.DATER.getMatcher(sdate)).matches())
+        {
+
+            ssdate.setYear(Integer.parseInt(matcher.group(1)));
+            ssdate.setMonth(Integer.parseInt(matcher.group(2)));
+            ssdate.setDate(Integer.parseInt(matcher.group(3)));
+            ssdate.setHours(Integer.parseInt(matcher.group(4)));
+            ssdate.setMinutes(Integer.parseInt(matcher.group(5)));
+        }
+        if ((matcher = Commands.DATER.getMatcher(edate)).matches())
+        {
+
+            eedate.setYear(Integer.parseInt(matcher.group(1)));
+            eedate.setMonth(Integer.parseInt(matcher.group(2)));
+            eedate.setDate(Integer.parseInt(matcher.group(3)));
+            eedate.setHours(Integer.parseInt(matcher.group(4)));
+            eedate.setMinutes(Integer.parseInt(matcher.group(5)));
+        }
+        Event event = new Event(game1,ssdate,eedate,score);
         Event.getEvents().add(event);
     }
 
@@ -143,7 +175,7 @@ public class MainPageAdminController {
         StringBuilder theEvent= new StringBuilder();
         for (Event event : Event.getEvents()) {
             if(event.getEventId()==id){
-                theEvent.append(event.getGameName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
+                theEvent.append(event.getGame().getName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
                 for (Player player : event.getPlayersOfThisEvent()) {
                     theEvent.append(player.getUsername()+" "+player.getUserID()+"\n");
                 }
@@ -152,16 +184,48 @@ public class MainPageAdminController {
         return String.valueOf(theEvent);
     }
     public void editEvent(String field, String newvalue, int id){
+        Game game1 = null;
         for (int i=0; i<Event.getEvents().size();i++) {
             if (Event.getEvents().get(i).getEventId()==id){
                 if (field.equals("name")){
-                    Event.getEvents().get(i).setGameName(newvalue);
+                    for (Game game : Game.getGames()) {
+                        if (game.getName().equals(newvalue))
+                        {
+                            game1=game;
+                            break;
+                        }
+                    }
+                    Event.getEvents().get(i).setGame(game1);
                 }
                 else if (field.equals("startdate")){
-                    Event.getEvents().get(i).setStartDate(newvalue);
+                    Date date = new Date();
+                    Matcher matcher;
+                    if ((matcher = Commands.DATER.getMatcher(newvalue)).matches())
+                    {
+
+                                date.setYear(Integer.parseInt(matcher.group(1)));
+                                date.setMonth(Integer.parseInt(matcher.group(2)));
+                                date.setDate(Integer.parseInt(matcher.group(3)));
+                                date.setHours(Integer.parseInt(matcher.group(4)));
+                                date.setMinutes(Integer.parseInt(matcher.group(5)));
+                        Event.getEvents().get(i).setStartDate(date);
+                    }
+
                 }
                 else if(field.equals("enddate")){
-                    Event.getEvents().get(i).setEndDate(newvalue);
+                    Date date = new Date();
+                    Matcher matcher;
+                    if ((matcher = Commands.DATER.getMatcher(newvalue)).matches())
+                    {
+
+                        date.setYear(Integer.parseInt(matcher.group(1)));
+                        date.setMonth(Integer.parseInt(matcher.group(2)));
+                        date.setDate(Integer.parseInt(matcher.group(3)));
+                        date.setHours(Integer.parseInt(matcher.group(4)));
+                        date.setMinutes(Integer.parseInt(matcher.group(5)));
+                        Event.getEvents().get(i).setEndDate(date);
+                    }
+
                 }
                 else if(field.equals("score")){
                     Event.getEvents().get(i).setEventScore(Integer.parseInt(newvalue));
@@ -180,5 +244,32 @@ public class MainPageAdminController {
 
     public void addbotMessage(String message) {
         Admin.getMessages().add(message);
+    }
+
+    public void startEvent(int id) {
+
+        for (Event event : Event.getEvents()) {
+            if (event.getEventId()==id)
+            {
+                Date date = new Date();
+                if (date.after(event.getStartDate()))
+                {
+                    event.setHasStarted(true);
+                }
+            }
+        }
+    }
+
+    public void endEvent(int id) {
+        for (Event event : Event.getEvents()) {
+            if (event.getEventId()==id)
+            {
+                Date date = new Date();
+                if (date.after(event.getEndDate()))
+                {
+                    event.setHasEnded(true);
+                }
+            }
+        }
     }
 }
