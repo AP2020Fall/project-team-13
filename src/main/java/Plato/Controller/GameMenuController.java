@@ -13,7 +13,6 @@ public class GameMenuController {
     public static GameMenuController getInstance() {
         return gameMenuController;
     }
-
     public void setGameName(int gameID1){
         this.gameID=gameID1;
     }
@@ -22,7 +21,7 @@ public class GameMenuController {
         Log log = player.getLog(gameID);
         return null;
     }
-    public void setPlayeController(Player player){
+    public void setPlayerController(Player player){
 
     }
     private String showScoreboardController(){
@@ -31,13 +30,13 @@ public class GameMenuController {
     private String detailsController(){
     return null;
     }
-    private String showLogCountroller(){
+    private String showLogController(){
         return null;
     }
     private String showWinsController(){
         return null;
     }
-    private String showPlayedCountroller(){
+    private String showPlayedController(){
         return null;
     }
     private void addToFavoritesController(){

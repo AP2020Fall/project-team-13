@@ -14,7 +14,6 @@ public class UserPage extends Page{
         userPageController.changePasswordController(null,null);
         return null;
     }
-
     private void deleteAccount(){
         userPageController.deleteAccount();
     }
@@ -24,7 +23,7 @@ public class UserPage extends Page{
     public Page ViewAccountMenu(){
     return null;
     }
-    private void ViewPersonallnfoView(){
+    private void ViewPersonalInfoView(){
 
     }
     private  void ChangePasswordView(String old,String new1){
@@ -33,13 +32,13 @@ public class UserPage extends Page{
     private void EditView (String field , String new1){
 
     }
-    private void ViewPlatoStisticsView(){
+    private void ViewPlatoStaticsView(){
 
     }
     private void GamesHistoryView(){}
-   private void GameStatisitics(String gameName){
-   }
-   private Page Logout(){
+    private void GameStatics(String gameName){
+    }
+    private Page Logout(){
    return null;
    }
 }

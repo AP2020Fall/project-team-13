@@ -12,12 +12,10 @@ public class UserPageController extends Page {
     public static UserPageController getInstance() {
         return userPageController;
     }
-
     public void changePasswordController(String old, String newPassword){
     LoginPageController.user.editinformation(LoginPageController.user.getUserID(),"password",newPassword);
 
     }
-
     public void deleteAccount() {
         User.deleteUserAccount(LoginPageController.user.getUserID());
         if (LoginPageController.user.isAdmin())
@@ -34,7 +32,7 @@ public class UserPageController extends Page {
     public String ViewAccountMenuController(){
     return null;
     }
-    private String ViewPersonallnfoViewController(){
+    private String ViewPersonalInfoViewController(){
     return null;
     }
     private void ChangePasswordViewController(String old,String new1){
@@ -55,7 +53,6 @@ public class UserPageController extends Page {
     private Page LogoutController(){
         return null;
     }
-
     public Page run() {
         return null;
     }
