@@ -19,6 +19,8 @@ public class Player extends User{
     private ArrayList<Integer> suggestionID = new ArrayList<Integer>();
     private ArrayList<Game> favorites = new ArrayList<Game>();
     private ArrayList<String> gameHistory = new ArrayList<String>();
+    private ArrayList<String> messages = new ArrayList<String>();
+    private ArrayList<Boolean> messagesShown = new ArrayList<Boolean>();
     public Game playGame(int gameID){
         return null;
 
@@ -120,5 +122,13 @@ public class Player extends User{
 
     public Date getRegister() {
         return register;
+    }
+
+    public ArrayList<String> getMessages() {
+        return messages;
+    }
+
+    public ArrayList<Boolean> getMessagesShown() {
+        return messagesShown;
     }
 }

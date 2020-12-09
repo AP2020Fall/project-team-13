@@ -24,8 +24,15 @@ public enum Commands {
     VIEW_LAST_PLAYED("(?i)view\\s+last\\s+played"),
     VIEW_ADMINS_SUGGESTIONS("(?i)view\\s+admins\\s+suggestions"),
     CHOOSE_SUGGESTED_GAME("(?ichoose\\s+suggested\\s+game\\s+(\\d+)"),
-    ADD_FRIEND("(?i)add\\sfriend\\s+(\\S+)"),
-    DATER("(?i)(\\d+)\\/\\s+(\\d+)\\s+/\\s+(\\d+)\\s+/\\s+(\\d+)\\s+(\\d+)");
+    ADD_FRIEND("(?i)add\\s+friend\\s+(\\S+)"),
+    DATER("(?i)(\\d+)\\/\\s+(\\d+)\\s+/\\s+(\\d+)\\s+/\\s+(\\d+)\\s+/\\s+(\\d+)"),
+    SHOW_FRIENDS("(?i)show\\s+friends"),
+    REMOVE_FRIENDS("(?i)remove\\s+(\\d+)"),
+    VIEW_USER_PROFILE_FRIEND_MENU("(?i)view\\s+user\\s+profile\\s+(\\S+)"),
+    ADD_USER("(?i)add\\s+(\\S+)"),
+    SHOW_FRIEND_REQUESTS("(?i)show\\s+friend\\s+requests"),
+    ACCEPT_FRIEND_REQUEST("(?i)accept\\s+(\\S+)"),
+    DECLNE_FRIEND_REQUEST("(?i)decline\\s+(\\S+)");
 
     private Pattern pattern;
 
