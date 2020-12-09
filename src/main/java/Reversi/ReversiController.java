@@ -35,9 +35,6 @@ public class ReversiController extends Game {
     public void showScore(){
         view.showScore(this);
     }
-    public void showGrid(){
-        view.showGrid();
-    }
     public void showDisks(){
         view.showDisks(this);
     }
@@ -78,9 +75,6 @@ public class ReversiController extends Game {
             }
             else if(input.trim().equals("show available coordinates")){
                 game.showAvailableCoordinates();
-            }
-            else if(input.trim().equals("show grid")){
-                game.showGrid();
             }
             else if(input.trim().equals("show disks")){
                 game.showDisks();
@@ -132,5 +126,4 @@ public class ReversiController extends Game {
         }
 
     }
-
 }

@@ -1,7 +1,6 @@
 package Reversi;
 
 import Plato.Model.Player;
-import javafx.util.Pair;
 
 import java.util.Random;
 
@@ -227,7 +226,9 @@ public class Reversi {
                     table.setColor(i, j, "A");
             }
         }
+        System.out.println("  1 2 3 4 5 6 7 8");
         for (int i = 0; i < 8; i++) {
+            System.out.print(i + 1 + " ");
             for (int j = 0; j < 8; j++) {
                 if(table.getTable()[i][j].equals("E"))
                     System.out.print("\u001B[36m" + "E" + "\u001B[0m" +  " ");

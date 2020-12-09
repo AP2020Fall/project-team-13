@@ -19,9 +19,10 @@ public class ReversiView {
         System.out.println("Player white named " + controller.getModel().getWhite() +
                 " has " + controller.getModel().getNumberOfInputColorDisks("W") + "score(s).");
     }
-    public void showGrid(){}////////
     public void showDisks(ReversiController controller){
+        System.out.println("  1 2 3 4 5 6 7 8");
         for (int i = 0; i < 8; i++) {
+            System.out.print(i + 1 + " ");
             for (int j = 0; j < 8; j++) {
                 if(controller.getModel().getTable().getTable()[i][j].equals("E"))
                     System.out.print("\u001B[36m" + "E" + "\u001B[0m" +  " ");
