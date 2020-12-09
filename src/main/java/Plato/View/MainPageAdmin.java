@@ -113,4 +113,10 @@ while(true){
     private void addplatobotMessage(String message){
         mainPageAdminController.addbotMessage(message);
     }
+    private void startEvent(int id){
+        mainPageAdminController.startEvent(id);
+    }
+    private void endtEvent(int id){
+        mainPageAdminController.endEvent(id);
+    }
 }

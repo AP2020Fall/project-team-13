@@ -15,7 +15,8 @@ public class MainPagePlayer extends Page{
             input=scanner.nextLine();
             if ((matcher = Commands.HELP.getMatcher(input)).matches())
             {
-
+                System.out.println("Show Points"+"\n"+"View favorite games\n"+"View platobot’s messages\n"+"View last played\n"+"View admin’s suggestions\n"+"Choose suggested game\n"
+                        +"Add friend\n");
             }
             else if  ((matcher = Commands.SHOW_POINT.getMatcher(input)).matches())
             {
@@ -57,6 +58,10 @@ public class MainPagePlayer extends Page{
                 else {
                     System.out.println("invalid gameID");
                 }
+            }
+            else if ((matcher = Commands.BACK.getMatcher(input)).matches())
+            {
+                return seenPages.get(seenPages.size()-2);
             }
             else {
                 System.out.println("invalid command");
