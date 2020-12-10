@@ -17,7 +17,29 @@ public class ReversiMenu extends Page{
 
             }
             else if( input.trim().equals("Details")){
-                System.out.println();
+                System.out.println("Board\n" +
+                        "Reversi is a 2 players game, played on a board of 64 squares arranged in an 8x8 rows and columns. The game begins with four discs already placed on the board:\n" +
+                        "\n" +
+                        "A set of 64 identical pieces is shared by both players. Each piece is a disc that is black on one side and white on the other.\n" +
+                        "Object of Game\n" +
+                        "The object of Reverze is to flip the most discs to your color by the end of the game. If both players have the same number of discs of their color up, the game is a draw.\n" +
+                        "\n" +
+                        "Sina Nikdel, [10.12.20 14:15]\n" +
+                        "Placing Pieces\n" +
+                        "Players are designated Black and White at the start of the game. Beginning with Black, each player in turn places one disc onto a vacant square on the board.\n" +
+                        "Once placed, a disc never moves, though it may be \"flipped\" when captured so that it changes color.\n" +
+                        "To place a disc, simply tap on a legal square. A move is legal if it captures one or more of the opponent's discs. You can see which moves are legal by the small opaque circles on the board:\n" +
+                        "\n" +
+                        "Capturing\n" +
+                        "A disc, or an unbroken line of discs of the same color, is captured when it becomes flanked on opposite ends by two opposing pieces, one of which must be the disc that was just placed on the board.\n" +
+                        "For example, in the example below if the Black player is about to place a black disc in the space with the yellow dot:\n" +
+                        "\n" +
+                        "Doing so will capture and flip the horizontal white discs to black, resulting in:\n" +
+                        "\n" +
+                        "Captures may be made along ranks (horizontal rows of squares), files (vertical rows of squares), or diagonals.\n" +
+                        "Endgame\n" +
+                        "A player who cannot make a legal move loses his or her turn. The game continues until neither side can move; usually, this does not happen until the board is entirely filled.\n" +
+                        "The player whose color is up on more of the discs at the end is the winner (you'll see the score next to each player's name). If both players have the same number of discs of their color up, the game is a draw.");
             }
             else if( input.trim().equals("Show log")){
 
@@ -39,7 +61,7 @@ public class ReversiMenu extends Page{
                 hasan.setUsername("hasan");
                 ReversiController.run(((Player)LoginPageController.user), hasan);
             }
-            else if( input.trim().equals("Show point")) {
+            else if( input.trim().equals("Show points")) {
 
             }
         }

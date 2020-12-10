@@ -1,6 +1,7 @@
 package Reversi;
 
 import Plato.Model.Game;
+import Plato.Model.Log;
 import Plato.Model.Player;
 import java.util.Scanner;
 import java.util.regex.Pattern;

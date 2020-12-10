@@ -57,6 +57,7 @@ public class Log {
     public String showWins(int logID){
         return null;
     }
+
     public String showTimesOfPlay(int logID){
         return null;
     }
