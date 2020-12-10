@@ -22,8 +22,7 @@ public class MainPagePlayerController {
         String favorites = null;
         try {
             for (Game favorite : player.getFavorites()) {
-                favorites=favorites+favorite.getName();
-                favorites=favorites+"\n";
+                favorites += favorite.getName() + "\n";
             }
             if (favorites.equals(null))
             {

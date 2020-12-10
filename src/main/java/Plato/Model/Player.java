@@ -13,6 +13,8 @@ public class Player extends User{
     private Date register = new Date();
     private int money;
     private int score;
+    private int reversiWins = 0;
+    private int reversiPlayedCount = 0;
     private ArrayList<Player> friends = new ArrayList<Player>();
     private ArrayList<Player> friendRequests = new ArrayList<Player>();
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();
@@ -135,5 +137,21 @@ public class Player extends User{
     public void addFavorite(Game game){
         if(!this.getFavorites().contains(game))
             this.getFavorites().add(game);
+    }
+
+    public void addReversiWins(){
+        this.reversiWins++;
+    }
+
+    public int getReversiWins() {
+        return reversiWins;
+    }
+
+    public void addReversiPlayedCount(){
+        this.reversiPlayedCount++;
+    }
+
+    public int getReversiPlayedCount() {
+        return reversiPlayedCount;
     }
 }

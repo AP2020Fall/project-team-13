@@ -13,8 +13,10 @@ public class ReversiController extends Game {
 
     //constructor
     public ReversiController(Player player1, Player player2){
-        this.model = new Reversi(player1, player2);
-        this.view = new ReversiView();
+        if(player1 != null && player2 != null) {
+            this.model = new Reversi(player1, player2);
+            this.view = new ReversiView();
+        }
     }
 
     //getter methods
@@ -105,6 +107,9 @@ public class ReversiController extends Game {
         }
 
         game.getModel().getWinner().addScore();
+        game.getModel().getWinner().addReversiWins();
+        game.getModel().getBlack().addReversiPlayedCount();
+        game.getModel().getWhite().addReversiPlayedCount();
 
         //the menu after playing
         while(true){
@@ -125,12 +130,5 @@ public class ReversiController extends Game {
             }
         }
 
-    }
-    public static void main(String[] args){
-        Player p1 = new Player();
-        Player p2 = new Player();
-        p1.setUsername("sina");
-        p2.setUsername("mehdi");
-        ReversiController.run(p1, p2);
     }
 }
