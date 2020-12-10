@@ -131,4 +131,9 @@ public class Player extends User{
     public ArrayList<Boolean> getMessagesShown() {
         return messagesShown;
     }
+
+    public void addFavorite(Game game){
+        if(!this.getFavorites().contains(game))
+            this.getFavorites().add(game);
+    }
 }

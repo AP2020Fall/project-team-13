@@ -35,8 +35,11 @@ public class UserPage extends Page{
     private void ViewPlatoStaticsView(){
 
     }
-    private void GamesHistoryView(){}
+    private void GamesHistoryView(){
+
+    }
     private void GameStatics(String gameName){
+
     }
     private Page Logout(){
    return null;

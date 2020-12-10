@@ -1,6 +1,7 @@
 package Plato.View;
 
 import Plato.Controller.MainPagePlayerController;
+import Plato.Model.Player;
 
 import java.util.regex.Matcher;
 
@@ -15,7 +16,7 @@ public class MainPagePlayer extends Page{
             input=scanner.nextLine();
             if ((matcher = Commands.HELP.getMatcher(input)).matches())
             {
-                System.out.println("Show Points"+"\n"+"View favorite games\n"+"View platobot’s messages\n"+"View last played\n"+"View admin’s suggestions\n"+"Choose suggested game\n"
+                System.out.println("Show Points"+"\n"+"View favorite games\n"+"View platoBot’s messages\n"+"View last played\n"+"View admin’s suggestions\n"+"Choose suggested game\n"
                         +"Add friend\n");
             }
             else if  ((matcher = Commands.SHOW_POINT.getMatcher(input)).matches())
@@ -47,13 +48,13 @@ public class MainPagePlayer extends Page{
 
                 if (Integer.parseInt(matcher.group(1))==1)
                 {
-                    GameMenu.gameID=1;
-                    return GameMenu.gameMenu;
+                    ReversiMenu game = new ReversiMenu();
+                    return game;
                 }
                 else if (Integer.parseInt(matcher.group(1))==2)
                 {
-                    GameMenu.gameID=2;
-                    return GameMenu.gameMenu;
+                    BattleSeaMenu game = new BattleSeaMenu();
+                    return game;
                 }
                 else {
                     System.out.println("invalid gameID");
