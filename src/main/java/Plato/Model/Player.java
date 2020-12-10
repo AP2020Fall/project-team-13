@@ -154,4 +154,11 @@ public class Player extends User{
     public int getReversiPlayedCount() {
         return reversiPlayedCount;
     }
+
+    public Player(Date register, int score, int reversiWins, int reversiPlayedCount) {
+        this.register = register;
+        this.score = score;
+        this.reversiWins = reversiWins;
+        this.reversiPlayedCount = reversiPlayedCount;
+    }
 }
