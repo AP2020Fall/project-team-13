@@ -12,7 +12,7 @@ public abstract class User {
     private String email;
     private String phoneNumber;
     private boolean isAdmin;
-
+    private static boolean isMainAdminJoinnt=false;
      public void editinformation(int userID, String type, String newValue){
 
      }
@@ -88,6 +88,18 @@ public abstract class User {
         return allUsers;
     }
 
+    public static void setAllUsers(ArrayList<User> allUsers) {
+        User.allUsers = allUsers;
+    }
+
+    public static boolean isIsMainAdminJoinnt() {
+        return isMainAdminJoinnt;
+    }
+
+    public static void setIsMainAdminJoinnt(boolean isMainAdminJoinnt) {
+        User.isMainAdminJoinnt = isMainAdminJoinnt;
+    }
+
     public static void deleteUserAccount(int ID){
         for (User user : allUsers) {
             if (user.getUserID()==ID)
@@ -97,4 +109,5 @@ public abstract class User {
             }
         }
     }
+
 }
