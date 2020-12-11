@@ -77,4 +77,18 @@ public class LoginPageController {
         }
         return true;
     }
+    public static Player  loginSecond(String username , String password) throws Exception
+    {
+        for (Player player : Player.getPlayers()) {
+            if (player.getUsername().equals(username))
+            {
+                if (player.getPassword().equals(password))
+                {
+                    return player;
+                }
+            }
+        }
+        Exception  exeption= new Exception();
+        throw exeption;
+    }
 }

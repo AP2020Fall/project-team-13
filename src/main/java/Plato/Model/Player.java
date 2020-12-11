@@ -27,6 +27,7 @@ public class Player extends User{
     private ArrayList<Boolean> messagesShown = new ArrayList<Boolean>();
     public Player(){
         this.registerTime = java.time.LocalDate.now();
+
     }
     public Game playGame(int gameID){
         return null;
@@ -86,16 +87,12 @@ public class Player extends User{
             if (player.getUserID()==ID)
             {
                 players.remove(player);
-                for (Log log : Log.getLogs()) {
-                    if (log.getPlayer().equals(player))
-                    {
-                        Log.getLogs().remove(log);
-                    }
-                }
                 break;
+                }
+
             }
         }
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -135,9 +132,18 @@ public class Player extends User{
         return messagesShown;
     }
 
-    public void addFavorite(Game game){
-        if(!this.getFavorites().contains(game))
-            this.getFavorites().add(game);
+    public void addFavorite(int id){
+        if (id==1)
+        {
+            for (Game game : Game.getGames()) {
+                if (game.getGameID()==id)
+                {
+                    if(!this.getFavorites().contains(game))
+                        this.getFavorites().add(game);
+                }
+            }
+        }
+
     }
 
     public void addReversiWins(){
@@ -189,4 +195,8 @@ public class Player extends User{
     }
 
 
+    public String getDaysPassedRegister() {
+
+        return null;
+    }
 }

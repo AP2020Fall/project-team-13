@@ -4,27 +4,20 @@ import java.util.ArrayList;
 
 public class Log {
     private static ArrayList<Log> logs = new ArrayList<Log>();
-    private String gameName;
     private int gameID;
-    private Player player;
-    private int timesOfPlay;
-    private int wins;
+    private Player player1;
+    private Player player2;
     private int logID;
-    private int gotScored;
 
-    public Log(String gameName, int gameID, Player player, int timesOfPlay, int wins, int logID, int gotScored) {
-        this.gameName = gameName;
+
+    public Log( int gameID, Player player1,Player player2) {
         this.gameID = gameID;
-        this.player = player;
-        this.timesOfPlay = timesOfPlay;
-        this.wins = wins;
-        this.logID = logID;
-        this.gotScored = gotScored;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.logID = logs.size()+1;
     }
 
-    public String getGameName() {
-        return gameName;
-    }
+
 
     public int getGameID() {
         return gameID;
@@ -34,31 +27,15 @@ public class Log {
         return logs;
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public int getTimesOfPlay() {
-        return timesOfPlay;
-    }
-
-    public int getWins() {
-        return wins;
-    }
-
     public int getLogID() {
         return logID;
     }
 
-    public int getGotScored() {
-        return gotScored;
+    public Player getPlayer1() {
+        return player1;
     }
 
-    public String showWins(int logID){
-        return null;
-    }
-
-    public String showTimesOfPlay(int logID){
-        return null;
+    public Player getPlayer2() {
+        return player2;
     }
 }
