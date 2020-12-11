@@ -80,6 +80,7 @@ public class ReversiMenu extends Page{
       private void details(){
 
       }
+
       private void showLog(){
 
       }
