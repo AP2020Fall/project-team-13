@@ -52,7 +52,7 @@ public class LoginPageController {
         if (User.isIsMainAdminJoinnt())
         {
             Date date = new Date();
-            Player player = new Player(date,0,0,0);
+            Player player = new Player();
             player.setUsername(username);
             player.setUserID(User.getAllUsers().size()+1);
             player.setFirstname(firstanme);

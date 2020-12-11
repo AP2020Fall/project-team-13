@@ -13,8 +13,10 @@ public class UserPageController extends Page {
         return userPageController;
     }
     public void changePasswordController(String old, String newPassword){
-    LoginPageController.user.editinformation(LoginPageController.user.getUserID(),"password",newPassword);
-
+        if(LoginPageController.user.getPassword() != old)
+            System.out.println("the old password isn't true!");
+        else
+            LoginPageController.user.editInformation(LoginPageController.user.getUserID(),"password",newPassword);
     }
     public void deleteAccount() {
         User.deleteUserAccount(LoginPageController.user.getUserID());
@@ -26,14 +28,14 @@ public class UserPageController extends Page {
             Player.deletePlayerAccount(LoginPageController.user.getUserID());
         }
     }
-    public void setUserController(User user){
+    public void setUserController(User user) {
 
     }
     public String ViewAccountMenuController(){
-    return null;
+        return null;
     }
     private String ViewPersonalInfoViewController(){
-    return null;
+        return null;
     }
     private void ChangePasswordViewController(String old,String new1){
 
@@ -42,7 +44,7 @@ public class UserPageController extends Page {
 
     }
     private String ViewPlatoStatisticsViewController(){
-    return null;
+        return null;
     }
     private String GamesHistoryViewController(){
         return null;

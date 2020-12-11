@@ -1,18 +1,16 @@
 package Plato.Model;
 
-import Plato.View.Page;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class Player extends User{
     private static ArrayList<Player> players = new ArrayList<Player>();
     private ArrayList<Log> gamesLog = new ArrayList<Log>();
-    private int daysPassedRegister;
-    private Date register = new Date();
-    private int money;
-    private int score;
+    private LocalDate registerTime;
+    private int money = 0;
+    private int score = 0;
     private int reversiWins = 0;
     private int reversiPlayedCount = 0;
     private int reversiPoints = 0;
@@ -27,6 +25,9 @@ public class Player extends User{
     private ArrayList<String> gameHistory = new ArrayList<String>();
     private ArrayList<String> messages = new ArrayList<String>();
     private ArrayList<Boolean> messagesShown = new ArrayList<Boolean>();
+    public Player(){
+        this.registerTime = java.time.LocalDate.now();
+    }
     public Game playGame(int gameID){
         return null;
 
@@ -48,10 +49,6 @@ public class Player extends User{
 
     public ArrayList<Log> getGamesLog() {
         return gamesLog;
-    }
-
-    public int getDaysPassedRegister() {
-        return daysPassedRegister;
     }
 
     public int getMoney() {
@@ -126,8 +123,8 @@ public class Player extends User{
         return gameHistory;
     }
 
-    public Date getRegister() {
-        return register;
+    public LocalDate getRegister() {
+        return registerTime;
     }
 
     public ArrayList<String> getMessages() {
@@ -190,4 +187,6 @@ public class Player extends User{
     public int getBattleSeaPoints() {
         return battleSeaPoints;
     }
+
+
 }

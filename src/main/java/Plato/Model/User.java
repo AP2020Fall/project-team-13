@@ -13,7 +13,7 @@ public abstract class User {
     private String phoneNumber;
     private boolean isAdmin;
     private static boolean isMainAdminJoinnt=false;
-     public void editinformation(int userID, String type, String newValue){
+     public void editInformation(int userID, String type, String newValue){
 
      }
      public static User login(String username, String password){
