@@ -88,6 +88,7 @@ public class ReversiMenu extends Page{
       private void showWinsCount(){
 
       }
+
       private void showPlayedCount(){
 
       }
