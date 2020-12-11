@@ -108,6 +108,7 @@ public class ReversiController extends Game {
         }
 
         game.getModel().getWinner().addScore();
+        game.getModel().getWinner().addReversiPoints();
         game.getModel().getWinner().addReversiWins();
         game.getModel().getBlack().addReversiPlayedCount();
         game.getModel().getWhite().addReversiPlayedCount();
@@ -130,6 +131,7 @@ public class ReversiController extends Game {
                 System.out.println("invalid command!");
             }
         }
+
 
     }
 }

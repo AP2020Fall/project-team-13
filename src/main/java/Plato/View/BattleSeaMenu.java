@@ -1,6 +1,9 @@
 package Plato.View;
 
+import BattleSea.Controller.BattleSea;
+import Plato.Controller.LoginPageController;
 import Plato.Model.Player;
+import Reversi.ReversiController;
 
 import java.util.Scanner;
 
@@ -42,19 +45,23 @@ public class BattleSeaMenu extends Page{
 
             }
             else if( input.trim().equals("Show wins count")){
-
+                System.out.println("player with username " + LoginPageController.user.getUsername() +
+                        " has won " + ( (Player)LoginPageController.user).getBattleSeaWins() + " time(s) in BattleSea.");
             }
             else if( input.trim().equals("Show played count")){
-
+                System.out.println("player with username " + LoginPageController.user.getUsername() +
+                        " has played " + ( (Player)LoginPageController.user).getBattleSeaPlayedCount() + " time(s) in BattleSea.");
             }
             else if( input.trim().equals("Add to favorites")){
-
+                ((Player)LoginPageController.user).addFavorite(new BattleSea(null));
             }
             else if( input.trim().equals("Run game")){
 
             }
             else if( input.trim().equals("Show point")) {
-
+                System.out.println("the player with username "
+                        + ((Player)LoginPageController.user).getUsername() + " has gained "
+                        + ((Player)LoginPageController.user).getBattleSeaWins() + " points from BattleSea.");
             }
         }
     }

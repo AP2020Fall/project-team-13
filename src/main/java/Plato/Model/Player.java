@@ -15,6 +15,10 @@ public class Player extends User{
     private int score;
     private int reversiWins = 0;
     private int reversiPlayedCount = 0;
+    private int reversiPoints = 0;
+    private int battleSeaWins = 0;
+    private int battleSeaPlayedCount = 0;
+    private int battleSeaPoints = 0;
     private ArrayList<Player> friends = new ArrayList<Player>();
     private ArrayList<Player> friendRequests = new ArrayList<Player>();
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();
@@ -155,10 +159,35 @@ public class Player extends User{
         return reversiPlayedCount;
     }
 
-    public Player(Date register, int score, int reversiWins, int reversiPlayedCount) {
-        this.register = register;
-        this.score = score;
-        this.reversiWins = reversiWins;
-        this.reversiPlayedCount = reversiPlayedCount;
+    public void addReversiPoints(){
+        this.reversiPoints++;
+    }
+
+    public int getReversiPoints() {
+        return reversiPoints;
+    }
+
+    public void addBattleSeaWins(){
+        this.battleSeaWins++;
+    }
+
+    public int getBattleSeaWins() {
+        return battleSeaWins;
+    }
+
+    public void addBattleSeaPlayedCount(){
+        this.battleSeaPlayedCount++;
+    }
+
+    public int getBattleSeaPlayedCount() {
+        return battleSeaPlayedCount;
+    }
+
+    public void addBattleSeaPoints(){
+        this.battleSeaPoints++;
+    }
+
+    public int getBattleSeaPoints() {
+        return battleSeaPoints;
     }
 }

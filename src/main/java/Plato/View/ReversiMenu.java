@@ -62,7 +62,9 @@ public class ReversiMenu extends Page{
                 ReversiController.run(((Player)LoginPageController.user), hasan);
             }
             else if( input.trim().equals("Show points")) {
-
+                System.out.println("the player with username "
+                        + ((Player)LoginPageController.user).getUsername() + " has gained "
+                        + ((Player)LoginPageController.user).getReversiPoints() + " points from Reversi.");
             }
         }
     }
