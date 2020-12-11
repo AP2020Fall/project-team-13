@@ -92,6 +92,7 @@ public class ReversiMenu extends Page{
       private void showPlayedCount(){
 
       }
+
       private void addToFavorites(){
 
       }
