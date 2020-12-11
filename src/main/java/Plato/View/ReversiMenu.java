@@ -76,6 +76,7 @@ public class ReversiMenu extends Page{
     private void showScoreboard(){
 
       }
+
       private void details(){
 
       }
