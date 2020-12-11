@@ -84,6 +84,7 @@ public class ReversiMenu extends Page{
       private void showLog(){
 
       }
+
       private void showWinsCount(){
 
       }
