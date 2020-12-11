@@ -8,6 +8,7 @@ import Reversi.ReversiController;
 import java.util.Scanner;
 
 public class BattleSeaMenu extends Page{
+    public static BattleSeaMenu battleSeaMenu = new BattleSeaMenu();
     private static int gameID = 2;
     public Page run() {
         String input;
@@ -53,7 +54,7 @@ public class BattleSeaMenu extends Page{
                         " has played " + ( (Player)LoginPageController.user).getBattleSeaPlayedCount() + " time(s) in BattleSea.");
             }
             else if( input.trim().equals("Add to favorites")){
-                ((Player)LoginPageController.user).addFavorite(new BattleSea(null));
+                ((Player)LoginPageController.user).addFavorite(2);
             }
             else if( input.trim().equals("Run game")){
 

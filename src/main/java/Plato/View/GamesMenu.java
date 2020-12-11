@@ -17,11 +17,11 @@ public class GamesMenu extends Page{
         while (true) {
             input = scanner.nextInt();
             if (input == 1) {
-                ReversiMenu game = new ReversiMenu();
-                return game;
+
+                return ReversiMenu.reversiMenu;
             } else if (input == 2) {
-                BattleSeaMenu game = new BattleSeaMenu();
-                return game;
+
+                return BattleSeaMenu.battleSeaMenu;
             } else {
                 System.out.println("You should select 1 or 2!");
             }

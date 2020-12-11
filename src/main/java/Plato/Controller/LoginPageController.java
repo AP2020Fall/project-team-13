@@ -60,6 +60,7 @@ public class LoginPageController {
             player.setPhoneNumber(phoneNumber);
             player.setPassword(password);
             player.setEmail(email);
+            player.setAdmin(false);
 
         }
         else  {
@@ -72,7 +73,22 @@ public class LoginPageController {
             admin.setPhoneNumber(phoneNumber);
             admin.setPassword(password);
             admin.setEmail(email);
+            admin.setAdmin(true);
         }
         return true;
+    }
+    public static Player  loginSecond(String username , String password) throws Exception
+    {
+        for (Player player : Player.getPlayers()) {
+            if (player.getUsername().equals(username))
+            {
+                if (player.getPassword().equals(password))
+                {
+                    return player;
+                }
+            }
+        }
+        Exception  exeption= new Exception();
+        throw exeption;
     }
 }

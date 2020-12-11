@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 //controller
 public class ReversiController extends Game {
     //fields
+    public static ReversiController reversiController = new ReversiController();
     private Reversi model;
     private ReversiView view;
 
@@ -19,6 +20,11 @@ public class ReversiController extends Game {
             this.view = new ReversiView();
         }
     }
+
+    public ReversiController() {
+
+    }
+
 
     //getter methods
     public ReversiView getView() {

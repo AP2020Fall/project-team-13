@@ -7,6 +7,8 @@ import Reversi.ReversiController;
 import java.util.Scanner;
 
 public class ReversiMenu extends Page{
+    public static ReversiMenu reversiMenu = new ReversiMenu();
+
       private static int gameID = 1;
       public Page run() {
           Scanner scanner = new Scanner(System.in);
@@ -52,13 +54,22 @@ public class ReversiMenu extends Page{
                         " has played " + ( (Player)LoginPageController.user).getReversiPlayedCount() + " time(s) in Reversi.");
             }
               else if( input.trim().equals("Add to favorites")){
-                ((Player)LoginPageController.user).addFavorite(new ReversiController(null, null));
+                ((Player)LoginPageController.user).addFavorite(1);
             }
               else if( input.trim().equals("Run game")){
-                //hasannnnnnnnnn!!!!
-                Player hasan = new Player();
-                hasan.setUsername("hasan");
-                ReversiController.run(((Player)LoginPageController.user), hasan);
+                  System.out.println("please enter username");
+                  String username = scanner.nextLine();
+                  System.out.println("please enter password");
+                  String password = scanner.nextLine();
+                  try {
+
+                      Player hasan = LoginPageController.loginSecond(username,password);
+                      ReversiController.run(((Player)LoginPageController.user), hasan);
+                  } catch (Exception e) {
+                      System.out.println("invalid information for second player");
+                  }
+
+
             }
               else if( input.trim().equals("Show points")) {
                 System.out.println("the player with username "
