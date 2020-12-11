@@ -60,6 +60,7 @@ public class LoginPageController {
             player.setPhoneNumber(phoneNumber);
             player.setPassword(password);
             player.setEmail(email);
+            player.setAdmin(false);
 
         }
         else  {
@@ -72,6 +73,7 @@ public class LoginPageController {
             admin.setPhoneNumber(phoneNumber);
             admin.setPassword(password);
             admin.setEmail(email);
+            admin.setAdmin(true);
         }
         return true;
     }

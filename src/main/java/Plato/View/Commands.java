@@ -32,7 +32,9 @@ public enum Commands {
     ADD_USER("(?i)add\\s+(\\S+)"),
     SHOW_FRIEND_REQUESTS("(?i)show\\s+friend\\s+requests"),
     ACCEPT_FRIEND_REQUEST("(?i)accept\\s+(\\S+)"),
-    DECLNE_FRIEND_REQUEST("(?i)decline\\s+(\\S+)");
+    DECLNE_FRIEND_REQUEST("(?i)decline\\s+(\\S+)"),
+    REGISTER("(?i)register\\s+(\\S+)\\s+(\\S+)"),
+    LOGIN("(?i)login\\s+(\\S+)");
 
     private Pattern pattern;
 
