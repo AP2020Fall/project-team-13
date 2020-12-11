@@ -96,6 +96,7 @@ public class ReversiMenu extends Page{
       private void addToFavorites(){
 
       }
+
       private void showPoints(){
 
       }
