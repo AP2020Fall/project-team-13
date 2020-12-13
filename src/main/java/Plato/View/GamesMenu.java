@@ -6,6 +6,7 @@ import Plato.Model.Player;
 import java.util.Scanner;
 
 public class GamesMenu extends Page{
+    public static GamesMenu gamesMenu = new GamesMenu();
     private Player player;
     public Page run() {
 

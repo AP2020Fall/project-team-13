@@ -330,6 +330,15 @@ public class Reversi {
         return null;
     }
 
+    //returns the looser
+    public Player getLooser(){
+        if(getNumberOfInputColorDisks("W") > getNumberOfInputColorDisks("B"))
+            return black;
+        else if(getNumberOfInputColorDisks("W") < getNumberOfInputColorDisks("B"))
+            return white;
+        return null;
+    }
+
     //white if W and black if B
     public Player getPlayerByWhoseTurn(){
         if(this.table.getWhoseTurn().equals("white"))

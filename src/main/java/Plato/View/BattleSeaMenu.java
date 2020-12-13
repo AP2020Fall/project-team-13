@@ -2,9 +2,11 @@ package Plato.View;
 
 import BattleSea.Controller.BattleSea;
 import Plato.Controller.LoginPageController;
+import Plato.Model.Log;
 import Plato.Model.Player;
 import Reversi.ReversiController;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BattleSeaMenu extends Page{
@@ -15,8 +17,22 @@ public class BattleSeaMenu extends Page{
         Scanner scanner = new Scanner(System.in);
         input = scanner.nextLine();
         while(true){
+            input = scanner.nextLine();
             if(input.trim().equals("Show scoreboard")){
-
+                ArrayList<Player> playersThatHasPlayedReversi = new ArrayList<>();
+                for (Player player : Player.getPlayers()) {
+                    if(player.getReversiPlayedCount() > 0)
+                        playersThatHasPlayedReversi.add(player);
+                }
+                playersThatHasPlayedReversi = Player.sortForReversiMenu(playersThatHasPlayedReversi);
+                int n = playersThatHasPlayedReversi.size();
+                for (int i = n - 1; i >= 0; i--) {
+                    System.out.println("1." + playersThatHasPlayedReversi.get(i).getUsername() + " point: " +
+                            playersThatHasPlayedReversi.get(i).getReversiPoints() +
+                            " wins: " + playersThatHasPlayedReversi.get(i).getReversiWins() +
+                            " draws: " + playersThatHasPlayedReversi.get(i).getReversiDraws() +
+                            " losses: " + playersThatHasPlayedReversi.get(i).getReversiLosses());
+                }
             }
             else if( input.trim().equals("Details")){
                 System.out.println("Object of Game\n" +
@@ -43,7 +59,12 @@ public class BattleSeaMenu extends Page{
                         "The first person to sink all five of his/her opponent's ships wins the game.");
             }
             else if( input.trim().equals("Show log")){
-
+                for (Log log : Log.getLogs())
+                    if(log.getGameID() == 2){
+                        System.out.println("a match between " + log.getPlayer1().getUsername() + " and " +
+                                log.getPlayer2().getUsername() + " has been done and " + log.getWinner().getUsername() +
+                                " has won this match." + "(" + log.getFinishTime() + ")");
+                    }
             }
             else if( input.trim().equals("Show wins count")){
                 System.out.println("player with username " + LoginPageController.user.getUsername() +

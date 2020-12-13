@@ -1,9 +1,10 @@
 package Plato.View;
 
 import Plato.Controller.LoginPageController;
+import Plato.Model.Log;
 import Plato.Model.Player;
 import Reversi.ReversiController;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReversiMenu extends Page{
@@ -11,11 +12,25 @@ public class ReversiMenu extends Page{
 
       private static int gameID = 1;
       public Page run() {
+          String input;
           Scanner scanner = new Scanner(System.in);
-          String input = scanner.nextLine();
           while(true){
+              input = scanner.nextLine();
               if(input.trim().equals("Show scoreboard")){
-
+                  ArrayList<Player> playersThatHasPlayedReversi = new ArrayList<>();
+                  for (Player player : Player.getPlayers()) {
+                      if(player.getReversiPlayedCount() > 0)
+                          playersThatHasPlayedReversi.add(player);
+                  }
+                  playersThatHasPlayedReversi = Player.sortForReversiMenu(playersThatHasPlayedReversi);
+                  int n = playersThatHasPlayedReversi.size();
+                  for (int i = n - 1; i >= 0; i--) {
+                      System.out.println("1." + playersThatHasPlayedReversi.get(i).getUsername() + " point: " +
+                              playersThatHasPlayedReversi.get(i).getReversiPoints() +
+                              " wins: " + playersThatHasPlayedReversi.get(i).getReversiWins() +
+                              " draws: " + playersThatHasPlayedReversi.get(i).getReversiDraws() +
+                              " losses: " + playersThatHasPlayedReversi.get(i).getReversiLosses());
+                  }
               }
               else if( input.trim().equals("Details")){
                 System.out.println("Board\n" +
@@ -24,8 +39,6 @@ public class ReversiMenu extends Page{
                         "A set of 64 identical pieces is shared by both players. Each piece is a disc that is black on one side and white on the other.\n" +
                         "Object of Game\n" +
                         "The object of Reverze is to flip the most discs to your color by the end of the game. If both players have the same number of discs of their color up, the game is a draw.\n" +
-                        "\n" +
-                        "Sina Nikdel, [10.12.20 14:15]\n" +
                         "Placing Pieces\n" +
                         "Players are designated Black and White at the start of the game. Beginning with Black, each player in turn places one disc onto a vacant square on the board.\n" +
                         "Once placed, a disc never moves, though it may be \"flipped\" when captured so that it changes color.\n" +
@@ -43,7 +56,13 @@ public class ReversiMenu extends Page{
                         "The player whose color is up on more of the discs at the end is the winner (you'll see the score next to each player's name). If both players have the same number of discs of their color up, the game is a draw.");
             }
               else if( input.trim().equals("Show log")){
-
+                  for (Log log : Log.getLogs()) {
+                      if(log.getGameID() == 1){
+                          System.out.println("a match between " + log.getPlayer1().getUsername() + " and " +
+                                  log.getPlayer2().getUsername() + " has been done and " + log.getWinner().getUsername() +
+                                  " has won this match." + "(" + log.getFinishTime() + ")");
+                      }
+                  }
               }
               else if( input.trim().equals("Show wins count")){
                 System.out.println("player with username " + LoginPageController.user.getUsername() +
@@ -78,45 +97,4 @@ public class ReversiMenu extends Page{
             }
           }
     }
-    public void setPlayer (Player player){
-
-
-      }
-
-    private void showScoreboard(){
-
-      }
-
-      private void details(){
-
-      }
-
-      private void showLog(){
-
-      }
-
-      private void showWinsCount(){
-
-      }
-
-      private void showPlayedCount(){
-
-      }
-
-      private void addToFavorites(){
-
-      }
-
-      private void showPoints(){
-
-      }
-      private void runGame(){
-
-      }
-      public static int getGameID() {
-        return gameID;
-      }
-      public static void setGameID(int gameID) {
-        ReversiMenu.gameID = gameID;
-      }
 }

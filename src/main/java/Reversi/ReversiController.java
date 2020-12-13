@@ -3,6 +3,8 @@ package Reversi;
 import Plato.Model.Game;
 import Plato.Model.Log;
 import Plato.Model.Player;
+import Plato.View.*;
+
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -20,7 +22,6 @@ public class ReversiController extends Game {
             this.view = new ReversiView();
         }
     }
-
     public ReversiController() {
 
     }
@@ -60,7 +61,7 @@ public class ReversiController extends Game {
     }
 
     //runs the game
-    public static void run(Player black, Player white){
+    public static Page run(Player black, Player white){
 
         //build a new game
         ReversiController game = new ReversiController(black, white);
@@ -94,6 +95,12 @@ public class ReversiController extends Game {
             else if(input.trim().equals("show score")){
                 game.showScore();
             }
+            else if(input.trim().equals("back")){
+                return GamesMenu.gamesMenu;
+            }
+            else if(input.trim().equals("View account menu")){
+                return UserPage.userPage;
+            }
             else if(input.trim().equals("help")){
                 System.out.println("1. end of my turn\n" +
                         "2. Place disk on (x,y)\n" +
@@ -105,19 +112,24 @@ public class ReversiController extends Game {
                         "8. help\n" +
                         "9. exit");
             }
-            else if(input.trim().equals("exit")){
-                return;
-            }
             else{
                 System.out.println("invalid command!");
             }
         }
 
-        game.getModel().getWinner().addScore();
-        game.getModel().getWinner().addReversiPoints();
-        game.getModel().getWinner().addReversiWins();
+        if(game.getModel().getWinner() != null) {
+            game.getModel().getWinner().addScore();
+            game.getModel().getWinner().addReversiPoints();
+            game.getModel().getWinner().addReversiWins();
+            game.getModel().getLooser().addReversiLosses();
+        }
+        else{
+            game.getModel().getWhite().addReversiDraws();
+            game.getModel().getBlack().addReversiDraws();
+        }
         game.getModel().getBlack().addReversiPlayedCount();
         game.getModel().getWhite().addReversiPlayedCount();
+        Log.addLog(1, black, white, game.getModel().getWinner());
 
         //the menu after playing
         while(true){
@@ -125,13 +137,16 @@ public class ReversiController extends Game {
             if(input.trim().equals("show result")){
                 game.showResult();
             }
+            else if(input.trim().equals("back")){
+                return ReversiMenu.reversiMenu;
+            }
+            else if(input.trim().equals("View account menu")){
+                return UserPage.userPage;
+            }
             else if(input.trim().equals("help")){
                 System.out.println("1. show result\n" +
                         "2. help\n" +
                         "3. exit");
-            }
-            else if(input.trim().equals("exit")){
-                return;
             }
             else{
                 System.out.println("invalid command!");
