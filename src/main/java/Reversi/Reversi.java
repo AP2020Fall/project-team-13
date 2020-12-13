@@ -98,6 +98,61 @@ public class Reversi {
         }
         return false;
     }
+    public boolean canHePlaceDisk(int x, int y, String bOrw){
+        String theOtherPlayer;
+        String thisPlayer;
+        if(bOrw.equals("W")){
+            theOtherPlayer = "B";
+            thisPlayer = "W";
+        }
+        else{
+            theOtherPlayer = "W";
+            thisPlayer = "B";
+        }
+        if(this.getTable().getTable()[x - 1][y - 1].equals("E")) {
+            //checking right
+            int i = 1;
+            for ( ; doesItObserveTheTableLimit(x, y + i) && this.getTable().getTable()[x - 1][y + i - 1].equals(theOtherPlayer); i++);
+            if(doesItObserveTheTableLimit(x, y + i) && this.getTable().getTable()[x - 1][y + i - 1].equals(thisPlayer) && i != 1)
+                return true;
+            //checking left
+            i = 1;
+            for ( ; doesItObserveTheTableLimit(x, y - i) && this.getTable().getTable()[x - 1][y - i - 1].equals(theOtherPlayer); i++);
+            if(doesItObserveTheTableLimit(x, y - i) && this.getTable().getTable()[x - 1][y - i - 1].equals(thisPlayer) && i != 1)
+                return true;
+            //checking upside
+            i = 1;
+            for ( ; doesItObserveTheTableLimit(x + i, y) && this.getTable().getTable()[x + i - 1][y - 1].equals(theOtherPlayer); i++);
+            if(doesItObserveTheTableLimit(x + i, y) && this.getTable().getTable()[x + i - 1][y - 1].equals(thisPlayer) && i != 1)
+                return true;
+            //checking downside
+            i = 1;
+            for ( ; doesItObserveTheTableLimit(x - i, y) && this.getTable().getTable()[x - i - 1][y - 1].equals(theOtherPlayer); i++);
+            if(doesItObserveTheTableLimit(x - i, y) && this.getTable().getTable()[x - i - 1][y - 1].equals(thisPlayer) && i != 1)
+                return true;
+            //checking up right
+            i = 1;
+            for ( ; doesItObserveTheTableLimit(x + i, y + i) && this.getTable().getTable()[x + i - 1][y + i - 1].equals(theOtherPlayer); i++);
+            if(doesItObserveTheTableLimit(x + i, y + i) && this.getTable().getTable()[x + i - 1][y + i - 1].equals(thisPlayer) && i != 1)
+                return true;
+            //checking down left
+            i = 1;
+            for ( ; doesItObserveTheTableLimit(x - i, y - i) && this.getTable().getTable()[x - i - 1][y - i - 1].equals(theOtherPlayer); i++);
+            if(doesItObserveTheTableLimit(x - i, y - i) && this.getTable().getTable()[x - i - 1][y - i - 1].equals(thisPlayer) && i != 1)
+                return true;
+            //checking up left
+            i = 1;
+            for ( ; doesItObserveTheTableLimit(x + i, y - i) && this.getTable().getTable()[x + i - 1][y - i - 1].equals(theOtherPlayer); i++);
+            if(doesItObserveTheTableLimit(x + i, y - i) && this.getTable().getTable()[x + i - 1][y - i - 1].equals(thisPlayer) && i != 1)
+                return true;
+            //checking down right
+            i = 1;
+            for ( ; doesItObserveTheTableLimit(x - i, y + i) && this.getTable().getTable()[x - i - 1][y + i - 1].equals(theOtherPlayer); i++);
+            if(doesItObserveTheTableLimit(x - i, y + i) && this.getTable().getTable()[x - i - 1][y + i - 1].equals(thisPlayer) && i != 1)
+                return true;
+        }
+        return false;
+    }
     public void placeDisk(int x, int y){
         if(!doesItObserveTheTableLimit(x, y))
             System.out.println("Coordinates must be inside the table");
@@ -266,7 +321,7 @@ public class Reversi {
             }
         }
         else if(this.table.getWhoseTurn().equals("black")){
-            if(this.getTable().getHasHePlayed()) {
+            if(this.getTable().getHasHePlayed() && canHePlaceDisk(white)) {
                 this.table.setWhoseTurn("white");
                 this.getTable().setHasHePlayed(false);
             }
@@ -281,9 +336,14 @@ public class Reversi {
 
     //checks if a player can place disk at all.
     public boolean canHePlaceDisk(Player player){
+        String bOrw;
+        if(player.equals(black))
+            bOrw = "B";
+        else
+            bOrw = "W";
         for (int i = 1; i <= 8; i++) {
             for (int j = 1; j <= 8; j++) {
-                if(this.canHePlaceDisk(i, j))
+                if(this.canHePlaceDisk(i, j, bOrw))
                     return true;
             }
         }

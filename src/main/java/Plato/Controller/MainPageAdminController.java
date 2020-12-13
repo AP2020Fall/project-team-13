@@ -55,7 +55,7 @@ public class MainPageAdminController {
             userInfo.append(friend.getUserID()+" "+friend.getUsername()+"\n");
         }
         for (Log log : user.getGamesLog()) {
-            userInfo.append(log.getGameName()+" "+log.getTimesOfPlay()+" "+log.getWins()+"\n");
+            //userInfo.append(log.getGameName()+" "+log.getTimesOfPlay()+" "+log.getWins()+"\n");
         }
         for (Game suggestedGame : user.getSuggestedGames()) {
             userInfo.append(suggestedGame.getName()+" "+suggestedGame.getGameID()+"\n");

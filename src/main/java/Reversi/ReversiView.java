@@ -9,15 +9,15 @@ public class ReversiView {
     public void showResult(ReversiController controller){
         if(controller.getModel().getWinner() != null)
             System.out.println(controller.getModel().getWinner().getUsername() +
-                    "has won this match.");
+                    " has won this match.");
         else
             System.out.println("no one won the match, it's been a draw!");
     }
     public void showScore(ReversiController controller){
-        System.out.println("Player black named " + controller.getModel().getBlack() +
-                " has " + controller.getModel().getNumberOfInputColorDisks("B") + "score(s).");
-        System.out.println("Player white named " + controller.getModel().getWhite() +
-                " has " + controller.getModel().getNumberOfInputColorDisks("W") + "score(s).");
+        System.out.println("Player black named " + controller.getModel().getBlack().getUsername() +
+                " has " + controller.getModel().getNumberOfInputColorDisks("B") + " score(s).");
+        System.out.println("Player white named " + controller.getModel().getWhite().getUsername() +
+                " has " + controller.getModel().getNumberOfInputColorDisks("W") + " score(s).");
     }
     public void showDisks(ReversiController controller){
         System.out.println("  1 2 3 4 5 6 7 8");
