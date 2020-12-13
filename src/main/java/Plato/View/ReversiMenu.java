@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReversiMenu extends Page{
-    public static ReversiMenu reversiMenu = new ReversiMenu();
-
-      private static int gameID = 1;
+      public static ReversiMenu reversiMenu = new ReversiMenu();
+      private static final int gameID = 1;
       public Page run() {
           String input;
           Scanner scanner = new Scanner(System.in);
@@ -32,7 +31,7 @@ public class ReversiMenu extends Page{
                               " losses: " + playersThatHasPlayedReversi.get(i).getReversiLosses());
                   }
               }
-              else if( input.trim().equals("Details")){
+              else if(input.trim().equals("Details")){
                 System.out.println("Board\n" +
                         "Reversi is a 2 players game, played on a board of 64 squares arranged in an 8x8 rows and columns. The game begins with four discs already placed on the board:\n" +
                         "\n" +
@@ -55,7 +54,7 @@ public class ReversiMenu extends Page{
                         "A player who cannot make a legal move loses his or her turn. The game continues until neither side can move; usually, this does not happen until the board is entirely filled.\n" +
                         "The player whose color is up on more of the discs at the end is the winner (you'll see the score next to each player's name). If both players have the same number of discs of their color up, the game is a draw.");
             }
-              else if( input.trim().equals("Show log")){
+              else if(input.trim().equals("Show log")){
                   for (Log log : Log.getLogs()) {
                       if(log.getGameID() == 1){
                           System.out.println("a match between " + log.getPlayer1().getUsername() + " and " +
@@ -64,37 +63,59 @@ public class ReversiMenu extends Page{
                       }
                   }
               }
-              else if( input.trim().equals("Show wins count")){
+              else if(input.trim().equals("Show wins count")){
                 System.out.println("player with username " + LoginPageController.user.getUsername() +
                         " has won " + ( (Player)LoginPageController.user).getReversiWins() + " time(s) in Reversi.");
             }
-              else if( input.trim().equals("Show played count")){
+              else if(input.trim().equals("Show played count")){
                 System.out.println("player with username " + LoginPageController.user.getUsername() +
                         " has played " + ( (Player)LoginPageController.user).getReversiPlayedCount() + " time(s) in Reversi.");
             }
-              else if( input.trim().equals("Add to favorites")){
+              else if(input.trim().equals("Add to favorites")){
                 ((Player)LoginPageController.user).addFavorite(1);
             }
-              else if( input.trim().equals("Run game")){
-                  System.out.println("please enter username");
+              else if(input.trim().equals("Run game")){
+                  System.out.println("please enter username:");
                   String username = scanner.nextLine();
-                  System.out.println("please enter password");
+                  System.out.println("please enter password:");
                   String password = scanner.nextLine();
                   try {
 
-                      Player hasan = LoginPageController.loginSecond(username,password);
-                      ReversiController.run(((Player)LoginPageController.user), hasan);
+                      Player secondPlayer = LoginPageController.loginSecond(username,password);
+                      ReversiController.run(((Player)LoginPageController.user), secondPlayer);
                   } catch (Exception e) {
                       System.out.println("invalid information for second player");
                   }
 
 
             }
-              else if( input.trim().equals("Show points")) {
+              else if(input.trim().equals("Show points")) {
                 System.out.println("the player with username "
                         + ((Player)LoginPageController.user).getUsername() + " has gained "
                         + ((Player)LoginPageController.user).getReversiPoints() + " points from Reversi.");
             }
+              else if(input.trim().equals("View account menu")){
+                  return UserPage.userPage;
+              }
+              else if(input.trim().equals("Back")){
+                  return GamesMenu.gamesMenu;
+              }
+              else if(input.trim().equals("Help")){
+                  System.out.println("1. Show scoreboard\n" +
+                          "2. Details\n" +
+                          "3. Show log\n" +
+                          "4. Show wins count\n" +
+                          "5. Show played count\n" +
+                          "6. Add to favorites\n" +
+                          "7. Run game\n" +
+                          "8. Show points\n" +
+                          "9. View account menu\n" +
+                          "10. Back\n" +
+                          "11. Help");
+              }
+              else{
+                  System.out.println("invalid command!");
+              }
           }
     }
 }

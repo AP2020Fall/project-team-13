@@ -11,27 +11,26 @@ import java.util.Scanner;
 
 public class BattleSeaMenu extends Page{
     public static BattleSeaMenu battleSeaMenu = new BattleSeaMenu();
-    private static int gameID = 2;
+    private static final int gameID = 2;
     public Page run() {
         String input;
         Scanner scanner = new Scanner(System.in);
-        input = scanner.nextLine();
         while(true){
             input = scanner.nextLine();
             if(input.trim().equals("Show scoreboard")){
-                ArrayList<Player> playersThatHasPlayedReversi = new ArrayList<>();
+                ArrayList<Player> playersThatHasPlayedBattleSea = new ArrayList<>();
                 for (Player player : Player.getPlayers()) {
                     if(player.getReversiPlayedCount() > 0)
-                        playersThatHasPlayedReversi.add(player);
+                        playersThatHasPlayedBattleSea.add(player);
                 }
-                playersThatHasPlayedReversi = Player.sortForReversiMenu(playersThatHasPlayedReversi);
-                int n = playersThatHasPlayedReversi.size();
+                playersThatHasPlayedBattleSea = Player.sortForReversiMenu(playersThatHasPlayedBattleSea);
+                int n = playersThatHasPlayedBattleSea.size();
                 for (int i = n - 1; i >= 0; i--) {
-                    System.out.println("1." + playersThatHasPlayedReversi.get(i).getUsername() + " point: " +
-                            playersThatHasPlayedReversi.get(i).getReversiPoints() +
-                            " wins: " + playersThatHasPlayedReversi.get(i).getReversiWins() +
-                            " draws: " + playersThatHasPlayedReversi.get(i).getReversiDraws() +
-                            " losses: " + playersThatHasPlayedReversi.get(i).getReversiLosses());
+                    System.out.println("1." + playersThatHasPlayedBattleSea.get(i).getUsername() + " point: " +
+                            playersThatHasPlayedBattleSea.get(i).getReversiPoints() +
+                            " wins: " + playersThatHasPlayedBattleSea.get(i).getReversiWins() +
+                            " draws: " + playersThatHasPlayedBattleSea.get(i).getReversiDraws() +
+                            " losses: " + playersThatHasPlayedBattleSea.get(i).getReversiLosses());
                 }
             }
             else if( input.trim().equals("Details")){
@@ -84,6 +83,28 @@ public class BattleSeaMenu extends Page{
                 System.out.println("the player with username "
                         + ((Player)LoginPageController.user).getUsername() + " has gained "
                         + ((Player)LoginPageController.user).getBattleSeaWins() + " points from BattleSea.");
+            }
+            else if(input.trim().equals("View account menu")){
+                return UserPage.userPage;
+            }
+            else if(input.trim().equals("Back")){
+                return GamesMenu.gamesMenu;
+            }
+            else if(input.trim().equals("Help")){
+                System.out.println("1. Show scoreboard\n" +
+                        "2. Details\n" +
+                        "3. Show log\n" +
+                        "4. Show wins count\n" +
+                        "5. Show played count\n" +
+                        "6. Add to favorites\n" +
+                        "7. Run game\n" +
+                        "8. Show points\n" +
+                        "9. View account menu\n" +
+                        "10. Back\n" +
+                        "11. Help");
+            }
+            else{
+                System.out.println("invalid command!");
             }
         }
     }

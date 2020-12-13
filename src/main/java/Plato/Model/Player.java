@@ -232,4 +232,40 @@ public class Player extends User{
             }
         return players;
     }
+
+    public static ArrayList<Player> sortForBattleSeaMenu(ArrayList<Player> players){
+        int n = players.size();
+        for (int i = 0; i < n - 1; i++)
+            for (int j = 0; j < n - i - 1; j++) {
+                if (players.get(j).getBattleSeaPoints() > players.get(j + 1).getBattleSeaPoints()) {
+                    players.add(j, players.get(j + 1));
+                    players.remove(j + 2);
+                }
+                else if (players.get(j).getBattleSeaPoints() == players.get(j + 1).getBattleSeaPoints()) {
+                    if(players.get(j).getBattleSeaWins() > players.get(j + 1).getBattleSeaWins()){
+                        players.add(j, players.get(j + 1));
+                        players.remove(j + 2);
+                    }
+                    else if(players.get(j).getBattleSeaWins() == players.get(j + 1).getBattleSeaWins()){
+                        if(players.get(j).getBattleSeaDraws() > players.get(j + 1).getBattleSeaDraws()){
+                            players.add(j, players.get(j + 1));
+                            players.remove(j + 2);
+                        }
+                        else if(players.get(j).getBattleSeaDraws() == players.get(j + 1).getBattleSeaDraws()){
+                            if(players.get(j).getBattleSeaLosses() < players.get(j + 1).getBattleSeaLosses()){
+                                players.add(j, players.get(j + 1));
+                                players.remove(j + 2);
+                            }
+                            else if(players.get(j).getBattleSeaLosses() == players.get(j + 1).getBattleSeaLosses()){
+                                if(players.get(j).getUsername().compareToIgnoreCase(players.get(j + 1).getUsername()) < 0){
+                                    players.add(j, players.get(j + 1));
+                                    players.remove(j + 2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        return players;
+    }
 }
