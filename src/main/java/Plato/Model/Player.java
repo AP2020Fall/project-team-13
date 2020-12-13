@@ -36,11 +36,12 @@ public class Player extends User{
         this.registerTime = java.time.LocalDate.now();
     }
 
+    //remove the player from the list of players
     public static void deletePlayerAccount(int ID){
         for (Player player : players) {
             if (player.getUserID()==ID) {
                 players.remove(player);
-                break;
+                return;
             }
 
         }
@@ -70,7 +71,7 @@ public class Player extends User{
     public ArrayList<String> getGameHistory() {
         return gameHistory;
     }
-    public LocalDate getRegister() {
+    public LocalDate getRegisterTime() {
         return registerTime;
     }
     public ArrayList<String> getMessages() {
@@ -80,14 +81,10 @@ public class Player extends User{
         return messagesShown;
     }
     public void addFavorite(int id){
-        if (id==1)
-        {
-            for (Game game : Game.getGames()) {
-                if (game.getGameID()==id)
-                {
-                    if(!this.getFavorites().contains(game))
-                        this.getFavorites().add(game);
-                }
+        for (Game game : Game.getGames()){
+            if (game.getGameID()==id){
+                if(!this.getFavorites().contains(game))
+                    this.getFavorites().add(game);
             }
         }
 
@@ -156,16 +153,6 @@ public class Player extends User{
 
         return null;
     }
-    public Game playGame(int gameID){
-        return null;
-
-    }
-    public void addFriend(int playerID){
-
-    }
-    public static void registerModel(){
-
-    }
     public static ArrayList<Player> getPlayers() {
         return players;
     }
@@ -187,6 +174,8 @@ public class Player extends User{
     public ArrayList<Game> getSuggestedGames() {
         return suggestedGames;
     }
+
+    //return the player with id entered
     public static Player getPlayerByID(int id){
         for (Player player : players) {
             if (player.getUserID()==id){
@@ -233,6 +222,7 @@ public class Player extends User{
         return players;
     }
 
+    //sort for BattleSeaMenu
     public static ArrayList<Player> sortForBattleSeaMenu(ArrayList<Player> players){
         int n = players.size();
         for (int i = 0; i < n - 1; i++)
@@ -267,5 +257,17 @@ public class Player extends User{
                 }
             }
         return players;
+    }
+
+    //IDK
+    public Game playGame(int gameID){
+        return null;
+
+    }
+    public void addFriend(int playerID){
+
+    }
+    public static void registerModel(){
+
     }
 }

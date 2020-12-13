@@ -110,7 +110,7 @@ public class MainPageAdminController {
         }
     }
 
-    public void removeSeggestion(int id) {
+    public void removeSuggestion(int id) {
         for (Player player : Player.getPlayers()) {
             for (int i=0;i<player.getSuggestionID().size();i++)
             {

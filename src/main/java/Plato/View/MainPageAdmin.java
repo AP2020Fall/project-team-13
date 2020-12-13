@@ -90,7 +90,7 @@ while(true){
         mainPageAdminController.addSuggestion(username,gamename);
     }
     private void removeSeggestion(int id){
-        mainPageAdminController.removeSeggestion(id);
+        mainPageAdminController.removeSuggestion(id);
     }
     private void viewEvents(){
         String evets = mainPageAdminController.viewEvents();
