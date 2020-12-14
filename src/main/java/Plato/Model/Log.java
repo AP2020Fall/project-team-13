@@ -9,7 +9,6 @@ public class Log {
     private int gameID;
     private Player player1;
     private Player player2;
-    private int logID;
     private Player winner;
     private LocalDate finishTime;
 
@@ -18,7 +17,6 @@ public class Log {
         this.gameID = gameID;
         this.player1 = player1;
         this.player2 = player2;
-        this.logID = logs.size()+1;
         this.winner = winner;
         this.finishTime = java.time.LocalDate.now();
     }
@@ -29,9 +27,6 @@ public class Log {
     }
     public static ArrayList<Log> getLogs() {
         return logs;
-    }
-    public int getLogID() {
-        return logID;
     }
     public Player getPlayer1() {
         return player1;
@@ -52,13 +47,13 @@ public class Log {
         logs.add(log);
     }
 
+    //overriding toString method
     @Override
     public String toString() {
         return
                 "gameID=" + gameID +
                 "\n player1=" + player1 +
                 "\n player2=" + player2 +
-                "\n logID=" + logID +
                 "\n winner=" + winner +
                 "\n finishTime=" + finishTime
                 ;
