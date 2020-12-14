@@ -10,6 +10,7 @@ public class FriendsMenu extends Page{
     public Page run() {
         Matcher matcher;
         String input;
+        Page.seenPages.add(FriendsMenu.friendsMenu);
         while (true)
         {
             input=scanner.nextLine();

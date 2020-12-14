@@ -6,13 +6,16 @@ import Plato.Model.Player;
 import Reversi.ReversiController;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 
 public class ReversiMenu extends Page{
       public static ReversiMenu reversiMenu = new ReversiMenu();
       private static final int gameID = 1;
       public Page run() {
           String input;
+          Matcher matcher;
           Scanner scanner = new Scanner(System.in);
+          Page.seenPages.add(ReversiMenu.reversiMenu);
           while(true){
               input = scanner.nextLine();
               if(input.trim().equals("Show scoreboard")){
