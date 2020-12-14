@@ -10,16 +10,13 @@ public class Game {
     private int gameID;
     {
         if(!(games.contains(ReversiController.reversiController) && games.contains(BattleSea.battleSea))){
+            ReversiController.reversiController.setGameID(1);
+            ReversiController.reversiController.setName("reversi");
+            BattleSea.battleSea.setGameID(2);
+            BattleSea.battleSea.setName("battleSea");
             games.add(ReversiController.reversiController);
             games.add(BattleSea.battleSea);
         }
-    }
-    private void play(){
-
-    }
-
-    public void giveScore(int playerID){
-
     }
 
     public static ArrayList<Game> getGames() {
@@ -32,5 +29,13 @@ public class Game {
 
     public int getGameID() {
         return gameID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGameID(int gameID) {
+        this.gameID = gameID;
     }
 }

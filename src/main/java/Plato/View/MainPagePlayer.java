@@ -11,6 +11,7 @@ public class MainPagePlayer extends Page{
     public Page run() {
         Matcher matcher;
         String input;
+        seenPages.add(MainPagePlayer.mainPagePlayer);
         while (true)
         {
             input=scanner.nextLine();
@@ -96,7 +97,7 @@ public class MainPagePlayer extends Page{
         System.out.println(lastPlayed);
     }
     private boolean isGAmeVAlid(int id){
-        boolean valid = mainPagePlayerController.issuggestedGameVAlid(id);
+        boolean valid = mainPagePlayerController.isSuggestedGameValid(id);
         return valid;
     }
     private void addFriend(String username){

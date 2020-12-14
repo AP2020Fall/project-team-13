@@ -15,13 +15,7 @@ public class LoginPageController {
         return loginPageController;
     }
 
-    private void registerController(){
-         Player.registerModel();
-     }
-     public static User login(){
-        user = User.login(null,null);
-         return null;
-     }
+
      public String loginController(String username, String password){
 
          for (User allUser : User.getAllUsers()) {
@@ -61,6 +55,8 @@ public class LoginPageController {
             player.setPassword(password);
             player.setEmail(email);
             player.setAdmin(false);
+            User.getAllUsers().add(player);
+            Player.getPlayers().add(player);
 
         }
         else  {
@@ -74,6 +70,8 @@ public class LoginPageController {
             admin.setPassword(password);
             admin.setEmail(email);
             admin.setAdmin(true);
+            User.getAllUsers().add(admin);
+            Admin.getAdmins().add(admin);
         }
         return true;
     }

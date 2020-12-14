@@ -8,7 +8,6 @@ import java.util.Date;
 public class Player extends User{
     //fields
     private static ArrayList<Player> players = new ArrayList<Player>();
-    private ArrayList<Log> gamesLog = new ArrayList<Log>();
     private LocalDate registerTime;
     private int money = 0;
     private int score = 0;
@@ -27,7 +26,6 @@ public class Player extends User{
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();
     private ArrayList<Integer> suggestionID = new ArrayList<Integer>();
     private ArrayList<Game> favorites = new ArrayList<Game>();
-    private ArrayList<String> gameHistory = new ArrayList<String>();
     private ArrayList<String> messages = new ArrayList<String>();
     private ArrayList<Boolean> messagesShown = new ArrayList<Boolean>();
 
@@ -67,9 +65,6 @@ public class Player extends User{
     }
     public void addScore(){
         this.score += 1;
-    }
-    public ArrayList<String> getGameHistory() {
-        return gameHistory;
     }
     public LocalDate getRegisterTime() {
         return registerTime;
@@ -149,15 +144,12 @@ public class Player extends User{
     public int getBattleSeaPoints() {
         return battleSeaPoints;
     }
-    public String getDaysPassedRegister() {
-
-        return null;
+    public int getDaysPassedRegister() {
+        LocalDate now = java.time.LocalDate.now();
+        return ( (getRegisterTime().getYear() - now.getYear()) * 365 + (getRegisterTime().getDayOfYear() - now.getDayOfYear()) );
     }
     public static ArrayList<Player> getPlayers() {
         return players;
-    }
-    public ArrayList<Log> getGamesLog() {
-        return gamesLog;
     }
     public int getMoney() {
         return money;
@@ -257,17 +249,5 @@ public class Player extends User{
                 }
             }
         return players;
-    }
-
-    //IDK
-    public Game playGame(int gameID){
-        return null;
-
-    }
-    public void addFriend(int playerID){
-
-    }
-    public static void registerModel(){
-
     }
 }

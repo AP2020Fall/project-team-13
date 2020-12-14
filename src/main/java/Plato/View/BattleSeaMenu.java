@@ -15,6 +15,7 @@ public class BattleSeaMenu extends Page{
     public Page run() {
         String input;
         Scanner scanner = new Scanner(System.in);
+        Page.seenPages.add(BattleSeaMenu.battleSeaMenu);
         while(true){
             input = scanner.nextLine();
             if(input.trim().equals("Show scoreboard")){

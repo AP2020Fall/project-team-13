@@ -51,4 +51,16 @@ public class Log {
         Log log = new Log(gameID, player1, player2, winner);
         logs.add(log);
     }
+
+    @Override
+    public String toString() {
+        return
+                "gameID=" + gameID +
+                "\n player1=" + player1 +
+                "\n player2=" + player2 +
+                "\n logID=" + logID +
+                "\n winner=" + winner +
+                "\n finishTime=" + finishTime
+                ;
+    }
 }

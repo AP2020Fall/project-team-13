@@ -2,6 +2,7 @@ package Plato.Controller;
 
 import Plato.Model.Admin;
 import Plato.Model.Game;
+import Plato.Model.Log;
 import Plato.Model.Player;
 
 public class MainPagePlayerController {
@@ -75,16 +76,20 @@ public class MainPagePlayerController {
 
     public String viewLastPlayed() {
         Player player = (Player) LoginPageController.user;
-        if (player.getGameHistory().size()>0)
+        String log;
+        for (int i=Log.getLogs().size()-1; i>0;i--)
         {
-            return player.getGameHistory().get(player.getGameHistory().size()-1);
+            if (Log.getLogs().get(i).getPlayer1().equals(player)||Log.getLogs().get(i).getPlayer2().equals(player))
+            {
+                log = Log.getLogs().get(i).toString();
+                return log;
+            }
+
         }
-        else {
-            return "nothing found";
-        }
+        return "player didnt played yet";
     }
 
-    public boolean issuggestedGameVAlid(int id) {
+    public boolean isSuggestedGameValid(int id) {
         Player player = (Player) LoginPageController.user;
         try {
             for (Game suggestedGame : player.getSuggestedGames()) {

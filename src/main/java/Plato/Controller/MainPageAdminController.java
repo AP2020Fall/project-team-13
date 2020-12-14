@@ -54,8 +54,14 @@ public class MainPageAdminController {
         for (Player friend : user.getFriends()) {
             userInfo.append(friend.getUserID()+" "+friend.getUsername()+"\n");
         }
-        for (Log log : user.getGamesLog()) {
-            //userInfo.append(log.getGameName()+" "+log.getTimesOfPlay()+" "+log.getWins()+"\n");
+        for (int i=Log.getLogs().size()-1; i>0;i--)
+        {
+            if (Log.getLogs().get(i).getPlayer1().equals(user)||Log.getLogs().get(i).getPlayer2().equals(user))
+            {
+                userInfo.append(Log.getLogs().get(i).toString());
+                userInfo.append("\n");
+            }
+
         }
         for (Game suggestedGame : user.getSuggestedGames()) {
             userInfo.append(suggestedGame.getName()+" "+suggestedGame.getGameID()+"\n");
