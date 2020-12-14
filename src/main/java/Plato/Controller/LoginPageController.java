@@ -36,7 +36,7 @@ public class LoginPageController {
          return "invalid informations";
      }
 
-    public boolean register(String username, String password, String email, String firstanme, String lastname, String phoneNumber) {
+    public boolean register(String username, String password, String email, String firstname, String lastname, String phoneNumber) {
         for (User allUser : User.getAllUsers()) {
             if ((allUser.getUsername().equals(username))||(allUser.getEmail().equals(email)))
             {
@@ -49,7 +49,7 @@ public class LoginPageController {
             Player player = new Player();
             player.setUsername(username);
             player.setUserID(User.getAllUsers().size()+1);
-            player.setFirstname(firstanme);
+            player.setFirstname(firstname);
             player.setLastname(lastname);
             player.setPhoneNumber(phoneNumber);
             player.setPassword(password);
@@ -64,7 +64,7 @@ public class LoginPageController {
             Admin admin = new Admin();
             admin.setUsername(username);
             admin.setUserID(User.getAllUsers().size()+1);
-            admin.setFirstname(firstanme);
+            admin.setFirstname(firstname);
             admin.setLastname(lastname);
             admin.setPhoneNumber(phoneNumber);
             admin.setPassword(password);
