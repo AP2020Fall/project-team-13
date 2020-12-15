@@ -1,8 +1,11 @@
 package Plato.View;
 
+import Plato.Controller.LoginPageController;
 import Plato.Controller.UserPageController;
+import Plato.Model.Log;
 import Plato.Model.User;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -34,16 +37,27 @@ public class UserPage extends Page{
 
             }
             else if(input.trim().equals("Games history")){
-
+                for (Log log : Log.getLogs()) {
+                    if(LoginPageController.user.equals(log.getPlayer1()) || LoginPageController.user.equals(log.getPlayer2())){
+                        if(log.getWinner() == null)
+                            System.out.println("A match between " + log.getPlayer1().getUsername() +
+                                    " and " + log.getPlayer2().getUsername() + " has been done and the result was a draw!" + "(" +
+                                    log.getFinishTime() + ")");
+                        else
+                            System.out.println("A match between " + log.getPlayer1().getUsername() +
+                                    " and " + log.getPlayer2().getUsername() + " has been done and " + log.getWinner().getUsername() +
+                                    " won the match!" + "(" + log.getFinishTime() + ")");
+                    }
+                }
             }
             else if(Pattern.matches("Game statistics .+", input)){
 
             }
             else if(input.trim().equals("Logout")){
-
+                return LoginPage.loginPage;
             }
             else if(input.trim().equals("back")){
-
+                return seenPages.get(seenPages.size()-2);
             }
         }
     }
