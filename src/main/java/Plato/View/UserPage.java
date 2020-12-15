@@ -3,6 +3,9 @@ package Plato.View;
 import Plato.Controller.UserPageController;
 import Plato.Model.User;
 
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
 public class UserPage extends Page{
     public static UserPage userPage = new UserPage();
     private UserPageController userPageController = UserPageController.getInstance();
@@ -11,8 +14,38 @@ public class UserPage extends Page{
         return userPage;
     }
     public Page run() {
-        userPageController.changePasswordController(null,null);
-        return null;
+        String input;
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            input = scanner.nextLine();
+            if(input.trim().equals("View personal info")){
+
+            }
+            else if(Pattern.matches("Change password .+, .+", input)){
+
+            }
+            else if(Pattern.matches("Change password .+, .+", input)){
+
+            }
+            else if(Pattern.matches("Edit .+, .+", input)){
+
+            }
+            else if(input.equals("View plato statistics")){
+
+            }
+            else if(input.trim().equals("Games history")){
+
+            }
+            else if(Pattern.matches("Game statistics .+", input)){
+
+            }
+            else if(input.trim().equals("Logout")){
+
+            }
+            else if(input.trim().equals("back")){
+
+            }
+        }
     }
     private void deleteAccount(){
         userPageController.deleteAccount();
