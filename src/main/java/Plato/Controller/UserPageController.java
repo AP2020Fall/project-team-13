@@ -1,6 +1,6 @@
 package Plato.Controller;
 
-import Plato.Model.Admin;
+/*import Plato.Model.Admin;
 import Plato.Model.Player;
 import Plato.Model.User;
 import Plato.View.Page;
@@ -58,4 +58,4 @@ public class UserPageController extends Page {
     public Page run() {
         return null;
     }
-}
+}*/

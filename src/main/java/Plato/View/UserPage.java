@@ -1,7 +1,6 @@
 package Plato.View;
 
 import Plato.Controller.LoginPageController;
-import Plato.Controller.UserPageController;
 import Plato.Model.Log;
 import Plato.Model.Player;
 import Plato.Model.User;
@@ -12,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class UserPage extends Page{
     public static UserPage userPage = new UserPage();
-    private UserPageController userPageController = UserPageController.getInstance();
+//    private UserPageController userPageController = UserPageController.getInstance();
     public static User user ;
     public static UserPage getInstance(){
         return userPage;
@@ -20,10 +19,15 @@ public class UserPage extends Page{
     public Page run() {
         String input;
         Scanner scanner = new Scanner(System.in);
+        seenPages.add(UserPage.userPage);
         while(true){
             input = scanner.nextLine();
             if(input.trim().equals("View personal info")){
-
+                System.out.println("firstname: " + LoginPageController.user.getFirstname() +
+                        "\nlastname: " + LoginPageController.user.getLastname() +
+                        "\nusername: " + LoginPageController.user.getUsername() +
+                        "\nemail: " + LoginPageController.user.getEmail() +
+                        "\nphone number: " + LoginPageController.user.getPhoneNumber());
             }
             else if(Pattern.matches("Change password .+ .+", input)){
                 String oldPass = input.split(" ")[2];
