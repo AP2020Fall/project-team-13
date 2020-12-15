@@ -4,8 +4,6 @@ import Plato.Controller.LoginPageController;
 import Plato.Model.Log;
 import Plato.Model.Player;
 import Plato.Model.User;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -107,5 +105,4 @@ public class UserPage extends Page{
             }
         }
     }
-   }
 }
