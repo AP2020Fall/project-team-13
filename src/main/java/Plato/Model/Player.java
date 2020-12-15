@@ -264,4 +264,14 @@ public class Player extends User{
             }
         return players;
     }
+
+    //returning the level of battle sea
+    public int getBattleSeaLevel(){
+        return (this.battleSeaPoints / 10);
+    }
+
+    //returning the level of reversi
+    public int getReversiLevel(){
+        return (this.reversiPoints / 10);
+    }
 }
