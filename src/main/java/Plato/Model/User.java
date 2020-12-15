@@ -13,8 +13,27 @@ public abstract class User {
     private String phoneNumber;
     private boolean isAdmin;
     private static boolean isMainAdminJoinnt=false;
-     public void editInformation(int userID, String type, String newValue){
-
+     public void editInformation(String type, String newValue){
+         if(type.equals("firstname")){
+             this.firstname = newValue;
+             System.out.println("firstname updated!");
+         }
+         else if(type.equals("lastname")){
+             this.lastname = newValue;
+             System.out.println("lastname updated!");
+         }
+         else if(type.equals("username")){
+             this.username = newValue;
+             System.out.println("username updated!");
+         }
+         else if(type.equals("email")){
+             this.firstname = newValue;
+             System.out.println("email updated!");
+         }
+         else if(type.equals("phoneNumber")){
+             this.firstname = newValue;
+             System.out.println("phone number updated!");
+         }
      }
      public static User login(String username, String password){
          return null;

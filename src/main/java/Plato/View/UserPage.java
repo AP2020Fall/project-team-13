@@ -25,17 +25,30 @@ public class UserPage extends Page{
             if(input.trim().equals("View personal info")){
 
             }
-            else if(Pattern.matches("Change password .+, .+", input)){
-
+            else if(Pattern.matches("Change password .+ .+", input)){
+                String oldPass = input.split(" ")[2];
+                String newPass = input.split(" ")[3];
+                if(!oldPass.equals(((Player)LoginPageController.user).getPassword()))
+                    System.out.println("the old password isn't true!");
+                else{
+                    ((Player)LoginPageController.user).setPassword(newPass);
+                    System.out.println("The password successfully changed!");
+                }
             }
-            else if(Pattern.matches("Change password .+, .+", input)){
-
-            }
-            else if(Pattern.matches("Edit .+, .+", input)){
-
+            else if(Pattern.matches("Edit .+ .+", input)){
+                if(input.split(" ")[1].equals("firstname") || input.split(" ")[1].equals("lastname") ||
+                        input.split(" ")[1].equals("username") || input.split(" ")[1].equals("email") ||
+                        input.split(" ")[1].equals("phoneNumber")) {
+                    LoginPageController.user.editInformation(input.split(" ")[1], input.split(" ")[2]);
+                }
+                else
+                    System.out.println("You should enter firstname, lastname, username, email, phoneNumber as field!");
             }
             else if(input.equals("View plato statistics")){
-
+                System.out.println("you have " + ((Player)LoginPageController.user).getFriends().size() + " friend(s)!\n" +
+                        "you have won " + ((Player)LoginPageController.user).getReversiWins() + " time(s) in reversi and " +
+                        ((Player)LoginPageController.user).getBattleSeaWins() + " time(s) in battle sea!\n" +
+                        "it is " + ((Player)LoginPageController.user).getDaysPassedRegister() + " day(s) that you have registered!");
             }
             else if(input.trim().equals("Games history")){
                 for (Log log : Log.getLogs()) {
@@ -79,45 +92,16 @@ public class UserPage extends Page{
             }
             else if(input.equals("help")){
                 System.out.println("1. View personal info\n" +
-                        "2. Change password\n" +
-                        "3. Edit [field(firstname, lastname, username, password, email, phoneNumber] [new_value]\n" +
+                        "2. Change password [current_password] [new_password]\n" +
+                        "3. Edit [field(firstname, lastname, username, email, phoneNumber)] [new_value]\n" +
                         "4. View plato statistics\n" +
                         "5. Game history\n" +
-                        "6. Game statistics [game_name(battleSea, reversi]\n" +
+                        "6. Game statistics [game_name(battleSea, reversi)]\n" +
                         "7. Logout\n" +
                         "8. back\n" +
                         "9. help");
             }
         }
     }
-    private void deleteAccount(){
-        userPageController.deleteAccount();
-    }
-    public void setUser(User user){
-
-    }
-    public Page ViewAccountMenu(){
-    return null;
-    }
-    private void ViewPersonalInfoView(){
-
-    }
-    private  void ChangePasswordView(String old,String new1){
-
-    }
-    private void EditView (String field , String new1){
-
-    }
-    private void ViewPlatoStaticsView(){
-
-    }
-    private void GamesHistoryView(){
-
-    }
-    private void GameStatics(String gameName){
-
-    }
-    private Page Logout(){
-   return null;
    }
 }
