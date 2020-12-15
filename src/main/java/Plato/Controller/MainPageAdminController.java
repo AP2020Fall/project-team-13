@@ -5,6 +5,7 @@ import Plato.View.Commands;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 
 public class MainPageAdminController {
@@ -140,38 +141,38 @@ public class MainPageAdminController {
                 events.append(event.getGame().getName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
             }
         }
+        if (String.valueOf(events).equals(""))
+        {
+            return "no event found";
+        }
         return String.valueOf(events);
     }
 
-    public void addEvent(String name,String sdate,String edate,int score){
+    public void addEvent(String name,String sdate,String edate,int score) throws Exception {
         Game game1 = null;
-        for (Game game : Game.getGames()) {
-            if (game.getName().equals(name))
+        for (int i=0;i<Game.getGames().size();i++) {
+            if (Game.getGames().get(i).getName().equals(name))
             {
-                game1=game;
+                game1=Game.getGames().get(i);
                 break;
+            }
+            if (i==Game.getGames().size()-1)
+            {
+                Exception notFoundGame = new Exception();
+                throw notFoundGame;
             }
         }
         Matcher matcher;
-        Date ssdate=new Date();
-        Date eedate = new Date();
+        GregorianCalendar ssdate=new GregorianCalendar();
+        GregorianCalendar eedate = new GregorianCalendar();
         if ((matcher = Commands.DATER.getMatcher(sdate)).matches())
         {
-
-            ssdate.setYear(Integer.parseInt(matcher.group(1)));
-            ssdate.setMonth(Integer.parseInt(matcher.group(2)));
-            ssdate.setDate(Integer.parseInt(matcher.group(3)));
-            ssdate.setHours(Integer.parseInt(matcher.group(4)));
-            ssdate.setMinutes(Integer.parseInt(matcher.group(5)));
+            ssdate.set(Integer.parseInt(matcher.group(1)),Integer.parseInt(matcher.group(2)),Integer.parseInt(matcher.group(3)));
         }
         if ((matcher = Commands.DATER.getMatcher(edate)).matches())
         {
 
-            eedate.setYear(Integer.parseInt(matcher.group(1)));
-            eedate.setMonth(Integer.parseInt(matcher.group(2)));
-            eedate.setDate(Integer.parseInt(matcher.group(3)));
-            eedate.setHours(Integer.parseInt(matcher.group(4)));
-            eedate.setMinutes(Integer.parseInt(matcher.group(5)));
+            eedate.set(Integer.parseInt(matcher.group(1)),Integer.parseInt(matcher.group(2)),Integer.parseInt(matcher.group(3)));
         }
         Event event = new Event(game1,ssdate,eedate,score);
         Event.getEvents().add(event);
@@ -204,32 +205,25 @@ public class MainPageAdminController {
                     Event.getEvents().get(i).setGame(game1);
                 }
                 else if (field.equals("startdate")){
-                    Date date = new Date();
                     Matcher matcher;
+                    GregorianCalendar ssdate = new GregorianCalendar();
                     if ((matcher = Commands.DATER.getMatcher(newvalue)).matches())
                     {
 
-                                date.setYear(Integer.parseInt(matcher.group(1)));
-                                date.setMonth(Integer.parseInt(matcher.group(2)));
-                                date.setDate(Integer.parseInt(matcher.group(3)));
-                                date.setHours(Integer.parseInt(matcher.group(4)));
-                                date.setMinutes(Integer.parseInt(matcher.group(5)));
-                        Event.getEvents().get(i).setStartDate(date);
+                        ssdate.set(Integer.parseInt(matcher.group(1)),Integer.parseInt(matcher.group(2)),Integer.parseInt(matcher.group(3)));
+                        Event.getEvents().get(i).setStartDate(ssdate);
                     }
 
                 }
                 else if(field.equals("enddate")){
-                    Date date = new Date();
+
                     Matcher matcher;
+                    GregorianCalendar eedate = new GregorianCalendar();
                     if ((matcher = Commands.DATER.getMatcher(newvalue)).matches())
                     {
 
-                        date.setYear(Integer.parseInt(matcher.group(1)));
-                        date.setMonth(Integer.parseInt(matcher.group(2)));
-                        date.setDate(Integer.parseInt(matcher.group(3)));
-                        date.setHours(Integer.parseInt(matcher.group(4)));
-                        date.setMinutes(Integer.parseInt(matcher.group(5)));
-                        Event.getEvents().get(i).setEndDate(date);
+                        eedate.set(Integer.parseInt(matcher.group(1)),Integer.parseInt(matcher.group(2)),Integer.parseInt(matcher.group(3)));
+                        Event.getEvents().get(i).setStartDate(eedate);
                     }
 
                 }
@@ -257,8 +251,9 @@ public class MainPageAdminController {
         for (Event event : Event.getEvents()) {
             if (event.getEventId()==id)
             {
-                Date date = new Date();
-                if (date.after(event.getStartDate()))
+                GregorianCalendar now = new GregorianCalendar();
+
+                if (now.getTimeInMillis()>=event.getStartDate().getTimeInMillis())
                 {
                     event.setHasStarted(true);
                 }
@@ -270,11 +265,21 @@ public class MainPageAdminController {
         for (Event event : Event.getEvents()) {
             if (event.getEventId()==id)
             {
-                Date date = new Date();
-                if (date.after(event.getEndDate()))
+                GregorianCalendar now = new GregorianCalendar();
+
+                if (now.getTimeInMillis()>=event.getStartDate().getTimeInMillis())
                 {
                     event.setHasEnded(true);
                 }
+            }
+        }
+    }
+
+    public void changeGameName(int id, String newName) {
+        for (Game game : Game.getGames()) {
+            if (game.getGameID()==id)
+            {
+                game.setName(newName);
             }
         }
     }

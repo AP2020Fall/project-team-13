@@ -12,13 +12,14 @@ public class MainPagePlayer extends Page{
         Matcher matcher;
         String input;
         seenPages.add(MainPagePlayer.mainPagePlayer);
+        System.out.println("Main Page Player :");
         while (true)
         {
             input=scanner.nextLine();
             if ((matcher = Commands.HELP.getMatcher(input)).matches())
             {
                 System.out.println("Show Points"+"\n"+"View favorite games\n"+"View platoBot’s messages\n"+"View last played\n"+"View admin’s suggestions\n"+"Choose suggested game\n"
-                        +"Add friend\n");
+                        +"Add friend\n"+"go to friends menu\n"+"go to games menu\n"+"view events\n"+"join event\n");
             }
             else if  ((matcher = Commands.SHOW_POINT.getMatcher(input)).matches())
             {
@@ -65,6 +66,34 @@ public class MainPagePlayer extends Page{
             {
                 return seenPages.get(seenPages.size()-2);
             }
+            else if ((matcher = Commands.CHOOSE_FAVORITE_GAME.getMatcher(input)).matches())
+            {
+
+                if (Integer.parseInt(matcher.group(1))==1)
+                {
+                    return ReversiMenu.reversiMenu;
+                }
+                else if (Integer.parseInt(matcher.group(1))==2)
+                {
+                    return BattleSeaMenu.battleSeaMenu;
+                }
+            }
+            else if ((matcher = Commands.VIEW_EVENTS.getMatcher(input)).matches())
+            {
+                MainPageAdmin.mainPageAdmin.viewEvents();
+            }
+            else if ((matcher = Commands.JOIN_EVENT.getMatcher(input)).matches())
+            {
+                MainPagePlayer.mainPagePlayer.joinEvent(Integer.parseInt(matcher.group(1)));
+            }
+            else if ((matcher = Commands.GO_TO_FRIENDS_MENU.getMatcher(input)).matches())
+            {
+                return FriendsMenu.friendsMenu;
+            }
+            else if ((matcher = Commands.GO_TO_GAMES_MENU.getMatcher(input)).matches())
+            {
+                return GamesMenu.gamesMenu;
+            }
             else {
                 System.out.println("invalid command");
             }
@@ -102,5 +131,9 @@ public class MainPagePlayer extends Page{
     }
     private void addFriend(String username){
         mainPagePlayerController.addFriend(username);
+    }
+    private void joinEvent(int id)
+    {
+        mainPagePlayerController.joinEvent(id);
     }
 }

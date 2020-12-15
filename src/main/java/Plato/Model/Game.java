@@ -9,11 +9,11 @@ public class Game {
     private String name;
     private int gameID;
     {
+        ReversiController.reversiController.setGameID(1);
+        ReversiController.reversiController.setName("reversi");
+        BattleSea.battleSea.setGameID(2);
+        BattleSea.battleSea.setName("battleSea");
         if(!(games.contains(ReversiController.reversiController) && games.contains(BattleSea.battleSea))){
-            ReversiController.reversiController.setGameID(1);
-            ReversiController.reversiController.setName("reversi");
-            BattleSea.battleSea.setGameID(2);
-            BattleSea.battleSea.setName("battleSea");
             games.add(ReversiController.reversiController);
             games.add(BattleSea.battleSea);
         }

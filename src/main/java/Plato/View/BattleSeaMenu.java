@@ -18,7 +18,7 @@ public class BattleSeaMenu extends Page{
         Page.seenPages.add(BattleSeaMenu.battleSeaMenu);
         while(true){
             input = scanner.nextLine();
-            if(input.trim().equals("Show scoreboard")){
+            if(input.trim().equalsIgnoreCase("Show scoreboard")){
                 ArrayList<Player> playersThatHasPlayedBattleSea = new ArrayList<>();
                 for (Player player : Player.getPlayers()) {
                     if(player.getReversiPlayedCount() > 0)
@@ -34,7 +34,7 @@ public class BattleSeaMenu extends Page{
                             " losses: " + playersThatHasPlayedBattleSea.get(i).getReversiLosses());
                 }
             }
-            else if( input.trim().equals("Details")){
+            else if( input.trim().equalsIgnoreCase("Details")){
                 System.out.println("Object of Game\n" +
                         "Sea Battle is a 2 players game where players take turns trying to destroy the other player's fleet of ships on a 10x10 grid:\n" +
                         "\n" +
@@ -58,7 +58,7 @@ public class BattleSeaMenu extends Page{
                         "When you've sunk your opponent's ship, that ship will appear on the main grid.\n" +
                         "The first person to sink all five of his/her opponent's ships wins the game.");
             }
-            else if( input.trim().equals("Show log")){
+            else if( input.trim().equalsIgnoreCase("Show log")){
                 for (Log log : Log.getLogs())
                     if(log.getGameID() == 2){
                         System.out.println("a match between " + log.getPlayer1().getUsername() + " and " +
@@ -66,32 +66,32 @@ public class BattleSeaMenu extends Page{
                                 " has won this match." + "(" + log.getFinishTime() + ")");
                     }
             }
-            else if( input.trim().equals("Show wins count")){
+            else if( input.trim().equalsIgnoreCase("Show wins count")){
                 System.out.println("player with username " + LoginPageController.user.getUsername() +
                         " has won " + ( (Player)LoginPageController.user).getBattleSeaWins() + " time(s) in BattleSea.");
             }
-            else if( input.trim().equals("Show played count")){
+            else if( input.trim().equalsIgnoreCase("Show played count")){
                 System.out.println("player with username " + LoginPageController.user.getUsername() +
                         " has played " + ( (Player)LoginPageController.user).getBattleSeaPlayedCount() + " time(s) in BattleSea.");
             }
-            else if( input.trim().equals("Add to favorites")){
+            else if( input.trim().equalsIgnoreCase("Add to favorites")){
                 ((Player)LoginPageController.user).addFavorite(2);
             }
-            else if( input.trim().equals("Run game")){
+            else if( input.trim().equalsIgnoreCase("Run game")){
 
             }
-            else if( input.trim().equals("Show point")) {
+            else if( input.trim().equalsIgnoreCase("Show point")) {
                 System.out.println("the player with username "
                         + ((Player)LoginPageController.user).getUsername() + " has gained "
                         + ((Player)LoginPageController.user).getBattleSeaWins() + " points from BattleSea.");
             }
-            else if(input.trim().equals("View account menu")){
+            else if(input.trim().equalsIgnoreCase("View account menu")){
                 return UserPage.userPage;
             }
-            else if(input.trim().equals("Back")){
+            else if(input.trim().equalsIgnoreCase("Back")){
                 return GamesMenu.gamesMenu;
             }
-            else if(input.trim().equals("Help")){
+            else if(input.trim().equalsIgnoreCase("Help")){
                 System.out.println("1. Show scoreboard\n" +
                         "2. Details\n" +
                         "3. Show log\n" +

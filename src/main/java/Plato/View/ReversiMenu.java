@@ -18,7 +18,7 @@ public class ReversiMenu extends Page{
           Page.seenPages.add(ReversiMenu.reversiMenu);
           while(true){
               input = scanner.nextLine();
-              if(input.trim().equals("Show scoreboard")){
+              if(input.trim().equalsIgnoreCase("Show scoreboard")){
                   ArrayList<Player> playersThatHasPlayedReversi = new ArrayList<>();
                   for (Player player : Player.getPlayers()) {
                       if(player.getReversiPlayedCount() > 0)
@@ -34,7 +34,7 @@ public class ReversiMenu extends Page{
                               " losses: " + playersThatHasPlayedReversi.get(i).getReversiLosses());
                   }
               }
-              else if(input.trim().equals("Details")){
+              else if(input.trim().equalsIgnoreCase("Details")){
                 System.out.println("Board\n" +
                         "Reversi is a 2 players game, played on a board of 64 squares arranged in an 8x8 rows and columns. The game begins with four discs already placed on the board:\n" +
                         "\n" +
@@ -57,7 +57,7 @@ public class ReversiMenu extends Page{
                         "A player who cannot make a legal move loses his or her turn. The game continues until neither side can move; usually, this does not happen until the board is entirely filled.\n" +
                         "The player whose color is up on more of the discs at the end is the winner (you'll see the score next to each player's name). If both players have the same number of discs of their color up, the game is a draw.");
             }
-              else if(input.trim().equals("Show log")){
+              else if(input.trim().equalsIgnoreCase("Show log")){
                   for (Log log : Log.getLogs()) {
                       if(log.getGameID() == 1){
                           System.out.println("a match between " + log.getPlayer1().getUsername() + " and " +
@@ -66,18 +66,18 @@ public class ReversiMenu extends Page{
                       }
                   }
               }
-              else if(input.trim().equals("Show wins count")){
+              else if(input.trim().equalsIgnoreCase("Show wins count")){
                 System.out.println("player with username " + LoginPageController.user.getUsername() +
                         " has won " + ( (Player)LoginPageController.user).getReversiWins() + " time(s) in Reversi.");
             }
-              else if(input.trim().equals("Show played count")){
+              else if(input.trim().equalsIgnoreCase("Show played count")){
                 System.out.println("player with username " + LoginPageController.user.getUsername() +
                         " has played " + ( (Player)LoginPageController.user).getReversiPlayedCount() + " time(s) in Reversi.");
             }
-              else if(input.trim().equals("Add to favorites")){
+              else if(input.trim().equalsIgnoreCase("Add to favorites")){
                 ((Player)LoginPageController.user).addFavorite(1);
             }
-              else if(input.trim().equals("Run game")){
+              else if(input.trim().equalsIgnoreCase("Run game")){
                   System.out.println("please enter username:");
                   String username = scanner.nextLine();
                   System.out.println("please enter password:");
@@ -92,16 +92,16 @@ public class ReversiMenu extends Page{
 
 
             }
-              else if(input.trim().equals("Show points")) {
+              else if(input.trim().equalsIgnoreCase("Show points")) {
                 System.out.println("the player with username "
                         + ((Player)LoginPageController.user).getUsername() + " has gained "
                         + ((Player)LoginPageController.user).getReversiPoints() + " points from Reversi.");
             }
-              else if(input.trim().equals("View account menu")){
+              else if(input.trim().equalsIgnoreCase("View account menu")){
                   return UserPage.userPage;
               }
-              else if(input.trim().equals("Back")){
-                  return GamesMenu.gamesMenu;
+              else if(input.trim().equalsIgnoreCase("Back")){
+                  return seenPages.get(seenPages.size()-2);
               }
               else if(input.trim().equals("Help")){
                   System.out.println("1. Show scoreboard\n" +

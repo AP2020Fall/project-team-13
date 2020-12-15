@@ -1,9 +1,6 @@
 package Plato.Controller;
 
-import Plato.Model.Admin;
-import Plato.Model.Game;
-import Plato.Model.Log;
-import Plato.Model.Player;
+import Plato.Model.*;
 
 public class MainPagePlayerController {
     private static MainPagePlayerController mainPagePlayerController = new MainPagePlayerController();
@@ -77,7 +74,7 @@ public class MainPagePlayerController {
     public String viewLastPlayed() {
         Player player = (Player) LoginPageController.user;
         String log;
-        for (int i=Log.getLogs().size()-1; i>0;i--)
+        for (int i=Log.getLogs().size()-1; i>-1;i--)
         {
             if (Log.getLogs().get(i).getPlayer1().equals(player)||Log.getLogs().get(i).getPlayer2().equals(player))
             {
@@ -113,4 +110,33 @@ public class MainPagePlayerController {
         }
     }
 
+    public void joinEvent(int id) {
+        Player player1 = (Player) LoginPageController.user;
+        for (Event event : Event.getEvents()) {
+            if (event.getEventId()==id)
+            {
+                event.getPlayersOfThisEvent().add(player1);
+            }
+        }
+    }
+    public String reversiName()
+    {
+        for (Game game : Game.getGames()) {
+            if (game.getGameID()==1)
+            {
+                return game.getName();
+            }
+        }
+        return "error";
+    }
+    public String battleSeaName()
+    {
+        for (Game game : Game.getGames()) {
+            if (game.getGameID()==2)
+            {
+                return game.getName();
+            }
+        }
+        return "error";
+    }
 }

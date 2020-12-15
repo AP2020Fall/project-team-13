@@ -9,18 +9,18 @@ public class Player extends User{
     //fields
     private static ArrayList<Player> players = new ArrayList<Player>();
     private LocalDate registerTime;
-    private int money = 0;
-    private int score = 0;
-    private int reversiWins = 0;
-    private int reversiDraws = 0;
-    private int reversiLosses = 0;
-    private int reversiPlayedCount = 0;
-    private int reversiPoints = 0;
-    private int battleSeaWins = 0;
-    private int battleSeaDraws = 0;
-    private int battleSeaLosses = 0;
-    private int battleSeaPlayedCount = 0;
-    private int battleSeaPoints = 0;
+    private int money;
+    private int score;
+    private int reversiWins;
+    private int reversiDraws;
+    private int reversiLosses;
+    private int reversiPlayedCount;
+    private int reversiPoints;
+    private int battleSeaWins;
+    private int battleSeaDraws;
+    private int battleSeaLosses;
+    private int battleSeaPlayedCount;
+    private int battleSeaPoints;
     private ArrayList<Player> friends = new ArrayList<Player>();
     private ArrayList<Player> friendRequests = new ArrayList<Player>();
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();
@@ -30,7 +30,21 @@ public class Player extends User{
     private ArrayList<Boolean> messagesShown = new ArrayList<Boolean>();
 
     //constructor
-    public Player(){
+
+
+    public Player() {
+        this.money = 0;
+        this.score = 0;
+        this.reversiWins = 0;
+        this.reversiDraws = 0;
+        this.reversiLosses = 0;
+        this.reversiPlayedCount = 0;
+        this.reversiPoints = 0;
+        this.battleSeaWins = 0;
+        this.battleSeaDraws = 0;
+        this.battleSeaLosses = 0;
+        this.battleSeaPlayedCount = 0;
+        this.battleSeaPoints = 0;
         this.registerTime = java.time.LocalDate.now();
     }
 

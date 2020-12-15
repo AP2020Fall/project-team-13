@@ -1,3 +1,4 @@
+import Plato.Model.Game;
 import Plato.View.LoginPage;
 import Plato.View.Page;
 

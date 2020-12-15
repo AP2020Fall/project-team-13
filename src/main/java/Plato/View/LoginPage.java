@@ -14,6 +14,7 @@ public class LoginPage extends Page{
     public Page run() {
         Matcher matcher;
         String input;
+        seenPages.add(LoginPage.loginPage);
         while (true)
         {
             input=scanner.nextLine();
