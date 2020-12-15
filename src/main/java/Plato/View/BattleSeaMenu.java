@@ -78,7 +78,17 @@ public class BattleSeaMenu extends Page{
                 ((Player)LoginPageController.user).addFavorite(2);
             }
             else if( input.trim().equalsIgnoreCase("Run game")){
+                System.out.println("please enter username:");
+                String username = scanner.nextLine();
+                System.out.println("please enter password:");
+                String password = scanner.nextLine();
+                try {
+                    Player secondPlayer = LoginPageController.loginSecond(username,password);
+                    //event score
 
+                } catch (Exception e) {
+
+                }
             }
             else if( input.trim().equalsIgnoreCase("Show point")) {
                 System.out.println("the player with username "

@@ -20,7 +20,7 @@ public class UserPage extends Page{
         seenPages.add(UserPage.userPage);
         while(true){
             input = scanner.nextLine();
-            if(input.trim().equals("View personal info")){
+            if(input.trim().equalsIgnoreCase("View personal info")){
                 System.out.println("firstname: " + LoginPageController.user.getFirstname() +
                         "\nlastname: " + LoginPageController.user.getLastname() +
                         "\nusername: " + LoginPageController.user.getUsername() +
@@ -46,13 +46,13 @@ public class UserPage extends Page{
                 else
                     System.out.println("You should enter firstname, lastname, username, email, phoneNumber as field!");
             }
-            else if(input.equals("View plato statistics")){
+            else if(input.equalsIgnoreCase("View plato statistics")){
                 System.out.println("you have " + ((Player)LoginPageController.user).getFriends().size() + " friend(s)!\n" +
                         "you have won " + ((Player)LoginPageController.user).getReversiWins() + " time(s) in reversi and " +
                         ((Player)LoginPageController.user).getBattleSeaWins() + " time(s) in battle sea!\n" +
                         "it is " + ((Player)LoginPageController.user).getDaysPassedRegister() + " day(s) that you have registered!");
             }
-            else if(input.trim().equals("Games history")){
+            else if(input.trim().equalsIgnoreCase("Games history")){
                 for (Log log : Log.getLogs()) {
                     if(LoginPageController.user.equals(log.getPlayer1()) || LoginPageController.user.equals(log.getPlayer2())){
                         if(log.getWinner() == null)
@@ -86,13 +86,13 @@ public class UserPage extends Page{
                     System.out.println("You should enter battleSea or reversi as game name!");
                 }
             }
-            else if(input.trim().equals("Logout")){
+            else if(input.trim().equalsIgnoreCase("Logout")){
                 return LoginPage.loginPage;
             }
-            else if(input.trim().equals("back")){
+            else if(input.trim().equalsIgnoreCase("back")){
                 return seenPages.get(seenPages.size()-2);
             }
-            else if(input.equals("help")){
+            else if(input.trim().equalsIgnoreCase("help")){
                 System.out.println("1. View personal info\n" +
                         "2. Change password [current_password] [new_password]\n" +
                         "3. Edit [field(firstname, lastname, username, email, phoneNumber)] [new_value]\n" +

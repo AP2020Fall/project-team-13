@@ -83,8 +83,8 @@ public class ReversiMenu extends Page{
                   System.out.println("please enter password:");
                   String password = scanner.nextLine();
                   try {
-
                       Player secondPlayer = LoginPageController.loginSecond(username,password);
+                      //event score
                       ReversiController.run(((Player)LoginPageController.user), secondPlayer);
                   } catch (Exception e) {
                       System.out.println("invalid information for second player");
