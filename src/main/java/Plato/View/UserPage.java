@@ -3,6 +3,7 @@ package Plato.View;
 import Plato.Controller.LoginPageController;
 import Plato.Controller.UserPageController;
 import Plato.Model.Log;
+import Plato.Model.Player;
 import Plato.Model.User;
 
 import java.util.ArrayList;
@@ -51,13 +52,41 @@ public class UserPage extends Page{
                 }
             }
             else if(Pattern.matches("Game statistics .+", input)){
-
+                if(input.split(" ")[2].equals("battleSea") || input.split(" ")[2].equals("reversi")){
+                    if(input.split(" ")[2].equals("battleSea"))
+                        System.out.println("level: " + ((Player)LoginPageController.user).getBattleSeaLevel() +
+                                "\ngames: " + ((Player)LoginPageController.user).getBattleSeaPlayedCount() +
+                                "\nwins: " + ((Player)LoginPageController.user).getBattleSeaWins() +
+                                "\ndraws: " + ((Player)LoginPageController.user).getBattleSeaDraws() +
+                                "\nlosses: " + ((Player)LoginPageController.user).getBattleSeaLosses());
+                    else if(input.split(" ")[2].equals("reversi")){
+                        System.out.println("level: " + ((Player)LoginPageController.user).getReversiLevel() +
+                                "\ngames: " + ((Player)LoginPageController.user).getReversiPlayedCount() +
+                                "\nwins: " + ((Player)LoginPageController.user).getReversiWins() +
+                                "\ndraws: " + ((Player)LoginPageController.user).getReversiDraws() +
+                                "\nlosses: " + ((Player)LoginPageController.user).getReversiLosses());
+                    }
+                }
+                else{
+                    System.out.println("You should enter battleSea or reversi as game name!");
+                }
             }
             else if(input.trim().equals("Logout")){
                 return LoginPage.loginPage;
             }
             else if(input.trim().equals("back")){
                 return seenPages.get(seenPages.size()-2);
+            }
+            else if(input.equals("help")){
+                System.out.println("1. View personal info\n" +
+                        "2. Change password\n" +
+                        "3. Edit [field(firstname, lastname, username, password, email, phoneNumber] [new_value]\n" +
+                        "4. View plato statistics\n" +
+                        "5. Game history\n" +
+                        "6. Game statistics [game_name(battleSea, reversi]\n" +
+                        "7. Logout\n" +
+                        "8. back\n" +
+                        "9. help");
             }
         }
     }
