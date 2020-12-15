@@ -2,20 +2,20 @@ package Plato.Model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Event {
     private static ArrayList<Event> events = new ArrayList<Event>();
     private ArrayList<Player> playersOfThisEvent = new ArrayList<Player>();
-    private Game game = new Game();
-    private Date startDate = new Date();
-    private Date endDate = new Date();
+    private Game game;
+    private GregorianCalendar startDate;
+    private GregorianCalendar endDate;
     private int eventScore;
     private int eventId;
     private boolean hasStarted;
     private boolean hasEnded;
 
-    public Event( Game game, Date startDate, Date endDate, int eventScore) {
-        this.playersOfThisEvent = new ArrayList<Player>();
+    public Event( Game game, GregorianCalendar startDate, GregorianCalendar endDate, int eventScore) {
         this.game = game;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -25,11 +25,7 @@ public class Event {
         this.hasEnded = false;
     }
 
-    public static void createEvent(Game game, Date startDate, Date endDate, int eventScore, int eventId){
-        Event event = new Event(game, startDate, endDate, eventScore);
-        events.add(event);
 
-    }
 
     public static ArrayList<Event> getEvents() {
         return events;
@@ -51,13 +47,7 @@ public class Event {
         return game;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
 
-    public Date getEndDate() {
-        return endDate;
-    }
 
     public int getEventScore() {
         return eventScore;
@@ -115,11 +105,19 @@ public class Event {
         this.game = game;
     }
 
-    public void setStartDate(Date startDate) {
+    public GregorianCalendar getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(GregorianCalendar startDate) {
         this.startDate = startDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public GregorianCalendar getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(GregorianCalendar endDate) {
         this.endDate = endDate;
     }
 }

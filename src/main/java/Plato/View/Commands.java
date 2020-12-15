@@ -8,7 +8,7 @@ public enum Commands {
     VIEW_EVENTS("(?i)view\\s+events"),
     VIEW_EVENT("(?i)view\\s+event\\s+(\\d+)"),
     REMOVE_EVENT("(?!)remove\\s+event\\s+(\\d+)"),
-    ADD_EVENT("(?!)add\\s+event\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\d+)"),
+    ADD_EVENT("(?i)add\\s+event"),
     EDIT_EVENT("(?!)edit\\s+event\\s+(\\d+)\\s+(\\S+)\\s+(\\S+)"),
     ADD_SUGGESTION("(?!)add\\s+suggestion\\s+(\\S+)\\s+(\\S+)"),
     VIEW_SUGGESTIONS("(?i)view\\s+suggestions"),
@@ -23,9 +23,9 @@ public enum Commands {
     VIEW_PLATOBOT_MESSAGES("(?i)view\\s+platobot\\s+messages"),
     VIEW_LAST_PLAYED("(?i)view\\s+last\\s+played"),
     VIEW_ADMINS_SUGGESTIONS("(?i)view\\s+admins\\s+suggestions"),
-    CHOOSE_SUGGESTED_GAME("(?ichoose\\s+suggested\\s+game\\s+(\\d+)"),
+    CHOOSE_SUGGESTED_GAME("(?i)choose\\s+suggested\\s+game\\s+(\\d+)"),
     ADD_FRIEND("(?i)add\\s+friend\\s+(\\S+)"),
-    DATER("(?i)(\\d+)\\/\\s+(\\d+)\\s+/\\s+(\\d+)\\s+/\\s+(\\d+)\\s+/\\s+(\\d+)"),
+    DATER("(?i)(\\d+)\\s+(\\d+)\\s+(\\d+)"),
     SHOW_FRIENDS("(?i)show\\s+friends"),
     REMOVE_FRIENDS("(?i)remove\\s+(\\d+)"),
     VIEW_USER_PROFILE_FRIEND_MENU("(?i)view\\s+user\\s+profile\\s+(\\S+)"),
@@ -34,7 +34,12 @@ public enum Commands {
     ACCEPT_FRIEND_REQUEST("(?i)accept\\s+(\\S+)"),
     DECLNE_FRIEND_REQUEST("(?i)decline\\s+(\\S+)"),
     REGISTER("(?i)register\\s+(\\S+)\\s+(\\S+)"),
-    LOGIN("(?i)login\\s+(\\S+)");
+    LOGIN("(?i)login\\s+(\\S+)"),
+    CHOOSE_FAVORITE_GAME("(?i)choose\\s+favorite\\s+(\\d+)"),
+    JOIN_EVENT("(?i)join\\s+event\\s+(\\d+)"),
+    GO_TO_FRIENDS_MENU("(?i)go\\s+to\\s+friends\\s+menu"),
+    GO_TO_GAMES_MENU("(?i)go\\s+to\\s+games\\s+menu"),
+    CHANGE_GAME_NAME("(?i)change\\s+game\\s+name\\s+(\\d+)\\s+(\\S+)");
 
     private Pattern pattern;
 

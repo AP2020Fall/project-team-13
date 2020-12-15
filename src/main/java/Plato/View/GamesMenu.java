@@ -1,6 +1,7 @@
 package Plato.View;
 
 import Plato.Controller.LoginPageController;
+import Plato.Controller.MainPagePlayerController;
 import Plato.Model.Player;
 
 import java.util.Scanner;
@@ -12,11 +13,13 @@ public class GamesMenu extends Page{
     public Page run() {
     Page.seenPages.add(GamesMenu.gamesMenu);
     System.out.println("choose one:\n" +
-            "1.Reversi\n" +
-            "2.Battle sea"+
-            "\nback"+
-            "\nview account menu"+
-            "\n help");
+            "1.\n");
+        System.out.println(MainPagePlayerController.getInstance().reversiName());
+        System.out.println("2.");
+        System.out.println(MainPagePlayerController.getInstance().battleSeaName());
+        System.out.println("\nback"+
+                "\nview account menu"+
+                "\n help");
         Scanner scanner = new Scanner(System.in);
         String input;
         Matcher matcher;
@@ -25,7 +28,7 @@ public class GamesMenu extends Page{
             if (input.equals("1")) {
                 return ReversiMenu.reversiMenu;
             }
-            else if (input.equals(2)) {
+            else if (input.equals("2")) {
                 return BattleSeaMenu.battleSeaMenu;
             }
             else if ((matcher = Commands.BACK.getMatcher(input)).matches())
@@ -39,9 +42,11 @@ public class GamesMenu extends Page{
             else if ((matcher = Commands.HELP.getMatcher(input)).matches())
             {
                 System.out.println("choose one:\n" +
-                        "1.Reversi\n" +
-                        "2.Battle sea"+
-                        "\nback"+
+                        "1.\n");
+                System.out.println(MainPagePlayerController.getInstance().reversiName());
+                System.out.println("2.");
+                System.out.println(MainPagePlayerController.getInstance().battleSeaName());
+                System.out.println("\nback"+
                         "\nview account menu"+
                         "\n help");
             }

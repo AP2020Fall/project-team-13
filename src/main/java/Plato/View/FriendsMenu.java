@@ -11,6 +11,7 @@ public class FriendsMenu extends Page{
         Matcher matcher;
         String input;
         Page.seenPages.add(FriendsMenu.friendsMenu);
+        System.out.println("Friends Menu :");
         while (true)
         {
             input=scanner.nextLine();
@@ -51,6 +52,10 @@ public class FriendsMenu extends Page{
             else if (Commands.BACK.getMatcher(input).matches())
             {
                 return seenPages.get(seenPages.size()-2);
+            }
+            else if ((matcher = Commands.VIEW_ACCOUNT_MENU.getMatcher(input)).matches())
+            {
+                return UserPage.userPage;
             }
             else {
                 System.out.println("invalid command");

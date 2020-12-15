@@ -11,11 +11,25 @@ public class MainPageAdmin extends Page {
         seenPages.add(mainPageAdmin);
         String input;
         Matcher matcher;
+        System.out.println("Main Page Admin :");
 while(true){
     input=scanner.nextLine();
     if ((matcher = Commands.ADD_EVENT.getMatcher(input)).matches())
     {
-        mainPageAdmin.addEvent(matcher.group(1),matcher.group(2),matcher.group(3), Integer.parseInt(matcher.group(4)));
+        try {
+            System.out.println("enter game name");
+            String gameName = scanner.nextLine();
+            System.out.println("enter start date");
+            String sdate = scanner.nextLine();
+            System.out.println("enter end date");
+            String edate = scanner.nextLine();
+            System.out.println("enter score");
+            int score = scanner.nextInt();
+            mainPageAdmin.addEvent(gameName,sdate,edate, score);
+        } catch (NumberFormatException e) {
+            System.out.println("invalid form");
+        }
+
     }
     else if ((matcher = Commands.VIEW_EVENTS.getMatcher(input)).matches())
     {
@@ -64,9 +78,13 @@ while(true){
     else if ((matcher = Commands.HELP.getMatcher(input)).matches())
     {
         System.out.println("Add event"+"\n"+"View events\n"+"Edit event\n"+"Remove event\n"+"Add suggestion\n"+"View suggestions\n"
-        +"Remove suggestion\n"+"View users\n"+"View user profile\n");
+        +"Remove suggestion\n"+"View users\n"+"View user profile\n"+"change game name\n");
     }
-    else {
+    else if ((matcher = Commands.CHANGE_GAME_NAME.getMatcher(input)).matches())
+    {
+        MainPageAdmin.mainPageAdmin.mainPageAdminController.changeGameName(Integer.parseInt(matcher.group(1)),matcher.group(2));
+    }
+    else if (!input.equals("")){
         System.out.println("invalid command");
     }
 }
@@ -92,12 +110,16 @@ while(true){
     private void removeSeggestion(int id){
         mainPageAdminController.removeSuggestion(id);
     }
-    private void viewEvents(){
+    public void viewEvents(){
         String evets = mainPageAdminController.viewEvents();
         System.out.println(evets);
     }
     private void addEvent(String name,String sdate,String edate,int score){
-        mainPageAdminController.addEvent(name,sdate,edate,score);
+        try {
+            mainPageAdminController.addEvent(name,sdate,edate,score);
+        } catch (Exception e) {
+            System.out.println("invalid form");
+        }
     }
     private void viewEvent(int id){
         String event;
@@ -118,5 +140,9 @@ while(true){
     }
     private void endtEvent(int id){
         mainPageAdminController.endEvent(id);
+    }
+    private void changeGameName(int id,String newName)
+    {
+        mainPageAdminController.changeGameName(id,newName);
     }
 }

@@ -23,6 +23,7 @@ public class LoginPageController {
              {
                  if (allUser.getPassword().equals(password))
                  {
+                     LoginPageController.user=allUser;
                      if (allUser.isAdmin())
                      {
                          return "found admin";
@@ -72,6 +73,7 @@ public class LoginPageController {
             admin.setAdmin(true);
             User.getAllUsers().add(admin);
             Admin.getAdmins().add(admin);
+            User.setIsMainAdminJoinnt(true);
         }
         return true;
     }
