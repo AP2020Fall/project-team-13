@@ -15,11 +15,6 @@ public class ShipManager {
         this.owner = owner;
         allShips=new ArrayList<Ship>();
         createShips(gridDimension, numberOfShips);
-        putTheShipsOnBoardRandomly();
-    }
-
-    public boolean changeDirection(int shipCode, char direction, GridManager playerGridManager) {
-        return true;
     }
 
     public ArrayList<Ship> getAllShips() {
@@ -63,10 +58,6 @@ public class ShipManager {
             allShips.add(new Ship(i + 1, length, width, owner));
             length--;
         }
-    }
-
-    public void putTheShipsOnBoardRandomly() {
-
     }
 
     public Coordination[][] getShipOnGrid(Ship ship, GridManager gridManager) {

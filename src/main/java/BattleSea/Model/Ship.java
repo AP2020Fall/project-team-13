@@ -65,7 +65,7 @@ public class Ship {
         return isMovable;
     }
 
-    public void isHit(){
+    public void makeItImmovable(){
         isMovable=false;
     }
 }

@@ -19,7 +19,7 @@ public class BattleSeaMenu extends Page{
         while(true){
             input = scanner.nextLine();
             if(input.trim().equalsIgnoreCase("Show scoreboard")){
-                ArrayList<Player> playersThatHasPlayedBattleSea = new ArrayList<>();
+                ArrayList<Player> playersThatHasPlayedBattleSea = new ArrayList<Player>();
                 for (Player player : Player.getPlayers()) {
                     if(player.getReversiPlayedCount() > 0)
                         playersThatHasPlayedBattleSea.add(player);

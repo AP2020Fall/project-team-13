@@ -19,7 +19,7 @@ public class ReversiMenu extends Page{
           while(true){
               input = scanner.nextLine();
               if(input.trim().equalsIgnoreCase("Show scoreboard")){
-                  ArrayList<Player> playersThatHasPlayedReversi = new ArrayList<>();
+                  ArrayList<Player> playersThatHasPlayedReversi = new ArrayList<Player>();
                   for (Player player : Player.getPlayers()) {
                       if(player.getReversiPlayedCount() > 0)
                           playersThatHasPlayedReversi.add(player);
