@@ -1,6 +1,7 @@
 package BattleSea.View;
 
 import BattleSea.Controller.GameManager;
+import Plato.Model.Log;
 import Plato.Model.Player;
 import Plato.View.Page;
 
@@ -74,9 +75,22 @@ public class InGameMenu {
                 int yAxis = Integer.parseInt(scanner.nextLine().trim());
                 bombLocation(xAxis, yAxis);
             } else if (input.equalsIgnoreCase("4")) {
-
+                System.out.println("choose an option: " +
+                        "\n1-all ships " +
+                        "\n2-functional ships (ship that are not damaged) " +
+                        "\n3-damaged ships " +
+                        "\n4-destroyed ships");
+                int option = Integer.parseInt(scanner.nextLine().trim());
+                if (option < 0 || option > 5) System.out.println("you entered an invalid number");
+                else showShips(option);
             } else if (input.equalsIgnoreCase("5")) {
-
+                System.out.println("choose an option: " +
+                        "\n1-all bombs " +
+                        "\n2-missed bombs" +
+                        "\n3-hit bombs ");
+                int option = Integer.parseInt(scanner.nextLine().trim());
+                if (option < 0 || option > 3) System.out.println("you entered an invalid number");
+                else showBombardLocations(option);
             } else if (input.equalsIgnoreCase("6")) {
                 showPlayerGameBoard();
             } else if (input.equalsIgnoreCase("7")) {
@@ -92,16 +106,36 @@ public class InGameMenu {
         finalizingTheGame();
     }
 
-    private void finalizingTheGame(){
-
+    private void finalizingTheGame() {
+        Player firstPlayer = gameManager.getFirstPlayer();
+        Player secondPlayer = gameManager.getSecondPlayer();
+        int firstPlayerScore = gameManager.getFirstPlayerScore();
+        int secondPlayerScore = gameManager.getSecondPlayerScore();
+        firstPlayer.addBattleSeaPlayedCount();
+        secondPlayer.addBattleSeaPlayedCount();
+        firstPlayer.addBattleSeaPoints(firstPlayerScore);
+        secondPlayer.addBattleSeaPoints(secondPlayerScore);
+        if (firstPlayerScore == secondPlayerScore) {
+            firstPlayer.addBattleSeaDraws();
+            secondPlayer.addBattleSeaDraws();
+            Log.addLog(2,firstPlayer,secondPlayer,null);
+        } else if (firstPlayerScore > secondPlayerScore) {
+            firstPlayer.addBattleSeaWins();
+            secondPlayer.addBattleSeaLosses();
+            Log.addLog(2, firstPlayer, secondPlayer, firstPlayer);
+        } else {
+            firstPlayer.addBattleSeaLosses();
+            secondPlayer.addBattleSeaWins();
+            Log.addLog(2, firstPlayer, secondPlayer, secondPlayer);
+        }
     }
 
-    private void withdraw(){
+    private void withdraw() {
         gameManager.withdraw();
     }
 
-    private void clearScreen(){
-        try{
+    private void clearScreen() {
+        try {
             gameManager.clearScreen();
         } catch (InterruptedException | IOException ignored) {
 
@@ -176,12 +210,32 @@ public class InGameMenu {
         }
     }
 
-    public void showShips(String setting) {
-
+    public void showShips(int option) {
+        for (String ship : gameManager.getShips(option)) {
+            System.out.println(ship);
+        }
     }
 
-    public void showBombardLocations(String setting) {
-
+    public void showBombardLocations(int option) {
+        for (int i = 0; i < gameManager.getTurnsOpponentBoard().getDimension(); i++) {
+            for (int j = 0; j < gameManager.getTurnsOpponentBoard().getDimension(); j++) {
+                if (option == 1 && !gameManager.getTurnsOpponentBoard().getLocation(i, j).getContent().equals("")) {
+                    System.out.println("X:" + gameManager.getTurnsOpponentBoard().getLocation(i, j).getXAxis() +
+                            "Y:" + gameManager.getTurnsOpponentBoard().getLocation(i, j).getYAxis());
+                }
+                if (option == 2 && gameManager.getTurnsOpponentBoard().getLocation(i, j).getContent().equals("-")) {
+                    System.out.println("X:" + gameManager.getTurnsOpponentBoard().getLocation(i, j).getXAxis() +
+                            "Y:" + gameManager.getTurnsOpponentBoard().getLocation(i, j).getYAxis());
+                }
+                if (option == 3) {
+                    if (gameManager.getTurnsOpponentBoard().getLocation(i, j).getContent().equals("+") ||
+                            gameManager.getTurnsOpponentBoard().getLocation(i, j).getContent().equals("*")) {
+                        System.out.println("X:" + gameManager.getTurnsOpponentBoard().getLocation(i, j).getXAxis() +
+                                "Y:" + gameManager.getTurnsOpponentBoard().getLocation(i, j).getYAxis());
+                    }
+                }
+            }
+        }
     }
 
     public void showScores() {

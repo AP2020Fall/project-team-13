@@ -109,8 +109,8 @@ public class GameManager {
                 playerGridManager.wasBombingLocationSuccessful(true, xAxis, yAxis);
                 if (!(opponentShipManager.isAnyShipDestroyed(opponentGridManager) == -1)) {
                     addScore(5, turn);
-                    playerGridManager.destroyShip(opponentShipManager.isAnyShipDestroyed(opponentGridManager),turn);
-                    opponentGridManager.destroyShip(opponentShipManager.isAnyShipDestroyed(opponentGridManager),turn);
+                    playerGridManager.destroyShip(opponentShipManager.isAnyShipDestroyed(opponentGridManager), turn);
+                    opponentGridManager.destroyShip(opponentShipManager.isAnyShipDestroyed(opponentGridManager), turn);
                     if (opponentShipManager.areAllShipsDestroyed()) InGameMenu.gameHasEnded();
                     return 2; //"You Destroyed Your Opponent's Ship";
                 }
@@ -177,12 +177,12 @@ public class GameManager {
         return secondPlayerShipManager;
     }
 
-    public Grid getTurnsOwnBoard(){
+    public Grid getTurnsOwnBoard() {
         if (turn.equals(firstPlayer)) return firstPlayerGridManager.getPlayerGrid();
         else return secondPlayerGridManager.getPlayerGrid();
     }
 
-    public Grid getTurnsOpponentBoard(){
+    public Grid getTurnsOpponentBoard() {
         if (turn.equals(firstPlayer)) return firstPlayerGridManager.getOpponentGrid();
         else return secondPlayerGridManager.getOpponentGrid();
     }
@@ -203,13 +203,37 @@ public class GameManager {
         return secondPlayerScore;
     }
 
-    public void withdraw(){
-        if (turn.equals(firstPlayer)) firstPlayerScore=-10;
-        else secondPlayerScore=-10;
+    public void withdraw() {
+        if (turn.equals(firstPlayer)) firstPlayerScore = -10;
+        else secondPlayerScore = -10;
         InGameMenu.gameHasEnded();
     }
 
     public void clearScreen() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    }
+
+    public ArrayList<String> getShips(int option) {
+        if (turn.equals(firstPlayer)) {
+            return getShipsOfPlayer(option, firstPlayerShipManager);
+        } else {
+            return getShipsOfPlayer(option, secondPlayerShipManager);
+        }
+    }
+
+    private ArrayList<String> getShipsOfPlayer(int option, ShipManager playerShipManager) {
+        ArrayList<String> ships = new ArrayList<>();
+        for (Ship ship : playerShipManager.getAllShips()) {
+            if (option == 1) {
+                ships.add("ship " + ship.getCode());
+            } else if (option == 2 && ship.isMovable()) {
+                ships.add("ship " + ship.getCode());
+            } else if (option == 3 && !ship.isMovable() && !ship.isDestroyed()) {
+                ships.add("ship " + ship.getCode());
+            } else if (option == 4 && ship.isDestroyed()) {
+                ships.add("ship " + ship.getCode());
+            }
+        }
+        return ships;
     }
 }
