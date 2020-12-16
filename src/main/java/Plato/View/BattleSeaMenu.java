@@ -85,7 +85,7 @@ public class BattleSeaMenu extends Page{
                 try {
                     Player secondPlayer = LoginPageController.loginSecond(username,password);
                     //event score
-
+                    new BattleSea((Player)LoginPageController.user,secondPlayer).run();
                 } catch (Exception e) {
 
                 }

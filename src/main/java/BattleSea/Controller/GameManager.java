@@ -127,7 +127,7 @@ public class GameManager {
         }
     }
 
-    private void changeTurn() {
+    public void changeTurn() {
         if (turn.equals(firstPlayer)) turn = secondPlayer;
         else turn = firstPlayer;
     }

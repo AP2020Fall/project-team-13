@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 
 public class InGameMenu {
-    private GameManager gameManager;
+    private final GameManager gameManager;
     private static boolean isGameEnded;
-    private Scanner scanner;
+    private final Scanner scanner;
 
 
     public InGameMenu(GameManager gameManager, Scanner scanner) {
@@ -134,7 +134,7 @@ public class InGameMenu {
         gameManager.withdraw();
     }
 
-    private void clearScreen() {
+    public void clearScreen() {
         try {
             gameManager.clearScreen();
         } catch (InterruptedException | IOException ignored) {
@@ -245,6 +245,10 @@ public class InGameMenu {
 
     public void changeTurn() {
         System.out.println("Next Player's Turn!");
+    }
+
+    public void changeTurn(boolean t){
+        if (t) gameManager.changeTurn();
     }
 
 }
