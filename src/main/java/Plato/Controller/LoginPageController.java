@@ -1,8 +1,11 @@
 package Plato.Controller;
 
+import BattleSea.Controller.BattleSea;
 import Plato.Model.Admin;
+import Plato.Model.Game;
 import Plato.Model.Player;
 import Plato.Model.User;
+import Reversi.ReversiController;
 
 import java.util.Date;
 
@@ -43,7 +46,7 @@ public class LoginPageController {
         }
         if (User.isIsMainAdminJoinnt())
         {
-            Date date = new Date();
+
             Player player = new Player();
             player.setUsername(username);
             player.setUserID(User.getAllUsers().size()+1);
@@ -58,7 +61,7 @@ public class LoginPageController {
 
         }
         else  {
-            Date date = new Date();
+
             Admin admin = new Admin();
             admin.setUsername(username);
             admin.setUserID(User.getAllUsers().size()+1);
@@ -86,5 +89,15 @@ public class LoginPageController {
         }
         Exception  exeption= new Exception();
         throw exeption;
+    }
+
+    public static void addTheGames()
+    {
+        ReversiController.reversiController.setGameID(1);
+        ReversiController.reversiController.setName("reversi");
+        BattleSea.battleSea.setGameID(2);
+        BattleSea.battleSea.setName("battleSea");
+        Game.getGames().add(ReversiController.reversiController);
+        Game.getGames().add(BattleSea.battleSea);
     }
 }

@@ -9,18 +9,29 @@ public class Admin extends User{
         return admins;
     }
 
-    public  void addNewAdmin(){
+    public  void addNewAdmin(String username, String password, String email, String firstname, String lastname, String phoneNumber) throws Exception {
+        for (User allUser : User.getAllUsers()) {
+            if ((allUser.getUsername().equals(username))||(allUser.getEmail().equals(email)))
+            {
+                Exception exception = new Exception();
+                throw exception;
+            }
+        }
+        Admin admin = new Admin();
+        admin.setAdmin(true);
+        admin.setEmail(email);
+        admin.setFirstname(firstname);
+        admin.setLastname(lastname);
+        admin.setPassword(password);
+        admin.setPhoneNumber(phoneNumber);
+        admin.setUsername(username);
+        admin.setUserID(User.getAllUsers().size()+1);
+        User.getAllUsers().add(admin);
+        admins.add(admin);
 
     }
 
-    public static void deleteAdminAccount(int ID){
-        for (Admin admin : admins) {
-            if (admin.getUserID()==ID)
-            {
-                admins.remove(admin);
-                break;
-            }
-        }
+    public Admin() {
     }
 
     public static ArrayList<String> getMessages() {

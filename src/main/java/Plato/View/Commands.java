@@ -39,7 +39,8 @@ public enum Commands {
     JOIN_EVENT("(?i)join\\s+event\\s+(\\d+)"),
     GO_TO_FRIENDS_MENU("(?i)go\\s+to\\s+friends\\s+menu"),
     GO_TO_GAMES_MENU("(?i)go\\s+to\\s+games\\s+menu"),
-    CHANGE_GAME_NAME("(?i)change\\s+game\\s+name\\s+(\\d+)\\s+(\\S+)");
+    CHANGE_GAME_NAME("(?i)change\\s+game\\s+name\\s+(\\d+)\\s+(\\S+)"),
+    ADD_NEW_ADMIN("(?i)add\\s+admin\\s+(\\S+)\\s+(\\S+)");
 
     private Pattern pattern;
 
