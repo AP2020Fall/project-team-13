@@ -4,7 +4,6 @@ import Plato.Model.Game;
 import Plato.Model.Log;
 import Plato.Model.Player;
 import Plato.View.*;
-
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -32,7 +31,6 @@ public class ReversiController extends Game {
     public ReversiView getView() {
         return view;
     }
-
     public Reversi getModel() {
         return model;
     }
