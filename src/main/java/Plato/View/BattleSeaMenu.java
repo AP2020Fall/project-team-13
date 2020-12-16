@@ -21,7 +21,7 @@ public class BattleSeaMenu extends Page{
             if(input.trim().equalsIgnoreCase("Show scoreboard")){
                 ArrayList<Player> playersThatHasPlayedBattleSea = new ArrayList<Player>();
                 for (Player player : Player.getPlayers()) {
-                    if(player.getReversiPlayedCount() > 0)
+                    if(player.getBattleSeaPlayedCount() > 0)
                         playersThatHasPlayedBattleSea.add(player);
                 }
                 playersThatHasPlayedBattleSea = Player.sortForReversiMenu(playersThatHasPlayedBattleSea);
@@ -93,7 +93,7 @@ public class BattleSeaMenu extends Page{
             else if( input.trim().equalsIgnoreCase("Show point")) {
                 System.out.println("the player with username "
                         + ((Player)LoginPageController.user).getUsername() + " has gained "
-                        + ((Player)LoginPageController.user).getBattleSeaWins() + " points from BattleSea.");
+                        + ((Player)LoginPageController.user).getBattleSeaPoints() + " points from BattleSea.");
             }
             else if(input.trim().equalsIgnoreCase("View account menu")){
                 return UserPage.userPage;

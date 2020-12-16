@@ -152,8 +152,8 @@ public class Player extends User{
     public int getBattleSeaPlayedCount() {
         return battleSeaPlayedCount;
     }
-    public void addBattleSeaPoints(){
-        this.battleSeaPoints++;
+    public void addBattleSeaPoints(int point){
+        this.battleSeaPoints += point;
     }
     public int getBattleSeaPoints() {
         return battleSeaPoints;

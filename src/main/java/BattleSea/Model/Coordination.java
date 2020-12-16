@@ -20,6 +20,10 @@ public class Coordination implements Comparable<Coordination> {
         this.content = content;
     }
 
+    public String getPreviousContent() {
+        return previousContent;
+    }
+
     public void rollbackContentChange(){
         this.content=this.previousContent;
     }

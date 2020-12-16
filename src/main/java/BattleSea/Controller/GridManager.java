@@ -9,6 +9,7 @@ public class GridManager {
     private final Player owner;
     private Grid playerGrid;
     private Grid opponentGrid;
+    private boolean bombingFlag;
 
     public GridManager(Player owner, int gridDimension) {
         this.owner = owner;
@@ -17,20 +18,30 @@ public class GridManager {
     }
 
     public boolean bombLocation(int xAxis, int yAxis, Player bomber, ShipManager playerShipManager) {
+
         if (bomber.equals(owner)) {
-            return opponentGrid.getLocation(xAxis, yAxis).Bomb();
+            if(opponentGrid.getLocation(xAxis, yAxis).Bomb()){
+                return true;
+            } else return false;
         } else {
             playerGrid.getLocation(xAxis, yAxis).Bomb();
             if (playerGrid.getLocation(xAxis, yAxis).isOccupied()) {
-                opponentGrid.getLocation(xAxis, yAxis).setContent("+");
+                playerGrid.getLocation(xAxis, yAxis).setContent("+");
                 int shipCode = Integer.parseInt(playerGrid.getLocation(xAxis, yAxis).getContent().split(" ")[1]);
                 playerShipManager.getShipByShipCode(shipCode).makeItImmovable();
                 return true;
             } else {
-                opponentGrid.getLocation(xAxis, yAxis).setContent("-");
+                playerGrid.getLocation(xAxis, yAxis).setContent("-");
+                playerGrid.getLocation(xAxis, yAxis).occupy();
                 return false;
             }
         }
+    }
+
+    public void wasBombingLocationSuccessful(boolean answer,int xAxis, int yAxis){
+        if (answer){
+            opponentGrid.getLocation(xAxis,yAxis).setContent("+");
+        } else opponentGrid.getLocation(xAxis,yAxis).setContent("-");
     }
 
     public boolean changeLocationOfShip(Ship ship, int newStartPointXAxis, int newStartPointYAxis) throws IndexOutOfBoundsException {
@@ -147,5 +158,32 @@ public class GridManager {
 
     public Player getOwner() {
         return owner;
+    }
+
+    public boolean isTheGridFullyBombed(){
+        for (Coordination[] coordinations : opponentGrid.getTheGrid()) {
+            for (Coordination coordination : coordinations) {
+                if (!coordination.isBombed()) return false;
+            }
+        }
+        return true;
+    }
+
+    public void destroyShip(int shipCode,Player destroyer){
+        if (destroyer.equals(owner)){
+            for (Coordination[] coordinations : opponentGrid.getTheGrid()) {
+                for (Coordination coordination : coordinations) {
+                    if (coordination.getContent().equalsIgnoreCase("ship "+shipCode))
+                        coordination.setContent("*");
+                }
+            }
+        }else{
+            for (Coordination[] coordinations : playerGrid.getTheGrid()) {
+                for (Coordination coordination : coordinations) {
+                    if (coordination.getContent().equalsIgnoreCase("ship "+shipCode))
+                        coordination.setContent("*");
+                }
+            }
+        }
     }
 }

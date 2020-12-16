@@ -13,7 +13,7 @@ public class ShipManager {
 
     public ShipManager(Player owner, int gridDimension, int numberOfShips) {
         this.owner = owner;
-        allShips=new ArrayList<Ship>();
+        allShips = new ArrayList<Ship>();
         createShips(gridDimension, numberOfShips);
     }
 
@@ -25,26 +25,27 @@ public class ShipManager {
         return allShips.get(shipCode - 1);
     }
 
-    public boolean isAnyShipDestroyed(GridManager playerGridManager) {
+    public int isAnyShipDestroyed(GridManager playerGridManager) {
         for (Ship ship : allShips) {
             if (!ship.isDestroyed()) {
-                boolean flag=true;
+                boolean flag = true;
                 for (Coordination[] line : getShipOnGrid(ship, playerGridManager)) {
                     for (Coordination coordination : line) {
                         if (!coordination.getContent().equals("+")) {
-                            flag=false;
+                            flag = false;
                             break;
                         }
                     }
                     if (!flag) break;
                 }
-                if (flag){
+                if (flag) {
                     ship.destroy();
-                    return true;
+
+                    return ship.getCode();
                 }
             }
         }
-        return false;
+        return -1;
     }
 
     private void createShips(int gridDimension, int numberOfShips) {
@@ -83,7 +84,7 @@ public class ShipManager {
             }
         } else {
             theShip = new Coordination[ship.getWidth()][ship.getLength()];
-            if (ship.getDirection()=='w'){
+            if (ship.getDirection() == 'w') {
                 for (int j = ship.getLength() - 1; j >= 0; j--) {
                     for (int i = 0; i < ship.getWidth(); i++) {
                         theShip[i][j] = gridManager.getPlayerGrid().getLocation(
@@ -102,5 +103,12 @@ public class ShipManager {
             }
         }
         return theShip;
+    }
+
+    public boolean areAllShipsDestroyed() {
+        for (Ship ship : allShips) {
+            if (!ship.isDestroyed()) return false;
+        }
+        return true;
     }
 }
