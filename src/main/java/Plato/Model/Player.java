@@ -30,8 +30,6 @@ public class Player extends User{
     private ArrayList<Boolean> messagesShown = new ArrayList<Boolean>();
 
     //constructor
-
-
     public Player() {
         this.money = 0;
         this.score = 0;
@@ -273,5 +271,11 @@ public class Player extends User{
     //returning the level of reversi
     public int getReversiLevel(){
         return (this.reversiPoints / 10);
+    }
+
+    //edit information
+    @Override
+    public void editInformation(String type, String newValue) {
+        super.editInformation(type, newValue);
     }
 }

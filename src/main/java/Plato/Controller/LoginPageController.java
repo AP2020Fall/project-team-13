@@ -14,9 +14,7 @@ public class LoginPageController {
     public static LoginPageController getInstance() {
         return loginPageController;
     }
-
-
-     public String loginController(String username, String password){
+    public String loginController(String username, String password){
 
          for (User allUser : User.getAllUsers()) {
              if (allUser.getUsername().equals(username))
@@ -34,9 +32,8 @@ public class LoginPageController {
                  }
              }
          }
-         return "invalid informations";
+         return "invalid information";
      }
-
     public boolean register(String username, String password, String email, String firstname, String lastname, String phoneNumber) {
         for (User allUser : User.getAllUsers()) {
             if ((allUser.getUsername().equals(username))||(allUser.getEmail().equals(email)))
@@ -77,8 +74,7 @@ public class LoginPageController {
         }
         return true;
     }
-    public static Player  loginSecond(String username , String password) throws Exception
-    {
+    public static Player  loginSecond(String username , String password) throws Exception {
         for (Player player : Player.getPlayers()) {
             if (player.getUsername().equals(username))
             {
