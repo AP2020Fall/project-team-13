@@ -133,12 +133,12 @@ public class MainPageAdminController {
         StringBuilder events = new StringBuilder();
         for (Event event : Event.getEvents()) {
             if (event.isHasEnded()) {
-                events.append(event.getGame().getName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
+                events.append(event.getGame().getName() + " start: " + event.getStartDate().getTime().toString() + " end: " + event.getEndDate().getTime().toString() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
             }
         }
         for (Event event : Event.getEvents()) {
             if (!event.isHasEnded()) {
-                events.append(event.getGame().getName() + " " + event.getStartDate() + " " + event.getEndDate() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
+                events.append(event.getGame().getName() + " start: " + event.getStartDate().getTime().toString() + " end: " + event.getEndDate().getTime().toString() + " " + event.getEventId() + " " + event.getEventScore() + "\n");
             }
         }
         if (String.valueOf(events).equals(""))
