@@ -15,9 +15,9 @@ public class MainPageAdminController {
         return mainPageAdminController;
     }
 
-    public void addNewAdminController(){
+    public void addNewAdminController(String username, String password, String email, String firstname, String lastname, String phoneNumber) throws Exception {
         Admin admin= (Admin) LoginPageController.user;
-        admin.addNewAdmin();
+        admin.addNewAdmin(username,password,email,firstname,lastname,phoneNumber);
     }
 
     public String viewUsers() {

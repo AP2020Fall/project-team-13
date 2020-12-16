@@ -84,6 +84,19 @@ while(true){
     {
         MainPageAdmin.mainPageAdmin.mainPageAdminController.changeGameName(Integer.parseInt(matcher.group(1)),matcher.group(2));
     }
+    else if ((matcher = Commands.ADD_NEW_ADMIN.getMatcher(input)).matches())
+    {
+        System.out.println("enter email");
+        String email = scanner.nextLine();
+        System.out.println("enter firstname");
+        String firstname = scanner.nextLine();
+        System.out.println("enter lastname");
+        String lastname = scanner.nextLine();
+        System.out.println("enter phone number");
+        String phoneNumber = scanner.nextLine();
+        mainPageAdmin.addAdmin(matcher.group(1),matcher.group(2),email,firstname,lastname,phoneNumber);
+
+    }
     else if (!input.equals("")){
         System.out.println("invalid command");
     }
@@ -145,4 +158,12 @@ while(true){
     {
         mainPageAdminController.changeGameName(id,newName);
     }
+    private void addAdmin(String username, String password, String email, String firstname, String lastname, String phoneNumber) {
+        try {
+            mainPageAdminController.addNewAdminController(username,password,email,firstname,lastname,phoneNumber);
+        } catch (Exception e) {
+            System.out.println("username was used please try again with another username");
+        }
+    }
+
 }
