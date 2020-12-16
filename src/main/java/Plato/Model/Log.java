@@ -1,7 +1,13 @@
 package Plato.Model;
 
+import org.json.simple.JSONArray;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Log {
     //fields
@@ -59,4 +65,22 @@ public class Log {
                 ;
     }
 
+    //update the logs that has been saved in file
+    public static void updateLogs() throws FileNotFoundException {
+        JSONArray ja = new JSONArray();
+        int n = logs.size();
+        for (int i = 0; i < n; i++) {
+            Map m = new LinkedHashMap(5);
+            m.put("gameID", logs.get(i).getGameID());
+            m.put("player1", logs.get(i).getPlayer1().getUsername());
+            m.put("player2", logs.get(i).getPlayer2().getUsername());
+            m.put("winner", logs.get(i).getWinner().getUsername());
+            m.put("finishTime", logs.get(i).getFinishTime());
+            ja.add(m);
+        }
+        PrintWriter pw = new PrintWriter("logs.json");
+        pw.write(ja.toJSONString());
+        pw.flush();
+        pw.close();
+    }
 }

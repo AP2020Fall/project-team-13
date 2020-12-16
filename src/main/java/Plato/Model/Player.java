@@ -1,9 +1,15 @@
 package Plato.Model;
 
 
+import org.json.simple.JSONArray;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Player extends User{
     //fields
@@ -277,5 +283,82 @@ public class Player extends User{
     @Override
     public void editInformation(String type, String newValue) {
         super.editInformation(type, newValue);
+    }
+
+    //update the players that has been saved in file
+    public static void updatePlayers() throws FileNotFoundException {
+        JSONArray ja = new JSONArray();
+        int n = players.size();
+        for (int i = 0; i < n; i++) {
+            Map m = new LinkedHashMap(28);
+            m.put("firstname", players.get(i).getFirstname());
+            m.put("lastname", players.get(i).getLastname());
+            m.put("username", players.get(i).getUsername());
+            m.put("userID", players.get(i).getUserID());
+            m.put("password", players.get(i).getPassword());
+            m.put("email", players.get(i).getEmail());
+            m.put("phoneNumber", players.get(i).getPhoneNumber());
+            m.put("isAdmin", players.get(i).isAdmin());
+            m.put("registerTime", players.get(i).getRegisterTime());
+            m.put("money", players.get(i).getMoney());
+            m.put("score", players.get(i).getScore());
+            m.put("reversiWins", players.get(i).getReversiWins());
+            m.put("reversiDraws", players.get(i).getReversiDraws());
+            m.put("reversiLosses", players.get(i).getReversiLosses());
+            m.put("reversiPlayedCount", players.get(i).getReversiPlayedCount());
+            m.put("reversiPoints", players.get(i).getReversiPoints());
+            m.put("battleSeaWins", players.get(i).getBattleSeaWins());
+            m.put("battleSeaDraws", players.get(i).getBattleSeaDraws());
+            m.put("battleSeaLosses", players.get(i).getBattleSeaLosses());
+            m.put("battleSeaPlayedCount", players.get(i).getBattleSeaPlayedCount());
+            m.put("battleSeaPoints", players.get(i).getBattleSeaPoints());
+            int t = players.get(i).getFriends().size();
+            ArrayList<String> friends = new ArrayList<>();
+            for (int j = 0; j < t; j++) {
+                friends.add(players.get(i).getFriends().get(j).getUsername());
+            }
+            m.put("friends", friends);
+            t = players.get(i).getFriendRequests().size();
+            ArrayList<String> friendRequests = new ArrayList<>();
+            for (int j = 0; j < t; j++) {
+                friendRequests.add(players.get(i).getFriendRequests().get(j).getUsername());
+            }
+            m.put("friendRequests", friendRequests);
+            t = players.get(i).getSuggestedGames().size();
+            ArrayList<Integer> suggestedGames = new ArrayList<>();
+            for (int j = 0; j < t; j++) {
+                suggestedGames.add(players.get(i).getSuggestedGames().get(j).getGameID());
+            }
+            m.put("suggestedGames", suggestedGames);
+            t = players.get(i).getSuggestionID().size();
+            ArrayList<Integer> suggestionID = new ArrayList<>();
+            for (int j = 0; j < t; j++) {
+                suggestedGames.add(players.get(i).getSuggestionID().get(j));
+            }
+            m.put("suggestionID", suggestionID);
+            t = players.get(i).getFavorites().size();
+            ArrayList<Integer> favorites = new ArrayList<>();
+            for (int j = 0; j < t; j++) {
+                suggestedGames.add(players.get(i).getFavorites().get(j).getGameID());
+            }
+            m.put("favorites", favorites);
+            t = players.get(i).getMessages().size();
+            ArrayList<String> messages = new ArrayList<>();
+            for (int j = 0; j < t; j++) {
+                messages.add(players.get(i).getMessages().get(j));
+            }
+            m.put("messages", messages);
+            t = players.get(i).getMessages().size();
+            ArrayList<Boolean> messagesShown = new ArrayList<>();
+            for (int j = 0; j < t; j++) {
+                messagesShown.add(players.get(i).getMessagesShown().get(j));
+            }
+            m.put("messagesShown", messagesShown);
+            ja.add(m);
+        }
+        PrintWriter pw = new PrintWriter("logs.json");
+        pw.write(ja.toJSONString());
+        pw.flush();
+        pw.close();
     }
 }
