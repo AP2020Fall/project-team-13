@@ -1,5 +1,5 @@
 import Plato.Controller.LoginPageController;
-import Plato.Model.Game;
+import Plato.Model.*;
 import Plato.View.LoginPage;
 import Plato.View.Page;
 
@@ -17,5 +17,14 @@ public class Main {
         while (page != null) {
             page = page.run();
         }
+    }
+
+    //update everything saved in files
+    public static void update() throws FileNotFoundException {
+        Admin.updateAdmins();
+        Player.updatePlayers();
+        Game.updateGames();
+        Log.updateLogs();
+        Event.updateEvents();
     }
 }

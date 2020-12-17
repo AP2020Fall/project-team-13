@@ -46,7 +46,7 @@ public class Game {
             m.put("gameID", games.get(i).getGameID());
             ja.add(m);
         }
-        PrintWriter pw = new PrintWriter("users.json");
+        PrintWriter pw = new PrintWriter("games.json");
         pw.write(ja.toJSONString());
         pw.flush();
         pw.close();

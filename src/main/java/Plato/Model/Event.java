@@ -1,8 +1,10 @@
 package Plato.Model;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import org.json.simple.JSONArray;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.*;
 
 public class Event {
     private static ArrayList<Event> events = new ArrayList<Event>();
@@ -119,5 +121,31 @@ public class Event {
 
     public void setEndDate(GregorianCalendar endDate) {
         this.endDate = endDate;
+    }
+
+    //update the admins that has been saved in file
+    public static void updateEvents() throws FileNotFoundException {
+        JSONArray ja = new JSONArray();
+        int n = events.size();
+        for (int i = 0; i < n; i++) {
+            Map m = new LinkedHashMap(8);
+            m.put("game", events.get(i).getGame().getGameID());
+            m.put("startDate", events.get(i).getStartDate());
+            m.put("endDate", events.get(i).getEndDate());
+            m.put("eventID", events.get(i).getEventId());
+            m.put("hasStarted", events.get(i).isHasStarted());
+            m.put("hasEnded", events.get(i).isHasEnded());
+            int t = events.get(i).getPlayersOfThisEvent().size();
+            ArrayList<String> players = new ArrayList<>();
+            for (int j = 0; j < t; j++) {
+                players.add(events.get(i).getPlayersOfThisEvent().get(j).getUsername());
+            }
+            m.put("playersOfThisEvent", players);
+            ja.add(m);
+        }
+        PrintWriter pw = new PrintWriter("events.json");
+        pw.write(ja.toJSONString());
+        pw.flush();
+        pw.close();
     }
 }

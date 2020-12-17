@@ -45,7 +45,7 @@ public class Admin extends User{
     }
 
     //update the admins that has been saved in file
-    public static void updateLogs() throws FileNotFoundException {
+    public static void updateAdmins() throws FileNotFoundException {
         JSONArray ja = new JSONArray();
         int n = admins.size();
         for (int i = 0; i < n; i++) {

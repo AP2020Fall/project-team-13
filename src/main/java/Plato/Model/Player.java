@@ -356,7 +356,7 @@ public class Player extends User{
             m.put("messagesShown", messagesShown);
             ja.add(m);
         }
-        PrintWriter pw = new PrintWriter("logs.json");
+        PrintWriter pw = new PrintWriter("players.json");
         pw.write(ja.toJSONString());
         pw.flush();
         pw.close();
