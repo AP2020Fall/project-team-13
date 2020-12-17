@@ -9,7 +9,7 @@ public class BattleSea extends Game {
     private  Player firstPlayer;
     private  Player secondPlayer;
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Player player1=new Player();
         Player player2=new Player();
         player1.setFirstname("ali");
@@ -19,7 +19,7 @@ public class BattleSea extends Game {
         player1.setUsername("adehghani");
         player2.setUsername("mabdi");
         new BattleSea(player1,player2).run();
-    }
+    }*/
 
     public BattleSea(Player firstPlayer, Player secondPlayer) {
         this.firstPlayer = firstPlayer;

@@ -49,7 +49,7 @@ public class GameManager {
         putTheShipsOnBoardRandomly(secondPlayerGridManager, secondPlayerShipManager, boardDimension);
     }
 
-    public byte bombLocation(int xAxis, int yAxis) {
+    public int bombLocation(int xAxis, int yAxis) {
         if (turn.equals(firstPlayer)) {
             return bombLocationByPlayer(xAxis, yAxis, firstPlayerGridManager, firstPlayerShipManager, secondPlayerGridManager, secondPlayerShipManager);
         } else {
@@ -57,53 +57,53 @@ public class GameManager {
         }
     }
 
-    public byte changeLocationOfShip(int shipCode, int xAxis, int yAxis) {
+    public int changeLocationOfShip(int shipCode, int xAxis, int yAxis) {
         if (turn.equals(firstPlayer)) {
             if (firstPlayerShipManager.getShipByShipCode(shipCode).isDestroyed() || !firstPlayerShipManager.getShipByShipCode(shipCode).isMovable())
-                return 0;  //"This Ship Cannot Move Because It Is Partially or Completely destroyed"
+                return 0;
         } else if (secondPlayerShipManager.getShipByShipCode(shipCode).isDestroyed() || !secondPlayerShipManager.getShipByShipCode(shipCode).isMovable())
-            return 0;  //"This Ship Cannot Move Because It Is Partially or Completely destroyed"
+            return 0;
         try {
             if (turn.equals(firstPlayer)) {
                 if (firstPlayerGridManager.changeLocationOfShip(firstPlayerShipManager.getShipByShipCode(shipCode), xAxis, yAxis)) {
-                    return 1; //"The Ship " + shipCode + " Has Been Moved To The New Location Successfully"
-                } else return 2; //"Cannot Move The Ship To The Requested Location! Try A New Location"
+                    return 1;
+                } else return 2;
             } else {
                 if (secondPlayerGridManager.changeLocationOfShip(secondPlayerShipManager.getShipByShipCode(shipCode), xAxis, yAxis)) {
-                    return 1; //"The Ship " + shipCode + " Has Been Moved To The New Location Successfully"
-                } else return 2; //"Cannot Move The Ship To The Requested Location! Try A New Location"
+                    return 1;
+                } else return 2;
             }
         } catch (IndexOutOfBoundsException e) {
             firstPlayerGridManager.fixTheGrid();
             secondPlayerGridManager.fixTheGrid();
-            return 3; //"You Cannot Move The Ship To This Location! Because Part Of Ship Will Be Out Of The Board. Try A New Location";
+            return 3;
         }
     }
 
-    public byte changeDirectionOfShip(int shipCode, char newDirection) {
+    public int changeDirectionOfShip(int shipCode, char newDirection) {
         if (turn.equals(firstPlayer)) {
             if (firstPlayerShipManager.getShipByShipCode(shipCode).isDestroyed() || !firstPlayerShipManager.getShipByShipCode(shipCode).isMovable())
-                return 0; //"This Ship Cannot Rotate Because It Is Partially or Completely destroyed";
+                return 0;
         } else if (secondPlayerShipManager.getShipByShipCode(shipCode).isDestroyed() || !secondPlayerShipManager.getShipByShipCode(shipCode).isMovable())
-            return 0; //"This Ship Cannot Rotate Because It Is Partially or Completely destroyed";
+            return 0;
         try {
             if (turn.equals(firstPlayer)) {
                 if (firstPlayerGridManager.changeDirectionOfShip(firstPlayerShipManager.getShipByShipCode(shipCode), newDirection)) {
-                    return 1; //"The Ship " + shipCode + " Has Been Rotated To The New Direction Successfully";
-                } else return 2; //"Cannot Rotate The Ship To The Requested Direction! Try A New One";
+                    return 1;
+                } else return 2;
             } else {
                 if (secondPlayerGridManager.changeDirectionOfShip(secondPlayerShipManager.getShipByShipCode(shipCode), newDirection)) {
-                    return 1; //"The Ship " + shipCode + " Has Been Rotated To The New Direction Successfully";
-                } else return 2; //"Cannot Rotate The Ship To The Requested Direction! Try A New One";
+                    return 1;
+                } else return 2;
             }
         } catch (IndexOutOfBoundsException e) {
             firstPlayerGridManager.fixTheGrid();
             secondPlayerGridManager.fixTheGrid();
-            return 3; //"You Cannot Move The Ship To This Location! Because Part Of Ship Will Be Out Of The Board. Try Another Direction";
+            return 3;
         }
     }
 
-    private byte bombLocationByPlayer(int xAxis, int yAxis, GridManager playerGridManager, ShipManager playerShipManager, GridManager opponentGridManager, ShipManager opponentShipManager) {
+    private int bombLocationByPlayer(int xAxis, int yAxis, GridManager playerGridManager, ShipManager playerShipManager, GridManager opponentGridManager, ShipManager opponentShipManager) {
         if (playerGridManager.bombLocation(xAxis, yAxis, turn, playerShipManager)) {
             if (opponentGridManager.bombLocation(xAxis, yAxis, turn, opponentShipManager)) {
                 addScore(1, turn);
@@ -142,6 +142,7 @@ public class GameManager {
             else if (temp == 2) ship.setDirection('s');
             else ship.setDirection('w');
             putThisShipOnBoard(ship, gridManager, boardDimension);
+
         }
     }
 
@@ -151,6 +152,7 @@ public class GameManager {
                 gridManager.fixTheGrid();
             }
         } catch (IndexOutOfBoundsException e) {
+            gridManager.fixTheGrid();
             putThisShipOnBoard(ship, gridManager, boardDimension);
         }
     }
