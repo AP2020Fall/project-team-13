@@ -13,14 +13,14 @@ public class GamesMenu extends Page{
     private Player player;
     public Page run() throws FileNotFoundException {
     Page.seenPages.add(GamesMenu.gamesMenu);
-    System.out.println("choose one:\n" +
-            "1.\n");
+    System.out.print("choose one:\n" +
+            "1. ");
         System.out.println(MainPagePlayerController.getInstance().reversiName());
-        System.out.println("2.");
+        System.out.print("2. ");
         System.out.println(MainPagePlayerController.getInstance().battleSeaName());
-        System.out.println("\nback"+
+        System.out.println("back"+
                 "\nview account menu"+
-                "\n help");
+                "\nhelp");
         Scanner scanner = new Scanner(System.in);
         String input;
         Matcher matcher;
