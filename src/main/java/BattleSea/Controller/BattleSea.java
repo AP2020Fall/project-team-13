@@ -22,7 +22,6 @@ public class BattleSea extends Game {
     public BattleSea(Player firstPlayer, Player secondPlayer) {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
-
     }
 
     public BattleSea() {

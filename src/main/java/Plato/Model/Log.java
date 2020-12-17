@@ -53,6 +53,11 @@ public class Log {
         logs.add(log);
     }
 
+    //setter
+    public void setFinishTime(LocalDate finishTime) {
+        this.finishTime = finishTime;
+    }
+
     //overriding toString method
     @Override
     public String toString() {
@@ -70,12 +75,11 @@ public class Log {
         JSONArray ja = new JSONArray();
         int n = logs.size();
         for (int i = 0; i < n; i++) {
-            Map m = new LinkedHashMap(5);
+            Map m = new LinkedHashMap(4);
             m.put("gameID", logs.get(i).getGameID());
             m.put("player1", logs.get(i).getPlayer1().getUserID());
             m.put("player2", logs.get(i).getPlayer2().getUserID());
             m.put("winner", logs.get(i).getWinner().getUserID());
-            m.put("finishTime", logs.get(i).getFinishTime());
             ja.add(m);
         }
         PrintWriter pw = new PrintWriter("logs.json");

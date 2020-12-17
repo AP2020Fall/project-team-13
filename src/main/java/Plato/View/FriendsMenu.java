@@ -89,6 +89,7 @@ public class FriendsMenu extends Page{
     }
     private void showFriendRequests(){
         String requests = friendsMenuController.showFriendRequests();
+        System.out.println(requests);
     }
     private void acceptFriend(String username){
         friendsMenuController.acceptFrend(username);
@@ -96,9 +97,9 @@ public class FriendsMenu extends Page{
     private void declineFriend(String username){
         friendsMenuController.declineFriend(username);
     }
-    private void showUnShownMessages()
-    {
+    private void showUnShownMessages() {
         String messages = friendsMenuController.showUnShownMessages();
+        System.out.println(messages);
     }
 
 }

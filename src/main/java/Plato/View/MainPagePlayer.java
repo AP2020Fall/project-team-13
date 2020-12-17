@@ -100,6 +100,9 @@ public class MainPagePlayer extends Page{
             {
                 return GamesMenu.gamesMenu;
             }
+            else if(input.trim().equals("logout")){
+                return LoginPage.loginPage;
+            }
             else {
                 System.out.println("invalid command");
             }

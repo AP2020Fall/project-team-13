@@ -89,9 +89,27 @@ public class BattleSeaMenu extends Page{
                 String password = scanner.nextLine();
                 try {
                     Player secondPlayer = LoginPageController.loginSecond(username,password);
-                    //event score
+                    for (Event event : Event.getEvents()) {
+                        if (event.isHasStarted())
+                        {
+                            if (!event.isHasEnded())
+                            {
+                                for (Player player : event.getPlayersOfThisEvent()) {
+                                    if (player.equals(((Player)LoginPageController.user)))
+                                    {
+                                        player.addScore();
+                                    }
+                                    if (player.equals(secondPlayer))
+                                    {
+                                        secondPlayer.addScore();
+                                    }
+                                }
+                            }
+                        }
+                    }
                     new BattleSea((Player)LoginPageController.user,secondPlayer).run();
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
 
                 }
             }

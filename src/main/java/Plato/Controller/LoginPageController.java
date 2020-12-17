@@ -73,7 +73,7 @@ public class LoginPageController {
             admin.setAdmin(true);
             User.getAllUsers().add(admin);
             Admin.getAdmins().add(admin);
-            User.setIsMainAdminJoinnt("true");
+            User.setIsMainAdminJoinnt(true);
         }
         return true;
     }

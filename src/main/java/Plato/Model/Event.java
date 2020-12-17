@@ -86,26 +86,6 @@ public class Event {
         this.hasEnded = hasEnded;
     }
 
-    public void startEvent(int eventId){
-
-    }
-    public void endEvent(int eventId){
-
-    }
-    public static void removeEvent(int eventId){
-
-    }
-    public static Event getEvent(int eventId){
-        return null;
-    }
-
-    public void joinEvent(Player player){
-
-    }
-    public void quitEvent(Player player){
-
-    }
-
     public void setGame(Game game) {
         this.game = game;
     }
@@ -131,10 +111,8 @@ public class Event {
         JSONArray ja = new JSONArray();
         int n = events.size();
         for (int i = 0; i < n; i++) {
-            Map m = new LinkedHashMap(8);
+            Map m = new LinkedHashMap(6);
             m.put("game", events.get(i).getGame().getGameID());
-            m.put("startDate", events.get(i).getStartDate());
-            m.put("endDate", events.get(i).getEndDate());
             m.put("eventScore", events.get(i).getEventScore());
             m.put("eventID", events.get(i).getEventId());
             m.put("hasStarted", events.get(i).isHasStarted());

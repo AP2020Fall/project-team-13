@@ -307,7 +307,7 @@ public class Player extends User{
         JSONArray ja = new JSONArray();
         int n = players.size();
         for (int i = 0; i < n; i++) {
-            Map m = new LinkedHashMap(27);
+            Map m = new LinkedHashMap(26);
             m.put("firstname", players.get(i).getFirstname());
             m.put("lastname", players.get(i).getLastname());
             m.put("username", players.get(i).getUsername());
@@ -315,7 +315,6 @@ public class Player extends User{
             m.put("password", players.get(i).getPassword());
             m.put("email", players.get(i).getEmail());
             m.put("phoneNumber", players.get(i).getPhoneNumber());
-            m.put("registerTime", players.get(i).getRegisterTime());
             m.put("money", players.get(i).getMoney());
             m.put("score", players.get(i).getScore());
             m.put("reversiWins", players.get(i).getReversiWins());

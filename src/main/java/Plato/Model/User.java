@@ -115,11 +115,8 @@ public abstract class User {
         return isMainAdminJoinnt;
     }
 
-    public static void setIsMainAdminJoinnt(String isMainAdminJoinnt) {
-         if(isMainAdminJoinnt.equals("true"))
-            User.isMainAdminJoinnt = true;
-         else if(isMainAdminJoinnt.equals("false"))
-             User.isMainAdminJoinnt = false;
+    public static void setIsMainAdminJoinnt(Boolean isMainAdminJoinnt) {
+         User.isMainAdminJoinnt = isMainAdminJoinnt;
     }
 
     public static void deleteUserAccount(int ID){
