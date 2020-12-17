@@ -1,9 +1,9 @@
 package Reversi;
 
-import Plato.Model.Game;
-import Plato.Model.Log;
-import Plato.Model.Player;
+import Plato.Model.*;
 import Plato.View.*;
+
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -66,7 +66,7 @@ public class ReversiController extends Game {
     }
 
     //runs the game
-    public static Page run(Player black, Player white) {
+    public static Page run(Player black, Player white) throws FileNotFoundException {
 
         //build a new game
         ReversiController game = new ReversiController(black, white);
@@ -77,6 +77,11 @@ public class ReversiController extends Game {
 
         //the menu while playing
         while (!game.getModel().isTableFull() && game.getModel().canAnyoneMove() || !game.getModel().doAllOfTheDisksHaveSameColor()) {
+            Admin.updateAdmins();
+            Player.updatePlayers();
+            Game.updateGames();
+            Log.updateLogs();
+            Event.updateEvents();
             input = scanner.nextLine();
             if (input.trim().equals("end of my turn")) {
                 game.changeTurn();

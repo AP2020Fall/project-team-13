@@ -1,7 +1,9 @@
 package Plato.View;
 
 import Plato.Controller.LoginPageController;
+import Plato.Model.*;
 
+import java.io.FileNotFoundException;
 import java.util.regex.Matcher;
 
 public class LoginPage extends Page{
@@ -11,13 +13,18 @@ public class LoginPage extends Page{
         return loginPage;
     }
 
-    public Page run() {
+    public Page run() throws FileNotFoundException {
         Matcher matcher;
         String input;
         seenPages.add(LoginPage.loginPage);
 
         while (true)
         {
+            Admin.updateAdmins();
+            Player.updatePlayers();
+            Game.updateGames();
+            Log.updateLogs();
+            Event.updateEvents();
             input=scanner.nextLine();
             if ((matcher = Commands.REGISTER.getMatcher(input)).matches())
             {

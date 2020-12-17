@@ -2,21 +2,26 @@ package Plato.View;
 
 import BattleSea.Controller.BattleSea;
 import Plato.Controller.LoginPageController;
-import Plato.Model.Log;
-import Plato.Model.Player;
+import Plato.Model.*;
 import Reversi.ReversiController;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BattleSeaMenu extends Page{
     public static BattleSeaMenu battleSeaMenu = new BattleSeaMenu();
     private static final int gameID = 2;
-    public Page run() {
+    public Page run() throws FileNotFoundException {
         String input;
         Scanner scanner = new Scanner(System.in);
         Page.seenPages.add(BattleSeaMenu.battleSeaMenu);
         while(true){
+            Admin.updateAdmins();
+            Player.updatePlayers();
+            Game.updateGames();
+            Log.updateLogs();
+            Event.updateEvents();
             input = scanner.nextLine();
             if(input.trim().equalsIgnoreCase("Show scoreboard")){
                 ArrayList<Player> playersThatHasPlayedBattleSea = new ArrayList<Player>();

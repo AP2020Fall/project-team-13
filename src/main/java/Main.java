@@ -115,12 +115,5 @@ public class Main {
         }
     }
 
-    //update everything saved in files
-    public static void update() throws FileNotFoundException {
-        Admin.updateAdmins();
-        Player.updatePlayers();
-        Game.updateGames();
-        Log.updateLogs();
-        Event.updateEvents();
-    }
+
 }

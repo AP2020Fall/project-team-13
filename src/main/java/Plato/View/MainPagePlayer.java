@@ -1,20 +1,26 @@
 package Plato.View;
 
 import Plato.Controller.MainPagePlayerController;
-import Plato.Model.Player;
+import Plato.Model.*;
 
+import java.io.FileNotFoundException;
 import java.util.regex.Matcher;
 
 public class MainPagePlayer extends Page{
     public static MainPagePlayer mainPagePlayer = new MainPagePlayer();
     private MainPagePlayerController mainPagePlayerController = MainPagePlayerController.getInstance();
-    public Page run() {
+    public Page run() throws FileNotFoundException {
         Matcher matcher;
         String input;
         seenPages.add(MainPagePlayer.mainPagePlayer);
         System.out.println("Main Page Player :");
         while (true)
         {
+            Admin.updateAdmins();
+            Player.updatePlayers();
+            Game.updateGames();
+            Log.updateLogs();
+            Event.updateEvents();
             input=scanner.nextLine();
             if ((matcher = Commands.HELP.getMatcher(input)).matches())
             {

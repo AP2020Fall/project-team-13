@@ -1,9 +1,10 @@
 package Plato.View;
 
 import Plato.Controller.LoginPageController;
-import Plato.Model.Log;
-import Plato.Model.Player;
+import Plato.Model.*;
 import Reversi.ReversiController;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -11,12 +12,17 @@ import java.util.regex.Matcher;
 public class ReversiMenu extends Page{
       public static ReversiMenu reversiMenu = new ReversiMenu();
       private static final int gameID = 1;
-      public Page run() {
+      public Page run() throws FileNotFoundException {
           String input;
           Matcher matcher;
           Scanner scanner = new Scanner(System.in);
           Page.seenPages.add(ReversiMenu.reversiMenu);
           while(true){
+              Admin.updateAdmins();
+              Player.updatePlayers();
+              Game.updateGames();
+              Log.updateLogs();
+              Event.updateEvents();
               input = scanner.nextLine();
               if(input.trim().equalsIgnoreCase("Show scoreboard")){
                   ArrayList<Player> playersThatHasPlayedReversi = new ArrayList<Player>();

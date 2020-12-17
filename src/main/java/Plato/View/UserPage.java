@@ -1,9 +1,9 @@
 package Plato.View;
 
 import Plato.Controller.LoginPageController;
-import Plato.Model.Log;
-import Plato.Model.Player;
-import Plato.Model.User;
+import Plato.Model.*;
+
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -14,11 +14,16 @@ public class UserPage extends Page{
     public static UserPage getInstance(){
         return userPage;
     }
-    public Page run() {
+    public Page run() throws FileNotFoundException {
         String input;
         Scanner scanner = new Scanner(System.in);
         seenPages.add(UserPage.userPage);
         while(true){
+            Admin.updateAdmins();
+            Player.updatePlayers();
+            Game.updateGames();
+            Log.updateLogs();
+            Event.updateEvents();
             input = scanner.nextLine();
             if(input.trim().equals("View personal info")){
                 System.out.println("firstname: " + LoginPageController.user.getFirstname() +

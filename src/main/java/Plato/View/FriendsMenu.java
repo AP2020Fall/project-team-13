@@ -1,19 +1,26 @@
 package Plato.View;
 
 import Plato.Controller.FriendsMenuController;
+import Plato.Model.*;
 
+import java.io.FileNotFoundException;
 import java.util.regex.Matcher;
 
 public class FriendsMenu extends Page{
     public static FriendsMenu friendsMenu = new FriendsMenu();
     private FriendsMenuController friendsMenuController = FriendsMenuController.getInstance();
-    public Page run() {
+    public Page run() throws FileNotFoundException {
         Matcher matcher;
         String input;
         Page.seenPages.add(FriendsMenu.friendsMenu);
         System.out.println("Friends Menu :");
         while (true)
         {
+            Admin.updateAdmins();
+            Player.updatePlayers();
+            Game.updateGames();
+            Log.updateLogs();
+            Event.updateEvents();
             input=scanner.nextLine();
             friendsMenu.showUnShownMessages();
             if ((matcher = Commands.SHOW_FRIENDS.getMatcher(input)).matches())

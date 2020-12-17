@@ -1,18 +1,25 @@
 package Plato.View;
 
 import Plato.Controller.MainPageAdminController;
+import Plato.Model.*;
 
+import java.io.FileNotFoundException;
 import java.util.regex.Matcher;
 
 public class MainPageAdmin extends Page {
     public static MainPageAdmin mainPageAdmin = new MainPageAdmin();
     private MainPageAdminController mainPageAdminController = MainPageAdminController.getInstance();
-    public Page run() {
+    public Page run() throws FileNotFoundException {
         seenPages.add(mainPageAdmin);
         String input;
         Matcher matcher;
         System.out.println("Main Page Admin :");
 while(true){
+    Admin.updateAdmins();
+    Player.updatePlayers();
+    Game.updateGames();
+    Log.updateLogs();
+    Event.updateEvents();
     input=scanner.nextLine();
     if ((matcher = Commands.ADD_EVENT.getMatcher(input)).matches())
     {

@@ -2,15 +2,16 @@ package Plato.View;
 
 import Plato.Controller.LoginPageController;
 import Plato.Controller.MainPagePlayerController;
-import Plato.Model.Player;
+import Plato.Model.*;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class GamesMenu extends Page{
     public static GamesMenu gamesMenu = new GamesMenu();
     private Player player;
-    public Page run() {
+    public Page run() throws FileNotFoundException {
     Page.seenPages.add(GamesMenu.gamesMenu);
     System.out.println("choose one:\n" +
             "1.\n");
@@ -24,6 +25,11 @@ public class GamesMenu extends Page{
         String input;
         Matcher matcher;
         while (true) {
+            Admin.updateAdmins();
+            Player.updatePlayers();
+            Game.updateGames();
+            Log.updateLogs();
+            Event.updateEvents();
             input = scanner.nextLine();
             if (input.equals("1")) {
                 return ReversiMenu.reversiMenu;
