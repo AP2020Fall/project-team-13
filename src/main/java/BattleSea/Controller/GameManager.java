@@ -9,6 +9,7 @@ import Plato.Model.Player;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameManager {
     private final Player firstPlayer;
@@ -134,7 +135,7 @@ public class GameManager {
 
     public void putTheShipsOnBoardRandomly(GridManager gridManager, ShipManager shipManager, int boardDimension) {
         for (Ship ship : shipManager.getAllShips()) {
-            ship.setStartPoint(new Coordination(randomNumber(boardDimension), randomNumber(boardDimension)));
+            ship.setStartPoint(new Coordination(randomNumber(boardDimension)+1, randomNumber(boardDimension)+1));
             int temp = randomNumber(4);
             if (temp == 0) ship.setDirection('n');
             else if (temp == 1) ship.setDirection('e');
@@ -146,7 +147,9 @@ public class GameManager {
 
     private void putThisShipOnBoard(Ship ship, GridManager gridManager, int boardDimension) {
         try {
-            gridManager.changeLocationOfShip(ship, randomNumber(boardDimension), randomNumber(boardDimension));
+            while(!gridManager.changeLocationOfShip(ship, randomNumber(boardDimension)+1, randomNumber(boardDimension)+1)){
+                gridManager.fixTheGrid();
+            }
         } catch (IndexOutOfBoundsException e) {
             putThisShipOnBoard(ship, gridManager, boardDimension);
         }

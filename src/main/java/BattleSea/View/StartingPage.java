@@ -13,7 +13,6 @@ public class StartingPage extends Page {
     public StartingPage(Player firstPlayer, Player secondPlayer) {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
-        seenPages.add(this);
     }
 
     public Page run() {
@@ -22,7 +21,7 @@ public class StartingPage extends Page {
                 "and the other on the number of ships");
         boolean isBoardOptionDecided = false;
         while (!isBoardOptionDecided) {
-            System.out.println("1-10*10\n" +
+            System.out.print("1-10*10\n" +
                     "2-15*15\n" +
                     "3-20*20\n" +
                     "choose one options:");
@@ -34,7 +33,7 @@ public class StartingPage extends Page {
                 int numberOfShips;
                 while (!isNumberOfShipsDecided) {
                     if (boardOption == 1) {
-                        System.out.println("1- 4 ships\n" +
+                        System.out.print("1- 4 ships\n" +
                                 "2- 5 ships\n" +
                                 "3- 6 ships\n" +
                                 "chose one option:");
@@ -47,9 +46,9 @@ public class StartingPage extends Page {
                             else gameManager=new GameManager(firstPlayer,secondPlayer,10,6);
                         }
                     } else if (boardOption == 2) {
-                        System.out.println("1- 6 ships\n" +
+                        System.out.print("1- 6 ships\n" +
                                 "2- 7 ships\n" +
-                                "3- 8 ships" +
+                                "3- 8 ships\n" +
                                 "chose one option:");
                         numberOfShips = Integer.parseInt(scanner.nextLine().trim());
                         if (numberOfShips < 1 || numberOfShips > 3) System.out.println("invalid input");
@@ -60,9 +59,9 @@ public class StartingPage extends Page {
                             else gameManager=new GameManager(firstPlayer,secondPlayer,15,8);
                         }
                     } else {
-                        System.out.println("1- 8 ships\n" +
+                        System.out.print("1- 8 ships\n" +
                                 "2- 9 ships\n" +
-                                "3- 10 ships" +
+                                "3- 10 ships\n" +
                                 "chose one option:");
                         numberOfShips = Integer.parseInt(scanner.nextLine().trim());
                         if (numberOfShips < 1 || numberOfShips > 3) System.out.println("invalid input");
@@ -108,4 +107,5 @@ public class StartingPage extends Page {
         inGameMenu.run();
         return null;
     }
+
 }

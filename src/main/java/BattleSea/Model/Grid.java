@@ -31,10 +31,10 @@ public class Grid {
     }
 
     public Coordination getLocation(int xAxis, int yAxis) {
-        return theGrid[xAxis - 1][yAxis - 1].getClone();
+        return theGrid[xAxis - 1][yAxis - 1];
     }
 
-    public Grid getClone() {
+    /*public Grid getClone() {
         Grid clone = new Grid(this.dimension, this.owner);
         for (int i = 0; i < dimension; i++) {
             for (int j = 0; j < dimension; j++) {
@@ -42,7 +42,7 @@ public class Grid {
             }
         }
         return clone;
-    }
+    }*/
 
 }
 
