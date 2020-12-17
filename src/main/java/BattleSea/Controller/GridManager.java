@@ -26,9 +26,9 @@ public class GridManager {
         } else {
             playerGrid.getLocation(xAxis, yAxis).Bomb();
             if (playerGrid.getLocation(xAxis, yAxis).isOccupied()) {
-                playerGrid.getLocation(xAxis, yAxis).setContent("+");
-                int shipCode = Integer.parseInt(playerGrid.getLocation(xAxis, yAxis).getContent().split(" ")[1]);
+                int shipCode = Integer.parseInt(playerGrid.getLocation(xAxis, yAxis).getContent());
                 playerShipManager.getShipByShipCode(shipCode).makeItImmovable();
+                playerGrid.getLocation(xAxis, yAxis).setContent("+");
                 return true;
             } else {
                 playerGrid.getLocation(xAxis, yAxis).setContent("-");
@@ -113,12 +113,12 @@ public class GridManager {
 
     private boolean reserveLocation(Ship ship, int xAxis, int yAxis) {
         if (playerGrid.getLocation(ship.getStartPoint().getXAxis() + xAxis, ship.getStartPoint().getYAxis() + yAxis).isOccupied()) {
-            if (playerGrid.getLocation(ship.getStartPoint().getXAxis() + xAxis, ship.getStartPoint().getYAxis() + yAxis).getContent().equalsIgnoreCase("ship " + ship.getCode())) {
-                playerGrid.getLocation(ship.getStartPoint().getXAxis() + xAxis, ship.getStartPoint().getYAxis() + yAxis).setContent("reserve");
+            if (playerGrid.getLocation(ship.getStartPoint().getXAxis() + xAxis, ship.getStartPoint().getYAxis() + yAxis).getContent().equals("" + ship.getCode())) {
+                playerGrid.getLocation(ship.getStartPoint().getXAxis() + xAxis, ship.getStartPoint().getYAxis() + yAxis).setContent("r");
                 return true;
             } else return false;
         } else {
-            playerGrid.getLocation(ship.getStartPoint().getXAxis() + xAxis, ship.getStartPoint().getYAxis() + yAxis).setContent("reserve");
+            playerGrid.getLocation(ship.getStartPoint().getXAxis() + xAxis, ship.getStartPoint().getYAxis() + yAxis).setContent("r");
             return true;
         }
 
@@ -127,7 +127,7 @@ public class GridManager {
     public void fixTheGrid() {
         for (Coordination[] coordinations : playerGrid.getTheGrid()) {
             for (Coordination coordination : coordinations) {
-                if (coordination.getContent().equalsIgnoreCase("reserve")) coordination.rollbackContentChange();
+                if (coordination.getContent().equalsIgnoreCase("r")) coordination.rollbackContentChange();
             }
         }
     }
@@ -135,12 +135,12 @@ public class GridManager {
     private void moveShipToReservedLocation(Ship ship) {
         for (Coordination[] coordinations : playerGrid.getTheGrid()) {
             for (Coordination coordination : coordinations) {
-                if (coordination.getContent().equalsIgnoreCase("ship " + ship.getCode())) {
+                if (coordination.getContent().equalsIgnoreCase("" + ship.getCode())) {
                     coordination.setContent("");
                     coordination.unoccupy();
                 }
-                if (coordination.getContent().equalsIgnoreCase("reserve")) {
-                    coordination.setContent("ship " + ship.getCode());
+                if (coordination.getContent().equalsIgnoreCase("r")) {
+                    coordination.setContent(""+ship.getCode());
                     coordination.occupy();
                 }
 
@@ -148,12 +148,14 @@ public class GridManager {
         }
     }
 
+    //public boolean putShipOnGrid(Ship ship){ }
+
     public Grid getPlayerGrid() {
-        return playerGrid.getClone();
+        return playerGrid;
     }
 
     public Grid getOpponentGrid() {
-        return opponentGrid.getClone();
+        return opponentGrid;
     }
 
     public Player getOwner() {
@@ -173,14 +175,14 @@ public class GridManager {
         if (destroyer.equals(owner)){
             for (Coordination[] coordinations : opponentGrid.getTheGrid()) {
                 for (Coordination coordination : coordinations) {
-                    if (coordination.getContent().equalsIgnoreCase("ship "+shipCode))
+                    if (coordination.getContent().equalsIgnoreCase(""+shipCode))
                         coordination.setContent("*");
                 }
             }
         }else{
             for (Coordination[] coordinations : playerGrid.getTheGrid()) {
                 for (Coordination coordination : coordinations) {
-                    if (coordination.getContent().equalsIgnoreCase("ship "+shipCode))
+                    if (coordination.getContent().equalsIgnoreCase(""+shipCode))
                         coordination.setContent("*");
                 }
             }

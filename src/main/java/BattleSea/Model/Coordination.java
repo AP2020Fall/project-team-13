@@ -1,6 +1,6 @@
 package BattleSea.Model;
 
-public class Coordination implements Comparable<Coordination> {
+public class Coordination {
     private final int xAxis;
     private final int yAxis;
     private String content;
@@ -11,12 +11,12 @@ public class Coordination implements Comparable<Coordination> {
     public Coordination(int xAxis, int yAxis) {
         this.xAxis = xAxis;
         this.yAxis = yAxis;
-        content="";
-        previousContent="";
+        content = "";
+        previousContent = "";
     }
 
     public void setContent(String content) {
-        this.previousContent=this.content;
+        this.previousContent = this.content;
         this.content = content;
     }
 
@@ -24,8 +24,10 @@ public class Coordination implements Comparable<Coordination> {
         return previousContent;
     }
 
-    public void rollbackContentChange(){
-        this.content=this.previousContent;
+    public void rollbackContentChange() {
+        String temp = this.content;
+        this.content = this.previousContent;
+        this.previousContent = temp;
     }
 
     public boolean Bomb() {
@@ -36,16 +38,12 @@ public class Coordination implements Comparable<Coordination> {
         }
     }
 
-    public boolean occupy() {
-        if (this.isOccupied) return false;
-        else {
-            this.isOccupied = true;
-            return true;
-        }
+    public void occupy() {
+        this.isOccupied = true;
     }
 
-    public void unoccupy(){
-        this.isOccupied=false;
+    public void unoccupy() {
+        this.isOccupied = false;
     }
 
     public int getXAxis() {
@@ -68,11 +66,4 @@ public class Coordination implements Comparable<Coordination> {
         return isOccupied;
     }
 
-    public int compareTo(Coordination o) {
-        return (this.xAxis - o.getXAxis()) + (this.yAxis - o.getYAxis());
-    }
-
-    public Coordination getClone(){
-        return new Coordination(this.getXAxis(),this.getYAxis());
-    }
 }
