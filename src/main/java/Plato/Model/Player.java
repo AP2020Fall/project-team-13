@@ -1,6 +1,8 @@
 package Plato.Model;
 
 
+import BattleSea.Controller.BattleSea;
+import Reversi.Reversi;
 import org.json.simple.JSONArray;
 
 import java.io.FileNotFoundException;
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import Reversi.ReversiController;
 
 public class Player extends User{
     //fields
@@ -50,6 +53,20 @@ public class Player extends User{
         this.battleSeaPlayedCount = 0;
         this.battleSeaPoints = 0;
         this.registerTime = java.time.LocalDate.now();
+    }
+
+    public static void addNewPlayer(String username, String password, String email, String firstname, String lastname, String phoneNumber) throws Exception {
+        Player player = new Player();
+        player.setAdmin(false);
+        player.setEmail(email);
+        player.setFirstname(firstname);
+        player.setLastname(lastname);
+        player.setPassword(password);
+        player.setPhoneNumber(phoneNumber);
+        player.setUsername(username);
+        User.getAllUsers().add(player);
+        players.add(player);
+
     }
 
     //remove the player from the list of players
@@ -290,7 +307,7 @@ public class Player extends User{
         JSONArray ja = new JSONArray();
         int n = players.size();
         for (int i = 0; i < n; i++) {
-            Map m = new LinkedHashMap(28);
+            Map m = new LinkedHashMap(27);
             m.put("firstname", players.get(i).getFirstname());
             m.put("lastname", players.get(i).getLastname());
             m.put("username", players.get(i).getUsername());
@@ -298,7 +315,6 @@ public class Player extends User{
             m.put("password", players.get(i).getPassword());
             m.put("email", players.get(i).getEmail());
             m.put("phoneNumber", players.get(i).getPhoneNumber());
-            m.put("isAdmin", players.get(i).isAdmin());
             m.put("registerTime", players.get(i).getRegisterTime());
             m.put("money", players.get(i).getMoney());
             m.put("score", players.get(i).getScore());
@@ -313,15 +329,15 @@ public class Player extends User{
             m.put("battleSeaPlayedCount", players.get(i).getBattleSeaPlayedCount());
             m.put("battleSeaPoints", players.get(i).getBattleSeaPoints());
             int t = players.get(i).getFriends().size();
-            ArrayList<String> friends = new ArrayList<>();
+            ArrayList<Integer> friends = new ArrayList<>();
             for (int j = 0; j < t; j++) {
-                friends.add(players.get(i).getFriends().get(j).getUsername());
+                friends.add(players.get(i).getFriends().get(j).getUserID());
             }
             m.put("friends", friends);
             t = players.get(i).getFriendRequests().size();
-            ArrayList<String> friendRequests = new ArrayList<>();
+            ArrayList<Integer> friendRequests = new ArrayList<>();
             for (int j = 0; j < t; j++) {
-                friendRequests.add(players.get(i).getFriendRequests().get(j).getUsername());
+                friendRequests.add(players.get(i).getFriendRequests().get(j).getUserID());
             }
             m.put("friendRequests", friendRequests);
             t = players.get(i).getSuggestedGames().size();
@@ -330,30 +346,15 @@ public class Player extends User{
                 suggestedGames.add(players.get(i).getSuggestedGames().get(j).getGameID());
             }
             m.put("suggestedGames", suggestedGames);
-            t = players.get(i).getSuggestionID().size();
-            ArrayList<Integer> suggestionID = new ArrayList<>();
-            for (int j = 0; j < t; j++) {
-                suggestedGames.add(players.get(i).getSuggestionID().get(j));
-            }
-            m.put("suggestionID", suggestionID);
+            m.put("suggestionID", Player.getPlayers().get(i).getSuggestionID());
             t = players.get(i).getFavorites().size();
             ArrayList<Integer> favorites = new ArrayList<>();
             for (int j = 0; j < t; j++) {
                 suggestedGames.add(players.get(i).getFavorites().get(j).getGameID());
             }
             m.put("favorites", favorites);
-            t = players.get(i).getMessages().size();
-            ArrayList<String> messages = new ArrayList<>();
-            for (int j = 0; j < t; j++) {
-                messages.add(players.get(i).getMessages().get(j));
-            }
-            m.put("messages", messages);
-            t = players.get(i).getMessages().size();
-            ArrayList<Boolean> messagesShown = new ArrayList<>();
-            for (int j = 0; j < t; j++) {
-                messagesShown.add(players.get(i).getMessagesShown().get(j));
-            }
-            m.put("messagesShown", messagesShown);
+            m.put("messages", Player.getPlayers().get(i).getMessages());
+            m.put("messagesShown", Player.getPlayers().get(i).getMessagesShown());
             ja.add(m);
         }
         PrintWriter pw = new PrintWriter("players.json");
@@ -361,4 +362,85 @@ public class Player extends User{
         pw.flush();
         pw.close();
     }
+
+    //setter
+    public void setRegisterTime(LocalDate registerTime) {
+        this.registerTime = registerTime;
+    }
+    public void setMoney(int money) {
+        this.money = money;
+    }
+    public void setScore(int score) {
+        this.score = score;
+    }
+    public void setReversiWins(int reversiWins) {
+        this.reversiWins = reversiWins;
+    }
+    public void setReversiDraws(int reversiDraws) {
+        this.reversiDraws = reversiDraws;
+    }
+    public void setReversiLosses(int reversiLosses) {
+        this.reversiLosses = reversiLosses;
+    }
+    public void setReversiPoints(int reversiPoints) {
+        this.reversiPoints = reversiPoints;
+    }
+    public void setReversiPlayedCount(int reversiPlayedCount) {
+        this.reversiPlayedCount = reversiPlayedCount;
+    }
+    public void setBattleSeaWins(int battleSeaWins) {
+        this.battleSeaWins = battleSeaWins;
+    }
+    public void setBattleSeaDraws(int battleSeaDraws) {
+        this.battleSeaDraws = battleSeaDraws;
+    }
+    public void setBattleSeaLosses(int battleSeaLosses) {
+        this.battleSeaLosses = battleSeaLosses;
+    }
+    public void setBattleSeaPoints(int battleSeaPoints) {
+        this.battleSeaPoints = battleSeaPoints;
+    }
+    public void setBattleSeaPlayedCount(int battleSeaPlayedCount) {
+        this.battleSeaPlayedCount = battleSeaPlayedCount;
+    }
+    public void setFriends(ArrayList<Integer> friends) {
+        int n = friends.size();
+        for (int i = 0; i < n; i++) {
+            this.friends.add(getPlayerByID(friends.get(i)));
+        }
+    }
+    public void setFriendRequests(ArrayList<Integer> friendRequests) {
+        int n = friendRequests.size();
+        for (int i = 0; i < n; i++) {
+            this.friendRequests.add(getPlayerByID(friendRequests.get(i)));
+        }
+    }
+    public void setMessages(ArrayList<String> messages) {
+        this.messages = messages;
+    }
+    public void setSuggestedGames(ArrayList<Integer> suggestedGames){
+        int n = suggestedGames.size();
+        for (int i = 0; i < n; i++) {
+            if(suggestedGames.get(i).intValue() == 1)
+                this.suggestedGames.add(ReversiController.reversiController);
+            else if(suggestedGames.get(i).intValue() == 2)
+                this.suggestedGames.add(BattleSea.battleSea);
+        }
+    }
+    public void setSuggestionID(ArrayList<Integer> suggestionID) {
+        this.suggestionID = suggestionID;
+    }
+    public void setMessagesShown(ArrayList<Boolean> messagesShown) {
+        this.messagesShown = messagesShown;
+    }
+    public void setFavorites(ArrayList<Integer> favorites){
+        int n = favorites.size();
+        for (int i = 0; i < n; i++) {
+            if(favorites.get(i).intValue() == 1)
+                this.favorites.add(ReversiController.reversiController);
+            else if(favorites.get(i).intValue() == 2)
+                this.favorites.add(BattleSea.battleSea);
+        }
+    }
+
 }

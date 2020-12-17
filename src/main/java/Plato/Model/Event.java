@@ -27,7 +27,9 @@ public class Event {
         this.hasEnded = false;
     }
 
-
+    public static void addEvent(Event event){
+        events.add(event);
+    }
 
     public static ArrayList<Event> getEvents() {
         return events;
@@ -41,15 +43,16 @@ public class Event {
         return playersOfThisEvent;
     }
 
-    public void setPlayersOfThisEvent(ArrayList<Player> playersOfThisEvent) {
-        this.playersOfThisEvent = playersOfThisEvent;
+    public void setPlayersOfThisEvent(ArrayList<Integer> playersOfThisEvent) {
+        int n = playersOfThisEvent.size();
+        for (int i = 0; i < n; i++) {
+            this.playersOfThisEvent.add(Player.getPlayerByID(playersOfThisEvent.get(i)));
+        }
     }
 
     public Game getGame() {
         return game;
     }
-
-
 
     public int getEventScore() {
         return eventScore;
@@ -132,13 +135,14 @@ public class Event {
             m.put("game", events.get(i).getGame().getGameID());
             m.put("startDate", events.get(i).getStartDate());
             m.put("endDate", events.get(i).getEndDate());
+            m.put("eventScore", events.get(i).getEventScore());
             m.put("eventID", events.get(i).getEventId());
             m.put("hasStarted", events.get(i).isHasStarted());
             m.put("hasEnded", events.get(i).isHasEnded());
             int t = events.get(i).getPlayersOfThisEvent().size();
-            ArrayList<String> players = new ArrayList<>();
+            ArrayList<Integer> players = new ArrayList<>();
             for (int j = 0; j < t; j++) {
-                players.add(events.get(i).getPlayersOfThisEvent().get(j).getUsername());
+                players.add(events.get(i).getPlayersOfThisEvent().get(j).getUserID());
             }
             m.put("playersOfThisEvent", players);
             ja.add(m);
