@@ -20,6 +20,13 @@ public class Game {
         return games;
     }
 
+    public static void addGame(String name, int gameID){
+        Game game = new Game();
+        game.setName(name);
+        game.setGameID(gameID);
+        games.add(game);
+    }
+
     public String getName() {
         return name;
     }

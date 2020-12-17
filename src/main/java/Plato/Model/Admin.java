@@ -15,7 +15,7 @@ public class Admin extends User{
         return admins;
     }
 
-    public  void addNewAdmin(String username, String password, String email, String firstname, String lastname, String phoneNumber) throws Exception {
+    public static void addNewAdmin(String username, String password, String email, String firstname, String lastname, String phoneNumber) throws Exception {
         for (User allUser : User.getAllUsers()) {
             if ((allUser.getUsername().equals(username))||(allUser.getEmail().equals(email)))
             {
@@ -31,7 +31,6 @@ public class Admin extends User{
         admin.setPassword(password);
         admin.setPhoneNumber(phoneNumber);
         admin.setUsername(username);
-        admin.setUserID(User.getAllUsers().size()+1);
         User.getAllUsers().add(admin);
         admins.add(admin);
 
@@ -44,12 +43,16 @@ public class Admin extends User{
         return messages;
     }
 
+    public static void setMessages(ArrayList<String> messages) {
+        Admin.messages = messages;
+    }
+
     //update the admins that has been saved in file
     public static void updateAdmins() throws FileNotFoundException {
         JSONArray ja = new JSONArray();
         int n = admins.size();
         for (int i = 0; i < n; i++) {
-            Map m = new LinkedHashMap(10);
+            Map m = new LinkedHashMap(9);
             m.put("firstname", admins.get(i).getFirstname());
             m.put("lastname", admins.get(i).getLastname());
             m.put("username", admins.get(i).getUsername());
@@ -57,8 +60,7 @@ public class Admin extends User{
             m.put("password", admins.get(i).getPassword());
             m.put("email", admins.get(i).getEmail());
             m.put("phoneNumber", admins.get(i).getPhoneNumber());
-            m.put("isAdmin", admins.get(i).isAdmin());
-            m.put("isAdminJoinnt", isIsMainAdminJoinnt());
+            m.put("isMainAdminJoinnt", isIsMainAdminJoinnt());
             m.put("messages", getMessages());
             ja.add(m);
         }
