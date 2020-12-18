@@ -44,7 +44,7 @@ public class GamesMenu extends Page{
                 System.out.println(MainPagePlayerController.getInstance().battleSeaName());
                 System.out.println("back"+
                         "\nview account menu"+
-                        "\n help");
+                        "\nhelp");
             }
             else {
                 System.out.println("invalid command!");
