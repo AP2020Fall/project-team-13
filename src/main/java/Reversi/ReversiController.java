@@ -75,6 +75,9 @@ public class ReversiController extends Game {
         Scanner scanner = new Scanner(System.in);
         String input;
 
+        //title
+        System.out.println("Reversi game :");
+
         //the menu while playing
         while (!game.getModel().isTableFull() && game.getModel().canAnyoneMove() || !game.getModel().doAllOfTheDisksHaveSameColor()) {
             Admin.updateAdmins();

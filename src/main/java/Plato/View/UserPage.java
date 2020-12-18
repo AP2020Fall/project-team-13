@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 
 public class UserPage extends Page{
     public static UserPage userPage = new UserPage();
-//    private UserPageController userPageController = UserPageController.getInstance();
     public static User user ;
     public static UserPage getInstance(){
         return userPage;
@@ -18,6 +17,7 @@ public class UserPage extends Page{
         String input;
         Scanner scanner = new Scanner(System.in);
         seenPages.add(UserPage.userPage);
+        System.out.println("User page :");
         while(true){
             Admin.updateAdmins();
             Player.updatePlayers();

@@ -14,8 +14,7 @@ public class FriendsMenu extends Page{
         String input;
         Page.seenPages.add(FriendsMenu.friendsMenu);
         System.out.println("Friends Menu :");
-        while (true)
-        {
+        while (true) {
             Admin.updateAdmins();
             Player.updatePlayers();
             Game.updateGames();
@@ -23,49 +22,39 @@ public class FriendsMenu extends Page{
             Event.updateEvents();
             input=scanner.nextLine();
             friendsMenu.showUnShownMessages();
-            if ((matcher = Commands.SHOW_FRIENDS.getMatcher(input)).matches())
-            {
+            if ((matcher = Commands.SHOW_FRIENDS.getMatcher(input)).matches()) {
                 friendsMenu.showFriends();
             }
-            else if ((matcher = Commands.REMOVE_FRIENDS.getMatcher(input)).matches())
-            {
+            else if ((matcher = Commands.REMOVE_FRIENDS.getMatcher(input)).matches()) {
                 friendsMenu.removeFriend(matcher.group(1));
             }
-            else if ((matcher = Commands.VIEW_USER_PROFILE_FRIEND_MENU.getMatcher(input)).matches())
-            {
+            else if ((matcher = Commands.VIEW_USER_PROFILE_FRIEND_MENU.getMatcher(input)).matches()) {
                 friendsMenu.showPerson(matcher.group(1));
             }
-            else if ((matcher = Commands.ADD_FRIEND.getMatcher(input)).matches())
-            {
+            else if ((matcher = Commands.ADD_FRIEND.getMatcher(input)).matches()) {
                 friendsMenu.addFriend(matcher.group(1));
             }
-            else if ((matcher = Commands.SHOW_FRIEND_REQUESTS.getMatcher(input)).matches())
-            {
+            else if ((matcher = Commands.SHOW_FRIEND_REQUESTS.getMatcher(input)).matches()) {
                 friendsMenu.showFriendRequests();
             }
-            else if ((matcher = Commands.ACCEPT_FRIEND_REQUEST.getMatcher(input)).matches())
-            {
+            else if ((matcher = Commands.ACCEPT_FRIEND_REQUEST.getMatcher(input)).matches()) {
                 friendsMenu.acceptFriend(matcher.group(1));
             }
-            else if ((matcher = Commands.DECLNE_FRIEND_REQUEST.getMatcher(input)).matches())
-            {
+            else if ((matcher = Commands.DECLNE_FRIEND_REQUEST.getMatcher(input)).matches()) {
                 friendsMenu.declineFriend(matcher.group(1));
             }
-            else if ((matcher = Commands.HELP.getMatcher(input)).matches())
-            {
-                System.out.println("Show friends"+"\n"+"Remove\n"+"View user profile\n"+"Add\n"+"Show friend requests\n"+"Accept\n"
-                        +"Decline\n");
+            else if ((matcher = Commands.HELP.getMatcher(input)).matches()) {
+                System.out.println("show friends"+"\n"+"remove (username)\n"+"view user profile\n"+"Add (username)\n"+"Show friend requests\n"+"Accept (username)\n"
+                        +"decline (username)\n"+"help\n"+"back\n"+"view account menu");
             }
-            else if (Commands.BACK.getMatcher(input).matches())
-            {
+            else if (Commands.BACK.getMatcher(input).matches()) {
                 return seenPages.get(seenPages.size()-2);
             }
-            else if ((matcher = Commands.VIEW_ACCOUNT_MENU.getMatcher(input)).matches())
-            {
+            else if ((matcher = Commands.VIEW_ACCOUNT_MENU.getMatcher(input)).matches()) {
                 return UserPage.userPage;
             }
             else {
-                System.out.println("invalid command");
+                System.out.println("invalid command!");
             }
         }
     }

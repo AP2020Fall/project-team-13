@@ -17,6 +17,7 @@ public class ReversiMenu extends Page{
           Matcher matcher;
           Scanner scanner = new Scanner(System.in);
           Page.seenPages.add(ReversiMenu.reversiMenu);
+          System.out.println("Reversi menu :");
           while(true){
               Admin.updateAdmins();
               Player.updatePlayers();

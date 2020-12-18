@@ -12,18 +12,11 @@ public class GamesMenu extends Page{
     public static GamesMenu gamesMenu = new GamesMenu();
     private Player player;
     public Page run() throws FileNotFoundException {
-    Page.seenPages.add(GamesMenu.gamesMenu);
-    System.out.print("choose one:\n" +
-            "1. ");
-        System.out.println(MainPagePlayerController.getInstance().reversiName());
-        System.out.print("2. ");
-        System.out.println(MainPagePlayerController.getInstance().battleSeaName());
-        System.out.println("back"+
-                "\nview account menu"+
-                "\nhelp");
+        Page.seenPages.add(GamesMenu.gamesMenu);
         Scanner scanner = new Scanner(System.in);
         String input;
         Matcher matcher;
+        System.out.println("Games menu :");
         while (true) {
             Admin.updateAdmins();
             Player.updatePlayers();
@@ -37,27 +30,24 @@ public class GamesMenu extends Page{
             else if (input.equals("2")) {
                 return BattleSeaMenu.battleSeaMenu;
             }
-            else if ((matcher = Commands.BACK.getMatcher(input)).matches())
-            {
+            else if ((matcher = Commands.BACK.getMatcher(input)).matches()) {
                 return seenPages.get(seenPages.size()-2);
             }
-            else if ((matcher = Commands.VIEW_ACCOUNT_MENU.getMatcher(input)).matches())
-            {
+            else if ((matcher = Commands.VIEW_ACCOUNT_MENU.getMatcher(input)).matches()) {
                 return UserPage.userPage;
             }
-            else if ((matcher = Commands.HELP.getMatcher(input)).matches())
-            {
-                System.out.println("choose one:\n" +
-                        "1.\n");
+            else if ((matcher = Commands.HELP.getMatcher(input)).matches()) {
+                System.out.print("choose one:\n" +
+                        "1. ");
                 System.out.println(MainPagePlayerController.getInstance().reversiName());
-                System.out.println("2.");
+                System.out.print("2. ");
                 System.out.println(MainPagePlayerController.getInstance().battleSeaName());
-                System.out.println("\nback"+
+                System.out.println("back"+
                         "\nview account menu"+
                         "\n help");
             }
             else {
-                System.out.println("You should select 1(for reversi) or 2(for battle sea)!");
+                System.out.println("invalid command!");
             }
         }
     }

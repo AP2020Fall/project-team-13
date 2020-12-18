@@ -16,6 +16,7 @@ public class BattleSeaMenu extends Page{
         String input;
         Scanner scanner = new Scanner(System.in);
         Page.seenPages.add(BattleSeaMenu.battleSeaMenu);
+        System.out.println("Battle sea menu :");
         while(true){
             Admin.updateAdmins();
             Player.updatePlayers();

@@ -27,7 +27,7 @@ public enum Commands {
     ADD_FRIEND("(?i)add\\s+friend\\s+(\\S+)"),
     DATER("(?i)(\\d+)\\s+(\\d+)\\s+(\\d+)"),
     SHOW_FRIENDS("(?i)show\\s+friends"),
-    REMOVE_FRIENDS("(?i)remove\\s+(\\d+)"),
+    REMOVE_FRIENDS("(?i)remove\\s+(\\S+)"),
     VIEW_USER_PROFILE_FRIEND_MENU("(?i)view\\s+user\\s+profile\\s+(\\S+)"),
     ADD_USER("(?i)add\\s+(\\S+)"),
     SHOW_FRIEND_REQUESTS("(?i)show\\s+friend\\s+requests"),
