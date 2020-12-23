@@ -12,12 +12,8 @@ public class BattleSea extends Game {
     /*public static void main(String[] args) {
         Player player1=new Player();
         Player player2=new Player();
-        player1.setFirstname("ali");
-        player1.setLastname("dehghani");
-        player2.setFirstname("mehdi");
-        player2.setLastname("abdi");
-        player1.setUsername("adehghani");
-        player2.setUsername("mabdi");
+        player1.setUsername("dehghani");
+        player2.setUsername("sheykh");
         new BattleSea(player1,player2).run();
     }*/
 

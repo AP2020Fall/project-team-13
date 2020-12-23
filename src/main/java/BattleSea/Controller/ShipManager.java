@@ -1,7 +1,6 @@
 package BattleSea.Controller;
 
 import BattleSea.Model.Coordination;
-import BattleSea.Model.Grid;
 import BattleSea.Model.Ship;
 import Plato.Model.Player;
 
@@ -13,7 +12,7 @@ public class ShipManager {
 
     public ShipManager(Player owner, int gridDimension, int numberOfShips) {
         this.owner = owner;
-        allShips = new ArrayList<Ship>();
+        allShips = new ArrayList<>();
         createShips(gridDimension, numberOfShips);
     }
 

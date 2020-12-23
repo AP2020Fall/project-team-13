@@ -9,7 +9,6 @@ import Plato.Model.Player;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class GameManager {
     private final Player firstPlayer;
@@ -108,23 +107,24 @@ public class GameManager {
             if (opponentGridManager.bombLocation(xAxis, yAxis, turn, opponentShipManager)) {
                 addScore(1, turn);
                 playerGridManager.wasBombingLocationSuccessful(true, xAxis, yAxis);
-                if (!(opponentShipManager.isAnyShipDestroyed(opponentGridManager) == -1)) {
+                int destroyedShipCode = opponentShipManager.isAnyShipDestroyed(opponentGridManager);
+                if (!(destroyedShipCode == -1)) {
                     addScore(5, turn);
-                    playerGridManager.destroyShip(opponentShipManager.isAnyShipDestroyed(opponentGridManager), turn);
-                    opponentGridManager.destroyShip(opponentShipManager.isAnyShipDestroyed(opponentGridManager), turn);
+                    playerGridManager.destroyShip(opponentShipManager.getShipByShipCode(destroyedShipCode), turn);
+                    opponentGridManager.destroyShip(opponentShipManager.getShipByShipCode(destroyedShipCode), turn);
                     if (opponentShipManager.areAllShipsDestroyed()) InGameMenu.gameHasEnded();
-                    return 2; //"You Destroyed Your Opponent's Ship";
+                    return 2;
                 }
-                return 1; //"Your Bomb Hit The Opponent's Ship";
+                return 1;
             } else {
                 playerGridManager.wasBombingLocationSuccessful(false, xAxis, yAxis);
                 changeTurn();
-                return 0; //"You Missed Your Shot";
+                return 0;
             }
         } else {
             if (playerGridManager.isTheGridFullyBombed() && opponentGridManager.isTheGridFullyBombed())
                 InGameMenu.gameHasEnded();
-            return 3; //"You Have Already Bombed This Location! Choose Another Location";
+            return 3;
         }
     }
 
@@ -135,7 +135,7 @@ public class GameManager {
 
     public void putTheShipsOnBoardRandomly(GridManager gridManager, ShipManager shipManager, int boardDimension) {
         for (Ship ship : shipManager.getAllShips()) {
-            ship.setStartPoint(new Coordination(randomNumber(boardDimension)+1, randomNumber(boardDimension)+1));
+            ship.setStartPoint(new Coordination(randomNumber(boardDimension) + 1, randomNumber(boardDimension) + 1));
             int temp = randomNumber(4);
             if (temp == 0) ship.setDirection('n');
             else if (temp == 1) ship.setDirection('e');
@@ -148,7 +148,7 @@ public class GameManager {
 
     private void putThisShipOnBoard(Ship ship, GridManager gridManager, int boardDimension) {
         try {
-            while(!gridManager.changeLocationOfShip(ship, randomNumber(boardDimension)+1, randomNumber(boardDimension)+1)){
+            while (!gridManager.changeLocationOfShip(ship, randomNumber(boardDimension) + 1, randomNumber(boardDimension) + 1)) {
                 gridManager.fixTheGrid();
             }
         } catch (IndexOutOfBoundsException e) {

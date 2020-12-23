@@ -9,7 +9,6 @@ public class GridManager {
     private final Player owner;
     private Grid playerGrid;
     private Grid opponentGrid;
-    private boolean bombingFlag;
 
     public GridManager(Player owner, int gridDimension) {
         this.owner = owner;
@@ -20,9 +19,7 @@ public class GridManager {
     public boolean bombLocation(int xAxis, int yAxis, Player bomber, ShipManager playerShipManager) {
 
         if (bomber.equals(owner)) {
-            if(opponentGrid.getLocation(xAxis, yAxis).Bomb()){
-                return true;
-            } else return false;
+            return opponentGrid.getLocation(xAxis, yAxis).Bomb();
         } else {
             playerGrid.getLocation(xAxis, yAxis).Bomb();
             if (playerGrid.getLocation(xAxis, yAxis).isOccupied()) {
@@ -38,10 +35,10 @@ public class GridManager {
         }
     }
 
-    public void wasBombingLocationSuccessful(boolean answer,int xAxis, int yAxis){
-        if (answer){
-            opponentGrid.getLocation(xAxis,yAxis).setContent("+");
-        } else opponentGrid.getLocation(xAxis,yAxis).setContent("-");
+    public void wasBombingLocationSuccessful(boolean answer, int xAxis, int yAxis) {
+        if (answer) {
+            opponentGrid.getLocation(xAxis, yAxis).setContent("+");
+        } else opponentGrid.getLocation(xAxis, yAxis).setContent("-");
     }
 
     public boolean changeLocationOfShip(Ship ship, int newStartPointXAxis, int newStartPointYAxis) throws IndexOutOfBoundsException {
@@ -140,15 +137,13 @@ public class GridManager {
                     coordination.unoccupy();
                 }
                 if (coordination.getContent().equalsIgnoreCase("r")) {
-                    coordination.setContent(""+ship.getCode());
+                    coordination.setContent("" + ship.getCode());
                     coordination.occupy();
                 }
 
             }
         }
     }
-
-    //public boolean putShipOnGrid(Ship ship){ }
 
     public Grid getPlayerGrid() {
         return playerGrid;
@@ -158,11 +153,7 @@ public class GridManager {
         return opponentGrid;
     }
 
-    public Player getOwner() {
-        return owner;
-    }
-
-    public boolean isTheGridFullyBombed(){
+    public boolean isTheGridFullyBombed() {
         for (Coordination[] coordinations : opponentGrid.getTheGrid()) {
             for (Coordination coordination : coordinations) {
                 if (!coordination.isBombed()) return false;
@@ -171,18 +162,33 @@ public class GridManager {
         return true;
     }
 
-    public void destroyShip(int shipCode,Player destroyer){
-        if (destroyer.equals(owner)){
-            for (Coordination[] coordinations : opponentGrid.getTheGrid()) {
-                for (Coordination coordination : coordinations) {
-                    if (coordination.getContent().equalsIgnoreCase(""+shipCode))
-                        coordination.setContent("*");
+    public void destroyShip(Ship ship, Player destroyer) {
+        if (destroyer.equals(owner)) {
+            if (ship.getDirection() == 'n' || ship.getDirection() == 's') {
+                for (int i = 0; i < ship.getLength(); i++) {
+                    for (int j = 0; j < ship.getWidth(); j++) {
+                        if (ship.getDirection() == 'n') {
+                            opponentGrid.getLocation(ship.getStartPoint().getXAxis() - i, ship.getStartPoint().getYAxis() + j).setContent("*");
+                        } else {
+                            opponentGrid.getLocation(ship.getStartPoint().getXAxis() + i, ship.getStartPoint().getYAxis() + j).setContent("*");
+                        }
+                    }
+                }
+            } else if (ship.getDirection() == 'w' || ship.getDirection() == 'e') {
+                for (int i = 0; i < ship.getWidth(); i++) {
+                    for (int j = 0; j < ship.getLength(); j++) {
+                        if (ship.getDirection() == 'w') {
+                            opponentGrid.getLocation(ship.getStartPoint().getXAxis() + i, ship.getStartPoint().getYAxis() - j).setContent("*");
+                        } else {
+                            opponentGrid.getLocation(ship.getStartPoint().getXAxis() + i, ship.getStartPoint().getYAxis() + j).setContent("*");
+                        }
+                    }
                 }
             }
-        }else{
+        } else {
             for (Coordination[] coordinations : playerGrid.getTheGrid()) {
                 for (Coordination coordination : coordinations) {
-                    if (coordination.getContent().equalsIgnoreCase(""+shipCode))
+                    if (coordination.getPreviousContent().equalsIgnoreCase("" + ship.getCode()))
                         coordination.setContent("*");
                 }
             }

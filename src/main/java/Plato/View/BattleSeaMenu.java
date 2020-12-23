@@ -3,7 +3,6 @@ package Plato.View;
 import BattleSea.Controller.BattleSea;
 import Plato.Controller.LoginPageController;
 import Plato.Model.*;
-import Reversi.ReversiController;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

@@ -22,10 +22,6 @@ public class Grid {
         return dimension;
     }
 
-    public Player getOwner() {
-        return owner;
-    }
-
     public Coordination[][] getTheGrid() {
         return theGrid;
     }
@@ -33,16 +29,6 @@ public class Grid {
     public Coordination getLocation(int xAxis, int yAxis) {
         return theGrid[xAxis - 1][yAxis - 1];
     }
-
-    /*public Grid getClone() {
-        Grid clone = new Grid(this.dimension, this.owner);
-        for (int i = 0; i < dimension; i++) {
-            for (int j = 0; j < dimension; j++) {
-                clone.getTheGrid()[i][j] = theGrid[i][j].getClone();
-            }
-        }
-        return clone;
-    }*/
 
 }
 

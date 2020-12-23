@@ -7,6 +7,8 @@ import Plato.View.GamesMenu;
 import Plato.View.Page;
 import Plato.View.UserPage;
 
+import java.io.FileNotFoundException;
+
 public class StartingPage extends Page {
     Player firstPlayer;
     Player secondPlayer;
@@ -33,14 +35,13 @@ public class StartingPage extends Page {
                     Game.updateGames();
                     Log.updateLogs();
                     Event.updateEvents();
-                    //return BattleSeaMenu.battleSeaMenu;
                 } else if (option == 2) {
                     return UserPage.userPage;
                 } else if (option == 3) {
                     return BattleSeaMenu.battleSeaMenu;
                 }
 
-            } catch (Exception e) {
+            } catch (NumberFormatException | FileNotFoundException e) {
                 System.out.println("you must enter the number for that option");
             }
         }
@@ -53,61 +54,72 @@ public class StartingPage extends Page {
                 "and the other on the number of ships");
         boolean isBoardOptionDecided = false;
         while (!isBoardOptionDecided) {
-            System.out.print("1-10*10\n" +
-                    "2-15*15\n" +
-                    "3-20*20\n" +
-                    "choose an options:");
-            int boardOption = Integer.parseInt(scanner.nextLine().trim());
-            if (boardOption < 1 || boardOption > 3) System.out.println("invalid input");
-            else {
-                isBoardOptionDecided = true;
-                boolean isNumberOfShipsDecided = false;
-                int numberOfShips;
-                while (!isNumberOfShipsDecided) {
-                    if (boardOption == 1) {
-                        System.out.print("1- 4 ships\n" +
-                                "2- 5 ships\n" +
-                                "3- 6 ships\n" +
-                                "chose an option:");
-                        numberOfShips = Integer.parseInt(scanner.nextLine().trim());
-                        if (numberOfShips < 1 || numberOfShips > 3) System.out.println("invalid input");
-                        else {
-                            isNumberOfShipsDecided = true;
-                            if (numberOfShips == 1) gameManager = new GameManager(firstPlayer, secondPlayer, 10, 4);
-                            else if (numberOfShips == 2)
-                                gameManager = new GameManager(firstPlayer, secondPlayer, 10, 5);
-                            else gameManager = new GameManager(firstPlayer, secondPlayer, 10, 6);
-                        }
-                    } else if (boardOption == 2) {
-                        System.out.print("1- 6 ships\n" +
-                                "2- 7 ships\n" +
-                                "3- 8 ships\n" +
-                                "chose an option:");
-                        numberOfShips = Integer.parseInt(scanner.nextLine().trim());
-                        if (numberOfShips < 1 || numberOfShips > 3) System.out.println("invalid input");
-                        else {
-                            isNumberOfShipsDecided = true;
-                            if (numberOfShips == 1) gameManager = new GameManager(firstPlayer, secondPlayer, 15, 6);
-                            else if (numberOfShips == 2)
-                                gameManager = new GameManager(firstPlayer, secondPlayer, 15, 7);
-                            else gameManager = new GameManager(firstPlayer, secondPlayer, 15, 8);
-                        }
-                    } else {
-                        System.out.print("1- 7 ships\n" +
-                                "2- 8 ships\n" +
-                                "3- 9 ships\n" +
-                                "chose an option:");
-                        numberOfShips = Integer.parseInt(scanner.nextLine().trim());
-                        if (numberOfShips < 1 || numberOfShips > 3) System.out.println("invalid input");
-                        else {
-                            isNumberOfShipsDecided = true;
-                            if (numberOfShips == 1) gameManager = new GameManager(firstPlayer, secondPlayer, 20, 7);
-                            else if (numberOfShips == 2)
-                                gameManager = new GameManager(firstPlayer, secondPlayer, 20, 8);
-                            else gameManager = new GameManager(firstPlayer, secondPlayer, 20, 9);
+            try {
+                System.out.print("1-10*10\n" +
+                        "2-15*15\n" +
+                        "3-20*20\n" +
+                        "choose an options:");
+                int boardOption = Integer.parseInt(scanner.nextLine().trim());
+                if (boardOption < 1 || boardOption > 3) System.out.println("invalid input");
+                else {
+                    isBoardOptionDecided = true;
+                    boolean isNumberOfShipsDecided = false;
+                    int numberOfShips;
+                    while (!isNumberOfShipsDecided) {
+                        try {
+                            if (boardOption == 1) {
+                                System.out.print("1- 4 ships\n" +
+                                        "2- 5 ships\n" +
+                                        "3- 6 ships\n" +
+                                        "chose an option:");
+                                numberOfShips = Integer.parseInt(scanner.nextLine().trim());
+                                if (numberOfShips < 1 || numberOfShips > 3) System.out.println("invalid input");
+                                else {
+                                    isNumberOfShipsDecided = true;
+                                    if (numberOfShips == 1)
+                                        gameManager = new GameManager(firstPlayer, secondPlayer, 10, 4);
+                                    else if (numberOfShips == 2)
+                                        gameManager = new GameManager(firstPlayer, secondPlayer, 10, 5);
+                                    else gameManager = new GameManager(firstPlayer, secondPlayer, 10, 6);
+                                }
+                            } else if (boardOption == 2) {
+                                System.out.print("1- 6 ships\n" +
+                                        "2- 7 ships\n" +
+                                        "3- 8 ships\n" +
+                                        "chose an option:");
+                                numberOfShips = Integer.parseInt(scanner.nextLine().trim());
+                                if (numberOfShips < 1 || numberOfShips > 3) System.out.println("invalid input");
+                                else {
+                                    isNumberOfShipsDecided = true;
+                                    if (numberOfShips == 1)
+                                        gameManager = new GameManager(firstPlayer, secondPlayer, 15, 6);
+                                    else if (numberOfShips == 2)
+                                        gameManager = new GameManager(firstPlayer, secondPlayer, 15, 7);
+                                    else gameManager = new GameManager(firstPlayer, secondPlayer, 15, 8);
+                                }
+                            } else {
+                                System.out.print("1- 7 ships\n" +
+                                        "2- 8 ships\n" +
+                                        "3- 9 ships\n" +
+                                        "chose an option:");
+                                numberOfShips = Integer.parseInt(scanner.nextLine().trim());
+                                if (numberOfShips < 1 || numberOfShips > 3) System.out.println("invalid input");
+                                else {
+                                    isNumberOfShipsDecided = true;
+                                    if (numberOfShips == 1)
+                                        gameManager = new GameManager(firstPlayer, secondPlayer, 20, 7);
+                                    else if (numberOfShips == 2)
+                                        gameManager = new GameManager(firstPlayer, secondPlayer, 20, 8);
+                                    else gameManager = new GameManager(firstPlayer, secondPlayer, 20, 9);
+                                }
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("you must enter the number for that option");
                         }
                     }
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("you must enter the number for that option");
             }
         }
         inGameMenu = new InGameMenu(gameManager, scanner);
