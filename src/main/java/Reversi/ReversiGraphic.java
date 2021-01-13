@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -23,11 +24,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import static com.sun.javafx.scene.control.skin.Utils.getResource;
 
-public class ReversiGraphic extends Application {
+public class ReversiGraphic{
     //fields
 
     //board
@@ -196,15 +198,25 @@ public class ReversiGraphic extends Application {
     public ImageView seven_seven;
     //buttons
     public Button back;
+    public Button viewAccountMenu;
     //model
-    private static Reversi game;
+    public static Reversi game;
+    //labels
+    public Label turn;
+    public Label result;
+    public static ArrayList<ReversiGraphic> reversiGraphics = new ArrayList<>();
 
     //methods
 
+    public ReversiGraphic(){
+        reversiGraphics.add(this);
+    }
     //place disk
     public void placeDisk(MouseEvent mouseEvent) {
         int x = (int) ((mouseEvent.getSceneY() / 60));
         int y = (int) ((mouseEvent.getSceneX() / 60));
+        x++;
+        y++;
         if(!Reversi.doesItObserveTheTableLimit(x, y))
             System.out.println("Coordinates must be inside the table");
         else if(!game.canHePlaceDisk(x, y))
@@ -273,6 +285,9 @@ public class ReversiGraphic extends Application {
             game.getTable().setLastMove(x - 1, y - 1);
             game.getTable().setHasHePlayed(true);
             game.changeTurn();
+            turn.setText(game.getTable().getWhoseTurn() + "(" + game.getPlayerByWhoseTurn().getUsername() + ")");
+            result.setText("black " + game.getNumberOfInputColorDisks("B") + "   -   " +
+                    game.getNumberOfInputColorDisks("W") + " white");
             update();
         }
     }
@@ -1209,31 +1224,7 @@ public class ReversiGraphic extends Application {
             }
         }
     }
-
-
-    public void start(Stage primaryStage) throws Exception{
-        URL url = new File("src/main/java/Reversi/fxml/Reversi.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
-        ((GridPane) root).setGridLinesVisible(true);
-        ColumnConstraints columnConstraints = new ColumnConstraints(60);
-        RowConstraints rowConstraints = new RowConstraints(60);
-        for (int i = 0; i < 8; i++)
-            ((GridPane) root).getColumnConstraints().add(columnConstraints);
-        for (int i = 0; i < 9; i++)
-            ((GridPane) root).getRowConstraints().add(rowConstraints);
-        primaryStage.setTitle("Reversi");
-        primaryStage.setScene(new Scene(root, 480, 540));
-        primaryStage.show();
-        update();
+    //view account menu
+    public void viewAccountMenu(ActionEvent actionEvent) {
     }
-
-    public static void main(String[] args){
-        Player p1 = new Player();
-        Player p2 = new Player();
-        p1.setUsername("mehdi");
-        p2.setUsername("ali");
-        game = new Reversi(p1, p2);
-        launch(args);
-    }
-
 }
