@@ -1,5 +1,8 @@
 package Reversi;
 
+import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
+
 //view
 public class ReversiView {
     public void showWhoseTurnIsIt(ReversiController controller){
@@ -43,4 +46,5 @@ public class ReversiView {
 
         }
     }
+
 }

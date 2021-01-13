@@ -2,10 +2,26 @@ package Reversi;
 
 import Plato.Model.*;
 import Plato.View.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.stage.Stage;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+
+import static javafx.application.Application.launch;
 
 //controller
 public class ReversiController extends Game {
@@ -88,25 +104,33 @@ public class ReversiController extends Game {
             input = scanner.nextLine();
             if (input.trim().equals("end of my turn")) {
                 game.changeTurn();
-            } else if (Pattern.matches("Place disk on .\\d+,\\d+.", input.trim())) {
+            }
+            else if (Pattern.matches("Place disk on .\\d+,\\d+.", input.trim())) {
                 input = (input.split(" ")[3]);
                 input = input.substring(1, input.length() - 1);
                 int x = Integer.parseInt(input.split(",")[0]);
                 int y = Integer.parseInt(input.split(",")[1]);
                 game.placeDisk(x, y);
-            } else if (input.trim().equals("show available coordinates")) {
+            }
+            else if (input.trim().equals("show available coordinates")) {
                 game.showAvailableCoordinates();
-            } else if (input.trim().equals("show disks")) {
+            }
+            else if (input.trim().equals("show disks")) {
                 game.showDisks();
-            } else if (input.trim().equals("Who is next?")) {
+            }
+            else if (input.trim().equals("Who is next?")) {
                 game.showWhoseTurnIsIt();
-            } else if (input.trim().equals("show score")) {
+            }
+            else if (input.trim().equals("show score")) {
                 game.showScore();
-            } else if (input.trim().equals("back")) {
+            }
+            else if (input.trim().equals("back")) {
                 return GamesMenu.gamesMenu;
-            } else if (input.trim().equals("View account menu")) {
+            }
+            else if (input.trim().equals("View account menu")) {
                 return UserPage.userPage;
-            } else if (input.trim().equals("help")) {
+            }
+            else if (input.trim().equals("help")) {
                 System.out.println("1. end of my turn\n" +
                         "2. Place disk on (x,y)\n" +
                         "3. show available coordinates\n" +
@@ -116,7 +140,8 @@ public class ReversiController extends Game {
                         "7. back\n" +
                         "8. View account menu\n" +
                         "9. help\n");
-            } else {
+            }
+            else {
                 System.out.println("invalid command!");
             }
         }
@@ -127,7 +152,8 @@ public class ReversiController extends Game {
             game.getModel().getWinner().addReversiPoints();
             game.getModel().getWinner().addReversiWins();
             game.getModel().getLooser().addReversiLosses();
-        } else {
+        }
+        else {
             System.out.println("match just finished and the result is draw!");
             game.getModel().getWhite().addReversiDraws();
             game.getModel().getBlack().addReversiDraws();
@@ -141,19 +167,24 @@ public class ReversiController extends Game {
             input = scanner.nextLine();
             if (input.trim().equals("show result")) {
                 game.showResult();
-            } else if (input.trim().equals("show score")) {
+            }
+            else if (input.trim().equals("show score")) {
                 game.showScore();
-            } else if (input.trim().equals("back")) {
+            }
+            else if (input.trim().equals("back")) {
                 return ReversiMenu.reversiMenu;
-            } else if (input.trim().equals("View account menu")) {
+            }
+            else if (input.trim().equals("View account menu")) {
                 return UserPage.userPage;
-            } else if (input.trim().equals("help")) {
+            }
+            else if (input.trim().equals("help")) {
                 System.out.println("1. show result\n" +
                         "2. show score\n" +
                         "3. back\n" +
                         "4. View account menu\n" +
                         "5. help");
-            } else {
+            }
+            else {
                 System.out.println("invalid command!");
             }
         }
