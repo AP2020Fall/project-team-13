@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" prefHeight="483.0" prefWidth="648.0" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="440.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="168.0" layoutY="60.0" text="username" />
+            <Label layoutX="168.0" layoutY="101.0" text="password" />
+            <Label fx:id="message" layoutX="286.0" layoutY="21.0" text="message" visible="false" />
+            <TextField fx:id="fusername" layoutX="236.0" layoutY="56.0" />
+            <PasswordField fx:id="fpassword" layoutX="235.0" layoutY="97.0" />
+            <Button fx:id="bregister" layoutX="281.0" layoutY="360.0" mnemonicParsing="false" text="register" />
+            <Button fx:id="blogin" layoutX="287.0" layoutY="130.0" mnemonicParsing="false" text="Login" />
+            <Label layoutX="164.0" layoutY="186.0" text="email" />
+            <Label layoutX="154.0" layoutY="226.0" text="firstname" />
+            <Label layoutX="155.0" layoutY="266.0" text="lastname" />
+            <Label layoutX="141.0" layoutY="311.0" text="phone number" />
+            <TextField fx:id="femail" layoutX="238.0" layoutY="182.0" />
+            <TextField fx:id="ffname" layoutX="238.0" layoutY="222.0" />
+            <TextField fx:id="flname" layoutX="238.0" layoutY="262.0" />
+            <TextField fx:id="fpnumber" layoutX="238.0" layoutY="307.0" />
+         </children></Pane>
+   </children>
+</GridPane>

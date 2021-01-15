@@ -10,7 +10,7 @@ import Reversi.ReversiController;
 import java.util.Date;
 
 public class LoginPageController {
-    private static LoginPageController loginPageController = new LoginPageController();
+    public static LoginPageController loginPageController = new LoginPageController();
     public static User user;
     static boolean isMainAdminRegistered;
 
