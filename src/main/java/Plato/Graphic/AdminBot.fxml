@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="520.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.AdminGraphicalMainPageController">
+<AnchorPane prefHeight="520.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.AdminBot">
     <children>
         <Line endX="-48.0" endY="342.0" layoutX="222.0" layoutY="178.0" startX="-48.0" startY="-178.0" />
         <Button layoutX="34.0" layoutY="34.0" mnemonicParsing="false" text="account Menu" />
@@ -14,14 +14,13 @@
         <Button layoutX="31.0" layoutY="281.0" mnemonicParsing="false" text="manage bot messages" />
         <Button layoutX="34.0" layoutY="356.0" mnemonicParsing="false" text="log out" />
       <Label layoutX="343.0" layoutY="25.0" text="manage bot messages page" />
-      <TextArea fx:id="botNewMessage" layoutX="193.0" layoutY="80.0" prefHeight="87.0" prefWidth="467.0" />
-      <Button layoutX="365.0" layoutY="184.0" mnemonicParsing="false" text="create new message" />
+      <Button layoutX="365.0" layoutY="184.0" mnemonicParsing="false" onAction="#createNewMessage" text="create new message" />
       <Label fx:id="mes" layoutX="403.0" layoutY="251.0" text="message" visible="false" />
       <TableView fx:id="tableOfBotMessages" layoutX="392.0" layoutY="294.0" prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn fx:id="botMessagesTable" prefWidth="199.20001220703125" text="text of message" />
-        </columns>
-      </TableView>
+         <columns>
+            <TableColumn prefWidth="199.20001220703125" text="messsages" />
+         </columns></TableView>
       <Button layoutX="206.0" layoutY="394.0" mnemonicParsing="false" text="show previous messages :" />
+      <TextField fx:id="botNewMessage" layoutX="189.0" layoutY="82.0" prefHeight="90.0" prefWidth="462.0" />
     </children>
 </AnchorPane>
