@@ -45,7 +45,23 @@ public class AccountMenu {
     public void edit(javafx.event.ActionEvent event)
     {
         String neValue = nvalue.getText();
-
+        String field = (String) box.getSelectionModel().getSelectedItem();
+        if (field.equals("firstname"))
+        {
+            LoginPageController.user.setFirstname(neValue);
+        }
+        else if (field.equals("lastname"))
+        {
+            LoginPageController.user.setLastname(neValue);
+        }
+        else if (field.equals("email"))
+        {
+            LoginPageController.user.setEmail(neValue);
+        }
+        else if (field.equals("phone number"))
+        {
+            LoginPageController.user.setPhoneNumber(neValue);
+        }
 
     }
     @FXML public void delete(javafx.event.ActionEvent event)
