@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<?import javafx.scene.shape.Line?>
-<AnchorPane prefHeight="520.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.AdminGraphicalMainPageController">
+<AnchorPane prefHeight="520.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.PlayerBot">
     <children>
         <Line endX="-48.0" endY="342.0" layoutX="222.0" layoutY="178.0" startX="-48.0" startY="-178.0" />
         <Button layoutX="34.0" layoutY="34.0" mnemonicParsing="false" text="account Menu" />
@@ -17,5 +14,11 @@
         <Button layoutX="31.0" layoutY="281.0" mnemonicParsing="false" text="plato bot messages" />
         <Button layoutX="30.0" layoutY="402.0" mnemonicParsing="false" text="log out" />
         <Button layoutX="30.0" layoutY="339.0" mnemonicParsing="false" text="my games history" />
+      <TableView fx:id="botMessage" layoutX="235.0" layoutY="71.0" prefHeight="287.0" prefWidth="402.0">
+        <columns>
+          <TableColumn fx:id="ctable" prefWidth="391.60003662109375" text="messages" />
+        </columns>
+      </TableView>
+      <Button layoutX="387.0" layoutY="389.0" mnemonicParsing="false" onAction="#showmes" text="show messages" />
     </children>
 </AnchorPane>
