@@ -3,26 +3,30 @@ package Plato.Graphic;
 import Plato.Controller.LoginPageController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 
 public class Controller {
     @FXML
+    Button close = new Button();
+    @FXML
      Label message =new Label();
     @FXML
-     TextField fusername ;
+    Label error = new Label();
     @FXML
-     TextField femail ;
+    DialogPane berror = new DialogPane();
     @FXML
-     TextField ffname ;
+     TextField fusername = new TextField() ;
     @FXML
-     TextField flname;
+     TextField femail = new TextField();
     @FXML
-     TextField fpnumber ;
+     TextField ffname = new TextField();
     @FXML
-     PasswordField fpassword;
+     TextField flname = new TextField();
+    @FXML
+     TextField fpnumber = new TextField();
+    @FXML
+     PasswordField fpassword = new PasswordField();
 
 
 
@@ -32,8 +36,10 @@ public class Controller {
         boolean result = LoginPageController.loginPageController.register(fusername.getText(),fpassword.getText(),femail.getText(),ffname.getText(),flname.getText(),fpnumber.getText());
         if (!result)
         {
-            message.setText("username is used");
-            message.setVisible(true);
+            berror.setVisible(true);
+            error.setText("username is used");
+            error.setVisible(true);
+            close.setVisible(true);
 
         }
         else {
@@ -47,8 +53,10 @@ public class Controller {
         String result = LoginPageController.loginPageController.loginController(fusername.getText(),fpassword.getText());
         if (result.equalsIgnoreCase("invalid information"))
         {
-            message.setText("invalid information");
-            message.setVisible(true);
+            berror.setVisible(true);
+            error.setText("invalid information");
+            error.setVisible(true);
+            close.setVisible(true);
 
         }
         else if (result.equalsIgnoreCase("found admin")){
@@ -58,5 +66,12 @@ public class Controller {
         {
 
         }
+    }
+    @FXML
+    public void setClose(ActionEvent event)
+    {
+        berror.setVisible(false);
+        error.setVisible(false);
+        close.setVisible(false);
     }
 }

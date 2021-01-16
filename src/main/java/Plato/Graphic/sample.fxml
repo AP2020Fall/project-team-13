@@ -28,6 +28,9 @@
             <TextField fx:id="ffname" layoutX="238.0" layoutY="222.0" />
             <TextField fx:id="flname" layoutX="238.0" layoutY="262.0" />
             <TextField fx:id="fpnumber" layoutX="238.0" layoutY="307.0" />
+            <DialogPane fx:id="berror" layoutX="119.0" layoutY="110.0" prefHeight="182.0" prefWidth="393.0" visible="false" />
+            <Label fx:id="error" layoutX="268.0" layoutY="177.0" prefHeight="17.0" prefWidth="65.0" text="message" visible="false" />
+            <Button fx:id="close" layoutX="440.0" layoutY="118.0" mnemonicParsing="false" onAction="#setClose" text="close" visible="false" />
          </children></Pane>
    </children>
 </GridPane>
