@@ -1,6 +1,7 @@
 package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,8 +24,11 @@ public class Controller {
     @FXML
     private static PasswordField fpassword;
 
-    public static void register()
-    {
+
+
+
+    @FXML
+    public void register(ActionEvent event) {
         boolean result = LoginPageController.loginPageController.register(fusername.getText(),fpassword.getText(),femail.getText(),ffname.getText(),flname.getText(),fpnumber.getText());
         if (!result)
         {
@@ -36,10 +40,10 @@ public class Controller {
             message.setText("you are succesfully registered");
             message.setVisible(true);
         }
-
     }
-    public static void login()
-    {
+
+    @FXML
+    public void login(ActionEvent event) {
         String result = LoginPageController.loginPageController.loginController(fusername.getText(),fpassword.getText());
         if (result.equalsIgnoreCase("invalid information"))
         {

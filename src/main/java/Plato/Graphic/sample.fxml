@@ -18,8 +18,8 @@
             <Label fx:id="message" layoutX="286.0" layoutY="21.0" text="message" visible="false" />
             <TextField fx:id="fusername" layoutX="236.0" layoutY="56.0" />
             <PasswordField fx:id="fpassword" layoutX="235.0" layoutY="97.0" />
-            <Button fx:id="bregister" layoutX="281.0" layoutY="360.0" mnemonicParsing="false" text="register" />
-            <Button fx:id="blogin" layoutX="287.0" layoutY="130.0" mnemonicParsing="false" text="Login" />
+            <Button fx:id="bregister" layoutX="281.0" layoutY="360.0" mnemonicParsing="false" onAction="#register" text="register" />
+            <Button fx:id="blogin" layoutX="287.0" layoutY="130.0" mnemonicParsing="false" onAction="#login" text="Login" />
             <Label layoutX="164.0" layoutY="186.0" text="email" />
             <Label layoutX="154.0" layoutY="226.0" text="firstname" />
             <Label layoutX="155.0" layoutY="266.0" text="lastname" />
