@@ -8,4 +8,5 @@ import java.awt.*;
 public class AdminBot {
     @FXML
     static TextArea botNewMessage = new TextArea();
+
 }
