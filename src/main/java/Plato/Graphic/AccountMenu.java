@@ -8,7 +8,10 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
 
 import java.awt.event.ActionEvent;
 
@@ -18,7 +21,14 @@ public class AccountMenu {
     TextField nvalue = new TextField();
     @FXML
     ChoiceBox box = new ChoiceBox(FXCollections.observableArrayList("firstname", "lastname", "email","password","phone number"));
-
+    @FXML
+    Label fname = new Label();
+    @FXML
+    Label lname = new Label();
+    @FXML
+    Label email = new Label();
+    @FXML
+    Label pn = new Label();
 
 @FXML
     public void mainPage(javafx.event.ActionEvent event) {
@@ -66,5 +76,14 @@ public class AccountMenu {
         }
 
 
+    }
+
+    @FXML
+    public void viewPersonal(javafx.event.ActionEvent event)
+    {
+        fname.setText(LoginPageController.user.getFirstname());
+        lname.setText(LoginPageController.user.getLastname());
+        email.setText(LoginPageController.user.getEmail());
+        pn.setText(LoginPageController.user.getPhoneNumber());
     }
 }
