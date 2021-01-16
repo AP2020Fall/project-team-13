@@ -10,19 +10,19 @@ import javafx.scene.control.TextField;
 
 public class Controller {
     @FXML
-    private static Label message =new Label();
+     Label message =new Label();
     @FXML
-    private static TextField fusername ;
+     TextField fusername ;
     @FXML
-    private static TextField femail ;
+     TextField femail ;
     @FXML
-    private static TextField ffname ;
+     TextField ffname ;
     @FXML
-    private static TextField flname;
+     TextField flname;
     @FXML
-    private static TextField fpnumber ;
+     TextField fpnumber ;
     @FXML
-    private static PasswordField fpassword;
+     PasswordField fpassword;
 
 
 

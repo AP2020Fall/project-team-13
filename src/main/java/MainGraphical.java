@@ -26,7 +26,7 @@ public class MainGraphical extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        URL url = new File("src/main/java/Plato/Graphic/AdminBot.fxml").toURI().toURL();
+        URL url = new File("src/main/java/Plato/Graphic/sample.fxml").toURI().toURL();
         stage=primaryStage;
         //Parent root = FXMLLoader.load(getClass().getResource("Plato.Graphic.sample.fxml"));
         //Parent root1 = FXMLLoader.load(getClass().getResource("Plato.Graphic.AdminBot.fxml"));

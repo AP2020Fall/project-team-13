@@ -20,7 +20,7 @@
          <columns>
             <TableColumn prefWidth="199.20001220703125" text="messsages" />
          </columns></TableView>
-      <Button layoutX="206.0" layoutY="394.0" mnemonicParsing="false" text="show previous messages :" />
+      <Button layoutX="206.0" layoutY="394.0" mnemonicParsing="false" onAction="#showBotMessages" text="show previous messages :" />
       <TextField fx:id="botNewMessage" layoutX="189.0" layoutY="82.0" prefHeight="90.0" prefWidth="462.0" />
     </children>
 </AnchorPane>
