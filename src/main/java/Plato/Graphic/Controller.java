@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 
 public class Controller {
     @FXML
-    private static Label message ;
+    private static Label message =new Label();
     @FXML
     private static TextField fusername ;
     @FXML
