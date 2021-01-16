@@ -22,6 +22,7 @@ public class AdminBot {
     TableView<String> tableOfBotMessages = new TableView<String>();
 
     @FXML
+
     public void createNewMessage()
     {
         mainPageAdminController.addbotMessage(botNewMessage.getText());
@@ -34,5 +35,6 @@ public class AdminBot {
 
         }
     }
+
 
 }
