@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
-
 public class ReversiGraphicRun extends Application {
     public void start(Stage primaryStage) throws Exception{
         URL url = new File("src/main/java/Reversi/fxml/Reversi.fxml").toURI().toURL();
