@@ -36,4 +36,16 @@ public class PlayerGames {
     {
         MainGraphical.scene.setRoot(MainGraphical.root);
     }
+
+    @FXML
+    public void joinevent(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootJE);
+    }
+
+    @FXML
+    public void friends(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootPF);
+    }
 }

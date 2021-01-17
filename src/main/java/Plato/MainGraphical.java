@@ -26,6 +26,9 @@ public class MainGraphical extends Application {
     public  static Parent rootAG;
     public  static Parent rootAB;
     public  static Parent rootAAM;
+    public  static Parent rootJE;
+    public  static Parent rootPF;
+
 
 
 
@@ -48,6 +51,8 @@ public class MainGraphical extends Application {
         Parent rootAG = FXMLLoader.load(getClass().getResource("Plato.Graphic.AdminGames.fxml"));
         Parent rootAB = FXMLLoader.load(getClass().getResource("Plato.Graphic.AdminBot.fxml"));
         Parent rootAMM = FXMLLoader.load(getClass().getResource("Plato.Graphic.AccountMenu.fxml"));
+        Parent rootJE = FXMLLoader.load(getClass().getResource("Plato.Graphic.JoinEvent.fxml"));
+        Parent rootPF = FXMLLoader.load(getClass().getResource("Plato.Graphic.Friends.fxml"));
 
         primaryStage.setScene(scene=new Scene(root, 300, 275));
         primaryStage.show();

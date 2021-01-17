@@ -1,16 +1,18 @@
 package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
+import Plato.MainGraphical;
 import Plato.Model.Log;
 import Plato.Model.Player;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 import javax.swing.text.TabExpander;
 import javax.swing.text.TabableView;
 import javax.swing.text.TableView;
-import java.awt.*;
-import java.awt.event.ActionEvent;
+
 
 public class GameHistory {
     @FXML
@@ -52,6 +54,49 @@ public class GameHistory {
         sw.setText(String.valueOf(player.getBattleSeaWins()));
         sp.setText(String.valueOf(player.getBattleSeaPlayedCount()));
         sl.setText(String.valueOf(player.getBattleSeaLosses()));
+    }
+
+    @FXML
+    public void joinevent(javafx.event.ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootJE);
+    }
+
+    @FXML
+    public void friends(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootPF);
+    }
+
+    @FXML
+    public void AccountMenu(javafx.event.ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootAAM);
+
+    }
+
+    @FXML
+    public void GameMenu(javafx.event.ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootPG);
+    }
+
+    @FXML
+    public void PlayerBot(javafx.event.ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootPB);
+    }
+
+    @FXML
+    public void GamesHistory(javafx.event.ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootGH);
+    }
+
+    @FXML
+    public void Logout(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.root);
     }
 
 
