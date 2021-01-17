@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <Button layoutX="48.0" layoutY="34.0" mnemonicParsing="false" text="account menu"/>
-    <Button layoutX="51.0" layoutY="82.0" mnemonicParsing="false" text="games menu"/>
-    <Button layoutX="57.0" layoutY="122.0" mnemonicParsing="false" text="join events"/>
-    <Button layoutX="50.0" layoutY="164.0" mnemonicParsing="false" text="friends menu"/>
-    <Button layoutX="34.0" layoutY="209.0" mnemonicParsing="false" text="plato bot messages"/>
-    <Button layoutX="49.0" layoutY="253.0" mnemonicParsing="false" text="games history"/>
-    <Button layoutX="65.0" layoutY="301.0" mnemonicParsing="false" text="log out"/>
-    <Line endX="-46.0" endY="318.0" layoutX="237.0" layoutY="82.0" startX="-46.0" startY="-82.0"/>
-    <TextArea layoutX="277.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0"/>
-    <TextField layoutX="328.0" layoutY="266.0" text="event id..."/>
-    <Text layoutX="277.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="event id"/>
-    <Button layoutX="359.0" layoutY="314.0" mnemonicParsing="false" text="join"/>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.JoinEvent">
+    <Button layoutX="48.0" layoutY="34.0" mnemonicParsing="false" onAction="#AccountMenu" text="account menu" />
+    <Button layoutX="51.0" layoutY="82.0" mnemonicParsing="false" onAction="#GameMenu" text="games menu" />
+    <Button layoutX="57.0" layoutY="122.0" mnemonicParsing="false" onAction="#joinevent" text="join events" />
+    <Button layoutX="50.0" layoutY="164.0" mnemonicParsing="false" onAction="#friends" text="friends menu" />
+    <Button layoutX="34.0" layoutY="209.0" mnemonicParsing="false" onAction="#PlayerBot" text="plato bot messages" />
+    <Button layoutX="49.0" layoutY="253.0" mnemonicParsing="false" onAction="#GamesHistory" text="games history" />
+    <Button layoutX="65.0" layoutY="301.0" mnemonicParsing="false" onAction="#Logout" text="log out" />
+    <Line endX="-46.0" endY="318.0" layoutX="237.0" layoutY="82.0" startX="-46.0" startY="-82.0" />
+    <TextArea layoutX="277.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0" />
+    <TextField layoutX="328.0" layoutY="266.0" text="event id..." />
+    <Text layoutX="277.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="event id" />
+    <Button layoutX="359.0" layoutY="314.0" mnemonicParsing="false" text="join" />
 </Pane>

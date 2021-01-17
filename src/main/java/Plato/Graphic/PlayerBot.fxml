@@ -9,8 +9,8 @@
         <Line endX="-48.0" endY="342.0" layoutX="222.0" layoutY="178.0" startX="-48.0" startY="-178.0" />
         <Button layoutX="34.0" layoutY="34.0" mnemonicParsing="false" onAction="#AccountMenu" text="account Menu" />
         <Button layoutX="34.0" layoutY="94.0" mnemonicParsing="false" onAction="#GameMenu" text="games menu" />
-        <Button layoutX="32.0" layoutY="158.0" mnemonicParsing="false" text="join events" />
-        <Button layoutX="31.0" layoutY="220.0" mnemonicParsing="false" text="friends menu" />
+        <Button layoutX="32.0" layoutY="158.0" mnemonicParsing="false" onAction="#joinevent" text="join events" />
+        <Button layoutX="31.0" layoutY="220.0" mnemonicParsing="false" onAction="#friends" text="friends menu" />
         <Button layoutX="31.0" layoutY="281.0" mnemonicParsing="false" onAction="#PlayerBot" text="plato bot messages" />
         <Button layoutX="30.0" layoutY="402.0" mnemonicParsing="false" onAction="#Logout" text="log out" />
         <Button layoutX="30.0" layoutY="339.0" mnemonicParsing="false" onAction="#GamesHistory" text="games history" />

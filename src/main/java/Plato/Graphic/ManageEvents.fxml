@@ -8,7 +8,7 @@
 
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.ManageEvents">
     <Button layoutX="60.0" layoutY="309.0" mnemonicParsing="false" text="log out"/>
     <Button layoutX="20.0" layoutY="253.0" mnemonicParsing="false" text="manage bot messages"/>
     <Button layoutX="42.0" layoutY="188.0" mnemonicParsing="false" text="manage users"/>

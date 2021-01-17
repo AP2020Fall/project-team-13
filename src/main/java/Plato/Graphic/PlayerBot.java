@@ -56,4 +56,16 @@ public class PlayerBot {
         }
         botMessage.setItems(mes);
     }
+
+    @FXML
+    public void joinevent(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootJE);
+    }
+
+    @FXML
+    public void friends(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootPF);
+    }
 }
