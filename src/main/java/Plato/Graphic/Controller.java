@@ -1,6 +1,7 @@
 package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
+import Plato.MainGraphical;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -69,11 +70,11 @@ public class Controller {
 
         }
         else if (result.equalsIgnoreCase("found admin")){
-
+            MainGraphical.scene.setRoot(MainGraphical.rootAM);
         }
         else if (result.equalsIgnoreCase("found player"))
         {
-
+            MainGraphical.scene.setRoot(MainGraphical.rootPM);
         }
     }
     @FXML
