@@ -37,7 +37,7 @@ public class Player extends User{
     private ArrayList<Game> favorites = new ArrayList<Game>();
     private ArrayList<String> messages = new ArrayList<String>();
     private ArrayList<Boolean> messagesShown = new ArrayList<Boolean>();
-
+    public String status;
     //constructor
     public Player() {
         this.money = 0;
