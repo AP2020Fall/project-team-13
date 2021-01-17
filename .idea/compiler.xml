@@ -20,5 +20,11 @@
         <module name="Phase 1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="11" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Plato" options="--add-exports javafx.controls/com.sun.javafx.scene.control.skin=sample,Reversi" />
+    </option>
   </component>
 </project>
