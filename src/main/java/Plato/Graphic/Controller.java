@@ -5,6 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
 
 public class Controller {
     @FXML
@@ -46,6 +50,11 @@ public class Controller {
             message.setText("you are succesfully registered");
             message.setVisible(true);
         }
+        String musicFile = "Megatone.mp3";
+
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
 
     @FXML

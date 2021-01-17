@@ -6,5 +6,8 @@ module sample {
     requires javafx.media;
     requires java.desktop;
     requires javafx.swing;
-    opens sample;
+
+    opens Plato;
+    opens Reversi;
+
 }

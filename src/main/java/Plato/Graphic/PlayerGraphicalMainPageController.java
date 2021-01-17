@@ -1,6 +1,7 @@
 package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
+import Plato.MainGraphical;
 import Plato.Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +32,37 @@ public class PlayerGraphicalMainPageController {
         else {
             player.status=status.getText();
         }
+    }
+
+    @FXML
+    public void AccountMenu(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootAAM);
+
+    }
+
+    @FXML
+    public void GameMenu(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootPG);
+    }
+
+    @FXML
+    public void PlayerBot(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootPB);
+    }
+
+    @FXML
+    public void GamesHistory(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.rootGH);
+    }
+
+    @FXML
+    public void Logout(ActionEvent event)
+    {
+        MainGraphical.scene.setRoot(MainGraphical.root);
     }
 
 }

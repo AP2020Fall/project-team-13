@@ -11,6 +11,7 @@ import java.util.Map;
 public class Admin extends User{
     private static ArrayList<Admin> admins =new ArrayList<Admin>();
     private static ArrayList<String> messages = new ArrayList<String>();
+    public  static ArrayList<String> mesTime = new ArrayList<String>();
     public static ArrayList<Admin> getAdmins() {
         return admins;
     }
