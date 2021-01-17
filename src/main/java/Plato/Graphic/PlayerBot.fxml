@@ -13,7 +13,7 @@
         <Button layoutX="31.0" layoutY="220.0" mnemonicParsing="false" text="friends menu" />
         <Button layoutX="31.0" layoutY="281.0" mnemonicParsing="false" text="plato bot messages" />
         <Button layoutX="30.0" layoutY="402.0" mnemonicParsing="false" text="log out" />
-        <Button layoutX="30.0" layoutY="339.0" mnemonicParsing="false" text="my games history" />
+        <Button layoutX="30.0" layoutY="339.0" mnemonicParsing="false" text="games history" />
       <TableView fx:id="botMessage" layoutX="235.0" layoutY="71.0" prefHeight="287.0" prefWidth="402.0">
         <columns>
           <TableColumn fx:id="ctable" prefWidth="391.60003662109375" text="messages" />
