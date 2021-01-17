@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javax.swing.text.Element;
 import javax.swing.text.TabableView;
 import javax.swing.text.View;
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -31,13 +32,16 @@ public class AdminBot {
     public void createNewMessage()
     {
         mainPageAdminController.addbotMessage(botNewMessage.getText());
+        LocalDate date = LocalDate.now();
+        Admin.mesTime.add(String.valueOf(date));
     }
     @FXML
     public void showBotMessages()
     {
         ObservableList mes = FXCollections.observableArrayList();
-        for (String message : Player.getPlayers().get(1).getMessages()) {
-            mes.add(message);
+        for (int i=0 ; i<Admin.getMessages().size();i++) {
+        mes.add(Admin.getMessages().get(i));
+            mes.add(Admin.mesTime.get(i));
         }
         tableOfBotMessages.setItems(mes);
 

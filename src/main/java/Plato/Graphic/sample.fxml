@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <GridPane alignment="center" hgap="10" prefHeight="483.0" prefWidth="648.0" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.Controller">
    <columnConstraints>
@@ -13,8 +14,14 @@
    <children>
       <Pane prefHeight="440.0" prefWidth="600.0">
          <children>
-            <Label layoutX="168.0" layoutY="60.0" text="username" />
-            <Label layoutX="168.0" layoutY="101.0" text="password" />
+            <Label layoutX="168.0" layoutY="60.0" text="username">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font></Label>
+            <Label layoutX="168.0" layoutY="101.0" text="password">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font></Label>
             <Label fx:id="message" layoutX="286.0" layoutY="21.0" text="message" visible="false" />
             <TextField fx:id="fusername" layoutX="236.0" layoutY="56.0" />
             <PasswordField fx:id="fpassword" layoutX="235.0" layoutY="97.0" />
