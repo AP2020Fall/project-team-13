@@ -1,6 +1,9 @@
 package Plato.Graphic;
 
+import Plato.Controller.FriendsMenuController;
+import Plato.Controller.LoginPageController;
 import Plato.MainGraphical;
+import Plato.Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -24,10 +27,8 @@ public class Friends {
     }
 
     @FXML
-    public void AccountMenu(javafx.event.ActionEvent event)
-    {
+    public void AccountMenu(javafx.event.ActionEvent event) {
         MainGraphical.scene.setRoot(MainGraphical.rootAAM);
-
     }
 
     @FXML
@@ -55,20 +56,37 @@ public class Friends {
     }
 
     public void accept(ActionEvent actionEvent) {
+        FriendsMenuController.getInstance().acceptFrend(username.getText());
     }
 
     public void decline(ActionEvent actionEvent) {
+        FriendsMenuController.getInstance().declineFriend(username.getText());
     }
 
     public void search(ActionEvent actionEvent) {
+        String user = username.getText();
+        int n = ((Player)(LoginPageController.user)).getFriends().size();
+        boolean flag = false;
+        for (int i = 0; i < n; i++) {
+            if(user.equals(((Player)(LoginPageController.user)).getFriends().get(i).getUsername())){
+                TextArea.setText(String.valueOf(user.equals(((Player)(LoginPageController.user)).getFriends().get(i).toString())));
+                flag = true;
+            }
+        }
+        if(!flag){
+            TextArea.setText("not found!");
+        }
     }
 
     public void addFriend(ActionEvent actionEvent) {
+        FriendsMenuController.getInstance().addFriend(username.getText());
     }
 
     public void removeFriend(ActionEvent actionEvent) {
+        FriendsMenuController.getInstance().removeFriend(username.getText());
     }
 
     public void showRequests(ActionEvent actionEvent) {
+        TextArea.setText(FriendsMenuController.getInstance().showFriendRequests());
     }
 }
