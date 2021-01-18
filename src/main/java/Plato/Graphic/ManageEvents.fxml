@@ -17,12 +17,12 @@
     <Button layoutX="42.0" layoutY="32.0" mnemonicParsing="false" text="account menu"/>
     <Line endX="-97.0" endY="306.0" layoutX="274.0" layoutY="94.0" startX="-97.0" startY="-94.0"/>
     <Text layoutX="235.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="game name"/>
-    <TextField layoutX="307.0" layoutY="81.0" text="game name..." />
+    <TextField layoutX="307.0" layoutY="81.0" text="game name..." fx:id = "gameName"/>
     <Text layoutX="248.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="start date"/>
     <Text layoutX="250.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="end date"/>
     <Text layoutX="259.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="score"/>
-    <TextField layoutX="307.0" layoutY="176.0" text="end date..." />
-    <TextField layoutX="307.0" layoutY="223.0" text="score..." />
-    <TextField layoutX="307.0" layoutY="132.0" text="start date..." />
-    <Button layoutX="325.0" layoutY="284.0" mnemonicParsing="false" text="add event"/>
+    <TextField layoutX="307.0" layoutY="176.0" text="end date..." fx:id = "endDate"/>
+    <TextField layoutX="307.0" layoutY="223.0" text="score..." fx:id = "score"/>
+    <TextField layoutX="307.0" layoutY="132.0" text="start date..." fx:id = "startDate"/>
+    <Button layoutX="325.0" layoutY="284.0" mnemonicParsing="false" text="add event" onAction="#addEvent"/>
 </Pane>
