@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+<?import java.awt.Button?>
+<?import javax.sound.sampled.Line?>
+<?import java.awt.TextArea?>
+<?import java.awt.TextField?>
+<?import org.w3c.dom.Text?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.JoinEvent">
     <Button layoutX="48.0" layoutY="34.0" mnemonicParsing="false" onAction="#AccountMenu" text="account menu" />
     <Button layoutX="51.0" layoutY="82.0" mnemonicParsing="false" onAction="#GameMenu" text="games menu" />
@@ -13,9 +20,10 @@
     <Button layoutX="34.0" layoutY="209.0" mnemonicParsing="false" onAction="#PlayerBot" text="plato bot messages" />
     <Button layoutX="49.0" layoutY="253.0" mnemonicParsing="false" onAction="#GamesHistory" text="games history" />
     <Button layoutX="65.0" layoutY="301.0" mnemonicParsing="false" onAction="#Logout" text="log out" />
+
     <Line endX="-46.0" endY="318.0" layoutX="237.0" layoutY="82.0" startX="-46.0" startY="-82.0" />
-    <TextArea layoutX="277.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0" />
-    <TextField layoutX="328.0" layoutY="266.0" text="event id..." />
+    <TextArea layoutX="277.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0" fx:id = "textArea"/>
+    <TextField layoutX="328.0" layoutY="266.0" text="event id..." fx:id = "eventId"/>
     <Text layoutX="277.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="event id" />
-    <Button layoutX="359.0" layoutY="314.0" mnemonicParsing="false" text="join" />
+    <Button layoutX="359.0" layoutY="314.0" mnemonicParsing="false" text="join" onAction="#joinEvent"/>
 </Pane>

@@ -3,8 +3,13 @@ package Plato.Graphic;
 import Plato.MainGraphical;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class JoinEvent {
+    public TextArea textArea;
+    public TextField eventId;
+
     @FXML
     public void joinevent(javafx.event.ActionEvent event)
     {
@@ -46,5 +51,8 @@ public class JoinEvent {
     public void Logout(ActionEvent event)
     {
         MainGraphical.scene.setRoot(MainGraphical.root);
+    }
+
+    public void joinEvent(ActionEvent actionEvent) {
     }
 }
