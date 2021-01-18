@@ -130,4 +130,17 @@ public class Event {
         pw.flush();
         pw.close();
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "playersOfThisEvent=" + playersOfThisEvent +
+                ", game=" + game +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", eventScore=" + eventScore +
+                ", eventId=" + eventId +
+                '}';
+    }
+
 }

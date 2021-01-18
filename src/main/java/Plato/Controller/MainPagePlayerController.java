@@ -119,8 +119,7 @@ public class MainPagePlayerController {
             }
         }
     }
-    public String reversiName()
-    {
+    public String reversiName() {
         for (Game game : Game.getGames()) {
             if (game.getGameID()==1)
             {
@@ -129,8 +128,7 @@ public class MainPagePlayerController {
         }
         return "error";
     }
-    public String battleSeaName()
-    {
+    public String battleSeaName() {
         for (Game game : Game.getGames()) {
             if (game.getGameID()==2)
             {

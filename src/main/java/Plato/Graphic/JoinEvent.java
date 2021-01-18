@@ -1,10 +1,17 @@
 package Plato.Graphic;
 
+import Plato.Controller.LoginPageController;
+import Plato.Controller.MainPagePlayerController;
 import Plato.MainGraphical;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
+import java.util.regex.Pattern;
+
+import static Plato.Model.Event.getEvents;
 
 public class JoinEvent {
     public TextArea textArea;
@@ -54,5 +61,17 @@ public class JoinEvent {
     }
 
     public void joinEvent(ActionEvent actionEvent) {
+        if(Pattern.matches("\\d+",eventId.getText())){
+            MainPagePlayerController.getInstance().joinEvent(Integer.parseInt(eventId.getText()));
+        }
+    }
+
+    public void showEvents(ActionEvent actionEvent){
+        String events = "";
+        int n = getEvents().size();
+        for (int i = 0; i < n; i++) {
+            events = events.concat(getEvents().get(i).toString());
+        }
+        textArea.setText(events);
     }
 }
