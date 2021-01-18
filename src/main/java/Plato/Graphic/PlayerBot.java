@@ -1,15 +1,13 @@
 package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
-import Plato.MainGraphical;
+import Plato.MainGraphical.MainGraphical;
 import Plato.Model.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-
-import javax.swing.text.TabableView;
 
 public class PlayerBot {
     @FXML

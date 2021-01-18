@@ -1,11 +1,10 @@
 package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
-import Plato.MainGraphical;
+import Plato.MainGraphical.MainGraphical;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 

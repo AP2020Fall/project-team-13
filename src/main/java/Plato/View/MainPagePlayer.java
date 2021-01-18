@@ -13,7 +13,7 @@ public class MainPagePlayer extends Page{
         Matcher matcher;
         String input;
         seenPages.add(MainPagePlayer.mainPagePlayer);
-        System.out.println("Main Page Player :");
+        System.out.println("Main.Main Page Player :");
         while (true) {
             Admin.updateAdmins();
             Player.updatePlayers();

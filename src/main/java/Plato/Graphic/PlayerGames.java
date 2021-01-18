@@ -1,6 +1,6 @@
 package Plato.Graphic;
 
-import Plato.MainGraphical;
+import Plato.MainGraphical.MainGraphical;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 

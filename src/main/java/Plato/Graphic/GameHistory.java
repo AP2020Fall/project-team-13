@@ -1,17 +1,13 @@
 package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
-import Plato.MainGraphical;
+import Plato.MainGraphical.MainGraphical;
 import Plato.Model.Log;
 import Plato.Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-
-import javax.swing.text.TabExpander;
-import javax.swing.text.TabableView;
-import javax.swing.text.TableView;
 
 
 public class GameHistory {

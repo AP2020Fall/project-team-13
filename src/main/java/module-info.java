@@ -7,7 +7,7 @@ module sample {
     requires java.desktop;
     requires javafx.swing;
 
-    opens Plato;
+    opens Plato.MainGraphical;
     opens Reversi;
 
 }

@@ -1,7 +1,7 @@
 package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
-import Plato.MainGraphical;
+import Plato.MainGraphical.MainGraphical;
 import Plato.Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

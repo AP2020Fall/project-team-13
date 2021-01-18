@@ -13,7 +13,7 @@ public class MainPageAdmin extends Page {
         seenPages.add(mainPageAdmin);
         String input;
         Matcher matcher;
-        System.out.println("Main Page Admin :");
+        System.out.println("Main.Main Page Admin :");
 while(true){
     Admin.updateAdmins();
     Player.updatePlayers();

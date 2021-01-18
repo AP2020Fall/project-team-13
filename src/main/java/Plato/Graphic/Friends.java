@@ -2,11 +2,10 @@ package Plato.Graphic;
 
 import Plato.Controller.FriendsMenuController;
 import Plato.Controller.LoginPageController;
-import Plato.MainGraphical;
+import Plato.MainGraphical.MainGraphical;
 import Plato.Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class Friends {

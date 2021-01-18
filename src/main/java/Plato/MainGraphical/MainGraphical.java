@@ -1,4 +1,4 @@
-package Plato;
+package Plato.MainGraphical;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -34,10 +34,10 @@ public class MainGraphical extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        String musicFile = "Megatone.mp3";
+        /*String musicFile = "Megatone.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        mediaPlayer.play();*/
 
 
         stage=primaryStage;

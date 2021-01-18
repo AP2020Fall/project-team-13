@@ -1,3 +1,5 @@
+package Main;
+
 import BattleSea.Controller.BattleSea;
 import Plato.Controller.LoginPageController;
 import Plato.Model.*;
