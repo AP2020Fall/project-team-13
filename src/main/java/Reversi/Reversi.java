@@ -412,6 +412,10 @@ public class Reversi {
         return (x == this.getTable().getLastMove()[0] && y == this.getTable().getLastMove()[1]);
     }
 
+    public String getWhoseTurn(){
+        return this.table.getWhoseTurn();
+    }
+
 }
 
 class Table{
@@ -476,4 +480,7 @@ class Table{
         this.lastMove[0] = x;
         this.lastMove[1] = y;
     }
+
+
+
 }
