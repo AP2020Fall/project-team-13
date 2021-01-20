@@ -1,6 +1,7 @@
 package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
+import Plato.MainGraphical.MainGraphical;
 import Plato.Model.Admin;
 import Plato.Model.Player;
 import Plato.Model.User;
@@ -34,9 +35,10 @@ public class AccountMenu {
     public void mainPage(javafx.event.ActionEvent event) {
         if (LoginPageController.user.isAdmin())
         {
-
+            MainGraphical.scene.setRoot(MainGraphical.rootAM);
         }
         else {
+            MainGraphical.scene.setRoot(MainGraphical.rootPM);
 
         }
     }

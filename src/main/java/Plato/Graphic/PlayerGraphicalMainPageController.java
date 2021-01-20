@@ -25,7 +25,7 @@ public class PlayerGraphicalMainPageController {
         age.setText(String.valueOf(player.getDaysPassedRegister()));
         username.setText(player.getUsername());
         friends.setText(String.valueOf(player.getFriends().size()));
-        if (status.getText().equals(""))
+        if (status.getText().equals(null))
         {
             status.setText(player.status);
         }
