@@ -4,13 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
-import javax.print.DocFlavor;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
 public class MainGraphical extends Application {
@@ -41,18 +37,20 @@ public class MainGraphical extends Application {
 
 
         stage=primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("Plato.Graphic.sample.fxml"));
-        Parent rootPM = FXMLLoader.load(getClass().getResource("Plato.Graphic.PlayerMainPage.fxml"));
-        Parent rootPG = FXMLLoader.load(getClass().getResource("Plato.Graphic.PlayerGAmes.fxml"));
-        Parent rootPB = FXMLLoader.load(getClass().getResource("Plato.Graphic.PlayerBot.fxml"));
-        Parent rootME = FXMLLoader.load(getClass().getResource("Plato.Graphic.ManageEvents.fxml"));
-        Parent rootGH = FXMLLoader.load(getClass().getResource("Plato.Graphic.GameHistory.fxml"));
-        Parent rootAM = FXMLLoader.load(getClass().getResource("Plato.Graphic.AdminMainPage.fxml"));
-        Parent rootAG = FXMLLoader.load(getClass().getResource("Plato.Graphic.AdminGames.fxml"));
-        Parent rootAB = FXMLLoader.load(getClass().getResource("Plato.Graphic.AdminBot.fxml"));
-        Parent rootAMM = FXMLLoader.load(getClass().getResource("Plato.Graphic.AccountMenu.fxml"));
-        Parent rootJE = FXMLLoader.load(getClass().getResource("Plato.Graphic.JoinEvent.fxml"));
-        Parent rootPF = FXMLLoader.load(getClass().getResource("Plato.Graphic.Friends.fxml"));
+        URL url = new File("src/main/java/Plato/MainGraphical/fxml/sample.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        /*Parent root = FXMLLoader.load(getClass().getResource("fxml/sample.fxml"));
+        Parent rootPM = FXMLLoader.load(getClass().getResource("fxml/PlayerMainPage.fxml"));
+        Parent rootPG = FXMLLoader.load(getClass().getResource("fxml/PlayerGAmes.fxml"));
+        Parent rootPB = FXMLLoader.load(getClass().getResource("fxml/PlayerBot.fxml"));
+        Parent rootME = FXMLLoader.load(getClass().getResource("fxml/ManageEvents.fxml"));
+        Parent rootGH = FXMLLoader.load(getClass().getResource("fxml/GameHistory.fxml"));
+        Parent rootAM = FXMLLoader.load(getClass().getResource("fxml/AdminMainPage.fxml"));
+        Parent rootAG = FXMLLoader.load(getClass().getResource("fxml/AdminGames.fxml"));
+        Parent rootAB = FXMLLoader.load(getClass().getResource("fxml/AdminBot.fxml"));
+        Parent rootAMM = FXMLLoader.load(getClass().getResource("fxml/AccountMenu.fxml"));
+        Parent rootJE = FXMLLoader.load(getClass().getResource("fxml/JoinEvent.fxml"));
+        Parent rootPF = FXMLLoader.load(getClass().getResource("fxml/Friends.fxml"));*/
 
         primaryStage.setScene(scene=new Scene(root, 300, 275));
         primaryStage.show();
