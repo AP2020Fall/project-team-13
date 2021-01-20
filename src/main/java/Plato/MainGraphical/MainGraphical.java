@@ -46,7 +46,7 @@ public class MainGraphical extends Application {
 
         stage=primaryStage;
         URL url = new File("src/main/java/Plato/MainGraphical/fxml/sample.fxml").toURI().toURL();
-        URL url1 = new File("src/main/java/Plato/MainGraphical/PlayerMainPage.fxml").toURI().toURL();
+        URL url1 = new File("src/main/java/Plato/MainGraphical/fxml/PlayerMainPage.fxml").toURI().toURL();
         URL url2 = new File("src/main/java/Plato/MainGraphical/fxml/PlayerGAmes.fxml").toURI().toURL();
         URL url3 = new File("src/main/java/Plato/MainGraphical/fxml/PlayerBot.fxml").toURI().toURL();
         URL url4 = new File("src/main/java/Plato/MainGraphical/fxml/ManageEvents.fxml").toURI().toURL();
