@@ -64,11 +64,13 @@ public class JoinEvent {
         }
     }
 
+    @FXML
     public void showEvents(ActionEvent actionEvent){
         String events = "";
         int n = getEvents().size();
         for (int i = 0; i < n; i++) {
             events = events.concat(getEvents().get(i).toString());
+            events = events + "\n";
         }
         textArea.setText(events);
     }

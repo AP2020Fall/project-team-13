@@ -1,5 +1,6 @@
 package Reversi;
 
+import Plato.MainGraphical.MainGraphical;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -279,6 +280,7 @@ public class ReversiGraphic{
     }
     //back
     public void back(ActionEvent actionEvent) {
+        MainGraphical.scene.setRoot(MainGraphical.rootPG);
     }
     //update
     public void update(){
@@ -1210,7 +1212,6 @@ public class ReversiGraphic{
             }
         }
     }
-    //view account menu
-    public void viewAccountMenu(ActionEvent actionEvent) {
-    }
+
+
 }
