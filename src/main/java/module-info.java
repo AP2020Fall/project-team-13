@@ -9,5 +9,6 @@ module sample {
 
     opens Plato.MainGraphical;
     opens Reversi;
+    opens Plato.Graphic;
 
 }

@@ -1,399 +1,419 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.image.ImageView?>
 
-<?import javafx.scene.image.Image?>
-<GridPane fx:controller="Reversi.ReversiGraphic"
-          xmlns:fx="http://javafx.com/fxml" prefHeight="600" prefWidth="480" fx:id="board" alignment="center">
+<GridPane fx:id="board" alignment="center" prefHeight="600" prefWidth="480" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Reversi.ReversiGraphic">
 
-    <Pane GridPane.columnIndex="0" GridPane.rowIndex="0" fx:id="Zero_Zero" onMouseClicked="#placeDisk">
+    <Pane fx:id="Zero_Zero" onMouseClicked="#placeDisk" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <ImageView fx:id="zero_zero">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="0" GridPane.rowIndex="1" fx:id="Zero_One" onMouseClicked="#placeDisk">
+    <Pane fx:id="Zero_One" onMouseClicked="#placeDisk" GridPane.columnIndex="0" GridPane.rowIndex="1">
         <ImageView fx:id="zero_one">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="0" GridPane.rowIndex="2" fx:id="Zero_Two" onMouseClicked="#placeDisk">
+    <Pane fx:id="Zero_Two" onMouseClicked="#placeDisk" GridPane.columnIndex="0" GridPane.rowIndex="2">
         <ImageView fx:id="zero_two">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="0" GridPane.rowIndex="3" fx:id="Zero_Three" onMouseClicked="#placeDisk">
+    <Pane fx:id="Zero_Three" onMouseClicked="#placeDisk" GridPane.columnIndex="0" GridPane.rowIndex="3">
         <ImageView fx:id="zero_three">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="0" GridPane.rowIndex="4" fx:id="Zero_Four" onMouseClicked="#placeDisk">
+    <Pane fx:id="Zero_Four" onMouseClicked="#placeDisk" GridPane.columnIndex="0" GridPane.rowIndex="4">
         <ImageView fx:id="zero_four">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="0" GridPane.rowIndex="5" fx:id="Zero_Five" onMouseClicked="#placeDisk">
+    <Pane fx:id="Zero_Five" onMouseClicked="#placeDisk" GridPane.columnIndex="0" GridPane.rowIndex="5">
         <ImageView fx:id="zero_five">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="0" GridPane.rowIndex="6" fx:id="Zero_Six" onMouseClicked="#placeDisk">
+    <Pane fx:id="Zero_Six" onMouseClicked="#placeDisk" GridPane.columnIndex="0" GridPane.rowIndex="6">
         <ImageView fx:id="zero_six">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="0" GridPane.rowIndex="7" fx:id="Zero_Seven" onMouseClicked="#placeDisk">
+    <Pane fx:id="Zero_Seven" onMouseClicked="#placeDisk" GridPane.columnIndex="0" GridPane.rowIndex="7">
         <ImageView fx:id="zero_seven">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="One_Zero" onMouseClicked="#placeDisk">
+    <Pane fx:id="One_Zero" onMouseClicked="#placeDisk" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <ImageView fx:id="one_zero">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="One_One" onMouseClicked="#placeDisk">
+    <Pane fx:id="One_One" onMouseClicked="#placeDisk" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <ImageView fx:id="one_one">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="One_Two" onMouseClicked="#placeDisk">
+    <Pane fx:id="One_Two" onMouseClicked="#placeDisk" GridPane.columnIndex="1" GridPane.rowIndex="2">
         <ImageView fx:id="one_two">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="One_Three" onMouseClicked="#placeDisk">
+    <Pane fx:id="One_Three" onMouseClicked="#placeDisk" GridPane.columnIndex="1" GridPane.rowIndex="3">
         <ImageView fx:id="one_three">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="One_Four" onMouseClicked="#placeDisk">
+    <Pane fx:id="One_Four" onMouseClicked="#placeDisk" GridPane.columnIndex="1" GridPane.rowIndex="4">
         <ImageView fx:id="one_four">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="One_Five" onMouseClicked="#placeDisk">
+    <Pane fx:id="One_Five" onMouseClicked="#placeDisk" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <ImageView fx:id="one_five">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="1" GridPane.rowIndex="6" fx:id="One_Six" onMouseClicked="#placeDisk">
+    <Pane fx:id="One_Six" onMouseClicked="#placeDisk" GridPane.columnIndex="1" GridPane.rowIndex="6">
         <ImageView fx:id="one_six">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="1" GridPane.rowIndex="7" fx:id="One_Seven" onMouseClicked="#placeDisk">
+    <Pane fx:id="One_Seven" onMouseClicked="#placeDisk" GridPane.columnIndex="1" GridPane.rowIndex="7">
         <ImageView fx:id="one_seven">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="2" GridPane.rowIndex="0" fx:id="Two_Zero" onMouseClicked="#placeDisk">
+    <Pane fx:id="Two_Zero" onMouseClicked="#placeDisk" GridPane.columnIndex="2" GridPane.rowIndex="0">
         <ImageView fx:id="two_zero">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="Two_One" onMouseClicked="#placeDisk">
+    <Pane fx:id="Two_One" onMouseClicked="#placeDisk" GridPane.columnIndex="2" GridPane.rowIndex="1">
         <ImageView fx:id="two_one">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="2" GridPane.rowIndex="2" fx:id="Two_Two" onMouseClicked="#placeDisk">
+    <Pane fx:id="Two_Two" onMouseClicked="#placeDisk" GridPane.columnIndex="2" GridPane.rowIndex="2">
         <ImageView fx:id="two_two">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="2" GridPane.rowIndex="3" fx:id="Two_Three" onMouseClicked="#placeDisk">
+    <Pane fx:id="Two_Three" onMouseClicked="#placeDisk" GridPane.columnIndex="2" GridPane.rowIndex="3">
         <ImageView fx:id="two_three">
-            <Image url="@resources/blue.png"/>
+            <Image url="@resources/blue.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="2" GridPane.rowIndex="4" fx:id="Two_Four" onMouseClicked="#placeDisk">
+    <Pane fx:id="Two_Four" onMouseClicked="#placeDisk" GridPane.columnIndex="2" GridPane.rowIndex="4">
         <ImageView fx:id="two_four">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="2" GridPane.rowIndex="5" fx:id="Two_Five" onMouseClicked="#placeDisk">
+    <Pane fx:id="Two_Five" onMouseClicked="#placeDisk" GridPane.columnIndex="2" GridPane.rowIndex="5">
         <ImageView fx:id="two_five">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="2" GridPane.rowIndex="6" fx:id="Two_Six" onMouseClicked="#placeDisk">
+    <Pane fx:id="Two_Six" onMouseClicked="#placeDisk" GridPane.columnIndex="2" GridPane.rowIndex="6">
         <ImageView fx:id="two_six">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="2" GridPane.rowIndex="7" fx:id="Two_Seven" onMouseClicked="#placeDisk">
+    <Pane fx:id="Two_Seven" onMouseClicked="#placeDisk" GridPane.columnIndex="2" GridPane.rowIndex="7">
         <ImageView fx:id="two_seven">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="3" GridPane.rowIndex="0" fx:id="Three_Zero" onMouseClicked="#placeDisk">
+    <Pane fx:id="Three_Zero" onMouseClicked="#placeDisk" GridPane.columnIndex="3" GridPane.rowIndex="0">
         <ImageView fx:id="three_zero">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="Three_One" onMouseClicked="#placeDisk">
+    <Pane fx:id="Three_One" onMouseClicked="#placeDisk" GridPane.columnIndex="3" GridPane.rowIndex="1">
         <ImageView fx:id="three_one">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="Three_Two" onMouseClicked="#placeDisk">
+    <Pane fx:id="Three_Two" onMouseClicked="#placeDisk" GridPane.columnIndex="3" GridPane.rowIndex="2">
         <ImageView fx:id="three_two">
-            <Image url="@resources/blue.png"/>
+            <Image url="@resources/blue.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="Three_Three" onMouseClicked="#placeDisk">
+    <Pane fx:id="Three_Three" onMouseClicked="#placeDisk" GridPane.columnIndex="3" GridPane.rowIndex="3">
         <ImageView fx:id="three_three">
-            <Image url="@resources/white.png"/>
+            <Image url="@resources/white.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="3" GridPane.rowIndex="4" fx:id="Three_Four" onMouseClicked="#placeDisk">
+    <Pane fx:id="Three_Four" onMouseClicked="#placeDisk" GridPane.columnIndex="3" GridPane.rowIndex="4">
         <ImageView fx:id="three_four">
-            <Image url="@resources/black.png"/>
+            <Image url="@resources/black.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="3" GridPane.rowIndex="5" fx:id="Three_Five" onMouseClicked="#placeDisk">
+    <Pane fx:id="Three_Five" onMouseClicked="#placeDisk" GridPane.columnIndex="3" GridPane.rowIndex="5">
         <ImageView fx:id="three_five">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="3" GridPane.rowIndex="6" fx:id="Three_Six" onMouseClicked="#placeDisk">
+    <Pane fx:id="Three_Six" onMouseClicked="#placeDisk" GridPane.columnIndex="3" GridPane.rowIndex="6">
         <ImageView fx:id="three_six">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="3" GridPane.rowIndex="7" fx:id="Three_Seven" onMouseClicked="#placeDisk">
+    <Pane fx:id="Three_Seven" onMouseClicked="#placeDisk" GridPane.columnIndex="3" GridPane.rowIndex="7">
         <ImageView fx:id="three_seven">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="4" GridPane.rowIndex="0" fx:id="Four_Zero" onMouseClicked="#placeDisk">
+    <Pane fx:id="Four_Zero" onMouseClicked="#placeDisk" GridPane.columnIndex="4" GridPane.rowIndex="0">
         <ImageView fx:id="four_zero">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="4" GridPane.rowIndex="1" fx:id="Four_One" onMouseClicked="#placeDisk">
+    <Pane fx:id="Four_One" onMouseClicked="#placeDisk" GridPane.columnIndex="4" GridPane.rowIndex="1">
         <ImageView fx:id="four_one">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="4" GridPane.rowIndex="2" fx:id="Four_Two" onMouseClicked="#placeDisk">
+    <Pane fx:id="Four_Two" onMouseClicked="#placeDisk" GridPane.columnIndex="4" GridPane.rowIndex="2">
         <ImageView fx:id="four_two">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="4" GridPane.rowIndex="3" fx:id="Four_Three" onMouseClicked="#placeDisk">
+    <Pane fx:id="Four_Three" onMouseClicked="#placeDisk" GridPane.columnIndex="4" GridPane.rowIndex="3">
         <ImageView fx:id="four_three">
-            <Image url="@resources/black.png"/>
+            <Image url="@resources/black.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="4" GridPane.rowIndex="4" fx:id="Four_Four" onMouseClicked="#placeDisk">
+    <Pane fx:id="Four_Four" onMouseClicked="#placeDisk" GridPane.columnIndex="4" GridPane.rowIndex="4">
         <ImageView fx:id="four_four">
-            <Image url="@resources/white.png"/>
+            <Image url="@resources/white.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="4" GridPane.rowIndex="5" fx:id="Four_Five" onMouseClicked="#placeDisk">
+    <Pane fx:id="Four_Five" onMouseClicked="#placeDisk" GridPane.columnIndex="4" GridPane.rowIndex="5">
         <ImageView fx:id="four_five">
-            <Image url="@resources/blue.png"/>
+            <Image url="@resources/blue.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="4" GridPane.rowIndex="6" fx:id="Four_Six" onMouseClicked="#placeDisk">
+    <Pane fx:id="Four_Six" onMouseClicked="#placeDisk" GridPane.columnIndex="4" GridPane.rowIndex="6">
         <ImageView fx:id="four_six">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="4" GridPane.rowIndex="7" fx:id="Four_Seven" onMouseClicked="#placeDisk">
+    <Pane fx:id="Four_Seven" onMouseClicked="#placeDisk" GridPane.columnIndex="4" GridPane.rowIndex="7">
         <ImageView fx:id="four_seven">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="5" GridPane.rowIndex="0" fx:id="Five_Zero" onMouseClicked="#placeDisk">
+    <Pane fx:id="Five_Zero" onMouseClicked="#placeDisk" GridPane.columnIndex="5" GridPane.rowIndex="0">
         <ImageView fx:id="five_zero">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="5" GridPane.rowIndex="1" fx:id="Five_One" onMouseClicked="#placeDisk">
+    <Pane fx:id="Five_One" onMouseClicked="#placeDisk" GridPane.columnIndex="5" GridPane.rowIndex="1">
         <ImageView fx:id="five_one">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="5" GridPane.rowIndex="2" fx:id="Five_Two" onMouseClicked="#placeDisk">
+    <Pane fx:id="Five_Two" onMouseClicked="#placeDisk" GridPane.columnIndex="5" GridPane.rowIndex="2">
         <ImageView fx:id="five_two">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="5" GridPane.rowIndex="3" fx:id="Five_Three" onMouseClicked="#placeDisk">
+    <Pane fx:id="Five_Three" onMouseClicked="#placeDisk" GridPane.columnIndex="5" GridPane.rowIndex="3">
         <ImageView fx:id="five_three">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="5" GridPane.rowIndex="4" fx:id="Five_Four" onMouseClicked="#placeDisk">
+    <Pane fx:id="Five_Four" onMouseClicked="#placeDisk" GridPane.columnIndex="5" GridPane.rowIndex="4">
         <ImageView fx:id="five_four">
-            <Image url="@resources/blue.png"/>
+            <Image url="@resources/blue.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="5" GridPane.rowIndex="5" fx:id="Five_Five" onMouseClicked="#placeDisk">
+    <Pane fx:id="Five_Five" onMouseClicked="#placeDisk" GridPane.columnIndex="5" GridPane.rowIndex="5">
         <ImageView fx:id="five_five">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="5" GridPane.rowIndex="6" fx:id="Five_Six" onMouseClicked="#placeDisk">
+    <Pane fx:id="Five_Six" onMouseClicked="#placeDisk" GridPane.columnIndex="5" GridPane.rowIndex="6">
         <ImageView fx:id="five_six">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="5" GridPane.rowIndex="7" fx:id="Five_Seven" onMouseClicked="#placeDisk">
+    <Pane fx:id="Five_Seven" onMouseClicked="#placeDisk" GridPane.columnIndex="5" GridPane.rowIndex="7">
         <ImageView fx:id="five_seven">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="6" GridPane.rowIndex="0" fx:id="Six_Zero" onMouseClicked="#placeDisk">
+    <Pane fx:id="Six_Zero" onMouseClicked="#placeDisk" GridPane.columnIndex="6" GridPane.rowIndex="0">
         <ImageView fx:id="six_zero">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="6" GridPane.rowIndex="1" fx:id="Six_One" onMouseClicked="#placeDisk">
+    <Pane fx:id="Six_One" onMouseClicked="#placeDisk" GridPane.columnIndex="6" GridPane.rowIndex="1">
         <ImageView fx:id="six_one">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="6" GridPane.rowIndex="2" fx:id="Six_Two" onMouseClicked="#placeDisk">
+    <Pane fx:id="Six_Two" onMouseClicked="#placeDisk" GridPane.columnIndex="6" GridPane.rowIndex="2">
         <ImageView fx:id="six_two">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="6" GridPane.rowIndex="3" fx:id="Six_Three" onMouseClicked="#placeDisk">
+    <Pane fx:id="Six_Three" onMouseClicked="#placeDisk" GridPane.columnIndex="6" GridPane.rowIndex="3">
         <ImageView fx:id="six_three">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="6" GridPane.rowIndex="4" fx:id="Six_Four" onMouseClicked="#placeDisk">
+    <Pane fx:id="Six_Four" onMouseClicked="#placeDisk" GridPane.columnIndex="6" GridPane.rowIndex="4">
         <ImageView fx:id="six_four">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="6" GridPane.rowIndex="5" fx:id="Six_Five" onMouseClicked="#placeDisk">
+    <Pane fx:id="Six_Five" onMouseClicked="#placeDisk" GridPane.columnIndex="6" GridPane.rowIndex="5">
         <ImageView fx:id="six_five">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="6" GridPane.rowIndex="6" fx:id="Six_Six" onMouseClicked="#placeDisk">
+    <Pane fx:id="Six_Six" onMouseClicked="#placeDisk" GridPane.columnIndex="6" GridPane.rowIndex="6">
         <ImageView fx:id="six_six">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="6" GridPane.rowIndex="7" fx:id="Six_Seven" onMouseClicked="#placeDisk">
+    <Pane fx:id="Six_Seven" onMouseClicked="#placeDisk" GridPane.columnIndex="6" GridPane.rowIndex="7">
         <ImageView fx:id="six_seven">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="7" GridPane.rowIndex="0" fx:id="Seven_Zero" onMouseClicked="#placeDisk">
+    <Pane fx:id="Seven_Zero" onMouseClicked="#placeDisk" GridPane.columnIndex="7" GridPane.rowIndex="0">
         <ImageView fx:id="seven_zero">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="7" GridPane.rowIndex="1" fx:id="Seven_One" onMouseClicked="#placeDisk">
+    <Pane fx:id="Seven_One" onMouseClicked="#placeDisk" GridPane.columnIndex="7" GridPane.rowIndex="1">
         <ImageView fx:id="seven_one">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="7" GridPane.rowIndex="2" fx:id="Seven_Two" onMouseClicked="#placeDisk">
+    <Pane fx:id="Seven_Two" onMouseClicked="#placeDisk" GridPane.columnIndex="7" GridPane.rowIndex="2">
         <ImageView fx:id="seven_two">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="7" GridPane.rowIndex="3" fx:id="Seven_Three" onMouseClicked="#placeDisk">
+    <Pane fx:id="Seven_Three" onMouseClicked="#placeDisk" GridPane.columnIndex="7" GridPane.rowIndex="3">
         <ImageView fx:id="seven_three">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="7" GridPane.rowIndex="4" fx:id="Seven_Four" onMouseClicked="#placeDisk">
+    <Pane fx:id="Seven_Four" onMouseClicked="#placeDisk" GridPane.columnIndex="7" GridPane.rowIndex="4">
         <ImageView fx:id="seven_four">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="7" GridPane.rowIndex="5" fx:id="Seven_Five" onMouseClicked="#placeDisk">
+    <Pane fx:id="Seven_Five" onMouseClicked="#placeDisk" GridPane.columnIndex="7" GridPane.rowIndex="5">
         <ImageView fx:id="seven_five">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="7" GridPane.rowIndex="6" fx:id="Seven_Six" onMouseClicked="#placeDisk">
+    <Pane fx:id="Seven_Six" onMouseClicked="#placeDisk" GridPane.columnIndex="7" GridPane.rowIndex="6">
         <ImageView fx:id="seven_six">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Pane GridPane.columnIndex="7" GridPane.rowIndex="7" fx:id="Seven_Seven" onMouseClicked="#placeDisk">
+    <Pane fx:id="Seven_Seven" onMouseClicked="#placeDisk" GridPane.columnIndex="7" GridPane.rowIndex="7">
         <ImageView fx:id="seven_seven">
-            <Image url="@resources/green.png"/>
+            <Image url="@resources/green.png" />
         </ImageView>
     </Pane>
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="2" GridPane.halignment = "CENTER" fx:id="turn"/>
-    <Label GridPane.columnIndex="3" text="black 2   -   2 white" GridPane.rowIndex="8" GridPane.columnSpan="2" GridPane.halignment = "CENTER" fx:id="result"/>
-    <Button text = "view account menu" GridPane.rowIndex = "8" GridPane.columnIndex="6" prefWidth = "150" GridPane.columnSpan="3" GridPane.halignment = "CENTER" fx:id="viewAccountMenu" onAction="#viewAccountMenu"/>
-    <Button text = "back" GridPane.rowIndex = "9" GridPane.columnIndex="3" prefWidth = "150" GridPane.columnSpan="2" GridPane.halignment = "CENTER" fx:id="back" onAction="#back"/>
+    <Label fx:id="turn" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+    <Label fx:id="result" text="black 2   -   2 white" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+    <Button fx:id="back" onAction="#back" prefWidth="150" text="back" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" />
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

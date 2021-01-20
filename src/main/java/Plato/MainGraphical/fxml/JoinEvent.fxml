@@ -15,8 +15,9 @@
     <Button layoutX="65.0" layoutY="301.0" mnemonicParsing="false" onAction="#Logout" text="log out" />
 
     <Line endX="-46.0" endY="318.0" layoutX="237.0" layoutY="82.0" startX="-46.0" startY="-82.0" />
-    <TextArea layoutX="277.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0" fx:id = "textArea"/>
-    <TextField layoutX="328.0" layoutY="266.0" text="event id..." fx:id = "eventId"/>
+    <TextArea fx:id="textArea" layoutX="302.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0" />
+    <TextField fx:id="eventId" layoutX="328.0" layoutY="266.0" text="event id..." />
     <Text layoutX="277.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="event id" />
-    <Button layoutX="359.0" layoutY="314.0" mnemonicParsing="false" text="join" onAction="#joinEvent"/>
+    <Button layoutX="359.0" layoutY="314.0" mnemonicParsing="false" onAction="#joinEvent" text="join" />
+   <Button layoutX="204.0" layoutY="109.0" mnemonicParsing="false" onAction="#showEvents" text="show events :" />
 </Pane>
