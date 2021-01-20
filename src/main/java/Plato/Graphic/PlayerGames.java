@@ -36,6 +36,7 @@ public class PlayerGames {
         try {
             p2 = LoginPageController.loginSecond(u,p);
             ReversiGraphic.game = new Reversi(p1, p2);
+            MainGraphical.scene.setRoot(MainGraphical.rootREV);
         } catch (Exception e) {
             mes.setText("invalid information");
         }
@@ -79,4 +80,6 @@ public class PlayerGames {
     {
         MainGraphical.scene.setRoot(MainGraphical.rootPF);
     }
+
+
 }

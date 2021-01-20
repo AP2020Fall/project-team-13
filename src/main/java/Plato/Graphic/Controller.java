@@ -52,9 +52,9 @@ public class Controller {
         }
         String musicFile = "Megatone.mp3";
 
-        Media sound = new Media(new File(musicFile).toURI().toString());
+        /*Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        mediaPlayer.play();*/
     }
 
     @FXML

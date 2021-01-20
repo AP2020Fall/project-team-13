@@ -82,8 +82,7 @@ public class MainGraphical extends Application {
             ((GridPane) rootREV).getColumnConstraints().add(columnConstraints);
         for (int i = 0; i < 9; i++)
             ((GridPane) rootREV).getRowConstraints().add(rowConstraints);
-        ReversiGraphic.reversiGraphics.get(ReversiGraphic.reversiGraphics.size() - 1).turn.setText(
-                ReversiGraphic.game.getWhoseTurn() + "(" + ReversiGraphic.game.getPlayerByWhoseTurn().getUsername() + ")");
+        ReversiGraphic.reversiGraphics.get(ReversiGraphic.reversiGraphics.size() - 1).turn.setText("black");
 
 
 
