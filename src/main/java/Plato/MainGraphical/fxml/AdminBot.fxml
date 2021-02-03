@@ -16,12 +16,8 @@
       <Label layoutX="343.0" layoutY="25.0" text="manage bot messages page" />
       <Button layoutX="365.0" layoutY="184.0" mnemonicParsing="false" onAction="#createNewMessage" text="create new message" />
       <Label fx:id="mes" layoutX="403.0" layoutY="251.0" text="message" visible="false" />
-      <TableView fx:id="tableOfBotMessages" layoutX="392.0" layoutY="294.0" prefHeight="200.0" prefWidth="200.0">
-         <columns>
-            <TableColumn fx:id="cloum" prefWidth="199.20001220703125" text="messsages" />
-         </columns></TableView>
-      <Button layoutX="206.0" layoutY="394.0" mnemonicParsing="false" onAction="#showBotMessages" text="show previous messages :" />
+      <Button layoutX="212.0" layoutY="362.0" mnemonicParsing="false" onAction="#showBotMessages" text="show previous messages :" />
       <TextField fx:id="botNewMessage" layoutX="189.0" layoutY="82.0" prefHeight="90.0" prefWidth="462.0" />
-      <ScrollBar layoutX="592.0" layoutY="295.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="14.0" />
+      <TextArea fx:id="mesBox" layoutX="392.0" layoutY="269.0" prefHeight="200.0" prefWidth="200.0" />
     </children>
 </AnchorPane>
