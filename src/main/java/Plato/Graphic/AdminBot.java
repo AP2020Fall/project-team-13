@@ -6,20 +6,24 @@ import Plato.MainGraphical.MainGraphical;
 import Plato.Model.Admin;
 import Plato.Model.Player;
 import javafx.beans.InvalidationListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 import javax.swing.text.Element;
 import javax.swing.text.TabableView;
 import javax.swing.text.View;
 
 import java.time.LocalDate;
-import java.util.*;
+
 
 
 public class AdminBot {
@@ -29,6 +33,8 @@ public class AdminBot {
      TextField botNewMessage = new TextField();
     @FXML
     TableView<String> tableOfBotMessages = new TableView<String>();
+@FXML
+    TableColumn cloum;
 
     @FXML
 
@@ -41,11 +47,12 @@ public class AdminBot {
     @FXML
     public void showBotMessages()
     {
-        ObservableList mes = FXCollections.observableArrayList();
+        ObservableList<String> mes = FXCollections.observableArrayList();
         for (int i=0 ; i<Admin.getMessages().size();i++) {
         mes.add(Admin.getMessages().get(i));
             mes.add(Admin.mesTime.get(i));
         }
+
         tableOfBotMessages.setItems(mes);
 
     }
