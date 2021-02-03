@@ -6,6 +6,11 @@ import Plato.Model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.net.URL;
 
 
 public class PlayerGraphicalMainPageController {
@@ -17,6 +22,10 @@ public class PlayerGraphicalMainPageController {
     Label username = new Label();
     @FXML
     javafx.scene.control.TextArea status = new javafx.scene.control.TextArea();
+    @FXML
+    ImageView image = new ImageView();
+    @FXML
+    TextField url = new TextField();
 
     @FXML
     public void updateShow(ActionEvent event)
@@ -32,6 +41,8 @@ public class PlayerGraphicalMainPageController {
         else {
             player.status=status.getText();
         }
+
+        image = new ImageView(url.getText());
     }
 
     @FXML
