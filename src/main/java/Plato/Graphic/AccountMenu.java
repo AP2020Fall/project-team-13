@@ -26,7 +26,7 @@ public class AccountMenu {
     @FXML
     TextField nvalue = new TextField();
     @FXML
-    ChoiceBox box = new ChoiceBox(FXCollections.observableArrayList("firstname", "lastname", "email","password","phone number"));
+    ChoiceBox<String> box = new ChoiceBox<>();
     @FXML
     Label fname = new Label();
     @FXML
@@ -54,7 +54,7 @@ public class AccountMenu {
     public void edit(javafx.event.ActionEvent event)
     {
         String neValue = nvalue.getText();
-        String field =  box.getValue().toString();
+        String field =  box.getValue();
         if (field.equals("firstname"))
         {
             LoginPageController.user.setFirstname(neValue);
@@ -71,6 +71,10 @@ public class AccountMenu {
         {
             LoginPageController.user.setPhoneNumber(neValue);
         }
+        fname.setText(LoginPageController.user.getFirstname());
+        lname.setText(LoginPageController.user.getLastname());
+        email.setText(LoginPageController.user.getEmail());
+        pn.setText(LoginPageController.user.getPhoneNumber());
 
     }
     @FXML public void delete(javafx.event.ActionEvent event)

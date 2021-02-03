@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
@@ -32,9 +33,8 @@ public class AdminBot {
     @FXML
      TextField botNewMessage = new TextField();
     @FXML
-    TableView<String> tableOfBotMessages = new TableView<String>();
-@FXML
-    TableColumn cloum;
+    TextArea mesBox = new TextArea();
+
 
     @FXML
 
@@ -47,13 +47,15 @@ public class AdminBot {
     @FXML
     public void showBotMessages()
     {
-        ObservableList<String> mes = FXCollections.observableArrayList();
+        String mes="";
         for (int i=0 ; i<Admin.getMessages().size();i++) {
-        mes.add(Admin.getMessages().get(i));
-            mes.add(Admin.mesTime.get(i));
+        mes=mes+Admin.getMessages().get(i);
+        mes = mes + "   ";
+            mes = mes+Admin.mesTime.get(i);
+            mes = mes + "\n \n";
         }
 
-        tableOfBotMessages.setItems(mes);
+        mesBox.setText(mes);
 
     }
 

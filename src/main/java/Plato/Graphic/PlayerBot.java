@@ -2,16 +2,18 @@ package Plato.Graphic;
 
 import Plato.Controller.LoginPageController;
 import Plato.MainGraphical.MainGraphical;
+import Plato.Model.Admin;
 import Plato.Model.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 
 public class PlayerBot {
     @FXML
-    TableView<String> botMessage = new TableView<>();
+    TextArea mesBox = new TextArea();
 
 
     @FXML
@@ -48,11 +50,18 @@ public class PlayerBot {
 
     public void showmes(javafx.event.ActionEvent event) {
         Player player = (Player) LoginPageController.user;
-        ObservableList mes = FXCollections.observableArrayList();
-        for (String message : player.getMessages()) {
-            mes.add(message);
+        String mes = "";
+    for (String message : player.getMessages()) {
+            mes = mes +message;
+            mes = mes + "\n \n";
         }
-        botMessage.setItems(mes);
+        for (int i=0 ; i<Admin.getMessages().size();i++) {
+            mes=mes+Admin.getMessages().get(i);
+            mes = mes + "   ";
+            mes = mes+Admin.mesTime.get(i);
+            mes = mes + "\n \n";
+        }
+mesBox.setText(mes);
     }
 
     @FXML

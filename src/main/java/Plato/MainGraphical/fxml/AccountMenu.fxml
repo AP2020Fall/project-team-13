@@ -9,7 +9,7 @@
       <Button layoutX="26.0" layoutY="24.0" mnemonicParsing="false" onAction="#mainPage" text="go to main page" />
       <Label layoutX="194.0" layoutY="242.0" text="new value :" />
       <TextField fx:id="nvalue" layoutX="286.0" layoutY="238.0" />
-      <Button layoutX="469.0" layoutY="238.0" mnemonicParsing="false" text="update information" />
+      <Button layoutX="469.0" layoutY="238.0" mnemonicParsing="false" onAction="#edit" text="update information" />
       <ChoiceBox fx:id="box" layoutX="13.0" layoutY="238.0" prefWidth="150.0" />
       <Button layoutX="231.0" layoutY="62.0" mnemonicParsing="false" onAction="#viewPersonal" text="view personal informaton :" />
       <Label fx:id="fname" layoutX="81.0" layoutY="128.0" text="firstname" />
