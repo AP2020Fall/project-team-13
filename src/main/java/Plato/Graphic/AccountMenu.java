@@ -5,7 +5,10 @@ import Plato.MainGraphical.MainGraphical;
 import Plato.Model.Admin;
 import Plato.Model.Player;
 import Plato.Model.User;
+import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
@@ -13,8 +16,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-
-import java.awt.event.ActionEvent;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 
 public class AccountMenu {
@@ -30,6 +35,8 @@ public class AccountMenu {
     Label email = new Label();
     @FXML
     Label pn = new Label();
+
+
 
 @FXML
     public void mainPage(javafx.event.ActionEvent event) {
@@ -47,7 +54,7 @@ public class AccountMenu {
     public void edit(javafx.event.ActionEvent event)
     {
         String neValue = nvalue.getText();
-        String field = (String) box.getSelectionModel().getSelectedItem();
+        String field =  box.getValue().toString();
         if (field.equals("firstname"))
         {
             LoginPageController.user.setFirstname(neValue);
@@ -103,5 +110,13 @@ public class AccountMenu {
         lname.setText(LoginPageController.user.getLastname());
         email.setText(LoginPageController.user.getEmail());
         pn.setText(LoginPageController.user.getPhoneNumber());
-    }
+        ObservableList aa = FXCollections.observableArrayList("firstname","lastname","email","phone number");
+
+
+
+        box.setItems(aa);
+
+
+
+        }
 }

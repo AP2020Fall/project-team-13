@@ -18,7 +18,7 @@
       <Label fx:id="mes" layoutX="403.0" layoutY="251.0" text="message" visible="false" />
       <TableView fx:id="tableOfBotMessages" layoutX="392.0" layoutY="294.0" prefHeight="200.0" prefWidth="200.0">
          <columns>
-            <TableColumn prefWidth="199.20001220703125" text="messsages" />
+            <TableColumn fx:id="cloum" prefWidth="199.20001220703125" text="messsages" />
          </columns></TableView>
       <Button layoutX="206.0" layoutY="394.0" mnemonicParsing="false" onAction="#showBotMessages" text="show previous messages :" />
       <TextField fx:id="botNewMessage" layoutX="189.0" layoutY="82.0" prefHeight="90.0" prefWidth="462.0" />
