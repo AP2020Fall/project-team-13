@@ -15,11 +15,13 @@
         <Button layoutX="34.0" layoutY="356.0" mnemonicParsing="false" onAction="#Logout" text="log out" />
       <TextArea fx:id="reversi" layoutX="237.0" layoutY="34.0" prefHeight="26.0" prefWidth="110.0" text="reversi" />
       <TextArea fx:id="battlesea" layoutX="431.0" layoutY="34.0" prefHeight="38.0" prefWidth="110.0" text="battle sea" />
-      <Button layoutX="248.0" layoutY="94.0" mnemonicParsing="false" onAction="#changeReversi" text="change name" />
-      <Button layoutX="442.0" layoutY="94.0" mnemonicParsing="false" onAction="#changeBattleSea" text="change name" />
-      <Button layoutX="238.0" layoutY="145.0" mnemonicParsing="false" text="add to suggested" />
-      <Button layoutX="432.0" layoutY="145.0" mnemonicParsing="false" text="add to suggested" />
-      <Button layoutX="220.0" layoutY="207.0" mnemonicParsing="false" text="remove from suggested" />
-      <Button layoutX="414.0" layoutY="207.0" mnemonicParsing="false" text="remove from suggested" />
+      <Button layoutX="248.0" layoutY="81.0" mnemonicParsing="false" onAction="#changeReversi" text="change name" />
+      <Button layoutX="442.0" layoutY="81.0" mnemonicParsing="false" onAction="#changeBattleSea" text="change name" />
+      <Button layoutX="237.0" layoutY="120.0" mnemonicParsing="false" onAction="#addRev" text="add to suggested" />
+      <Button layoutX="431.0" layoutY="120.0" mnemonicParsing="false" onAction="#addSea" text="add to suggested" />
+      <Button layoutX="220.0" layoutY="158.0" mnemonicParsing="false" onAction="#removeRev" text="remove from suggested" />
+      <Button layoutX="413.0" layoutY="158.0" mnemonicParsing="false" onAction="#removeSea" text="remove from suggested" />
+      <Button layoutX="347.0" layoutY="268.0" mnemonicParsing="false" onAction="#showSugest" text="show suggested :" />
+      <TextArea fx:id="sugest" layoutX="239.0" layoutY="333.0" prefHeight="123.0" prefWidth="350.0" />
     </children>
 </AnchorPane>
