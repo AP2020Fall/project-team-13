@@ -10,10 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class PlayerBot {
     @FXML
     TextArea mesBox = new TextArea();
+    @FXML
+    ImageView image = new ImageView();
 
 
     @FXML
@@ -48,7 +52,7 @@ public class PlayerBot {
     }
 
 
-    public void showmes(javafx.event.ActionEvent event) {
+    public void showmes(ActionEvent event) {
         Player player = (Player) LoginPageController.user;
         String mes = "";
     for (String message : player.getMessages()) {
@@ -62,6 +66,7 @@ public class PlayerBot {
             mes = mes + "\n \n";
         }
 mesBox.setText(mes);
+        image = new ImageView(player.imageUrl);
     }
 
     @FXML

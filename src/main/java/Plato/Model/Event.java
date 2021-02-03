@@ -16,6 +16,7 @@ public class Event {
     private int eventId;
     private boolean hasStarted;
     private boolean hasEnded;
+    public String imageURL;
 
     public Event( Game game, GregorianCalendar startDate, GregorianCalendar endDate, int eventScore) {
         this.game = game;

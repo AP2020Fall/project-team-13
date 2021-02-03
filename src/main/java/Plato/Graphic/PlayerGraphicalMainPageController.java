@@ -41,8 +41,30 @@ public class PlayerGraphicalMainPageController {
         else {
             player.status=status.getText();
         }
+        if (url.getText().equals(""))
+        {
+            if (player.imageUrl.equals(""))
+            {
 
-        image = new ImageView(url.getText());
+            }
+            else {
+                image = new ImageView(player.imageUrl);
+            }
+        }
+        else if (url.getText().equals("image URL"))
+        {
+            if (player.imageUrl.equals(""))
+            {
+
+            }
+            else {
+                image = new ImageView(player.imageUrl);
+            }
+        }
+        else {
+            image = new ImageView(url.getText());
+        }
+
     }
 
     @FXML

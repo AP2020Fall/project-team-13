@@ -30,6 +30,7 @@ public class Player extends User{
     private int battleSeaLosses;
     private int battleSeaPlayedCount;
     private int battleSeaPoints;
+    public String imageUrl;
     private ArrayList<Player> friends = new ArrayList<Player>();
     private ArrayList<Player> friendRequests = new ArrayList<Player>();
     private ArrayList<Game> suggestedGames = new ArrayList<Game>();

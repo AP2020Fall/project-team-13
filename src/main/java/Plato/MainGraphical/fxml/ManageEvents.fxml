@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.ManageEvents">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Plato.Graphic.ManageEvents">
     <Button layoutX="60.0" layoutY="309.0" mnemonicParsing="false" onAction="#Logout" text="log out" />
     <Button layoutX="20.0" layoutY="253.0" mnemonicParsing="false" onAction="#AdminBot" text="manage bot messages" />
     <Button layoutX="42.0" layoutY="188.0" mnemonicParsing="false" text="manage users" />
@@ -21,5 +22,18 @@
     <TextField fx:id="endDate" layoutX="307.0" layoutY="176.0" text="end date..." />
     <TextField fx:id="score" layoutX="307.0" layoutY="223.0" text="score..." />
     <TextField fx:id="startDate" layoutX="307.0" layoutY="132.0" text="start date..." />
-    <Button layoutX="325.0" layoutY="284.0" mnemonicParsing="false" onAction="#addEvent" text="add event" />
+    <Button layoutX="307.0" layoutY="297.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="25.0" prefWidth="76.0" text="add event" />
+   <Button layoutX="437.0" layoutY="348.0" mnemonicParsing="false" onAction="#edit" text="edit" />
+   <Button layoutX="397.0" layoutY="297.0" mnemonicParsing="false" onAction="#remove" text="remove" />
+   <Label layoutX="201.0" layoutY="23.0" text="event ID (just for edit or remove) :" />
+   <TextField fx:id="eid" layoutX="397.0" layoutY="20.0" />
+   <Button layoutX="504.0" layoutY="81.0" mnemonicParsing="false" onAction="#showAllEvents" text="show events :" />
+   <TextArea fx:id="events" layoutX="491.0" layoutY="148.0" prefHeight="200.0" prefWidth="200.0" />
+   <ScrollBar layoutX="691.0" layoutY="148.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="14.0" />
+   <Label layoutX="236.0" layoutY="270.0" text="image URL " />
+   <TextField fx:id="url" layoutX="306.0" layoutY="266.0" />
+   <Button layoutX="560.0" layoutY="20.0" mnemonicParsing="false" onAction="#showSpecific" text="show specific event" />
+   <ImageView fx:id="image" fitHeight="74.0" fitWidth="91.0" layoutX="619.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+   <ChoiceBox fx:id="choice" layoutX="191.0" layoutY="348.0" prefHeight="25.0" prefWidth="107.0" />
+   <TextField fx:id="nval" layoutX="306.0" layoutY="348.0" prefHeight="25.0" prefWidth="118.0" />
 </Pane>
